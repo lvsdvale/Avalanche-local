@@ -18,19 +18,22 @@ class CampanhasAdmin(admin.ModelAdmin):
 class Incricao_Esportes_Admin(ad.ImportExportModelAdmin):
     list_display = ['usuario','data']
 
-@admin.register(inscricao_Campanhas)
+@admin.register(inscricao_campanhas_sociais)
 class Incricao_Campanhas_Admin(ad.ImportExportModelAdmin):
-    list_display = ['name','Ra']
+    list_display = ['usuario','data']
 
-@admin.register(inscricao_games)
+@admin.register(inscricao_E_sports)
 class Incricao_Games_Admin(ad.ImportExportModelAdmin):
-    list_display = ['name','Ra']
-@admin.register(processo_seletivo)
+    list_display = ['usuario', 'data']
+
+@admin.register(inscricao_processo_seletivo)
 class Incricao_Processo_Seletivo(ad.ImportExportModelAdmin):
-    list_display = ['name','Ra']
+    list_display = ['usuario']
+
 @admin.register(contatos)
 class ContatosAdmin(admin.ModelAdmin):
     list_display = ['email','assunto']
+
 @admin.register(diretoria)
 class Diretoria(admin.ModelAdmin):
     list_display = ['name','area']

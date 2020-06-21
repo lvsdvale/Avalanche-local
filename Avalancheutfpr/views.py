@@ -90,7 +90,7 @@ def Modalidades_view(request, slug):
         form = Form_incricao_esportes(request.POST,initial=initial)
         if form.is_valid():
             inscricao = inscricao_modalidades.objects.filter(usuario = request.user,modalidade = Modalidades)
-            if inscricao is None:
+            if inscricao.exists() is False:
                 form.save()
                 messages.success(request,"inscrito na modalidade com sucesso")
             else:
@@ -132,22 +132,18 @@ def Campanhas_view(request, slug):
     Campanhas = get_object_or_404(campanhas, slug=slug)
     initial = None
     if request.user.is_authenticated:
-        tag = f'{Campanhas.id}.{request.user.get_CPF()}'
-        initial = {'name': request.user.get_nome_completo(),
-                   'email':request.user.get_email(),
-                   'CPF':request.user.get_CPF(),
-                   'Curso': request.user.get_Curso(),
-                   'Ra': request.user.get_Registro_Academico(),
-                   'Campanha': Campanhas.name,
-                   'local':Campanhas.local,
-                   'Telefone': request.user.get_Telefone(),
-                   'tag': tag
+        initial = {'usuario':request.user,
+                   'campanha':Campanhas,
                    }
     if request.method == 'POST':
         form = Form_inscricao_campanhas(request.POST, initial=initial)
         if form.is_valid():
-            form.save()
-            messages.success(request, "inscrito na ação com sucesso")
+            inscricao = inscricao_campanhas_sociais.objects.filter(usuario=request.user,campanha = Campanhas)
+            if inscricao.exists() is False:
+                form.save()
+                messages.success(request, "inscrito na ação com sucesso")
+            else:
+                messages.info(request,"Você já está inscrito nessa Campanha")
             form.cleaned_data
         else:
             messages.error(request, 'inscrição falhou')
@@ -189,19 +185,18 @@ def Games_view(request, slug):
     Games = get_object_or_404(games, slug = slug)
     initial = None
     if request.user.is_authenticated:
-        tag = f'{Games.id}.{request.user.get_CPF()}'
-        initial = {'name': request.user.get_nome_completo(),
-                   'Curso': request.user.get_Curso(),
-                   'Ra': request.user.get_Registro_Academico(),
-                   'Game': Games.name,
-                   'Telefone': request.user.get_Telefone(),
-                   'tag': tag
+        initial = {'usuario':request.user,
+                   'game':Games
                    }
     if request.method == 'POST':
         form = Form_inscricao_games(request.POST, initial=initial)
         if form.is_valid():
-            form.save()
-            messages.success(request, "inscrito na modalidade de E-sports com sucesso")
+            inscricao = inscricao_E_sports.objects.filter(usuario=request.user, game=Games)
+            if inscricao.exists() is False:
+                form.save()
+                messages.success(request, "inscrito na modalidade de E-sports com sucesso")
+            else:
+                messages.info(request,"Você já está inscrito nesse game")
             form.cleaned_data
         else:
             messages.error(request, 'inscrição falhou')
@@ -219,17 +214,17 @@ def Diretoria(request):
     Diretoria= diretoria.objects.all().order_by('-area')
     initial = None
     if request.user.is_authenticated:
-        initial = {'name': request.user.get_nome_completo(),
-                   'email':request.user.get_email(),
-                   'Curso': request.user.get_Curso(),
-                   'Ra': request.user.get_Registro_Academico(),
-                   'Telefone': request.user.get_Telefone(),
+        initial = {'usuario':request.user
                    }
     if request.method == 'POST':
         form = Form_inscricao_processo_seletivo(request.POST, initial=initial)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Parabéns, você demonstrou interesse em fazer parte do time, logo entraremos em contato")
+            inscricao = inscricao_processo_seletivo.objects.filter(usuario = request.user)
+            if inscricao is None:
+                form.save()
+                messages.success(request, "Parabéns, você demonstrou interesse em fazer parte do time, logo entraremos em contato")
+            else:
+                messages.info(request,"Você já está inscrito no processo seletivo Avalanche, logo entraremos em contato")
             form.cleaned_data
         else:
             messages.error(request, 'inscrição falhou')

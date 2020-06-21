@@ -58,8 +58,6 @@ class inscricao_modalidades(models.Model):
         verbose_name_plural = 'Modalidades - inscrições'
         ordering = ['modalidade']
 
-    def __str__(self):
-        return self.name
 
 # Classes referentes a página de social
 class campanhas(models.Model):
@@ -84,25 +82,17 @@ class campanhas(models.Model):
         return self.name
 
 
-class inscricao_Campanhas(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False,verbose_name='Nome')
-    email = models.CharField(max_length=255,null=False,blank=False)
-    CPF = models.CharField(max_length=12,null=False,blank=False)
-    Curso = models.CharField(max_length=255, null=False, blank=False)
-    Ra = models.CharField(max_length=30, null=False, blank=False,verbose_name='Registro Acadêmico')
-    Campanha = models.CharField(max_length=255, null=False, blank=False)
-    local = models.CharField(max_length=255,blank=True,null=True)
-    Telefone = models.CharField(max_length=30, null=False, blank=False)
+class inscricao_campanhas_sociais(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', on_delete=models.CASCADE)
+    campanha = models.ForeignKey(campanhas, verbose_name='Campanha', on_delete=models.CASCADE)
     Compareceu = models.BooleanField(default=False)
     data = models.DateField(auto_now_add=True,verbose_name='Data da inscrição')
-    tag = models.CharField(max_length=255,null = False,blank = False,unique=True,default=0)
 
     class Meta:
         verbose_name = 'Ações Sociais - inscrições'
         verbose_name_plural = 'Ações Sociais - inscrições'
-        ordering = ['Campanha']
-    def __str__(self):
-        return self.name
+        ordering = ['campanha']
+
 
 # classes da página de e-sports
 class games(models.Model):
@@ -124,21 +114,15 @@ class games(models.Model):
         return self.name
 
 
-class inscricao_games(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False,verbose_name='Nome')
-    Curso = models.CharField(max_length=255, null=False, blank=False)
-    Ra = models.CharField(max_length=30, null=False, blank=False,verbose_name='Registro Acadêmico')
-    Game = models.CharField(max_length=255, null=False, blank=False)
-    Telefone = models.CharField(max_length=30, null=False, blank=False)
+class inscricao_E_sports(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', on_delete=models.CASCADE)
+    game = models.ForeignKey(games, verbose_name='E-Modalidade', on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True, verbose_name='Data da inscrição')
-    tag = models.CharField(max_length=255, null=False, blank=False, unique=True)
 
     class Meta:
         verbose_name = 'E-sports - inscrições'
         verbose_name_plural = 'E-sports - inscrições'
-        ordering = ['Game']
-    def __str__(self):
-        return self.name
+        ordering = ['game']
 
 #Classe de Contatos
 class contatos(models.Model):
@@ -166,19 +150,14 @@ class diretoria(models.Model):
 
     def __str__(self):
         return self.name
-class processo_seletivo(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False, unique=True,verbose_name='Nome')
-    email = email = models.CharField(max_length=255, null=False, blank=False)
+class inscricao_processo_seletivo(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', on_delete=models.CASCADE)
     Areas = models.CharField(max_length=255, null=True, blank=True,help_text='Coloque as areas que deseja participar')
-    Curso = models.CharField(max_length = 255,null = True,blank = False)
-    Ra = models.CharField(max_length=255,null=False,blank=True,verbose_name='Registro acadêmico')
-    Telefone = models.CharField(max_length=255,null=False,blank=True)
-    data = models.DateField(auto_now_add=True,verbose_name='Data da inscrição')
     class Meta:
         verbose_name = 'Processo Seletivo'
         verbose_name_plural = 'Processo Seletivo'
     def __str__(self):
-        return self.name
+        return self.Areas
 class media(models.Model):
     name = models.CharField(max_length=255,null=False,blank=False,verbose_name='Nome')
     tag = models.CharField(max_length=255,null=False,blank=False)
