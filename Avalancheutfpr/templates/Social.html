@@ -11,9 +11,10 @@
 {%block body%}
  <h1>Responsabilidade Social Avalanche</h1>
     <p>Campanhas sociais do urso</p>
-    {%for campanhas in Campanhas %}
+    {%for campanhas in page_obj %}
     <li> <a href="{%url 'Campanhas_View' campanhas.slug%}"> {{campanhas.name}} </a> </li>
     {% endfor %}
+{% include 'paginacao.html' %}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 

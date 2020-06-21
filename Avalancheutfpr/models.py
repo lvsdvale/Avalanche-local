@@ -97,7 +97,6 @@ class inscricao_Campanhas(models.Model):
     data = models.DateField(auto_now_add=True,verbose_name='Data da inscrição')
     tag = models.CharField(max_length=255,null = False,blank = False,unique=True,default=0)
 
-
     class Meta:
         verbose_name = 'Ações Sociais - inscrições'
         verbose_name_plural = 'Ações Sociais - inscrições'

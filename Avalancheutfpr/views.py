@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import *
 from .forms import *
-from django.views.generic import View,TemplateView,FormView,ListView
+from django.views.generic import View,TemplateView,ListView,DetailView
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
@@ -71,8 +71,6 @@ def Eventos_midias(request,slug):
     return render(request,'MidiasEventos.html',context)
 
 
-
-
 # Views Referentes a página de Esportes
 class Esportes(TemplateView):
     template_name = 'Esportes.html'
@@ -87,7 +85,6 @@ def Modalidades_view(request, slug):
     if request.user.is_authenticated:
         initial = {'usuario':request.user,
                    'modalidade':Modalidades,
-
                    }
     if request.method == 'POST':
         form = Form_incricao_esportes(request.POST,initial=initial)
@@ -125,15 +122,11 @@ def Modalidades_midias(request,slug):
 
 # Views Referentes a página de Social
 
-def Social(request):
-    campanhas_list = campanhas.objects.all().order_by('-pub_date')
-    paginator = Paginator(campanhas_list, 5)
-    page = request.GET.get('page')
-    Campanhas = paginator.get_page(page)
-    context = {"Campanhas": Campanhas
-               }
-    return render(request, 'Social.html', context)
-
+class Social(ListView):
+    template_name = 'Social.html'
+    model = campanhas
+    paginate_by = 5
+    ordering = '-pub_date'
 
 def Campanhas_view(request, slug):
     Campanhas = get_object_or_404(campanhas, slug=slug)
