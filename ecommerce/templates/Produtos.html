@@ -1,0 +1,23 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Lojinha da Avalanche{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+ <h1>Produtos Avalanche</h1>
+{%for Produto in Produtos%}
+{%if Produto.Status == 'Ativo' %}
+<a href="{%url 'Produtos_view' Produto.slug %}">{{Produto.name}}</a>
+<p>{{Produto.descricao}}</p>
+{% if Produto.thumb.url != blank%}
+      <img src = "{{Produto.thumb.url}}">
+    {%endif%}
+{%endif%}
+{%endfor%}
+
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

@@ -1,0 +1,20 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+   {%block title%} Esportes Avalanche {%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+<h1>Esportes Avalanche</h1>
+    <p>Modalidades do Urso</p>
+{% for modalidade in Modalidades %}
+<li> <a href="{%url 'Modalidades_View' modalidade.slug %}"> {{modalidade.name}} </a> </li>
+{% endfor %}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+
+

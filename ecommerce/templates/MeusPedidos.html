@@ -1,0 +1,56 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Meus Pedidos{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages%}
+<h2>Meus Pedidos</h2>
+{% if object_list is not None%}
+<table>
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Produtos
+            </th>
+            <th>
+                Situação
+            </th>
+            <th>
+                Data
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for Pedido in object_list%}
+    <tr>
+        <td>
+            <a href="{%url 'PedidoView' Pedido.pk %}">{{Pedido.pk}}</a>
+        </td>
+        <td>
+            {%for produto in Pedido.produto%}
+            {{produto.name}}{%if not forloop.last%},{%endif%}
+            {%endfor%}
+        </td>
+        <td>
+            {{Pedido.get_status_display}}
+        </td>
+        <td>
+            {{Pedido.criado|date:"d/m/Y"}}
+        </td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+{%else%}
+<p>Você ainda não tem Pedidos</p>
+{%endif%}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

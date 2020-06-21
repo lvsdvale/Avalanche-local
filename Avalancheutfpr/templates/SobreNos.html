@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+{%load bootstrap4 %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sobre Nós</title>
+	<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+	{% bootstrap_css %}
+</head>
+<body>
+	<header class="topo flutuante">
+		<nav class="topoint">
+			<div class="toporight">
+				<a href="https://www.facebook.com/avalancheutfpr/?epa=SEARCH_BOX" target="_blank"><image src="{% static 'assets/facebook.png' %}" border="0" width="20" height="20"/></a>
+				<a href="https://www.instagram.com/avalancheutfpr/?hl=pt-br" target="_blank"><image src="{% static 'assets/instagram.png' %}" border="0" width="20" height="20"/></a>
+			</div>
+			<a href="{% url 'SobreNos' %}" title="Sobre nós"><div class="logo">
+				<img src="{% static 'assets/logo_avalanche.jpg' %}">
+				<div class="logo_texto">A.A.A.E.A UTFPR - Avalanche</div>
+			</div></a>
+			<div class="menu"> 
+				<ul>
+					<li><a href="{% url 'Home' %}">HOME</a></li>
+					<li><a href = "{% url 'Produtos'%}">PRODUTOS</a></li>
+					<li><a href="{% url 'Eventos' %}">EVENTOS</a></li>
+					<li><a href = "{% url 'Esportes'%}">ESPORTES</a></li>
+					<li><a href = "{% url 'Social'%}">SOCIAL</a></li>
+					<li><a href = "{% url 'E-sports'%}">E-SPORTS</a></li>
+					<li><a href = "{% url 'Contatos'%}">CONTATOS</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<section class="banner SobreNos">
+		<div class="bannerinterior">
+			<div class="titulo1">
+				<Strong><em>AVALANCHE<em><strong>
+			</div>
+			<div class="titulo1-1">
+				- Sobre Nós -
+			</div>
+		</div>
+	</section>
+	<section class="descricao">
+		<div class="descricao-texto">
+			<p>A.A.A.E.A - Associação Atlética Acadêmica de Engenharia e Arquitetura da UniversidadeTecnológica do Paraná, Campus Curitiba ou simplesmente Avalanche.
+			Somos um começo, um refúgio e ao mesmo tempo uma libertação, mesmo que às duras penas, para uma mudança na forma como a jornada de um curso de
+			Engenharia ou Arquitetura é enfrentada.</p>
+
+			<p>Todo Cefetiano, se assim podemos ainda designar nossos guerreiros, sabe que aqueles blocos, entre escadas e rampas, criam uma atmosfera mais fria
+			que as lâmpadas que iluminam os setores. Acaba que tudo não passa de um emaranhado de passos para conquistar um diploma, necessário para enfrentar 
+			o temidomercado de trabalho daqui a cinco anos. Ou seis. Ou quantos forem necessários.</p>
+
+			<p>Então por que existir uma Atlética nesse lugar, onde a maioria dos estudantes pensa mais no seu futuro do que no presente?
+			Pois bem, no passado pessoas acreditaram na ideia insana de que no meio de cursos gélidos, racionais e exatos, pudesse haver salvação. Acreditaram que
+			ao final da faculdade, poderia existir mais que apenas notas vazias em um boletim, lembranças de noites viradas em claro e trabalhos jogados em uma gaveta.</p>
+
+			<p>Hoje, graças a esses doidos revolucionários, cada vez mais novos Cefetianos acreditam e vivem essa ideia. Aí entra vocês: ATLETAS E TORCIDA, que saem de suas
+			casas e dos seus estudos, que dedicam tempo aos treinos e ensaios. Pessoas que estouram bolhas nas mãos da exaustiva repetição da caixa ou surdo. Guerreiros
+			que perdem a voz após gritar com PAIXÃO empurrando seus times
+			à frente. E ATLETAS que engolem a dor no joelho, ignoram a falta de ar, respiram fundo e correm, pois a TORCIDA está cantando e ainda tem mais 5 minutos do
+			jogo.</p>
+
+			<p>Jogando, torcendo, ganhando, festando, bebendo, comendo, competindo, correndo, lutando, doando, e acima de tudo, PARTICIPANDO. Assim nossos guerreiros nos recompensam e com certeza são recompensados. Cada um conquistou uma glória pessoal. Fosse por ter suado e ganhando do outro time em uma partida decisiva, por em uma de nossas arrecadações ter dado a uma criança a felicidade expressada em um brinquedo, ou por simplesmente ter virado uma caneca de cerveja mais rápido que um cara da Atlética rival. Dessas conquistas pessoais, vem a conquista maior: o respeito coletivo. Estamos, juntos, representando mais que apenas a nós mesmos, representamos um ideal, representamos A NOSSA UNIVERSIDADE.</p>
+
+			<p>E, para o futuro, lembranças de uma arquibancada pulando em harmonia, de vibrações intensas e de sorrisos de satisfação. ORGULHO. E se a memória não for suficiente, roxos e cicatrizes, além da falta de voz uma semana após os jogos. Você viveu.</p>
+
+			<p>Não importa onde, quando e como for, estaremos fazendo acontecer! Muito obrigado a todos que vestem a nossa camisa com SUOR, ORGULHO e PAIXÃO, sempre.</p>
+
+			<p>VAI AVALANCHE! 💙💛</p>
+		</div>
+	</section>
+	<footer class="rodape-descricao">
+		Empresa 123
+	</footer>
+{% bootstrap_javascript jquery='full'%}
+</body>
+</html>

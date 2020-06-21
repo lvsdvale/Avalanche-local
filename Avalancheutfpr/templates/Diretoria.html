@@ -1,0 +1,36 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Diretores{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages %}
+<h1>Diretores</h1>
+{%for diretor in Diretoria%}
+    <p>{{diretor.name}}</p>
+    <p>{{diretor.area }}</p>
+    {% if diretor.foto.url != blank%}
+      <img src = "{{diretor.foto.url}}">
+    {%endif%}
+{%endfor%}
+{%if user.is_authenticated%}
+<p>Quer fazer parte desse time?</p>
+<form  method="post" class="processo seletivo">
+        {% csrf_token %}
+        <div class = "form_ps">
+            {%bootstrap_form form%}
+        </div>
+        {% buttons%}
+        <button type="submit" class="btn btn-primary">inscrever-me</button>
+        {% endbuttons %}
+    </form>
+{%endif%}
+
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

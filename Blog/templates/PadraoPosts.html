@@ -1,0 +1,19 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}{{Posts.name}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+    <h1>{{posts.name}}</h1>
+    <p>{{posts.conteudo}}</p>
+   {% if posts.image.url != blank%}
+    <img src = "{{Posts.image.url}}">
+   {%endif%}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

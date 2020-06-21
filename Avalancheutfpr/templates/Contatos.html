@@ -1,0 +1,22 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Contatos{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages %}
+<h1>Contate-nos</h1>
+<form  method="post" class="form_contato">
+        {% csrf_token %}
+        {%bootstrap_form form%}
+        {% buttons%}
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        {% endbuttons %}
+    </form>
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

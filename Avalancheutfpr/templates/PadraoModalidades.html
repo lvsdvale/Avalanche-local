@@ -1,0 +1,31 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}{{Modalidades.name}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages %}
+    <h1>{{Modalidades.name}}</h1>
+    <p>{{Modalidades.descricao}}</p>
+{% if Modalidades.image.url != blank%}
+<img src = "{{Modalidades.image.url}}">
+{%endif%}
+<a href="{% url 'Modalidades_Midias' Modalidades.slug %}">Galeria {{Modalidades.name}}</a>
+{%if user.is_authenticated and Modalidades.Status == 'Ativo' %}
+    <form  method="post" class="inscricao_esportes">
+        {% csrf_token %}
+        <div class = "form_IE">
+            {%bootstrap_form form%}
+        </div>
+        {% buttons%}
+        <button type="submit" class="btn btn-primary">inscrever-me</button>
+        {% endbuttons %}
+    </form>
+{%endif%}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

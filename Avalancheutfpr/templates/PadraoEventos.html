@@ -1,0 +1,21 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}{{Eventos.name}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+ <h1>Eventos Avalanche</h1>
+    <h1>{{Eventos.name}}</h1>
+    <p>{{Eventos.descricao}}</p>
+   {% if Eventos.image.url != blank%}
+    <img src = "{{Eventos.image.url}}">
+   {%endif%}
+<a href="{% url 'Eventos_Midias' Eventos.slug%}">Galeria {{Eventos.name}}</a>
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

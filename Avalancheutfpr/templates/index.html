@@ -1,0 +1,70 @@
+{% load static %}
+{%load bootstrap4 %}
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>A.A.A.E.A UTFPR-CT</title>
+		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+		{% bootstrap_css %}
+	</head>
+	<body>
+		<header class="topo flutuante">
+			<nav class="topoint">
+				<div class="toporight">
+					<a href="https://www.facebook.com/avalancheutfpr/?epa=SEARCH_BOX" target="_blank"><image src="{% static 'assets/facebook.png' %}" border="0" width="20" height="20"/></a>
+					<a href="https://www.instagram.com/avalancheutfpr/?hl=pt-br" target="_blank"><image src="{% static 'assets/instagram.png'%}" border="0" width="20" height="20"/></a>
+				</div>
+				<a href="{% url 'Home' %}" title="Sobre nós"><div class="logo">
+					<img src="{%static 'assets/logo_avalanche.jpg'%}">
+					<div class="logo_texto">A.A.A.E.A UTFPR - Avalanche</div>
+				</div></a>
+				</div>
+
+				<div class="menu">
+					<ul>
+						<li><a href="{% url 'Home' %}">HOME</a></li>
+						<li><a href = "{% url 'Produtos'%}">PRODUTOS</a></li>
+						<li><a href="{% url 'Eventos' %}">EVENTOS</a></li>
+						<li><a href = "{% url 'Esportes'%}">ESPORTES</a></li>
+						<li><a href = "{% url 'Social'%}">SOCIAL</a></li>
+						<li><a href = "{% url 'E-sports'%}">E-SPORTS</a></li>
+						<li><a href = "{% url 'Contatos'%}">CONTATOS</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<section class="banner">
+			<div class="bannerinterior">
+				<div class="Frases">
+					<div class="frase1">
+						Sócio Avalanche
+					</div>
+					<div class="frase2">
+						Torne-se um sócio da avalanche e aproveite<br/> benefícios incríveis
+					</div>
+					<a href="{% url 'Socio' %}" title="Seja sócio avalanche"><div class="botao">
+						Ser sócio agora!
+					</div></a>
+				</div>
+				<div class="imagem">
+					<img src="{% static 'assets/socio.jpg'%}"/>
+				</div>
+			</div>
+		</section>
+		{%bootstrap_messages%}
+		<section class="conteudo">
+			<div class="conteudointerno">
+				<div class="fotos">
+					<a href="{% url 'Eventos' %}" title="Eventos"><div class="dourada "><img class="sup" src="{% static 'assets/Eventos.jpg'%}"><img class="inf"src="{% static 'assets/Eventos1.jpg'%}"></div>
+					<a href="{% url 'Esportes' %}" title="Esportes"><div class="dourada"><img class="sup" src="{% static 'assets/Esportes.jpeg'%}"><img class="inf" src="{% static 'assets/Esportes1.jpg'%}"></div>
+					<a href="{% url 'Social' %}" title="Social"><div class="dourada "><img class="sup" src="{% static 'assets/Social.jpeg'%}"><img class="inf"src="{% static 'assets/Social1.jpg'%}"></div>
+					<a href="{% url 'SobreNos' %}" title="Sobre nós"><div class="dourada"><img class="sup" src="{% static 'assets/Sobrenos.jpg'%}"><img class="inf"src="{%static 'assets/Sobrenos1.jpg'%}"></div></a>
+				</div>
+			</div>
+		</section>
+		<footer class="rodape">
+				Empresa 123
+		</footer>
+	{% bootstrap_javascript jquery='full'%}
+	</body>
+</html>

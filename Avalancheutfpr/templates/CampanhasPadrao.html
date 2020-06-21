@@ -1,0 +1,33 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}{{Campanhas.name}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages %}
+ <h1>Campanhas Avalanche</h1>
+    <h1>{{Campanhas.name}}</h1>
+    <h1>{{Campanhas.descricao}}</h1>
+{% if Campanhas.image.url != blank%}
+    <img src = "{{Campanhas.image.url}}">
+{%endif%}
+
+{%if user.is_authenticated and Campanhas.Status == 'Ativo' %}
+    <form  method="post" class="inscricao_Campanhas"><a href="{% url 'Campanhas_Midias' Campanhas.slug %}">Galeria {{Modalidades.name}}</a>
+        {% csrf_token %}
+        <div class = "form_IC">
+            {%bootstrap_form form%}
+        </div>
+        {% buttons%}
+        <button type="submit" class="btn btn-primary">inscrever-me</button>
+        {% endbuttons %}
+    </form>
+{%endif%}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

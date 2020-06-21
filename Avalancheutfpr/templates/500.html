@@ -1,0 +1,16 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}ERRO 404{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+<h1>Ops</h1>
+<p>houve alguma incompatibilidade ou configuração incorreta na aplicação</p>
+
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

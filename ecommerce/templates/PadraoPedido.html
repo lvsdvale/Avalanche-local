@@ -1,0 +1,35 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Pedido {{pedidos.pk}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages%}
+<h2>Pedido #{{ pedidos.pk }}</h2>
+<dl class="dl-horizontal">
+    <dt>Total R$</dt>
+    <dd>{{ object.total|floatformat:"2"}}</dd>
+    <dt>Situação</dt>
+    <dd>{{ object.get_status_display }}</dd>
+    <dt>Data</dt>
+    <dd>{{ object.criado|date:"d/m/Y" }}</dd>
+    <dt>Meio de Pagamento</dt>
+    <dd>{{ object.get_pagamento_display }}</dd>
+</dl>
+<h3>Itens do Pedido</h3>
+{% for item in object.Itens.all %}
+    <dl class="dl-horizontal">
+        <dt>Produto</dt>
+        <dd>{{ item.produto }}</dd>
+        <dt>Quantidade</dt>
+        <dd>{{ item.quantidade }}</dd>
+        <dt>Preço</dt>
+        <dd>R$ {{ item.preco|floatformat:"2" }}</dd>
+    </dl>
+{% endfor %}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

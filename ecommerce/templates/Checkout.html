@@ -1,0 +1,22 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Checkout{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages%}
+<div class="Col-md-12">
+    <p>Pedido# {{Pedido.pk}}</p>
+</div>
+ {% buttons%}
+        <a href="{%url 'PagSeguro' Pedido.pk %}"><button class="btn btn-primary">Pagar com Pagseguro</button></a>
+{% endbuttons %}
+ {% buttons%}
+        <a href="{%url 'Picpay' Pedido.pk %}"><button class="btn btn-primary">Pagar com Picpay</button></a>
+{% endbuttons %}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

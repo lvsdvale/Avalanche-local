@@ -1,0 +1,37 @@
+{% load static %}
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+	</head>
+    <body>
+		<header class="topo flutuante">
+			<nav class="topoint">
+				<div class="toporight">
+					<a href="https://www.facebook.com/avalancheutfpr/?epa=SEARCH_BOX" target="_blank"><image src="{% static 'assets/facebook.png' %}" border="0" width="20" height="20"/></a>
+					<a href="https://www.instagram.com/avalancheutfpr/?hl=pt-br" target="_blank"><image src="{% static 'assets/instagram.png'%}" border="0" width="20" height="20"/></a>
+				</div>
+				<a href="{% url 'SobreNos' %}" title="Sobre nós"><div class="logo">
+					<img src="{%static 'assets/logo_avalanche.jpg'%}">
+					<div class="logo_texto">A.A.A.E.A UTFPR - Avalanche</div>
+				</div></a>
+				<div class="menu"> 
+					<ul>
+						<li><a href="{% url 'Home' %}">HOME</a></li>
+						<li><a href = "{% url 'Produtos'%}">PRODUTOS</a></li>
+						<li><a href="{% url 'Eventos' %}">EVENTOS</a></li>
+						<li><a href = "{% url 'Esportes'%}">ESPORTES</a></li>
+						<li><a href = "{% url 'Social'%}">SOCIAL</a></li>
+						<li><a href = "{% url 'E-sports'%}">E-SPORTS</a></li>
+						<li><a href = "{% url 'Contatos'%}">CONTATOS</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		{%block body%}
+		
+		{%endblock%}
+	</body>
+</html>

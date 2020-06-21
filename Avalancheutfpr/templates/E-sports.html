@@ -1,0 +1,21 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+
+<head>
+    <meta charset="UTF-8"/>
+   {%block title%} E-sports Avalanche {%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+<h1>E-sports Avalanche</h1>
+    <p>games do Urso</p>
+    {% for Game in Games %}
+    <li> <a href="{% url 'Games_View' Game.slug %}"> {{Game.name}} </a> </li>
+    {% endfor %}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+
+

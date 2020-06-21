@@ -1,0 +1,19 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%} Social Avalanche {%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+ <h1>Responsabilidade Social Avalanche</h1>
+    <p>Campanhas sociais do urso</p>
+    {%for campanhas in Campanhas %}
+    <li> <a href="{%url 'Campanhas_View' campanhas.slug%}"> {{campanhas.name}} </a> </li>
+    {% endfor %}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

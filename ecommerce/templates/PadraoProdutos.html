@@ -1,0 +1,28 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}{{Produtos.name}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+    {% bootstrap_messages %}
+    <h1>{{produtos.name}}</h1>
+    {%if user.get_socio %}
+    <p>{{produtos.p_socio}}</p>
+    {%else%}
+    <p>{{produtos.preco}}</p>
+    {%endif%}
+    <p>{{produtos.descricao}}</p>
+   {% if produtos.thumb.url != blank%}
+    <img src = "{{produtos.thumb.url}}">
+   {%endif%}
+        {% buttons%}
+        <a href="{% url 'Adicionar_produto' produtos.slug %}"><button class="btn btn-primary">Adicionar ao Carrinho</button></a>
+        {% endbuttons %}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

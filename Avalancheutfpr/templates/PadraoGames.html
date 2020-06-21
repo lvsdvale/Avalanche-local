@@ -1,0 +1,32 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}{{Games.name}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+{% bootstrap_messages %}
+ <h1>Games Avalanche</h1>
+    <h1>{{Games.name}}</h1>
+    <p>{{Games.descricao}}</p>
+{% if Games.image.url != blank%}
+<img src = "{{Games.image.url}}">
+{%endif%}
+{%if user.is_authenticated and Games.Status == 'Ativo' %}
+    <form  method="post" class="inscricao_games">
+        {% csrf_token %}
+        <div class = "form_IG">
+            {%bootstrap_form form%}
+        </div>
+        {% buttons%}
+        <button type="submit" class="btn btn-primary">inscrever-me</button>
+        {% endbuttons %}
+    </form>
+{%endif%}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

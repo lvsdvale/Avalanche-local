@@ -1,0 +1,14 @@
+{% extends 'Base.html' %}
+{% load static %}
+{%load bootstrap4 %}
+
+<head>
+{%block title%}Minha Conta{%endblock%}
+<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+  {% bootstrap_css %}
+</head>
+{%block body%}
+<h1>Dados do usuário</h1>
+<p>{{user.Nome_completo}}</p>
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

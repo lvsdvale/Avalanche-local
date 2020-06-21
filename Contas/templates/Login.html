@@ -1,0 +1,25 @@
+{% extends 'Base.html' %}
+{% load static %}
+{%load bootstrap4 %}
+
+<head>
+{%block title%}Login{%endblock%}
+<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+  {% bootstrap_css %}
+</head>
+{%block body%}
+<div class="login-titulo">
+<h2 style="color:blue">Login</h2>
+</div>
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="login-form">
+      {%bootstrap_form form%}
+    </div>
+    {% buttons%}
+    <button type="submit" class="btn btn-primary">Entrar</button>
+    {% endbuttons %}
+  </form>
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

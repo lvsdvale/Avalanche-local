@@ -1,0 +1,25 @@
+{% extends 'Base.html' %}
+{% load static %}
+{%load bootstrap4 %}
+<html>
+<head>
+   <meta charset="UTF-8"/>
+   {%block title%} Eventos Avalanche {%endblock%}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+
+</head>
+{%block body%}
+   <div class = "Eventos-titulo">
+      <h1>Eventos Avalanche</h1>
+      <p>Proximos eventos do urso</p>
+   </div>
+   <div class="Eventos">
+      {% for eventos in page_obj %}
+      <li> <a href="{% url 'Eventos_View' eventos.slug %}"> {{eventos.name}} </a> </li>
+      {% endfor %}
+   </div>
+{% include 'paginacao.html' %}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+</html>

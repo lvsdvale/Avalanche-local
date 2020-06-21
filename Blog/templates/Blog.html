@@ -1,0 +1,37 @@
+{% extends 'Base.html' %}
+{% load static %}
+{%load bootstrap4 %}
+<html>
+<head>
+   <meta charset="UTF-8"/>
+   {%block title%} Blog Avalanche {%endblock%}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% bootstrap_css %}
+
+</head>
+{%block body%}
+   <div class = "titulos blog">
+      <h1>Notícias Avalanche</h1>
+   </div>
+   <div class="Posts">
+      {% for post in Posts %}
+      <li> <a href="{% url 'Post_view' post.slug %}">{{post.name}} </a> </li>
+      {% endfor %}
+   </div>
+  <div class="paginator">
+      <span class="step-links">
+         {% if Posts.has_previous %}
+           <a href = "?page={{Posts.previous_page_number}}"><p>anterior</p></a>
+         {% endif %}
+          <span>
+         {{Posts.number}} de {{Posts.paginator.num_pages}}
+          </span>
+         {% if Posts.has_next %}
+          <a href = "?page={{Posts.next_page_number}}"><p>proxima</p></a>
+         {% endif %}
+
+      </span>
+   </div>
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+</html>
