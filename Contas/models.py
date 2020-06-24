@@ -94,7 +94,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     Socio = models.BooleanField(default=False, null=True)
     CPF = BRCPFField(max_length=14,unique=True,blank=False,null=False)
     Curso = models.CharField(max_length=255, choices=Cursos, null=True)
-    Registro_Academico = models.CharField(max_length=255, blank=True,unique=True)
+    Registro_Academico = models.CharField(max_length=255, blank=True,unique=True,null=True,help_text="Caso não é aluno da utfpr,deixar em Branco")
     Telefone = models.CharField(max_length=13,null = False)
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
     objects = UserManager()

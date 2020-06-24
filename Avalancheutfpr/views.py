@@ -3,11 +3,9 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import *
 from .forms import *
-from django.views.generic import View,TemplateView,ListView,DetailView
-from django.core.paginator import Paginator
+from django.views.generic import View,TemplateView,ListView
 from django.contrib import messages
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
-
 
 # Views das paginas referentes a atletica.
 class Home(TemplateView):
@@ -59,11 +57,7 @@ def Eventos_view(request, slug):
 
 def Eventos_midias(request,slug):
     eve = get_object_or_404(eventos,slug=slug)
-    Midias_list = media.objects.all().order_by('name')
-    Midias = []
-    for midia in Midias_list:
-        if midia.tag == eve.name:
-            Midias.append(midia)
+    Midias = media.objects.filter(tag=eve.name).order_by('-pub_date')
     context = {
         'Eventos':eve,
         'Midias':Midias
@@ -92,7 +86,7 @@ def Modalidades_view(request, slug):
             inscricao = inscricao_modalidades.objects.filter(usuario = request.user,modalidade = Modalidades)
             if inscricao.exists() is False:
                 form.save()
-                messages.success(request,"inscrito na modalidade com sucesso")
+                messages.success(request,"Inscrito na modalidade com sucesso")
             else:
                 messages.info(request,"Você já está inscrito nessa Modalidade")
             form.cleaned_data
@@ -108,11 +102,7 @@ def Modalidades_view(request, slug):
 
 def Modalidades_midias(request,slug):
     Modalidades = get_object_or_404(modalidades,slug= slug)
-    Midias_list = media.objects.all().order_by('name')
-    Midias = []
-    for midia in Midias_list:
-        if midia.tag == Modalidades.name:
-            Midias.append(midia)
+    Midias = media.objects.filter(tag=Modalidades.name).order_by('-pub_date')
     context = {
         'Modalidades':Modalidades,
         'Midias':Midias
@@ -141,7 +131,7 @@ def Campanhas_view(request, slug):
             inscricao = inscricao_campanhas_sociais.objects.filter(usuario=request.user,campanha = Campanhas)
             if inscricao.exists() is False:
                 form.save()
-                messages.success(request, "inscrito na ação com sucesso")
+                messages.success(request, "Inscrito na ação com sucesso")
             else:
                 messages.info(request,"Você já está inscrito nessa Campanha")
             form.cleaned_data
@@ -158,11 +148,7 @@ def Campanhas_view(request, slug):
 
 def Campanhas_midias(request,slug):
     Campanhas = get_object_or_404(campanhas,slug = slug)
-    Midias_list = media.objects.all().order_by('name')
-    Midias = []
-    for midia in Midias_list:
-        if midia.tag == Campanhas.name:
-            Midias.append(midia)
+    Midias = media.objects.filter(tag = Campanhas.name).order_by('-pub_date')
     context = {
         'Campanhas':Campanhas,
         'Midias':Midias
@@ -194,7 +180,7 @@ def Games_view(request, slug):
             inscricao = inscricao_E_sports.objects.filter(usuario=request.user, game=Games)
             if inscricao.exists() is False:
                 form.save()
-                messages.success(request, "inscrito na modalidade de E-sports com sucesso")
+                messages.success(request, "Inscrito na modalidade de E-sports com sucesso")
             else:
                 messages.info(request,"Você já está inscrito nesse game")
             form.cleaned_data

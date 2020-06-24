@@ -152,7 +152,12 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
+#Email
+EMAIL_HOST = 'atleticautfpr.com.br'
+EMAIL_HOST_USER = 'lucas.vinicius@atleticautfpr.com.br'
+EMAIL_PORT = 587
+EMAIL_USER_TSL = True
+EMAIL_HOST_PASSWORD = '06252729'
 #segurança
 SECURE_HSTS_SECONDS = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True

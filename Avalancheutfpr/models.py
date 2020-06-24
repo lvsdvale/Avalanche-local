@@ -163,7 +163,7 @@ class media(models.Model):
     tag = models.CharField(max_length=255,null=False,blank=False)
     foto = StdImageField(upload_to=get_file_path, null=False, blank=False)
     video = models.FileField(upload_to=get_file_path,null=True, blank=True)
-
+    pub_date = models.DateField(auto_now_add=True,verbose_name='Data de Criação')
     class Meta:
         verbose_name =  'mídia'
         verbose_name_plural = ' mídias'
