@@ -12,14 +12,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from pagseguro import PagSeguro
 from picpay import PicPay
 # Create your views here.
-def Lojinha(request):
-    Produto_list = produtos.objects.all().order_by('-pub_date')
-    paginator = Paginator(Produto_list, 5)
-    page = request.GET.get('page')
-    Produtos = paginator.get_page(page)
-    context = {"Produtos": Produtos
-               }
-    return render(request, 'Produtos.html', context)
+class Lojinha(ListView):
+    template_name = 'Produtos.html'
+    model = produtos
+    paginate_by = 10
+    ordering = '-pub_date'
 
 class Produto_view(DetailView):
     model = produtos

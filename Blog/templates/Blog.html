@@ -6,6 +6,7 @@
    <meta charset="UTF-8"/>
    {%block title%} Blog Avalanche {%endblock%}
 	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
 
 </head>
@@ -14,24 +15,11 @@
       <h1>Notícias Avalanche</h1>
    </div>
    <div class="Posts">
-      {% for post in Posts %}
+      {% for post in page_obj %}
       <li> <a href="{% url 'Post_view' post.slug %}">{{post.name}} </a> </li>
       {% endfor %}
-   </div>
-  <div class="paginator">
-      <span class="step-links">
-         {% if Posts.has_previous %}
-           <a href = "?page={{Posts.previous_page_number}}"><p>anterior</p></a>
-         {% endif %}
-          <span>
-         {{Posts.number}} de {{Posts.paginator.num_pages}}
-          </span>
-         {% if Posts.has_next %}
-          <a href = "?page={{Posts.next_page_number}}"><p>proxima</p></a>
-         {% endif %}
 
-      </span>
-   </div>
+{% include 'paginacao.html' %}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 </html>

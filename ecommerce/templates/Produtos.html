@@ -5,11 +5,12 @@
     <meta charset="UTF-8"/>
     {%block title%}Lojinha da Avalanche{%endblock%}
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
 </head>
 {%block body%}
  <h1>Produtos Avalanche</h1>
-{%for Produto in Produtos%}
+{%for Produto in page_obj %}
 {%if Produto.Status == 'Ativo' %}
 <a href="{%url 'Produtos_view' Produto.slug %}">{{Produto.name}}</a>
 <p>{{Produto.descricao}}</p>
@@ -18,6 +19,6 @@
     {%endif%}
 {%endif%}
 {%endfor%}
-
+{% include 'paginacao.html' %}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

@@ -4,7 +4,7 @@ from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-            path('Blog/',Blog,name = 'Blog'),
+            path('Blog/',Blog.as_view(),name = 'Blog'),
             path('Blog/<slug:slug>',Post_view.as_view(),name ='Post_view')
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
