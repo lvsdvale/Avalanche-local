@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import *
 from .forms import *
-from django.views.generic import View,TemplateView,ListView
+from django.views.generic import TemplateView,ListView
 from django.contrib import messages
-from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 
 # Views das paginas referentes a atletica.
 class Home(TemplateView):
@@ -57,7 +56,7 @@ def Eventos_view(request, slug):
 
 def Eventos_midias(request,slug):
     eve = get_object_or_404(eventos,slug=slug)
-    Midias = media.objects.filter(tag=eve.name).order_by('-pub_date')
+    Midias = media.objects.filter(tag=eve.name).order_by('?')
     context = {
         'Eventos':eve,
         'Midias':Midias
@@ -102,7 +101,7 @@ def Modalidades_view(request, slug):
 
 def Modalidades_midias(request,slug):
     Modalidades = get_object_or_404(modalidades,slug= slug)
-    Midias = media.objects.filter(tag=Modalidades.name).order_by('-pub_date')
+    Midias = media.objects.filter(tag=Modalidades.name).order_by('?')
     context = {
         'Modalidades':Modalidades,
         'Midias':Midias
@@ -148,7 +147,7 @@ def Campanhas_view(request, slug):
 
 def Campanhas_midias(request,slug):
     Campanhas = get_object_or_404(campanhas,slug = slug)
-    Midias = media.objects.filter(tag = Campanhas.name).order_by('-pub_date')
+    Midias = media.objects.filter(tag = Campanhas.name).order_by('?')
     context = {
         'Campanhas':Campanhas,
         'Midias':Midias

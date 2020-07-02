@@ -10,9 +10,9 @@
 </head>
 
 {%block body%}
- <h1>Eventos Avalanche</h1>
-    <h1>{{Eventos.name}}</h1>
-    <p>{{Eventos.descricao}}</p>
+<h1>Eventos Avalanche</h1>
+<h1>{{Eventos.name}}</h1>
+<em>{{Eventos.descricao}}</em>
    {% if Eventos.image.url != blank%}
     <img src = "{{Eventos.image.url}}">
    {%endif%}
