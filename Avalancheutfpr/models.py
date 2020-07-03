@@ -33,7 +33,7 @@ class modalidades(models.Model):
     status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'),)
     name = models.CharField(max_length=30,null=False,blank=False,verbose_name='Nome')
     descricao = models.TextField(null=False,blank=False,verbose_name='Descrição')
-    Contatos = models.TextField(default="Diretoria@atleticautfpr.com.br")
+    Contatos = models.TextField(null= False,blank=False,verbose_name='Contatos da Modalidade')
     image = StdImageField(upload_to=get_file_path, null=True, blank=True)
     QRcode = StdImageField(upload_to=get_file_path,null = True, blank = True)
     slug = AutoSlugField(populate_from='name')
@@ -50,7 +50,11 @@ class modalidades(models.Model):
 
 
 class inscricao_modalidades(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='Usuário',related_query_name='inscrito',on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, null=False, blank=False,verbose_name='Nome')
+    email = models.CharField(max_length=255, null=False, blank=False,verbose_name='Email')
+    curso = models.CharField(max_length=255, null=False, blank=False,verbose_name='Curso')
+    Ra = models.CharField(max_length=30, null=False, blank=False,verbose_name='Registro Acadêmico')
+    telefone = models.CharField(max_length=30, null=False, blank=False,verbose_name='Contato')
     modalidade = models.ForeignKey(modalidades,verbose_name='Modalidade',on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True, verbose_name='Data da inscrição')
     class Meta:
@@ -83,7 +87,11 @@ class campanhas(models.Model):
 
 
 class inscricao_campanhas_sociais(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário',related_query_name='inscrito', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, null=False, blank=False, verbose_name='Nome')
+    email = models.CharField(max_length=255, null=False, blank=False, verbose_name='Email')
+    curso = models.CharField(max_length=255, null=False, blank=False, verbose_name='Curso')
+    Ra = models.CharField(max_length=30, null=False, blank=False, verbose_name='Registro Acadêmico')
+    telefone = models.CharField(max_length=30, null=False, blank=False, verbose_name='Contato')
     campanha = models.ForeignKey(campanhas, verbose_name='Campanha', on_delete=models.CASCADE)
     Compareceu = models.BooleanField(default=False)
     data = models.DateField(auto_now_add=True,verbose_name='Data da inscrição')
@@ -115,7 +123,11 @@ class games(models.Model):
 
 
 class inscricao_E_sports(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário',related_query_name='inscrito',on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, null=False, blank=False, verbose_name='Nome')
+    email = models.CharField(max_length=255, null=False, blank=False, verbose_name='Email')
+    curso = models.CharField(max_length=255, null=False, blank=False, verbose_name='Curso')
+    Ra = models.CharField(max_length=30, null=False, blank=False, verbose_name='Registro Acadêmico')
+    telefone = models.CharField(max_length=30, null=False, blank=False, verbose_name='Contato')
     game = models.ForeignKey(games, verbose_name='E-Modalidade', on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True, verbose_name='Data da inscrição')
 

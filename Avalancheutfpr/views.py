@@ -76,13 +76,17 @@ def Modalidades_view(request, slug):
     Modalidades = get_object_or_404(modalidades, slug=slug)
     initial = None
     if request.user.is_authenticated:
-        initial = {'usuario':request.user,
+        initial = {'name': request.user.get_nome_completo(),
+                   'email':request.user.get_email(),
+                   'curso': request.user.get_Curso(),
+                   'Ra': request.user.get_Registro_Academico(),
+                   'telefone': request.user.get_Telefone(),
                    'modalidade':Modalidades,
                    }
     if request.method == 'POST':
         form = Form_incricao_esportes(request.POST,initial=initial)
         if form.is_valid():
-            inscricao = inscricao_modalidades.objects.filter(usuario = request.user,modalidade = Modalidades)
+            inscricao = inscricao_modalidades.objects.filter(email = request.user.email,modalidade = Modalidades)
             if inscricao.exists() is False:
                 form.save()
                 messages.success(request,"Inscrito na modalidade com sucesso")
@@ -121,13 +125,17 @@ def Campanhas_view(request, slug):
     Campanhas = get_object_or_404(campanhas, slug=slug)
     initial = None
     if request.user.is_authenticated:
-        initial = {'usuario':request.user,
+        initial = {'name': request.user.get_nome_completo(),
+                   'email':request.user.get_email(),
+                   'curso': request.user.get_Curso(),
+                   'Ra': request.user.get_Registro_Academico(),
+                   'telefone': request.user.get_Telefone(),
                    'campanha':Campanhas,
                    }
     if request.method == 'POST':
         form = Form_inscricao_campanhas(request.POST, initial=initial)
         if form.is_valid():
-            inscricao = inscricao_campanhas_sociais.objects.filter(usuario=request.user,campanha = Campanhas)
+            inscricao = inscricao_campanhas_sociais.objects.filter(email = request.user.email,campanha = Campanhas)
             if inscricao.exists() is False:
                 form.save()
                 messages.success(request, "Inscrito na ação com sucesso")
@@ -170,13 +178,17 @@ def Games_view(request, slug):
     Games = get_object_or_404(games, slug = slug)
     initial = None
     if request.user.is_authenticated:
-        initial = {'usuario':request.user,
+        initial = {'name': request.user.get_nome_completo(),
+                   'email':request.user.get_email(),
+                   'curso': request.user.get_Curso(),
+                   'Ra': request.user.get_Registro_Academico(),
+                   'telefone': request.user.get_Telefone(),
                    'game':Games
                    }
     if request.method == 'POST':
         form = Form_inscricao_games(request.POST, initial=initial)
         if form.is_valid():
-            inscricao = inscricao_E_sports.objects.filter(usuario=request.user, game=Games)
+            inscricao = inscricao_E_sports.objects.filter(email = request.user.email, game=Games)
             if inscricao.exists() is False:
                 form.save()
                 messages.success(request, "Inscrito na modalidade de E-sports com sucesso")

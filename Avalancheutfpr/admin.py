@@ -16,15 +16,15 @@ class CampanhasAdmin(admin.ModelAdmin):
 
 @admin.register(inscricao_modalidades)
 class Incricao_Esportes_Admin(ad.ImportExportModelAdmin):
-    list_display = ['usuario','data']
+    list_display = ['name','data']
 
 @admin.register(inscricao_campanhas_sociais)
 class Incricao_Campanhas_Admin(ad.ImportExportModelAdmin):
-    list_display = ['usuario','data']
+    list_display = ['name','data']
 
 @admin.register(inscricao_E_sports)
 class Incricao_Games_Admin(ad.ImportExportModelAdmin):
-    list_display = ['usuario', 'data']
+    list_display = ['name', 'data']
 
 @admin.register(contatos)
 class ContatosAdmin(admin.ModelAdmin):
