@@ -28,22 +28,25 @@ def Cadastrar_usuarios(request):
 
 
 def Login(request):
-    if request.method == 'POST':
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request,'Login realizado com Sucesso')
-            return redirect('Home')
-        else:
-            messages.error(request, "as credenciais estão incorretas")
+    if request.user.is_authenticated:
+        return redirect('Home')
+    else:
+        if request.method == 'POST':
+            username = request.POST["username"]
+            password = request.POST["password"]
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request,'Login realizado com Sucesso')
+                return redirect('Home')
+            else:
+                messages.error(request, "as credenciais estão incorretas")
 
-    form_login = AuthenticationForm()
-    context = {'form': form_login
+        form_login = AuthenticationForm()
+        context = {'form': form_login
                }
 
-    return render(request, 'Login.html', context)
+        return render(request, 'Login.html', context)
 
 
 
