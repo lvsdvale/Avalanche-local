@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'autoslug',
     'widget_tweaks',
     'pagseguro',
-    'picpay'
+    'picpay',
+    'analytical',
 
 ]
 AUTH_USER_MODEL = 'Contas.user'

@@ -26,10 +26,6 @@ class Incricao_Campanhas_Admin(ad.ImportExportModelAdmin):
 class Incricao_Games_Admin(ad.ImportExportModelAdmin):
     list_display = ['usuario', 'data']
 
-@admin.register(inscricao_processo_seletivo)
-class Incricao_Processo_Seletivo(ad.ImportExportModelAdmin):
-    list_display = ['usuario']
-
 @admin.register(contatos)
 class ContatosAdmin(admin.ModelAdmin):
     list_display = ['email','assunto']

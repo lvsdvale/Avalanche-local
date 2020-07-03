@@ -197,28 +197,9 @@ def Games_view(request, slug):
 #Diretoria
 def Diretoria(request):
     Diretoria= diretoria.objects.all().order_by('-area')
-    initial = None
-    if request.user.is_authenticated:
-        initial = {'usuario':request.user
-                   }
-    if request.method == 'POST':
-        form = Form_inscricao_processo_seletivo(request.POST, initial=initial)
-        if form.is_valid():
-            inscricao = inscricao_processo_seletivo.objects.filter(usuario = request.user)
-            if inscricao is None:
-                form.save()
-                messages.success(request, "Parabéns, você demonstrou interesse em fazer parte do time, logo entraremos em contato")
-            else:
-                messages.info(request,"Você já está inscrito no processo seletivo Avalanche, logo entraremos em contato")
-            form.cleaned_data
-        else:
-            messages.error(request, 'inscrição falhou')
-    else:
-        form = Form_inscricao_processo_seletivo(initial=initial)
-
     context = {
         "Diretoria": Diretoria,
-        "form":form
+
     }
     return render(request, 'Diretoria.html', context)
 

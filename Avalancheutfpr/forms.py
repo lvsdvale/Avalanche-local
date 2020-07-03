@@ -15,10 +15,7 @@ class Form_inscricao_games(forms.ModelForm):
     class Meta:
         model = inscricao_E_sports
         fields = ['usuario','game']
-class Form_inscricao_processo_seletivo(forms.ModelForm):
-    class Meta:
-        model = inscricao_processo_seletivo
-        fields = ['usuario','Areas',]
+
 class Form_contatos(forms.ModelForm):
     class Meta:
         model = contatos

@@ -50,7 +50,7 @@ class modalidades(models.Model):
 
 
 class inscricao_modalidades(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='Usuário',on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='Usuário',related_query_name='inscrito',on_delete=models.CASCADE)
     modalidade = models.ForeignKey(modalidades,verbose_name='Modalidade',on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True, verbose_name='Data da inscrição')
     class Meta:
@@ -83,7 +83,7 @@ class campanhas(models.Model):
 
 
 class inscricao_campanhas_sociais(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário',related_query_name='inscrito', on_delete=models.CASCADE)
     campanha = models.ForeignKey(campanhas, verbose_name='Campanha', on_delete=models.CASCADE)
     Compareceu = models.BooleanField(default=False)
     data = models.DateField(auto_now_add=True,verbose_name='Data da inscrição')
@@ -115,7 +115,7 @@ class games(models.Model):
 
 
 class inscricao_E_sports(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário',related_query_name='inscrito',on_delete=models.CASCADE)
     game = models.ForeignKey(games, verbose_name='E-Modalidade', on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True, verbose_name='Data da inscrição')
 
@@ -150,14 +150,7 @@ class diretoria(models.Model):
 
     def __str__(self):
         return self.name
-class inscricao_processo_seletivo(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', on_delete=models.CASCADE)
-    Areas = models.CharField(max_length=255, null=True, blank=True,help_text='Coloque as areas que deseja participar')
-    class Meta:
-        verbose_name = 'Processo Seletivo'
-        verbose_name_plural = 'Processo Seletivo'
-    def __str__(self):
-        return self.Areas
+
 class media(models.Model):
     name = models.CharField(max_length=255,null=False,blank=False,verbose_name='Nome')
     tag = models.CharField(max_length=255,null=False,blank=False)

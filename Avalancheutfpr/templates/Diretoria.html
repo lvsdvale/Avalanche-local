@@ -19,18 +19,6 @@
       <img src = "{{diretor.foto.url}}">
     {%endif%}
 {%endfor%}
-{%if user.is_authenticated%}
-<p>Quer fazer parte desse time?</p>
-<form  method="post" class="processo seletivo">
-        {% csrf_token %}
-        <div class = "form_ps">
-            {%bootstrap_form form%}
-        </div>
-        {% buttons%}
-        <button type="submit" class="btn btn-primary">inscrever-me</button>
-        {% endbuttons %}
-    </form>
-{%endif%}
 
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
