@@ -50,6 +50,8 @@ class modalidades(models.Model):
 
 
 class inscricao_modalidades(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', related_query_name='inscrito',
+                                on_delete=models.CASCADE)
     name = models.CharField(max_length=255, null=False, blank=False,verbose_name='Nome')
     email = models.CharField(max_length=255, null=False, blank=False,verbose_name='Email')
     curso = models.CharField(max_length=255, null=False, blank=False,verbose_name='Curso')
@@ -87,6 +89,8 @@ class campanhas(models.Model):
 
 
 class inscricao_campanhas_sociais(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', related_query_name='inscrito',
+                                on_delete=models.CASCADE)
     name = models.CharField(max_length=255, null=False, blank=False, verbose_name='Nome')
     email = models.CharField(max_length=255, null=False, blank=False, verbose_name='Email')
     curso = models.CharField(max_length=255, null=False, blank=False, verbose_name='Curso')
@@ -123,6 +127,8 @@ class games(models.Model):
 
 
 class inscricao_E_sports(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', related_query_name='inscrito',
+                                on_delete=models.CASCADE)
     name = models.CharField(max_length=255, null=False, blank=False, verbose_name='Nome')
     email = models.CharField(max_length=255, null=False, blank=False, verbose_name='Email')
     curso = models.CharField(max_length=255, null=False, blank=False, verbose_name='Curso')

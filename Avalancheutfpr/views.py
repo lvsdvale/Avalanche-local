@@ -76,7 +76,8 @@ def Modalidades_view(request, slug):
     Modalidades = get_object_or_404(modalidades, slug=slug)
     initial = None
     if request.user.is_authenticated:
-        initial = {'name': request.user.get_nome_completo(),
+        initial = {'usuario':request.user,
+                   'name': request.user.get_nome_completo(),
                    'email':request.user.get_email(),
                    'curso': request.user.get_Curso(),
                    'Ra': request.user.get_Registro_Academico(),
@@ -125,7 +126,8 @@ def Campanhas_view(request, slug):
     Campanhas = get_object_or_404(campanhas, slug=slug)
     initial = None
     if request.user.is_authenticated:
-        initial = {'name': request.user.get_nome_completo(),
+        initial = {'usuario':request.user,
+                   'name': request.user.get_nome_completo(),
                    'email':request.user.get_email(),
                    'curso': request.user.get_Curso(),
                    'Ra': request.user.get_Registro_Academico(),
@@ -178,7 +180,8 @@ def Games_view(request, slug):
     Games = get_object_or_404(games, slug = slug)
     initial = None
     if request.user.is_authenticated:
-        initial = {'name': request.user.get_nome_completo(),
+        initial = {'usuario':request.user,
+                   'name': request.user.get_nome_completo(),
                    'email':request.user.get_email(),
                    'curso': request.user.get_Curso(),
                    'Ra': request.user.get_Registro_Academico(),
