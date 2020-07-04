@@ -11,8 +11,13 @@
 
 </head>
 {%block body%}
-   <div class = "Eventos-titulo">
       <h1>Eventos Avalanche</h1>
+<form class="navbar-form navbar-left" role="search" action="{% url 'Eventos' %}">
+	        <div class="form-group">
+	          <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
+	        </div>
+	      </form>
+   <div class = "Eventos-titulo">
       <p>Proximos eventos do urso</p>
    </div>
    <div class="Eventos">

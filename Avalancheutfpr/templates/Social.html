@@ -11,6 +11,11 @@
 
 {%block body%}
  <h1>Responsabilidade Social Avalanche</h1>
+<form class="navbar-form navbar-left" role="search" action="{% url 'Social' %}">
+	        <div class="form-group">
+	          <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
+	        </div>
+	      </form>
     <p>Campanhas sociais do urso</p>
     {%for campanhas in page_obj %}
     <li> <a href="{%url 'Campanhas_View' campanhas.slug%}"> {{campanhas.name}} </a> </li>

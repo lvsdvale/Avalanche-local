@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'import_export',
     'localflavor',
     'autoslug',
-    'widget_tweaks',
     'pagseguro',
     'picpay',
     'analytical',

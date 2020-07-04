@@ -5,6 +5,7 @@ from .forms import *
 from django.views.generic import TemplateView,ListView
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+from django.db import models
 
 # Views das paginas referentes a atletica.
 class Home(TemplateView):
@@ -42,9 +43,18 @@ class SobreNos(TemplateView):
 # Views Referentes a página de Eventos
 class Eventos(ListView):
     template_name = 'Eventos.html'
-    model = eventos
+    context_object_name = 'eventos'
     paginate_by = 5
     ordering = '-pub_date'
+    def get_queryset(self):
+        queryset = eventos.objects.all()
+        q = self.request.GET.get('q', '')
+        if q:
+            queryset = queryset.filter(
+                models.Q(name__icontains=q) | models.Q(descricao__icontains=q)
+            )
+
+        return queryset
 
 
 def Eventos_view(request, slug):
@@ -118,9 +128,18 @@ def Modalidades_midias(request,slug):
 
 class Social(ListView):
     template_name = 'Social.html'
-    model = campanhas
+    context_object_name = 'campanhas'
     paginate_by = 5
     ordering = '-pub_date'
+    def get_queryset(self):
+        queryset = campanhas.objects.all()
+        q = self.request.GET.get('q', '')
+        if q:
+            queryset = queryset.filter(
+                models.Q(name__icontains=q) | models.Q(descricao__icontains=q) | models.Q(local__icontains=q)
+            )
+
+        return queryset
 
 def Campanhas_view(request, slug):
     Campanhas = get_object_or_404(campanhas, slug=slug)

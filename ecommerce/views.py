@@ -8,21 +8,35 @@ from .forms import itemcarrinhoformset
 from django.contrib import messages
 from django.urls import reverse
 from .signals import *
+from .models import *
+from django.db import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 from pagseguro import PagSeguro
 from picpay import PicPay
 # Create your views here.
 class Lojinha(ListView):
     template_name = 'Produtos.html'
-    model = produtos
+    context_object_name = 'produtos'
     paginate_by = 10
     ordering = '-pub_date'
+
+    def get_queryset(self):
+        queryset = produtos.objects.all()
+        q = self.request.GET.get('q', '')
+        if q:
+            queryset = queryset.filter(
+                models.Q(name__icontains=q) | models.Q(descricao__icontains=q)
+            )
+
+        return queryset
+
 
 class Produto_view(DetailView):
     model = produtos
     template_name = 'PadraoProdutos.html'
     slug_url_kwarg = 'slug'
     slug_field = 'slug'
+
 
 class criar_item_view(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
