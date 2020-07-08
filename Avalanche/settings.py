@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Blog',
     'Contas',
     'ecommerce',
+    'Engenhariadas',
     'bootstrap4',
     'stdimage',
     'import_export',

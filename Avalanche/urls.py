@@ -22,7 +22,8 @@ urlpatterns = [
     path('',include('Avalancheutfpr.urls')),
     path('',include('Blog.urls')),
     path('',include('Contas.urls')),
-    path('',include('ecommerce.urls'))
+    path('',include('ecommerce.urls')),
+    path('',include('Engenhariadas.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.AdminSite.site_header = "A.A.A.E.A UTFPR-CT"

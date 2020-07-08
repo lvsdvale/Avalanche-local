@@ -35,7 +35,6 @@ class modalidades(models.Model):
     descricao = models.TextField(null=False,blank=False,verbose_name='Descrição')
     Contatos = models.TextField(null= False,blank=False,verbose_name='Contatos da Modalidade')
     image = StdImageField(upload_to=get_file_path, null=True, blank=True)
-    QRcode = StdImageField(upload_to=get_file_path,null = True, blank = True)
     slug = AutoSlugField(populate_from='name')
     pub_date = models.DateField(auto_now_add=True,verbose_name='Data de publicação')
     Status = models.CharField(max_length=30, null=True, blank=True, choices=status, default='Ativo')
