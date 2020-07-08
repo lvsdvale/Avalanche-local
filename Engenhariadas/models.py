@@ -18,7 +18,6 @@ class engenhariadas(models.Model):
         verbose_name= 'Engenhariadas Paranaense'
         verbose_name_plural = 'Engenhariadas Paranaense'
         ordering = ['-pub_date']
-
     def __str__(self):
         return self.name
 class parceladaoMenager(models.Manager):
@@ -42,7 +41,8 @@ class parceladao(models.Model):
         verbose_name = 'Parceladão'
         verbose_name_plural = 'Parceladões'
         ordering = ['engenhariadas']
-
+    def __str__(self):
+        self.name
 class pagamentoMenager(models.Manager):
     def adicionar(self,usuario):
         Pagamento = self.create(usuario=usuario,name = usuario.Nome_completo,email = usuario.email,
@@ -91,3 +91,5 @@ class pagamentos(models.Model):
             x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
         )
         return pc
+    def __str__(self):
+        self.name
