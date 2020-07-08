@@ -19,9 +19,6 @@
 {%if user.is_authenticated and Modalidades.Status == 'Ativo' %}
     <form  method="post" class="inscricao_esportes">
         {% csrf_token %}
-        <div class = "form_IE">
-            {%bootstrap_form form%}
-        </div>
         {% buttons%}
         <button type="submit" class="btn btn-primary">inscrever-me</button>
         {% endbuttons %}

@@ -21,9 +21,6 @@
 {%if user.is_authenticated and Campanhas.Status == 'Ativo' %}
     <form  method="post" class="inscricao_Campanhas"><a href="{% url 'Campanhas_Midias' Campanhas.slug %}">Galeria {{Modalidades.name}}</a>
         {% csrf_token %}
-        <div class = "form_IC">
-            {%bootstrap_form form%}
-        </div>
         {% buttons%}
         <button type="submit" class="btn btn-primary">inscrever-me</button>
         {% endbuttons %}

@@ -47,6 +47,12 @@ class modalidades(models.Model):
     def __str__(self):
         return self.name
 
+class inscricaomodalidadesManager(models.Manager):
+    def inscrever(self,usuario,modalidade):
+        inscricao = self.create(usuario = usuario,name = usuario.Nome_completo,email=usuario.email,
+                                curso = usuario.Curso,Ra = usuario.Registro_Academico,
+                                telefone = usuario.Telefone,modalidade=modalidade)
+        inscricao.save()
 
 class inscricao_modalidades(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', related_query_name='inscrito',
@@ -58,6 +64,7 @@ class inscricao_modalidades(models.Model):
     telefone = models.CharField(max_length=30, null=False, blank=False,verbose_name='Contato')
     modalidade = models.ForeignKey(modalidades,verbose_name='Modalidade',on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True, verbose_name='Data da inscrição')
+    objects = inscricaomodalidadesManager()
     class Meta:
         verbose_name = 'Modalidades - inscrições'
         verbose_name_plural = 'Modalidades - inscrições'
@@ -86,7 +93,12 @@ class campanhas(models.Model):
     def __str__(self):
         return self.name
 
-
+class inscricaocampanhasManager(models.Manager):
+    def inscrever(self,usuario,Campanha):
+        inscricao = self.create(usuario = usuario,name = usuario.Nome_completo,email=usuario.email,
+                                curso = usuario.Curso,Ra = usuario.Registro_Academico,
+                                telefone = usuario.Telefone,campanha=Campanha)
+        inscricao.save()
 class inscricao_campanhas_sociais(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', related_query_name='inscrito',
                                 on_delete=models.CASCADE)
@@ -98,7 +110,7 @@ class inscricao_campanhas_sociais(models.Model):
     campanha = models.ForeignKey(campanhas, verbose_name='Campanha', on_delete=models.CASCADE)
     Compareceu = models.BooleanField(default=False)
     data = models.DateField(auto_now_add=True,verbose_name='Data da inscrição')
-
+    objects = inscricaocampanhasManager()
     class Meta:
         verbose_name = 'Ações Sociais - inscrições'
         verbose_name_plural = 'Ações Sociais - inscrições'
@@ -124,6 +136,12 @@ class games(models.Model):
     def __str__(self):
         return self.name
 
+class inscricaoEsportsManager(models.Manager):
+    def inscrever(self,usuario,game):
+        inscricao = self.create(usuario = usuario,name = usuario.Nome_completo,email=usuario.email,
+                                curso = usuario.Curso,Ra = usuario.Registro_Academico,
+                                telefone = usuario.Telefone,game=game)
+        inscricao.save()
 
 class inscricao_E_sports(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Usuário', related_query_name='inscrito',
@@ -135,7 +153,7 @@ class inscricao_E_sports(models.Model):
     telefone = models.CharField(max_length=30, null=False, blank=False, verbose_name='Contato')
     game = models.ForeignKey(games, verbose_name='E-Modalidade', on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True, verbose_name='Data da inscrição')
-
+    objects = inscricaoEsportsManager()
     class Meta:
         verbose_name = 'E-sports - inscrições'
         verbose_name_plural = 'E-sports - inscrições'

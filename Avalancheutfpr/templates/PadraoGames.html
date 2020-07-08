@@ -20,9 +20,6 @@
 {%if user.is_authenticated and Games.Status == 'Ativo' %}
     <form  method="post" class="inscricao_games">
         {% csrf_token %}
-        <div class = "form_IG">
-            {%bootstrap_form form%}
-        </div>
         {% buttons%}
         <button type="submit" class="btn btn-primary">inscrever-me</button>
         {% endbuttons %}
