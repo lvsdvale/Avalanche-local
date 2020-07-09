@@ -1,0 +1,29 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}{{produtobase.name}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+    {% bootstrap_messages %}
+    <h1>{{produtobase.name}}</h1>
+    {%if user.get_socio %}
+    <p>{{produtobase.p_socio}}</p>
+    {%else%}
+    <p>{{produtobase.preco}}</p>
+    {%endif%}
+    <p>{{produtobase.descricao}}</p>
+   {% if produtobase.thumb.url != blank%}
+    <img src = "{{produtobase.thumb.url}}">
+   {%endif%}
+{% for Produto in produtobase.get_produto %}
+<a href="{%url 'Produtos_view' Produto.slug %}">{{Produto.name}}</a>
+{%endfor%}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

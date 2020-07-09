@@ -12,6 +12,6 @@ def itemcarrinhomiddleware(get_response):
                     chave = request.session.session_key
                     itens = itemcarrinho.objects.filter(chave=chave)
                     for item in itens:
-                        itemcarrinho.objects.filter(chave=chave).update(preco = item.produto.p_socio)
+                        itemcarrinho.objects.filter(chave=chave).update(preco = item.produto.modelo.p_socio)
         return response
     return middleware

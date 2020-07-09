@@ -13,12 +13,12 @@
     {% bootstrap_messages %}
     <h1>{{produtos.name}}</h1>
     {%if user.get_socio %}
-    <p>{{produtos.p_socio}}</p>
+    <p>{{produtos.modelo.p_socio}}</p>
     {%else%}
-    <p>{{produtos.preco}}</p>
+    <p>{{produtos.modelo.preco}}</p>
     {%endif%}
-    <p>{{produtos.descricao}}</p>
-   {% if produtos.thumb.url != blank%}
+    <p>{{produtos.modelo.descricao}}</p>
+   {% if produtos.modelo.thumb.url != blank%}
     <img src = "{{produtos.thumb.url}}">
    {%endif%}
         {% buttons%}

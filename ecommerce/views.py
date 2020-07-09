@@ -16,12 +16,12 @@ from picpay import PicPay
 # Create your views here.
 class Lojinha(ListView):
     template_name = 'Produtos.html'
-    context_object_name = 'produtos'
+    context_object_name = 'produtobase'
     paginate_by = 10
     ordering = '-pub_date'
 
     def get_queryset(self):
-        queryset = produtos.objects.all()
+        queryset = produtobase.objects.all()
         q = self.request.GET.get('q', '')
         if q:
             queryset = queryset.filter(
@@ -30,6 +30,11 @@ class Lojinha(ListView):
 
         return queryset
 
+class Produtobase_view(DetailView):
+    model = produtobase
+    template_name = 'PadraoProdutosBase.html'
+    slug_url_kwarg = 'slug'
+    slug_field = 'slug'
 
 class Produto_view(DetailView):
     model = produtos

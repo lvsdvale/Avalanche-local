@@ -5,7 +5,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
         path('Produtos/', Lojinha.as_view(), name='Produtos'),
-        path('Produtos/<slug:slug>',Produto_view.as_view(),name = 'Produtos_view'),
+        path('Produtos/<slug:slug>',Produtobase_view.as_view(),name = 'ProdutosBase_view'),
+        path('Produtos/Modelos/<slug:slug>',Produto_view.as_view(),name = 'Produtos_view'),
         path('Carrinho/adicionar/<slug:slug>',criar_item_view.as_view(),name = 'Adicionar_produto'),
         path('Carrinho/',Carrinho.as_view(),name = 'Carrinho'),
         path('Checkout/',Checkout.as_view(),name = 'Checkout'),

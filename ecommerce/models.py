@@ -6,18 +6,36 @@ from django.conf import settings
 from pagseguro import PagSeguro
 from picpay import PicPay
 
+class produtobase(models.Model):
+    name = models.CharField(max_length=255,null = False,blank = False,verbose_name='Nome')
+    descricao = models.TextField(null = False,blank = False,verbose_name='Descrição')
+    thumb = StdImageField(upload_to=get_file_path, null=True, blank=True, verbose_name='thumbnail')
+    preco = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço')
+    p_socio = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço para Sócio')
+    slug = AutoSlugField(populate_from='name')
+    class Meta:
+        verbose_name = 'Modelo'
+        verbose_name_plural = 'Modelos'
+        ordering = ['name']
+    def get_p_socio(self):
+        return self.p_socio
+
+    def get_produto(self):
+        return self.Produtos.all()
+
+    def __str__(self):
+        return self.name
+
 
 class produtos(models.Model):
     status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'),)
+    modelo = models.ForeignKey(produtobase, verbose_name='Modelo',null=True,
+                               related_name='Produtos',related_query_name='Produtos_Query',on_delete=models.CASCADE)
     name = models.CharField(max_length=255,null = False,blank = False,verbose_name='Nome')
-    descricao = models.TextField(null = False,blank = False,verbose_name='Descrição')
-    thumb = StdImageField(upload_to=get_file_path, null=True, blank=True,verbose_name='thumbnail')
-    preco = models.DecimalField(decimal_places=2,max_digits=6,verbose_name='Preço')
-    p_socio = models.DecimalField(decimal_places=2,max_digits=6,verbose_name='Preço para Sócio')
     estoque = models.PositiveIntegerField(verbose_name='Quantidade em estoque')
     pub_date = models.DateField(auto_now_add=True,verbose_name='Data de Criação')
     Status = models.CharField(max_length=30, null=True, blank=True, choices=status, default='Ativo')
-    slug = AutoSlugField(populate_from = 'name')
+    slug = AutoSlugField(populate_from='name')
 
     class Meta:
         verbose_name = 'Produto'
@@ -29,9 +47,11 @@ class produtos(models.Model):
 
     def set_compra(self,quantidade):
         self.estoque = self.estoque - quantidade
+        self.save()
 
-    def get_p_socio(self):
-        return self.p_socio
+    def Esgotado(self):
+        if self.estoque == 0:
+            self.status = 'Encerrado'
 
 class gerenciadoritemcarrinho(models.Manager):
     def adicionar(self,chave,produto):
@@ -42,7 +62,7 @@ class gerenciadoritemcarrinho(models.Manager):
             item.save()
         else:
             criado = True
-            item = itemcarrinho.objects.create(chave = chave,produto=produto,preco = produto.preco)
+            item = itemcarrinho.objects.create(chave = chave,produto=produto,preco = produto.modelo.preco)
         return item,criado
     def adicionar_socio(self,chave,produto):
         if self.filter(chave = chave,produto =produto).exists():
@@ -52,11 +72,11 @@ class gerenciadoritemcarrinho(models.Manager):
             item.save()
         else:
             criado = True
-            item = itemcarrinho.objects.create(chave = chave,produto=produto,preco = produto.p_socio)
+            item = itemcarrinho.objects.create(chave = chave,produto=produto,preco = produto.modelo.p_socio)
         return item,criado
 
     def get_produto_p_socio(self):
-        return self.produto.get_p_socio()
+        return self.produto.modelo.get_p_socio()
 
 class itemcarrinho(models.Model):
     chave = models.CharField(max_length=255,verbose_name='Chave do carrinho',db_index=True)
