@@ -59,19 +59,12 @@ class Eventos(ListView):
 
 def Eventos_view(request, slug):
     eve = get_object_or_404(eventos, slug = slug)
-    context = {
-        "Eventos": eve
-    }
-    return render(request, 'PadraoEventos.html', context)
-
-def Eventos_midias(request,slug):
-    eve = get_object_or_404(eventos,slug=slug)
     Midias = media.objects.filter(tag=eve.name).order_by('?')
     context = {
-        'Eventos':eve,
-        'Midias':Midias
+        "Eventos": eve,
+        "Midias":Midias,
     }
-    return render(request,'MidiasEventos.html',context)
+    return render(request, 'PadraoEventos.html', context)
 
 
 # Views Referentes a página de Esportes
@@ -91,21 +84,12 @@ def Modalidades_view(request, slug):
             messages.success(request,"Inscrito na modalidade com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Modalidade")
-
-    context = {
-        "Modalidades": Modalidades,
-    }
-    return render(request, 'PadraoModalidades.html', context)
-
-def Modalidades_midias(request,slug):
-    Modalidades = get_object_or_404(modalidades,slug= slug)
     Midias = media.objects.filter(tag=Modalidades.name).order_by('?')
     context = {
-        'Modalidades':Modalidades,
-        'Midias':Midias
+        "Modalidades": Modalidades,
+        "Midias":Midias
     }
-    return render(request,'MidiasModalidades.html',context)
-
+    return render(request, 'PadraoModalidades.html', context)
 
 # Views Referentes a página de Social
 
@@ -134,20 +118,13 @@ def Campanhas_view(request, slug):
             messages.success(request, "Inscrito na ação com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Campanha")
-
+    Midias = media.objects.filter(tag=Campanhas.name).order_by('?')
     context = {
         "Campanhas": Campanhas,
+        "Midias":Midias,
     }
     return render(request, 'CampanhasPadrao.html', context)
 
-def Campanhas_midias(request,slug):
-    Campanhas = get_object_or_404(campanhas,slug = slug)
-    Midias = media.objects.filter(tag = Campanhas.name).order_by('?')
-    context = {
-        'Campanhas':Campanhas,
-        'Midias':Midias
-    }
-    return render(request,'MidiasCampanhas.html',context)
 # Views Referentes a página de plano Sócio
 class Socio(TemplateView):
     template_name = 'Socio.html'
@@ -170,14 +147,16 @@ def Games_view(request, slug):
             messages.success(request, "Inscrito na modalidade de E-sports com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Modalidade")
+    Midias = media.objects.filter(tag=Games.name).order_by('?')
     context = {
         "Games": Games,
+        "Midias":Midias
     }
     return render(request, 'PadraoGames.html', context)
 
 #Diretoria
 def Diretoria(request):
-    Diretoria= diretoria.objects.all().order_by('-area')
+    Diretoria= diretoria.objects.all().order_by('-cargo')
     context = {
         "Diretoria": Diretoria,
 

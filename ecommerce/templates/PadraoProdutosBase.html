@@ -22,7 +22,8 @@
     <img src = "{{produtobase.thumb.url}}">
    {%endif%}
 {% for Produto in produtobase.get_produto %}
-<a href="{%url 'Produtos_view' Produto.slug %}">{{Produto.name}}</a>
+
+<a href="{%url 'Produtos_view' Produto.slug %}">{{Produto.name}}</a><Br/>
 {%endfor%}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

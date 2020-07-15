@@ -174,14 +174,15 @@ class contatos(models.Model):
         return self.name
 class diretoria(models.Model):
     name = models.CharField(max_length=255,null=False,blank=False,unique=True,verbose_name='Nome')
-    area = models.CharField(max_length=255,null=True,blank=True,verbose_name='Area')
+    cargo = models.CharField(max_length=255,null=True,blank=True,verbose_name='Cargo')
     foto = StdImageField(upload_to=get_file_path,null = False,blank = False)
-    video = models.FileField(upload_to=get_file_path,null=True,blank=True)
+    intagram = models.CharField(max_length=255,null=True,blank=True,verbose_name='Instagram')
+    facebook =  models.CharField(max_length=255,null=True,blank=True,verbose_name='Facebook')
 
     class Meta:
         verbose_name = 'Diretor'
         verbose_name_plural = 'Diretores'
-        ordering = ['area']
+        ordering = ['name']
 
     def __str__(self):
         return self.name

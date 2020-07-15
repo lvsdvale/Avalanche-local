@@ -25,6 +25,9 @@
         {% endbuttons %}
     </form>
 {%endif%}
+{%for Midia in Midias%}
+<img src = "{{Midia.foto.url}}">
+{%endfor%}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 

@@ -19,12 +19,15 @@
 {%endif%}
 
 {%if user.is_authenticated and Campanhas.Status == 'Ativo' %}
-    <form  method="post" class="inscricao_Campanhas"><a href="{% url 'Campanhas_Midias' Campanhas.slug %}">Galeria {{Modalidades.name}}</a>
+    <form  method="post" class="inscricao_Campanhas">
         {% csrf_token %}
         {% buttons%}
         <button type="submit" class="btn btn-primary">inscrever-me</button>
         {% endbuttons %}
     </form>
+{%for Midia in Midias%}
+<img src = "{{Midia.foto.url}}">
+{%endfor%}
 {%endif%}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

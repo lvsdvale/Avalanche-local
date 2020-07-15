@@ -15,7 +15,6 @@
 {% if Modalidades.image.url != blank%}
 <img src = "{{Modalidades.image.url}}">
 {%endif%}
-<a href="{% url 'Modalidades_Midias' Modalidades.slug %}">Galeria {{Modalidades.name}}</a>
 {%if user.is_authenticated and Modalidades.Status == 'Ativo' %}
     <form  method="post" class="inscricao_esportes">
         {% csrf_token %}
@@ -24,6 +23,9 @@
         {% endbuttons %}
     </form>
 {%endif%}
+{%for Midia in Midias%}
+<img src = "{{Midia.foto.url}}">
+{%endfor%}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 

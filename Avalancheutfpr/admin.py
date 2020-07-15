@@ -40,7 +40,7 @@ class ContatosAdmin(admin.ModelAdmin):
 
 @admin.register(diretoria)
 class Diretoria(admin.ModelAdmin):
-    list_display = ['name','area']
+    list_display = ['name','cargo']
 
 
 @admin.register(media)

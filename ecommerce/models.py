@@ -43,7 +43,7 @@ class produtos(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return self.name
+        return f'{self.modelo.name}-{self.name}'
 
     def set_compra(self,quantidade):
         self.estoque = self.estoque - quantidade
@@ -161,7 +161,7 @@ class pedidos(models.Model):
             pg.items.append(
                 {
                     'id': item.produto.pk,
-                    'description': item.produto.name,
+                    'description': item.produto,
                     'amount': '%.2f' % item.preco,
                     'quantity': item.quantidade,
 

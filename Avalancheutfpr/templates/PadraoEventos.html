@@ -16,7 +16,9 @@
    {% if Eventos.image.url != blank%}
     <img src = "{{Eventos.image.url}}">
    {%endif%}
-<a href="{% url 'Eventos_Midias' Eventos.slug%}">Galeria {{Eventos.name}}</a>
+{%for Midia in Midias%}
+<img src = "{{Midia.foto.url}}">
+{%endfor%}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 
