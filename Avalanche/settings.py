@@ -25,7 +25,7 @@ SECRET_KEY = 'n*c#&uhj&-dwlx+_zbb+^cy5gxvqu7rx9g=i4m^*9sz8#x7tgu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'pagseguro',
     'picpay',
     'analytical',
-     'widget_tweaks',
+    'widget_tweaks',
 
 ]
 AUTH_USER_MODEL = 'Contas.user'
@@ -98,6 +98,7 @@ WSGI_APPLICATION = 'Avalanche.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -108,10 +109,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Avalancheutfpr',
+        'NAME': 'avalanche',
         'USER':'Diretoria',
-        'PASSWORD':'S3nh4@forte',
-        'HOST':'localhost',
+        'PASSWORD':'Gestao2020',
+        'HOST':'avalanche.cw50ga3zpj1d.sa-east-1.rds.amazonaws.com',
         'PORT':'3306',
 
     }
