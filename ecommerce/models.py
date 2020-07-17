@@ -14,8 +14,8 @@ class produtobase(models.Model):
     p_socio = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço para Sócio')
     slug = AutoSlugField(populate_from='name')
     class Meta:
-        verbose_name = 'Modelo'
-        verbose_name_plural = 'Modelos'
+        verbose_name = 'Produto Base'
+        verbose_name_plural = 'Produtos Base'
         ordering = ['name']
     def get_p_socio(self):
         return self.p_socio
@@ -29,7 +29,7 @@ class produtobase(models.Model):
 
 class produtos(models.Model):
     status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'),)
-    modelo = models.ForeignKey(produtobase, verbose_name='Modelo',null=True,
+    modelo = models.ForeignKey(produtobase, verbose_name='Base',null=True,
                                related_name='Produtos',related_query_name='Produtos_Query',on_delete=models.CASCADE)
     name = models.CharField(max_length=255,null = False,blank = False,verbose_name='Nome')
     estoque = models.PositiveIntegerField(verbose_name='Quantidade em estoque')
@@ -38,8 +38,8 @@ class produtos(models.Model):
     slug = AutoSlugField(populate_from='name')
 
     class Meta:
-        verbose_name = 'Produto'
-        verbose_name_plural = 'Produtos'
+        verbose_name = 'Modelo'
+        verbose_name_plural = 'Modelos'
         ordering = ['name']
 
     def __str__(self):
