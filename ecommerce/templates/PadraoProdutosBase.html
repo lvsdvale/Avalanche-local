@@ -21,11 +21,19 @@
    {% if produtobase.thumb.url != blank%}
     <img src = "{{produtobase.thumb.url}}">
    {%endif%}
-<select>
+
+<form method="post" class="adicionar">
+    {% csrf_token %}
+<select name = 'Modelo' >
+    <option value="0" selected>---------</option>
 {% for produtos in produtobase.get_produto %}
  <option value="{{produtos.pk}}">{{produtos.name}}</option>
 {%endfor%}
 </select>
+    {% buttons%}
+    <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
+    {%endbuttons%}
+</form>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 

@@ -30,16 +30,18 @@ class Lojinha(ListView):
 
         return queryset
 
-class Produtobase_view(DetailView):
-    model = produtobase
-    template_name = 'PadraoProdutosBase.html'
-    slug_url_kwarg = 'slug'
-    slug_field = 'slug'
-
-class Produto_view(DetailView):
-    model = produtos
-    template_name = 'PadraoProdutos.html'
-    pk_url_kwarg = 'pk'
+def Produtobase_view(request,slug):
+    Produtobase = get_object_or_404(produtobase,slug=slug)
+    if request.method == 'POST':
+        answer = request.POST['Modelo']
+        if answer == '0':
+            messages.info(request,'Escolha um tamanho Válido')
+        else:
+            return redirect('Adicionar_produto',pk = answer)
+    context = {
+        'produtobase':Produtobase
+    }
+    return render(request,'PadraoProdutosBase.html',context)
 
 def criar_item_view(request,pk):
     produto = get_object_or_404(produtos, pk=pk)
