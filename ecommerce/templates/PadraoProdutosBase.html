@@ -21,10 +21,11 @@
    {% if produtobase.thumb.url != blank%}
     <img src = "{{produtobase.thumb.url}}">
    {%endif%}
-{% for Produto in produtobase.get_produto %}
-
-<a href="{%url 'Produtos_view' Produto.slug %}">{{Produto.name}}</a><Br/>
+<select>
+{% for produtos in produtobase.get_produto %}
+ <option value="{{produtos.pk}}">{{produtos.name}}</option>
 {%endfor%}
+</select>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 

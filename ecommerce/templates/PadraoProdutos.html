@@ -1,29 +1,15 @@
-{% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
 <head>
     <meta charset="UTF-8"/>
-    {%block title%}{{produtos.name}}{%endblock%}
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
 </head>
-
-{%block body%}
-    {% bootstrap_messages %}
-    <h1>{{produtos.name}}</h1>
-    {%if user.get_socio %}
-    <p>{{produtos.modelo.p_socio}}</p>
-    {%else%}
-    <p>{{produtos.modelo.preco}}</p>
-    {%endif%}
-    <p>{{produtos.modelo.descricao}}</p>
-   {% if produtos.modelo.thumb.url != blank%}
-    <img src = "{{produtos.thumb.url}}">
-   {%endif%}
-        {% buttons%}
-        <a href="{% url 'Adicionar_produto' produtos.slug %}"><button class="btn btn-primary">Adicionar ao Carrinho</button></a>
+<body>
+{% buttons%}
+        <a href="{% url 'Adicionar_produto' produtos.pk %}"><button class="btn btn-primary">Adicionar ao Carrinho</button></a>
         {% endbuttons %}
 {% bootstrap_javascript jquery='full'%}
-{%endblock%}
+</body>
 

@@ -39,28 +39,26 @@ class Produtobase_view(DetailView):
 class Produto_view(DetailView):
     model = produtos
     template_name = 'PadraoProdutos.html'
-    slug_url_kwarg = 'slug'
-    slug_field = 'slug'
+    pk_url_kwarg = 'pk'
 
-
-class criar_item_view(RedirectView):
-    def get_redirect_url(self, *args, **kwargs):
-        produto = get_object_or_404(produtos,slug = self.kwargs['slug'])
-        if self.request.session.session_key is None:
-            self.request.session.save()
-        if self.request.user.is_anonymous:
-            item, criado = itemcarrinho.objects.adicionar(self.request.session.session_key, produto)
+def criar_item_view(request,pk):
+    produto = get_object_or_404(produtos, pk=pk)
+    if request.session.session_key is None:
+        request.session.save()
+    if request.user.is_anonymous:
+        item, criado = itemcarrinho.objects.adicionar(request.session.session_key, produto)
+    else:
+        if not request.user.get_socio:
+            item, criado = itemcarrinho.objects.adicionar(request.session.session_key, produto)
         else:
-            if not self.request.user.get_socio:
-                item,criado = itemcarrinho.objects.adicionar(self.request.session.session_key, produto)
-            else:
-                item,criado = itemcarrinho.objects.adicionar_socio(self.request.session.session_key,produto)
-        if criado:
-            messages.success(self.request,'Produto adicionado ao carrinho')
-        else:
-            messages.success(self.request, 'Quantidade produto atualizado carrinho')
+            item, criado = itemcarrinho.objects.adicionar_socio(request.session.session_key, produto)
+    if criado:
+        messages.success(request, 'Produto adicionado ao carrinho')
+    else:
+        messages.success(request, 'Quantidade produto atualizado carrinho')
 
-        return reverse('Carrinho')
+    return redirect('Carrinho')
+
 
 class Carrinho(TemplateView):
     template_name = 'Carrinho.html'
