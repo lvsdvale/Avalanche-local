@@ -113,7 +113,7 @@ def Campanhas_view(request, slug):
     if request.method == 'POST':
         inscricao = inscricao_campanhas_sociais.objects.filter(email = request.user.email,campanha = Campanhas)
         if inscricao.exists() is False:
-            inscricao.objects.inscrever(usuario = request.user,Campanha = Campanhas
+            inscricao_campanhas_sociais.objects.inscrever(usuario = request.user,Campanha = Campanhas
             )
             messages.success(request, "Inscrito na ação com sucesso")
         else:
@@ -143,7 +143,7 @@ def Games_view(request, slug):
     if request.method == 'POST':
         inscricao = inscricao_E_sports.objects.filter(email=request.user.email, game=Games)
         if inscricao.exists() is False:
-            inscricao.objects.inscrever(usuario=request.user, game=Games)
+            inscricao_E_sports.objects.inscrever(usuario=request.user, game=Games)
             messages.success(request, "Inscrito na modalidade de E-sports com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Modalidade")

@@ -35,7 +35,7 @@ def Produtobase_view(request,slug):
     if request.method == 'POST':
         answer = request.POST['Modelo']
         if answer == '0':
-            messages.info(request,'Escolha um tamanho Válido')
+            messages.info(request,'Quase lá, insira o modelo que deseja comprar')
         else:
             return redirect('Adicionar_produto',pk = answer)
     context = {
