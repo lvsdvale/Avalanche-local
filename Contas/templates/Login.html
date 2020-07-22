@@ -1,26 +1,28 @@
-{% extends 'Base.html' %}
+<!DOCTYPE html>
 {% load static %}
 {%load bootstrap4 %}
-
+<html>
 <head>
-{%block title%}Login{%endblock%}
-<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
-  <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-  {% bootstrap_css %}
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+    {% bootstrap_css %}
 </head>
-{%block body%}
-<div class="login-titulo">
-<h2 style="color:blue">Login</h2>
-</div>
-  <form method="post">
-    {% csrf_token %}
-
-    <div class="login-form">
-      {%bootstrap_form form%}
+<body id="login">
+<section>
+    <div class="frase_login">
+        AVALANCHE LOGIN
     </div>
-    {% buttons%}
-    <button type="submit" class="btn btn-primary">Entrar</button>
-    {% endbuttons %}
-  </form>
-{% bootstrap_javascript jquery='full'%}
-{%endblock%}
+    <div class="form_login">
+    	<form method="POST">
+            {% csrf_token %}
+            {%bootstrap_form form%}
+            <input type="submit" value="Entrar"><br/><br/><br/>
+    	</form>
+    </div>
+</section>
+</body>
+</html>

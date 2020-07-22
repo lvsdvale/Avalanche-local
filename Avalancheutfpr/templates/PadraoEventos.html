@@ -1,24 +1,68 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
+<html>
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     {%block title%}{{Eventos.name}}{%endblock%}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
 </head>
-
 {%block body%}
-<h1>Eventos Avalanche</h1>
-<h1>{{Eventos.name}}</h1>
-<em>{{Eventos.descricao}}</em>
-   {% if Eventos.image.url != blank%}
-    <img src = "{{Eventos.image.url}}">
-   {%endif%}
-{%for Midia in Midias%}
-<img src = "{{Midia.foto.url}}">
-{%endfor%}
-{% bootstrap_javascript jquery='full'%}
-{%endblock%}
+<main>
+    <section class="default-eventos light-eventos">
+        <div class="section-title-eventos">{{Eventos.name}}</div>
+        <div class="section-body-eventos">
+            <div class="section-evento">
+                <div class="section-evento-left">
+                    <p><pre>
+                    {{Eventos.descricao}}
 
+                    </pre></p>
+                </div>
+                {%if Eventos.image.url != blank%}
+                <div class="section-evento-right">
+                    <img src="{{Eventos.image.url}}" />
+                </div>
+                {%endif%}
+            </div>
+        </div>
+    </section>
+    <section class="default dark bg-evento">
+        <div class="section-evento-area">
+            <div class="section-title">Fotos do eventos</div>
+            <div class="section-desc">sub-titulo</div>
+            <div class="section-body">
+                <div class="section-evento">
+                    <div class="sliders" style="margin-left:0;">
+                        <div class="slide">
+                            <div class="slidearea">
+                                <img class="section-evento--avatar" src="{% static 'assets/foto8.jpg'%} />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-evento--avatar" src="{% static 'assets/foto7.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-evento--avatar" src="{% static 'assets/foto5.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-evento--avatar" src="{%static 'assets/eu4.jpg'%}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sliders-pointers">
+                    <div class="pointer active"></div>
+                    <div class="pointer"></div>
+                    <div class="pointer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{%endblock%}
+</html>

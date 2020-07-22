@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'picpay',
     'analytical',
     'widget_tweaks',
+    'mailer',
 
 ]
 AUTH_USER_MODEL = 'Contas.user'
@@ -162,11 +163,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 #Email
-EMAIL_HOST = 'atleticautfpr.com.br'
-EMAIL_HOST_USER = 'lucas.vinicius@atleticautfpr.com.br'
+EMAIL_BACKEND = "mailer.backend.DbBackend"
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_USER_TSL = True
-EMAIL_HOST_PASSWORD = '06252729'
+EMAIL_USE_TSL = True
+EMAIL_HOST_USER = 'lucasvinicius557@gmail.com'
+EMAIL_HOST_PASSWORD ='06252729'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 #segurança
 SECURE_HSTS_SECONDS = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True

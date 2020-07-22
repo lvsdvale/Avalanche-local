@@ -1,20 +1,37 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
+<html>
 <head>
-    <meta charset="UTF-8"/>
-    {%block title%}{{Posts.name}}{%endblock%}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <meta charset="UTF-8" />
+    {%block title%}{{posts.name}}{%endblock%}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
 </head>
-
 {%block body%}
-    <h1>{{posts.name}}</h1>
-    <p>{{posts.conteudo}}</p>
-   {% if posts.image.url != blank%}
-    <img src = "{{Posts.image.url}}">
-   {%endif%}
+<main>
+    <section class="default-blogs light-blogs">
+        <div class="section-title-blogs">{{posts.name}}</div>
+        <div class="section-body-blogs">
+            <div class="section-blog">
+                <div class="section-blog-left">
+    <p><pre>
+     {{posts.conteudo}}
+    </pre></p>
+                    {%if posts.image.url != blank%}
+                </div>
+                <div class="section-blog-right">
+                    <img src="{{posts.image.url}}" />
+                </div>
+            </div>
+            {%endif%}
+        </div>
+    </section>
+</main>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
-
+</html>

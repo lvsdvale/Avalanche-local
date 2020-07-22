@@ -1,31 +1,80 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
+<html>
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     {%block title%}{{Modalidades.name}}{%endblock%}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
 </head>
 {%block body%}
 {% bootstrap_messages %}
-    <h1>{{Modalidades.name}}</h1>
-    <p>{{Modalidades.descricao}}</p>
-{% if Modalidades.image.url != blank%}
-<img src = "{{Modalidades.image.url}}">
-{%endif%}
-{%if user.is_authenticated and Modalidades.Status == 'Ativo' %}
-    <form  method="post" class="inscricao_esportes">
-        {% csrf_token %}
-        {% buttons%}
-        <button type="submit" class="btn btn-primary">inscrever-me</button>
-        {% endbuttons %}
-    </form>
-{%endif%}
-{%for Midia in Midias%}
-<img src = "{{Midia.foto.url}}">
-{%endfor%}
-{% bootstrap_javascript jquery='full'%}
-{%endblock%}
+<main>
+    <section class="default-esportes light-esportes">
+        <div class="section-title-esportes">{{Modalidades.name}}</div>
+        <div class="section-body-esportes">
+            <div class="section-esporte">
+                <div class="section-esporte-left">
+                    <p><pre>
+                    {{Modalidades.descricao}}
+                    {%if user.is_authenticated and Modalidades.Status == 'Ativo' %}
+                        <form  method="post" class="inscricao_esportes">
+                            {% csrf_token %}
+                            {% buttons%}
+                            <button type="submit" class="btn btn-primary">inscrever-me</button>
+                            {% endbuttons %}
+                        </form>
+                    {%endif%}
 
+                    </pre></p>
+                </div>
+                {% if Modalidades.image.url != blank%}
+                <div class="section-esporte-right">
+                    <img src="{{Modalidades.image.url}}" />
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="default dark bg-esporte">
+        <div class="section-esporte-area">
+            <div class="section-title">Fotos do esporte</div>
+            <div class="section-desc">sub-titulo</div>
+            <div class="section-body">
+                <div class="section-esporte">
+                    <div class="sliders" style="margin-left:0;">
+                        <div class="slide">
+                            <div class="slidearea">
+                                <img class="section-esporte--avatar" src="{%static 'assets/foto6.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-esporte--avatar" src="{%static 'assets/pika.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-esporte--avatar" src="{% static 'assets/eee.jpg' %}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-esporte--avatar" src="{% static 'assets/eee.jpg' %}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sliders-pointers">
+                    <div class="pointer active"></div>
+                    <div class="pointer"></div>
+                    <div class="pointer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{%endblock%}
+</html>

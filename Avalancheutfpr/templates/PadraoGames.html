@@ -1,33 +1,81 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
+<html>
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     {%block title%}{{Games.name}}{%endblock%}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
 </head>
-
 {%block body%}
 {% bootstrap_messages %}
- <h1>Games Avalanche</h1>
-    <h1>{{Games.name}}</h1>
-    <p>{{Games.descricao}}</p>
-{% if Games.image.url != blank%}
-<img src = "{{Games.image.url}}">
-{%endif%}
-{%if user.is_authenticated and Games.Status == 'Ativo' %}
-    <form  method="post" class="inscricao_games">
-        {% csrf_token %}
-        {% buttons%}
-        <button type="submit" class="btn btn-primary">inscrever-me</button>
-        {% endbuttons %}
-    </form>
-{%endif%}
-{%for Midia in Midias%}
-<img src = "{{Midia.foto.url}}">
-{%endfor%}
+<main>
+    <section class="default-e-sports light-e-sports">
+        <div class="section-title-e-sports">{{Games.name}}</div>
+        <div class="section-body-e-sports">
+            <div class="section-e-sports">
+                <div class="section-e-sport-left">
+    <p><pre> 
+      {{Games.descricao}}
+    <pre></p>
+                    {%if user.is_authenticated and Games.Status == 'Ativo' %}
+                        <form  method="post" class="inscricao_games">
+                            {% csrf_token %}
+                            {% buttons%}
+                            <button type="submit" class="btn btn-primary">inscrever-me</button>
+                            {% endbuttons %}
+                        </form>
+                    {%endif%}
+    <br/>
+                </div>
+                {% if Games.image.url != blank%}
+                <div class="section-e-sport-right">
+                    <img src = "{{Games.image.url}}">
+                </div>
+                {%endif%}
+            </div>
+        </div>
+    </section>
+    <section class="default dark bg-e-sport">
+        <div class="section-e-sport-area">
+            <div class="section-title">Fotos do e-sports</div>
+            <div class="section-desc">sub-titulo</div>
+            <div class="section-body">
+                <div class="section-e-sport">
+                    <div class="sliders" style="margin-left:0;">
+                        <div class="slide">
+                            <div class="slidearea">
+                                <img class="section-e-sport--avatar" src="{% static 'assets/foto6.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-e-sport--avatar" src="{% static 'assets/pika.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-e-sport--avatar" src="{%static 'assets/eee.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-e-sport--avatar" src="{%static 'assets/eee.jpg'%}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sliders-pointers">
+                    <div class="pointer active"></div>
+                    <div class="pointer"></div>
+                    <div class="pointer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
-
+</html>

@@ -9,6 +9,7 @@ from django.conf import settings
 class eventos(models.Model):
     status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'),)
     name = models.CharField(max_length=30,null=False,blank=False,verbose_name='Nome')
+    previa = models.TextField(null=False,blank=False,verbose_name='Prévia')
     descricao = models.TextField(null=False,blank=False,verbose_name='Descrição')
     image = StdImageField(upload_to=get_file_path, null=True, blank=True)
     QRcode = StdImageField(upload_to=get_file_path,null = True, blank= True)
@@ -32,9 +33,9 @@ class eventos(models.Model):
 class modalidades(models.Model):
     status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'),)
     name = models.CharField(max_length=30,null=False,blank=False,verbose_name='Nome')
+    previa = models.TextField(null=False, blank=False, verbose_name='Prévia')
     descricao = models.TextField(null=False,blank=False,verbose_name='Descrição')
-    Contatos = models.TextField(null= False,blank=False,verbose_name='Contatos da Modalidade')
-    image = StdImageField(upload_to=get_file_path, null=True, blank=True)
+    image = StdImageField(upload_to=get_file_path, null=False, blank=False)
     slug = AutoSlugField(populate_from='name')
     pub_date = models.DateField(auto_now_add=True,verbose_name='Data de publicação')
     Status = models.CharField(max_length=30, null=True, blank=True, choices=status, default='Ativo')
@@ -75,6 +76,7 @@ class inscricao_modalidades(models.Model):
 class campanhas(models.Model):
     status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'),)
     name = models.CharField(max_length=30,null=False,blank=False,verbose_name='Nome')
+    previa = models.TextField(null=False, blank=False, verbose_name='Prévia')
     descricao = models.TextField(null=False,blank=False,verbose_name='Descrição')
     local = models.CharField(max_length=255)
     image = StdImageField(upload_to=get_file_path, null=True, blank=True)
@@ -121,6 +123,7 @@ class inscricao_campanhas_sociais(models.Model):
 class games(models.Model):
     status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'))
     name = models.CharField(max_length=30,null=False,blank=False,verbose_name='Nome')
+    previa = models.TextField(null=False, blank=False, verbose_name='Prévia')
     descricao = models.TextField(null=False,blank=False,verbose_name='Descrição')
     image = StdImageField(upload_to=get_file_path, null=True, blank=True)
     QRcode = StdImageField(upload_to=get_file_path, null=True, blank=True)

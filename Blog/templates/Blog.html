@@ -1,25 +1,55 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
-{% load static %}
+{%load static%}
 {%load bootstrap4 %}
 <html>
 <head>
-   <meta charset="UTF-8"/>
-   {%block title%} Blog Avalanche {%endblock%}
-	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <meta charset="UTF-8" />
+    {%block title%}Blog do Urso{%endblock%}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
-
 </head>
 {%block body%}
-   <div class = "titulos blog">
-      <h1>Notícias Avalanche</h1>
-   </div>
-   <div class="Posts">
-      {% for post in page_obj %}
-      <li> <a href="{% url 'Post_view' post.slug %}">{{post.name}} </a> </li>
-      {% endfor %}
-
+<main>
+	{%for post in page_obj %}
+	{%if forloop.counter|divisibleby:"2" %}
+	<section class="default-blogs dark-blogs">
+		<div class="section-title-blogs">{{post.name}}</div>
+		<div class="section-body-blogs">
+	    	<div class="section-blogs">
+	    		<div class="section-blogs--right---esquerda">
+	            	<img src = "{{post.image.url}}"/>
+	        	</div>
+	    		<div class="section-blogs--left---esquerda">
+	                <p>{{post.previa}}</p>
+	                <br/>
+	                <a href="{% url 'Post_view' post.slug %}" class="section-button-dark">Ver post</a>
+	            </div>
+	        </div>
+	   	</div>
+	</section>
+	{% else %}
+	<section class="default-blogs light-blogs">
+		<div class="section-title-blogs">{{post.name}}</div>
+		<div class="section-body-blogs">
+	    	<div class="section-blogs">
+	    		<div class="section-blogs--left">
+	                <p>{{post.previa}}</p>
+	                <br/>
+	                <a href="{% url 'Post_view' post.slug %}" class="section-button-light">Ver post</a>
+	            </div>
+	        	<div class="section-blogs--right">
+	            	<img src="{{post.image.url}}" />
+	        	</div>
+	        </div>
+	   	</div>
+	</section>
+	{%endif%}
+	{%endfor%}
+</main>
 {% include 'paginacao.html' %}
-{% bootstrap_javascript jquery='full'%}
 {%endblock%}
 </html>

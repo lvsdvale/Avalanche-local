@@ -1,20 +1,57 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
+<html>
 <head>
-    <meta charset="UTF-8"/>
-   {%block title%} Esportes Avalanche {%endblock%}
+    <meta charset="UTF-8" />
+    {%block title%}Esportes Avalanche {%endblock%}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
+
 </head>
 {%block body%}
-<h1>Esportes Avalanche</h1>
-    <p>Modalidades do Urso</p>
-{% for modalidade in Modalidades %}
-<li> <a href="{%url 'Modalidades_View' modalidade.slug %}"> {{modalidade.name}} </a> </li>
-{% endfor %}
-{% bootstrap_javascript jquery='full'%}
+{% bootstrap_messages %}
+<main>
+    {% for modalidade in Modalidades %}
+    {%if forloop.counter|divisibleby:"2" %}
+	<section class="default-esportes dark-esportes">
+		<div class="section-title-esportes">{{modalidade.name}}</div>
+		<div class="section-body-esportes">
+	    	<div class="section-esportes">
+	    		<div class="section-esportes--right---esquerda">
+	            	<img src="{{modalidade.image.url}}" />
+	        	</div>
+	    		<div class="section-esportes--left---esquerda">
+	                <p> {{modalidade.previa}}</p>
+	                <br/>
+	                <a href="{%url 'Modalidades_View' modalidade.slug %}" class="section-button-dark">Ver esporte</a>
+	            </div>
+	        </div>
+	   	</div>
+	</section>
+    {%else%}
+	<section class="default-esportes light-esportes">
+		<div class="section-title-esportes">{{modalidade.name}}</div>
+		<div class="section-body-esportes">
+	    	<div class="section-esportes">
+	    		<div class="section-esportes--left">
+	                <p>{{modalidade.previa}}</p>
+	                <br/>
+	                <a href="{%url 'Modalidades_View' modalidade.slug %}" class="section-button-light">Ver esporte</a>
+	            </div>
+	        	<div class="section-esportes--right">
+	            	<img src="{{modalidade.image.url}}" />
+	        	</div>
+
+	        </div>
+	   	</div>
+	</section>
+    {%endif%}
+    {%endfor%}
+</main>
 {%endblock%}
-
-
+</html>

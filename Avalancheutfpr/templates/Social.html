@@ -1,26 +1,54 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
+<html>
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     {%block title%} Social Avalanche {%endblock%}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
 </head>
-
 {%block body%}
- <h1>Responsabilidade Social Avalanche</h1>
-<form class="navbar-form navbar-left" role="search" action="{% url 'Social' %}">
-	        <div class="form-group">
-	          <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
-	        </div>
-	      </form>
-    <p>Campanhas sociais do urso</p>
+{% bootstrap_messages %}
+<main>
     {%for campanhas in page_obj %}
-    <li> <a href="{%url 'Campanhas_View' campanhas.slug%}"> {{campanhas.name}} </a> </li>
-    {% endfor %}
-{% include 'paginacao.html' %}
-{% bootstrap_javascript jquery='full'%}
-{%endblock%}
+    {%if forloop.counter|divisibleby:"2" %}
+	<section class="default-eventos dark-eventos">
+		<div class="section-title-eventos">{{campanhas.name}}</div>
+		<div class="section-body-eventos">
+	    	<div class="section-eventos-sociais">
+	    		<div class="section-eventos-sociais--right---esquerda">
+	            	<img src="{{campanhas.image.url}}" />
+	        	</div>
+	    		<div class="section-eventos-sociais--left---esquerda">
+	                <p>{{campanhas.previa}}</p>
+	                <br/>
+	                <a href="{%url 'Campanhas_View' campanhas.slug%}" class="section-button-dark">Ver Ação Social</a>
+	            </div>
+	        </div>
+	   	</div>
+	</section>
+    {%else%}
+	<section class="default-eventos light-eventos">
+		<div class="section-title-eventos">{{campanhas.name}}</div>
+		<div class="section-body-eventos">
+	    	<div class="section-eventos-sociais">
+	    		<div class="section-eventos-sociais--left">
+	                <p>{{campanhas.previa}}</p>
+	                <br/>
+	                <a href="{%url 'Campanhas_View' campanhas.slug%}" class="section-button-light">Ver Ação Social</a>
+	            </div>
+	        	<div class="section-eventos-sociais--right">
+	            	<img src="{{campanhas.image.url}}" />
+	        	</div>
 
+	        </div>
+	   	</div>
+	</section>
+    {%endif%}
+    {%endfor%}
+    {% include 'paginacao.html' %}
+</main>
+{%endblock%}
+</html>

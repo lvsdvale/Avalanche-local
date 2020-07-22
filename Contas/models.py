@@ -87,7 +87,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     ('Tecnologia em Radiologia', 'Tecnologia em Radiologia'),
     ('Tecnologia em Sistemas de Telecomunicação', 'Tecnologia em sistemas de Telecomunicação')
     )
-    Nome_completo = models.CharField(max_length=255, null=True,unique=True)
+    Nome_completo = models.CharField(max_length=255, null=True,unique=True,help_text="Digite o seu nome COMPLETO")
     email = models.EmailField(max_length=255, unique=True, null=True)
     is_active = models.BooleanField(default=True, null=True)
     is_staff = models.BooleanField(default=False, null=True,verbose_name='Diretor')

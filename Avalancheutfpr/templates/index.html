@@ -1,71 +1,239 @@
+{% extends 'Base.html' %}
 {% load static %}
 {%load bootstrap4 %}
 <html>
-	<head>
-		<meta charset="UTF-8"/>
-		<title>A.A.A.E.A UTFPR-CT</title>
-		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
-		<link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-		{% bootstrap_css %}
-	</head>
-	<body>
-		<header class="topo flutuante">
-			<nav class="topoint">
-				<div class="toporight">
-					<a href="https://www.facebook.com/avalancheutfpr/?epa=SEARCH_BOX" target="_blank"><image src="{% static 'assets/facebook.png' %}" border="0" width="20" height="20"/></a>
-					<a href="https://www.instagram.com/avalancheutfpr/?hl=pt-br" target="_blank"><image src="{% static 'assets/instagram.png'%}" border="0" width="20" height="20"/></a>
-				</div>
-				<a href="{% url 'Home' %}" title="Sobre nós"><div class="logo">
-					<img src="{%static 'assets/logo.png'%}">
-					<div class="logo_texto">A.A.A.E.A UTFPR - Avalanche</div>
-				</div></a>
-				</div>
+{%block title%} A.A.A.E.A UTFPR-CT{%endblock%}
+{%block body%}
+{% bootstrap_messages %}
+<main>
+    <section class="banner">
+        <div class="sliders" style="margin-left:0vw;">
+            <div class="slide">
+                <div class="slidearea">
+                    <h1>Design adriano<br/></h1>
+                    <h1><span>Avalanche</span></h1>
+                    <h2>alguma informação</h2>
+                    <a href="{%url 'Socio'%}" class="button">aperta aqui parça!</a>
+                </div>
+            </div><div class="slide">
+                <div class="slidearea">
+                    <h1>Design is about<br/><span>doido</span></h1>
+                    <h2>Call Us: +00 0 1234 5678</h2>
+                    <a href="" class="button">Get in touch!</a>
+                </div>
+            </div><div class="slide">
+                <div class="slidearea">
+                    <h1>Design is about<br/><span>Algo</span></h1>
+                    <h2>Call Us: +00 0 1234 5678</h2>
+                    <a href="" class="button">Get in touch!</a>
+                </div>
+            </div>
+        </div>
+        <div class="sliders-pointers">
+            <div class="pointer active"></div>
+            <div class="pointer"></div>
+            <div class="pointer"></div>
+        </div>
+    </section>
 
-				<div class="menu">
-					<ul>
-						<li><a href="{% url 'Home' %}">HOME</a></li>
-						<li><a href = "{% url 'Produtos'%}">PRODUTOS</a></li>
-						<li><a href="{% url 'Eventos' %}">EVENTOS</a></li>
-						<li><a href = "{% url 'Esportes'%}">ESPORTES</a></li>
-						<li><a href = "{% url 'Social'%}">SOCIAL</a></li>
-						<li><a href = "{% url 'E-sports'%}">E-SPORTS</a></li>
-						<li><a href = "{% url 'Contatos'%}">CONTATOS</a></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
-		<section class="banner">
-			<div class="bannerinterior">
-				<div class="Frases">
-					<div class="frase1">
-						Sócio Avalanche
-					</div>
-					<div class="frase2">
-						Torne-se um sócio da avalanche e aproveite<br/> benefícios incríveis
-					</div>
-					<a href="{% url 'Socio' %}" title="Seja sócio avalanche"><div class="botao">
-						Ser sócio agora!
-					</div></a>
-				</div>
-				<div class="imagem">
-					<img src="{% static 'assets/socio.jpg'%}"/>
-				</div>
-			</div>
-		</section>
-		{%bootstrap_messages%}
-		<section class="conteudo">
-			<div class="conteudointerno">
-				<div class="fotos">
-					<a href="{% url 'Eventos' %}" title="Eventos"><div class="dourada "><img class="sup" src="{% static 'assets/Eventos.jpg'%}"><img class="inf"src="{% static 'assets/Eventos1.jpg'%}"></div>
-					<a href="{% url 'Esportes' %}" title="Esportes"><div class="dourada"><img class="sup" src="{% static 'assets/Esportes.jpeg'%}"><img class="inf" src="{% static 'assets/Esportes1.jpg'%}"></div>
-					<a href="{% url 'Social' %}" title="Social"><div class="dourada "><img class="sup" src="{% static 'assets/Social.jpeg'%}"><img class="inf"src="{% static 'assets/Social1.jpg'%}"></div>
-					<a href="{% url 'SobreNos' %}" title="Sobre nós"><div class="dourada"><img class="sup" src="{% static 'assets/Sobrenos.jpg'%}"><img class="inf"src="{%static 'assets/Sobrenos1.jpg'%}"></div></a>
-				</div>
-			</div>
-		</section>
-		<footer class="rodape">
-				Empresa 123
-		</footer>
-	{% bootstrap_javascript jquery='full'%}
-	</body>
+    <section class="default light">
+        <div class="section-title">Sobre nós</div>
+        <div class="section-desc">Conheça a avalanche</div>
+        <div class="section-body">
+            <div class="section-aboutus">
+                <div class="section-aboutus--left">
+                    <p>A.A.A.E.A - Associação Atlética Acadêmica de Engenharia e Arquitetura da Universidade Tecnológica do Paraná, Campus Curitiba ou simplesmente Avalanche. Somos um começo, um refúgio e ao mesmo tempo uma libertação, mesmo que às duras penas, para uma mudança na forma como a jornada de um curso de Engenharia ou Arquitetura é enfrentada.</p>
+                    <br/>
+                    <a href="{% url 'SobreNos' %}" class="section-button">Continue lendo</a>
+                </div>
+                <div class="section-aboutus--right">
+                    <img src="{%static 'assets/Sobrenos.jpg' %}" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="default dark bg-team">
+        <div class="section-team-area">
+            <div class="section-title">Nossa equipe</div>
+            <div class="section-desc">Ursos avalanche</div>
+            <div class="section-body">
+                <div class="section-team">
+                    <div class="sliders" style="margin-left:0;">
+                        <div class="slide">
+                            <div class="slidearea">
+                                <img class="section-team--avatar" src="{%static 'assets/eu1.jpg'%}" />
+                                <div class="section-team--name">Dri do interior</div>
+                                <div class="section-team--role">Vici-Presidente</div>
+                                <div class="section-team--social">
+                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
+                                        <a href=""><img src="{%static 'assets/facebook.png'%}" /></a>
+                                </div>
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-team--avatar" src="{% static 'assets/eu2.jpg'%}" />
+                                <div class="section-team--name">dri de 1900</div>
+                                <div class="section-team--role">Presidente</div>
+                                <div class="section-team--social">
+                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
+                                        <a href=""><img src="{%static 'assets/facebook.png'%}" /></a>
+                                </div>
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-team--avatar" src="{%static 'assets/eu3.jpg'%}" />
+                                <div class="section-team--name">Apenas dri</div>
+                                <div class="section-team--role">Diretor Geral</div>
+                                <div class="section-team--social">
+                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
+                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
+                                </div>
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-team--avatar" src="{%static 'assets/eu4.jpg'%}" />
+                                <div class="section-team--name"></div>
+                                <div class="section-team--role"></div>
+                                <div class="section-team--social">
+                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
+                                        <a href=""><img src="{%static 'assets/facebook.png'%}" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sliders-pointers">
+                    <div class="pointer active"></div>
+                    <div class="pointer"></div>
+                    <div class="pointer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="default dark">
+        <div class="section-title">Esportes</div>
+        <div class="section-desc">Destaques esportes avalanche</div>
+        <div class="section-body">
+            <div class="section-services">
+                <div class="section-service">
+                    <img src="{%static 'assets/nadador.png'%}" />
+                    <h4>Natação</h4>
+                    <p>Frase enaltecedora</p>
+                </div>
+                <div class="section-service">
+                    <img src="{% static 'assets/judo.png'%}" />
+                    <h4>Judô</h4>
+                    <p> mais uma Frase enaltecedora</p>
+                </div>
+                <div class="section-service">
+                    <img src="{% static 'assets/raquete.png'%}" />
+                    <h4>Tênis de mesa</h4>
+                    <p> vish outra Frase enaltecedora</p>
+                </div>
+                <div class="section-service">
+                    <img src="{% static 'assets/handebol.png'%}" />
+                    <h4>Handebol</h4>
+                    <p>só mais uma Frase enaltecedora</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="default light premium">
+        <div class="section-title">Produtos</div>
+        <div class="section-desc">Principais produtos</div>
+        <div class="section-body">
+            <div class="section-premium">
+                <div class="sliders" style="margin-left:0;">
+                    <div class="slide">
+                        <div class="slidearea">
+                            <div class="section-premium--left">
+                                <img src="{%static 'assets/produto.jpeg'%}" />
+                            </div>
+                            <div class="section-premium--right">
+                                    <div class="section-premium--item">
+                                        <img src="{% static 'assets/check.png'%}" />
+                                        <div>
+                                            <h4>Informações do produto</h4>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel eros vitae erat condimentum viverra a nec lacus.<br/>
+                                        </div>
+                                    </div>
+                                    <div class="section-premium--item">
+                                        <img src="{%static 'assets/check.png'%}" />
+                                        <div>
+                                            <h4>Mais informações</h4>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel eros vitae erat condimentum viverra a nec lacus.
+                                        </div>
+                                    </div>
+                                    <div class="section-premium--item">
+                                        <img src="{%static 'assets/check.png'%}" />
+                                        <div>
+                                            <h4>Preço</h4>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel eros vitae erat condimentum viverra a nec lacus.
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div><div class="slide">
+                        <div class="slidearea">
+                            ...
+                        </div>
+                    </div><div class="slide">
+                        <div class="slidearea">
+                            ...
+                        </div>
+                    </div>
+                </div>
+                <div class="sliders-pointers">
+                    <div class="pointer active"></div>
+                    <div class="pointer"></div>
+                    <div class="pointer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-map">
+        <div class="section-map--area">
+            <div class="section-map--info">
+                    <div class="section-map--info-item">
+                        <div class="section-map--info-item-img">
+                            <img src="{%static 'assets/carta.png' %}" />
+                        </div>
+                        Endereço completão que irá ter algum tamanho
+                    </div>
+                    <div class="section-map--info-item">
+                        <div class="section-map--info-item-img">
+                            <img src="{% static 'assets/localizacao.png' %}" />
+                        </div>
+                        Endereço completão que irá ter algum tamanho
+                    </div>
+                    <div class="section-map--info-item">
+                        <div class="section-map--info-item-img">
+                            <img src="{% static 'assets/telefone.png'%}" />
+                        </div>
+                        Endereço completão que irá ter algum tamanho
+                    </div>
+                    <div class="section-map--info-item">
+                        <div class="section-map--info-item-img">
+                            <img src="{%static 'assets/arroba.png'%}" />
+                        </div>
+                        Endereço completão que irá ter algum tamanho
+                    </div>
+                    <div class="section-map--info-item">
+                        <div class="section-map--info-item-img">
+                            <img src="{%static 'assets/web.png'%}" />
+                        </div>
+                        Endereço completão que irá ter algum tamanho
+                    </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
 </html>

@@ -1,34 +1,74 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
-
+<html>
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     {%block title%}{{Campanhas.name}}{%endblock%}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
 </head>
 {%block body%}
 {% bootstrap_messages %}
- <h1>Campanhas Avalanche</h1>
-    <h1>{{Campanhas.name}}</h1>
-    <h1>{{Campanhas.descricao}}</h1>
-{% if Campanhas.image.url != blank%}
-    <img src = "{{Campanhas.image.url}}">
-{%endif%}
-
-{%if user.is_authenticated and Campanhas.Status == 'Ativo' %}
-    <form  method="post" class="inscricao_Campanhas">
-        {% csrf_token %}
-        {% buttons%}
-        <button type="submit" class="btn btn-primary">inscrever-me</button>
-        {% endbuttons %}
-    </form>
-{%for Midia in Midias%}
-<img src = "{{Midia.foto.url}}">
-{%endfor%}
-{%endif%}
-{% bootstrap_javascript jquery='full'%}
+<main>
+    <section class="default-eventos light-eventos">
+        <div class="section-title-eventos">{{Campanhas.name}}</div>
+        <div class="section-body-eventos">
+            <div class="section-evento-social">
+                <div class="section-evento-social-left">
+                    <p><pre>
+                    {{Campanhas.descricao}}
+                    </pre></p>
+                    {%if user.is_authenticated and Campanhas.Status == 'Ativo' %}
+                        <form  method="post" class="inscricao_campanhas">
+                            {% csrf_token %}
+                            {% buttons%}
+                            <button type="submit" class="btn btn-primary">inscrever-me</button>
+                            {% endbuttons %}
+                        </form>
+                    {%endif%}
+                </div>
+                <div class="section-evento-social-right">
+                    <img src="{{Campanhas.image.url}}" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="default dark bg-evento-social">
+        <div class="section-evento-social-area">
+            <div class="section-title">Fotos da Ação</div>
+            <div class="section-desc">sub-titulo</div>
+            <div class="section-body">
+                <div class="section-evento-social">
+                    <div class="sliders" style="margin-left:0;">
+                        <div class="slide">
+                            <div class="slidearea">
+                                <img class="section-evento-social--avatar" src="{%static 'assets/foto8.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-evento-social--avatar" src="{%static 'assets/foto7.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-evento-social--avatar" src="{%static 'assets/foto5.jpg'%}" />
+                            </div>
+                        </div><div class="slide">
+                            <div class="slidearea">
+                                <img class="section-evento-social--avatar" src="{%static 'assets/foto8.jpg'%}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sliders-pointers">
+                    <div class="pointer active"></div>
+                    <div class="pointer"></div>
+                    <div class="pointer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 {%endblock%}
-
+</html>

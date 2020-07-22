@@ -6,7 +6,7 @@ from django.views.generic import TemplateView,ListView
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.db import models
-
+from .services import Send_Esportes_Mail
 # Views das paginas referentes a atletica.
 class Home(TemplateView):
     template_name = 'index.html'
@@ -81,6 +81,7 @@ def Modalidades_view(request, slug):
         inscricao = inscricao_modalidades.objects.filter(email = request.user.email,modalidade = Modalidades)
         if inscricao.exists() is False:
             inscricao_modalidades.objects.inscrever(usuario=request.user,modalidade= Modalidades)
+            Send_Esportes_Mail(request.user,Modalidades)
             messages.success(request,"Inscrito na modalidade com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Modalidade")

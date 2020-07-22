@@ -1,38 +1,60 @@
 {% load static %}
+{%load bootstrap4 %}
 <html>
 	<head>
 		<meta charset="UTF-8"/>
 		<title>{% block title %}{% endblock %}</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
 		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
 		<link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+		{% bootstrap_css %}
 	</head>
-    <body>
-		<header class="topo flutuante">
-			<nav class="topoint">
-				<div class="toporight">
-					<a href="https://www.facebook.com/avalancheutfpr/?epa=SEARCH_BOX" target="_blank"><image src="{% static 'assets/facebook.png' %}" border="0" width="20" height="20"/></a>
-					<a href="https://www.instagram.com/avalancheutfpr/?hl=pt-br" target="_blank"><image src="{% static 'assets/instagram.png'%}" border="0" width="20" height="20"/></a>
-				</div>
-				<a href="{% url 'SobreNos' %}" title="Sobre nós"><div class="logo">
-					<img src="{%static 'assets/logo.png'%}">
-					<div class="logo_texto">A.A.A.E.A UTFPR - Avalanche</div>
-				</div></a>
-				<div class="menu"> 
-					<ul>
-						<li><a href="{% url 'Home' %}">HOME</a></li>
-						<li><a href = "{% url 'Produtos'%}">PRODUTOS</a></li>
-						<li><a href="{% url 'Eventos' %}">EVENTOS</a></li>
-						<li><a href = "{% url 'Esportes'%}">ESPORTES</a></li>
-						<li><a href = "{% url 'Social'%}">SOCIAL</a></li>
-						<li><a href = "{% url 'E-sports'%}">E-SPORTS</a></li>
-						<li><a href = "{% url 'Contatos'%}">CONTATOS</a></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
+	<body>
+		<header>
+            {%if user.is_authenticated%}
+            <div class="adicional">
+            <div class="usuario"><a href="{%url 'Minha_Conta'%}"><pre>{{user.Nome_completo}}</a>     <a href="{%url 'Logout'%}">Logout</pre></a> </div>
+            </div>
+            {%else%}
+    <div class="adicional">
+        <div class="usuario"><a href="{%url 'Login'%}"><pre>Login</a>     <a href="{%url 'Cadastro'%}">Cadastre-se</pre></a> </div>
+    </div>
+            {%endif%}
+    <div class="header">
+        <div class="logo">
+            <div class="logoimg"><img src="{%static 'assets/logo.png'%}"></div>
+        </div>
+        <div class="logo-texto">A.A.A.E.A UTFPR - Avalanche</div>
+        <div class="menu">
+            <img class="menu-opener" src="{%static 'assets/menu.png'%}" />
+            <nav>
+                <ul>
+                    <li class="active"><a href="{% url 'Home' %}">Home</a></li>
+                    <li><a href="{% url 'Produtos'%}">Produtos</a></li>
+                    <li><a href="">Eventos<img src="{% static 'assets/seta-baixo.png'%}"></a>
+                        <div class="submenu">
+                            <a class="subm" href="{% url 'Social'%}"><div class="submenuitem">Ações sociais</div></a>
+                            <a class="subm" href="{% url 'Eventos' %}"><div class="submenuitem">Integração</div></a>
+                        </div>
+                    </li>
+                    <li><a href="{% url 'Esportes'%}">Esportes</a></li>
+                    <li><a href="{% url 'Blog'%}">Blog</a></li>
+                    <li><a href="{% url 'E-sports'%}">E-Sports</a></li>
+                    <li><a href="{% url 'Contatos'%}">Contatos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </header>
 		{%block body%}
 		
 		{%endblock%}
+		<footer>
+    <div class="footer--area">
+        <div class="footer--item">
+                Copyright © 2020  Avalanche Adriano Oliveira - Lucas Vinicius Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
 	</body>
 </html>
