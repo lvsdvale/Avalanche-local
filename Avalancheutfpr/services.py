@@ -1,5 +1,6 @@
 import uuid
-from mailer import send_mail
+import smtplib
+from email.message import EmailMessage
 from django.conf import settings
 
 def get_file_path(_instance,filename):
@@ -8,7 +9,17 @@ def get_file_path(_instance,filename):
     return filename
 
 def Send_Esportes_Mail(usuario,modalidade):
-    subject=f'Inscrição {modalidade.name}'
-    body=f'{usuario.Nome_completo} recebemos sua inscrição logo entraremos em contato \n qualquer dúvida entrar em contato'
-    to=(usuario.email,)
-    send_mail(subject=subject, message = body, from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=to,fail_silently=False)
+    msg = EmailMessage()
+    subject=f'Inscrição {modalidade.name} avalanche'
+    body=f'{usuario.Nome_completo} recebemos sua inscrição logo entraremos em contato \nqualquer dúvida entrar em contato com a direção da A.A.A.E.A'
+    to = f'{usuario.email}'
+    msg.set_content(body)
+    msg['Subject'] = subject
+    msg['From'] = settings.EMAIL_HOST_USER
+    msg['To'] = to
+    mail = smtplib.SMTP(settings.EMAIL_HOST,settings.EMAIL_PORT)
+    mail.ehlo()
+    mail.starttls()
+    mail.login(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
+    mail.send_message(msg)
+    mail.quit()
