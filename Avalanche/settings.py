@@ -165,8 +165,8 @@ LOGOUT_REDIRECT_URL = '/'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TSL = True
-EMAIL_HOST_USER = 'lucas.vinicius@atleticautfpr.com.br'
-EMAIL_HOST_PASSWORD ='06252729'
+EMAIL_HOST_USER = 'no-reply@atleticautfpr.com.br'
+EMAIL_HOST_PASSWORD ='28agosto'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 

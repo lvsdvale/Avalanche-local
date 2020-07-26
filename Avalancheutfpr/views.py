@@ -6,7 +6,7 @@ from django.views.generic import TemplateView,ListView
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.db import models
-from .services import Send_Esportes_Mail
+from .services import *
 from ecommerce.models import produtobase
 # Views das paginas referentes a atletica.
 class Home(TemplateView):
@@ -122,6 +122,7 @@ def Campanhas_view(request, slug):
         if inscricao.exists() is False:
             inscricao_campanhas_sociais.objects.inscrever(usuario = request.user,Campanha = Campanhas
             )
+            Send_Acao_Mail(usuario=request.user,campanha=Campanhas)
             messages.success(request, "Inscrito na ação com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Campanha")
@@ -151,6 +152,7 @@ def Games_view(request, slug):
         inscricao = inscricao_E_sports.objects.filter(email=request.user.email, game=Games)
         if inscricao.exists() is False:
             inscricao_E_sports.objects.inscrever(usuario=request.user, game=Games)
+            Send_E_sports_Mail(usuario=request.user,game=Games)
             messages.success(request, "Inscrito na modalidade de E-sports com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Modalidade")

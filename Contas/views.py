@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.contrib import messages
 from Avalancheutfpr.models import inscricao_modalidades,inscricao_campanhas_sociais,inscricao_E_sports,eventos,campanhas
-
+from Avalancheutfpr.services import Send_Sign_Mail
 
 # views de login
 @csrf_exempt
@@ -17,10 +17,13 @@ def Cadastrar_usuarios(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
+            Nome = form.cleaned_data.get('Nome_completo')
+            email = form.cleaned_data.get('email')
             messages.success(request,"Cadastro Realizado com Sucesso")
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('Cadastro')
+            User = authenticate(username=username, password=raw_password)
+            login(request, User)
+            Send_Sign_Mail(Email=email,Nome=Nome)
+            return redirect('Home')
     else:
         form = Cadastro()
     context = {
