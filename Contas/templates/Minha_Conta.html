@@ -11,5 +11,70 @@
 {%block body%}
 <h1>Dados do usuário</h1>
 <p>{{user.Nome_completo}}</p>
+<h1>Calendario Avalanche</h1>
+<h2>Proximos Eventos</h2>
+{%for evento in Eventos %}
+    <tr>
+        <td>
+          <a href="{% url 'Eventos_View' evento.slug%}">{{evento.name}}</a>
+        </td>
+        <td>
+            {{evento.data|date:"d/m/Y"}}
+        </td>
+    </tr><br>
+    {%endfor%}
+<h2>Proximas ações</h2>
+{%for campanha in Campanhas %}
+    <tr>
+        <td>
+          <a href="{%url 'Campanhas_View' campanha.slug%}">{{campanha.name}}</a>
+        </td>
+        <td>
+            {{campanha.data|date:"d/m/Y"}}
+        </td>
+    </tr><br>
+    {%endfor%}
+<h2>Meus esportes</h2>
+{%if Inscricao_esportes is None%}
+<p>Nenhuma inscricao em esportes</p>
+{%endif%}
+{%for inscricao in Inscricao_esportes %}
+    <tr>
+        <td>
+          <a href="{%url 'Modalidades_View' inscricao.modalidade.slug%}">{{inscricao.modalidade}}</a>
+        </td>
+        <td>
+            {{inscricao.data|date:"d/m/Y"}}
+        </td>
+    </tr><br>
+    {%endfor%}
+<h2>Minhas ações sociais</h2>
+{%for inscricao in Incricao_campanhas  %}
+{%if inscricao is None %}
+<p>Nenhuma inscricao em campanhas sociais</p>
+{%endif%}
+    <tr>
+        <td>
+          <a href="{%url 'Campanhas_View' inscricao.campanha.slug%}">{{inscricao.campanha}}</a>
+        </td>
+        <td>
+            {{inscricao.data|date:"d/m/Y"}}
+        </td>
+    </tr><br>
+    {%endfor%}
+<h2>Minhas Modalidade de E_sports</h2>
+{%if Inscricao_E_sports is None%}
+<p>Nenhuma inscrição em modalidades de E-Sports</p>
+{%endif%}
+{%for inscricao in Incricao_E_sports %}
+    <tr>
+        <td>
+          <a href="{% url 'Games_View' inscricao.game.slug %}">{{inscricao.game}}</a>
+        </td>
+        <td>
+            {{inscricao.data|date:"d/m/Y"}}
+        </td>
+    </tr><br>
+    {%endfor%}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

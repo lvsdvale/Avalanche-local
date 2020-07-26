@@ -99,7 +99,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['Nome_completo', 'CPF', 'Curso', 'Registro_Academico','Telefone']
+    REQUIRED_FIELDS = ['Nome_completo', 'CPF', 'Curso','Telefone']
 
     def __str__(self):
         return self.Nome_completo

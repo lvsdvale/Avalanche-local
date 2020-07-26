@@ -27,7 +27,9 @@
 <select name = 'Modelo' >
     <option value="0" selected>---------</option>
 {% for produtos in produtobase.get_produto %}
+    {%if produtos.estoque is not 0%}
  <option value="{{produtos.pk}}">{{produtos.name}}</option>
+    {%endif%}
 {%endfor%}
 </select>
     {% buttons%}

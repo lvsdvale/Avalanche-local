@@ -7,11 +7,13 @@ from pagseguro import PagSeguro
 from picpay import PicPay
 
 class produtobase(models.Model):
+    Destaque = (('Sim', 'Sim'), ('Não', 'Não'),)
     name = models.CharField(max_length=255,null = False,blank = False,verbose_name='Nome')
     descricao = models.TextField(null = False,blank = False,verbose_name='Descrição')
-    thumb = StdImageField(upload_to=get_file_path, null=True, blank=True, verbose_name='thumbnail')
+    thumb = StdImageField(upload_to=get_file_path, null=False, blank=False, verbose_name='thumbnail')
     preco = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço')
     p_socio = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço para Sócio')
+    destaque =  models.CharField(max_length=30, null=True, blank=True, choices=Destaque, default='Não')
     slug = AutoSlugField(populate_from='name')
     class Meta:
         verbose_name = 'Produto Base'

@@ -140,39 +140,45 @@
             </div>
         </div>
     </section>
-    
     <section class="default light premium">
-        <div class="section-title">Produtos</div>
-        <div class="section-desc">Principais produtos</div>
+        <div class="section-title">Produto</div>
+        <div class="section-desc">Produto em destaque</div>
         <div class="section-body">
             <div class="section-premium">
                 <div class="sliders" style="margin-left:0;">
                     <div class="slide">
                         <div class="slidearea">
                             <div class="section-premium--left">
-                                <img src="{%static 'assets/produto.jpeg'%}" />
+                                <img src="{{Produtos.thumb.url}}" />
                             </div>
                             <div class="section-premium--right">
                                     <div class="section-premium--item">
                                         <img src="{% static 'assets/check.png'%}" />
                                         <div>
-                                            <h4>Informações do produto</h4>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel eros vitae erat condimentum viverra a nec lacus.<br/>
+                                            <h4>Nome do produto</h4>
+                                            {{Produtos.name}}<br/>
                                         </div>
                                     </div>
                                     <div class="section-premium--item">
                                         <img src="{%static 'assets/check.png'%}" />
                                         <div>
                                             <h4>Mais informações</h4>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel eros vitae erat condimentum viverra a nec lacus.
+                                           {{Produtos.descricao}}
                                         </div>
                                     </div>
                                     <div class="section-premium--item">
                                         <img src="{%static 'assets/check.png'%}" />
+                                        {%if user.get_socio %}
                                         <div>
                                             <h4>Preço</h4>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel eros vitae erat condimentum viverra a nec lacus.
+                                            {{Produtos.p_socio}}
                                         </div>
+                                        {%else%}
+                                        <div>
+                                            <h4>Preço</h4>
+                                            {{Produtos.preco}}
+                                        </div>
+                                        {%endif%}
                                     </div>
                             </div>
                         </div>

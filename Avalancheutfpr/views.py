@@ -7,9 +7,15 @@ from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.db import models
 from .services import Send_Esportes_Mail
+from ecommerce.models import produtobase
 # Views das paginas referentes a atletica.
 class Home(TemplateView):
     template_name = 'index.html'
+    def get_context_data(self, **kwargs):
+        context = super(Home,self).get_context_data(**kwargs)
+        Produtos =  produtobase.objects.filter(destaque = 'Sim').order_by('-id')
+        context['Produtos'] = Produtos[0]
+        return context
 def Contatos(request):
     initial = None
     if request.user.is_authenticated:

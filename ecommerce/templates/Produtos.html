@@ -16,6 +16,7 @@
 	        </div>
 	      </form>
 {%for Produto in page_obj %}
+<p>Proximo Produto</p>
 <a href="{%url 'ProdutosBase_view' Produto.slug %}">{{Produto.name}}</a>
 <p>{{Produto.descricao}}</p>
 {% if Produto.thumb.url != blank%}
