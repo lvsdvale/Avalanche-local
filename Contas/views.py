@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import  AuthenticationForm
-from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
+from django.views.decorators.csrf import  csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.contrib import messages
 from Avalancheutfpr.models import inscricao_modalidades,inscricao_campanhas_sociais,inscricao_E_sports,eventos,campanhas
-from Avalancheutfpr.services import Send_Sign_Mail
-
+from Avalancheutfpr.services import Send_Sign_Mail,Send_Reset_Mail
+from random import choice
 # views de login
 @csrf_exempt
 def Cadastrar_usuarios(request):
@@ -21,7 +21,6 @@ def Cadastrar_usuarios(request):
             email = form.cleaned_data.get('email')
             messages.success(request,"Cadastro Realizado com Sucesso")
             User = authenticate(username=username, password=raw_password)
-            login(request, User)
             Send_Sign_Mail(Email=email,Nome=Nome)
             return redirect('Home')
     else:
@@ -76,3 +75,27 @@ def Minha_Conta(request):
         context['Inscricao_E_sports'] = Inscricao_E_sports
         return render(request,'Minha_Conta.html',context)
     return redirect('Login')
+
+def Resetar(request):
+    if request.method == 'POST':
+        form = Reset(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get("email")
+            cpf = form.cleaned_data.get("cpf")
+            Usuario = user.objects.get(CPF = cpf,email= email)
+            if Usuario == None:
+                messages.error(request,"Dados inválidos")
+            else:
+                caracteres = '0123456789abcdefghijklmnopqrstuvwxyz'
+                Nova_senha = ''
+                for i in range(10):
+                    Nova_senha += choice(caracteres)
+                Usuario.set_password(raw_password=Nova_senha)
+                Send_Reset_Mail(email,Nova_senha)
+                messages.success(request,"Sua nova senha foi enviada para seu email")
+    else:
+        form = Reset()
+    context = {
+        'form':form
+    }
+    return render(request, 'ResetarSenha.html', context)

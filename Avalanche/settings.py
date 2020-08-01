@@ -108,12 +108,12 @@ DATABASES = {
 '''
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'avalanche',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'avproduction',
         'USER':'Diretoria',
         'PASSWORD':'Gestao2020',
-        'HOST':'avalanche.cw50ga3zpj1d.sa-east-1.rds.amazonaws.com',
-        'PORT':'3306',
+        'HOST':'avalanche-production.cw50ga3zpj1d.sa-east-1.rds.amazonaws.com',
+        'PORT':'5432',
 
     }
 }

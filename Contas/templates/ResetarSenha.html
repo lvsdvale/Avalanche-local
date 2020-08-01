@@ -1,0 +1,22 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Resetar senha{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages %}
+<h2>Resetar a senha</h2>
+  <form  method="post">
+      {% csrf_token %}
+      {%bootstrap_form form%}
+      {% buttons%}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    {% endbuttons %}
+  </form>
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

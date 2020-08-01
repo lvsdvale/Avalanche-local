@@ -20,8 +20,9 @@
         <div class="section-body-esportes">
             <div class="section-esporte">
                 <div class="section-esporte-left">
-                    <p><pre>
+                    <p>
                     {{Modalidades.descricao}}
+                    </p>
                     {%if user.is_authenticated and Modalidades.Status == 'Ativo' %}
                         <form  method="post" class="inscricao_esportes">
                             {% csrf_token %}
@@ -30,8 +31,6 @@
                             {% endbuttons %}
                         </form>
                     {%endif%}
-
-                    </pre></p>
                 </div>
                 {% if Modalidades.image.url != blank%}
                 <div class="section-esporte-right">

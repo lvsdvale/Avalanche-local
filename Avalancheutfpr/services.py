@@ -23,6 +23,7 @@ def Send_Esportes_Mail(usuario,modalidade):
     mail.login(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
     mail.send_message(msg)
     mail.quit()
+
 def Send_E_sports_Mail(usuario,game):
     msg = EmailMessage()
     subject=f'Inscrição {game.name} avalanche'
@@ -39,6 +40,7 @@ def Send_E_sports_Mail(usuario,game):
     mail.send_message(msg)
     mail.quit()
 
+
 def Send_Acao_Mail(usuario,campanha):
     msg = EmailMessage()
     subject=f'Inscrição na ação Social:{campanha.name}'
@@ -54,10 +56,27 @@ def Send_Acao_Mail(usuario,campanha):
     mail.login(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
     mail.send_message(msg)
     mail.quit()
+
 def Send_Sign_Mail(Email,Nome):
     msg = EmailMessage()
     subject=f'Cadastro Concluido'
-    body=f'Seja muito bem vindo a Familia Avalanche!!! \n{Nome}, Seu cadastro foi concluído com sucesso, agora você pode aproveitar todo o nosso site como um avalover'
+    body=f'Seja muito bem vindo a Familia Avalanche!!! \n{Nome}, Seu cadastro foi concluído com sucesso, agora você pode aproveitar todo o nosso site.'
+    to = f'{Email}'
+    msg.set_content(body)
+    msg['Subject'] = subject
+    msg['From'] = settings.EMAIL_HOST_USER
+    msg['To'] = to
+    mail = smtplib.SMTP(settings.EMAIL_HOST,settings.EMAIL_PORT)
+    mail.ehlo()
+    mail.starttls()
+    mail.login(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
+    mail.send_message(msg)
+    mail.quit()
+
+def Send_Reset_Mail(Email,Senha):
+    msg = EmailMessage()
+    subject=f'Recuperação de senha'
+    body=f'A sua nova senha é {Senha}'
     to = f'{Email}'
     msg.set_content(body)
     msg['Subject'] = subject

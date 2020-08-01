@@ -139,6 +139,9 @@ class user(AbstractBaseUser, PermissionsMixin):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
+    def set_senha(self,senha):
+        self.password = senha
+        self.save()
     class Meta:
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'

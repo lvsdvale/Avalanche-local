@@ -20,9 +20,9 @@
         <div class="section-body-e-sports">
             <div class="section-e-sports">
                 <div class="section-e-sport-left">
-    <p><pre> 
+    <p>
       {{Games.descricao}}
-    <pre></p>
+    </p>
                     {%if user.is_authenticated and Games.Status == 'Ativo' %}
                         <form  method="post" class="inscricao_games">
                             {% csrf_token %}
