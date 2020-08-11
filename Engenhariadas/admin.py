@@ -11,7 +11,7 @@ class EngenhariadasAdmin(admin.ModelAdmin):
 @admin.register(parceladao)
 class ParceladaoAdmin(ad.ImportExportModelAdmin):
     list_display = ['name','email','data']
-    search_fields = ['name','email','cpf ','telefone','engenhariadas','pagamento','data']
+    search_fields = ['name','email','telefone','data']
 
 @admin.register(pagamentos)
 class PagamentosAdmin(ad.ImportExportModelAdmin):

@@ -41,8 +41,7 @@ class parceladao(models.Model):
         verbose_name = 'Parceladão'
         verbose_name_plural = 'Parceladões'
         ordering = ['engenhariadas']
-    def __str__(self):
-        self.name
+
 class pagamentoMenager(models.Manager):
     def adicionar(self,usuario):
         Pagamento = self.create(usuario=usuario,name = usuario.Nome_completo,email = usuario.email,
@@ -52,6 +51,7 @@ class pagamentos(models.Model):
     PAGAMENTO_CHOICES = (
         ('Deposito', 'Depósito'),
         ('PicPay', 'PicPay'),
+        ('Presencial', 'Presencial'),
     )
     STATUS_CHOICES = (
         (0, 'Aguardando Validação'),

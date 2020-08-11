@@ -19,7 +19,7 @@
     {%endif%}
     <p>{{produtobase.descricao}}</p>
    {% if produtobase.thumb.url != blank%}
-    <img src = "{{produtobase.thumb.url}}">
+    <img src = "{{produtobase.thumb.url}}" alt ="{{produtobase.name}}" height="300" width="300">
    {%endif%}
 
 <form method="post" class="adicionar">

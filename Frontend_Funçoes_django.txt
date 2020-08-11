@@ -1,9 +1,0 @@
-Para fazer login e logoff ajeitar css
-<div class="usuario">
-{%if user.is_authenticated%}
-<p>{{user.Nome_completo}}<p>
-<a href="{% url 'Logout'%}">Sair</a>
-{%else%}
-<a href="{% url 'Login'%}">Entrar</a>
-{%endif%}
-</div>

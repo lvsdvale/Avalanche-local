@@ -59,7 +59,7 @@ def Logout(request):
     logout(request)
     messages.success(request,"Logout realizado com Sucesso")
     return redirect('Home')
-
+@login_required
 def Minha_Conta(request):
     if request.user.is_authenticated:
         Inscricao_modalidades = inscricao_modalidades.objects.filter(usuario = request.user).order_by('modalidade')
@@ -86,11 +86,11 @@ def Resetar(request):
             if Usuario == None:
                 messages.error(request,"Dados inválidos")
             else:
-                caracteres = '0123456789abcdefghijklmnopqrstuvwxyz'
+                caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
                 Nova_senha = ''
-                for i in range(10):
+                for i in range(8):
                     Nova_senha += choice(caracteres)
-                Usuario.set_password(raw_password=Nova_senha)
+                Usuario.set_senha(Nova_senha)
                 Send_Reset_Mail(email,Nova_senha)
                 messages.success(request,"Sua nova senha foi enviada para seu email")
     else:

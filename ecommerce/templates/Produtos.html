@@ -15,14 +15,16 @@
 	          <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
 	        </div>
 	      </form>
+<div class="products">
 {%for Produto in page_obj %}
-<p>Proximo Produto</p>
 <a href="{%url 'ProdutosBase_view' Produto.slug %}">{{Produto.name}}</a>
 <p>{{Produto.descricao}}</p>
 {% if Produto.thumb.url != blank%}
-      <img src = "{{Produto.thumb.url}}">
+      <img src = "{{Produto.thumb.url}}" height="250" width="250">
     {%endif%}
+    <br>
 {%endfor%}
 {% include 'paginacao.html' %}
+</div>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

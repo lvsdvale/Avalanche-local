@@ -130,17 +130,8 @@ class user(AbstractBaseUser, PermissionsMixin):
     def get_socio(self):
         return self.Socio
 
-    def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
-        return True
-
-    def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
-        return True
     def set_senha(self,senha):
-        self.password = senha
+        self.set_password(raw_password=senha)
         self.save()
     class Meta:
         verbose_name = 'Usuário'
