@@ -3,7 +3,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-        <meta name="keywords" content="Atlética,Avalanche,UTFPR,A.A.A.E.A UTFPR-CT">
+        <meta name="keywords" content="Atlética,Avalanche,UTFPR,A.A.A.E.A UTFPR-CT,alavanche,Universidade Tecnológica Federal do Parana,Engenhariadas">
+        <meta name ="viewport" content="width = device-width,inicial-scale = 1.0">
 		<title>{% block title %}{% endblock %}</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         {% bootstrap_css %}
@@ -25,9 +26,9 @@
             {%endif%}
     <div class="header">
         <div class="logo">
-            <div class="logoimg"><img src="{%static 'assets/logo.png'%}"></div>
+            <div class="logoimg"><a href="{% url 'Home'%}"><img src="{%static 'assets/logo.png'%}"></a></div>
         </div>
-        <div class="logo-texto">A.A.A.E.A UTFPR - Avalanche</div>
+        <div class="logo-texto"><a href="{% url 'Home'%}">A.A.A.E.A UTFPR - Avalanche</a></div>
         <div class="menu">
             <img class="menu-opener" src="{%static 'assets/menu.png'%}" />
             <nav>
@@ -40,7 +41,12 @@
                             <a class="subm" href="{% url 'Eventos' %}"><div class="submenuitem">Integração</div></a>
                         </div>
                     </li>
-                    <li><a href="{% url 'Esportes'%}">Esportes</a></li>
+                    <li><a href="">Esportes<img src="{% static 'assets/seta-baixo.png'%}"></a>
+                        <div class="submenu">
+                            <a class="subm" href="{% url 'Esportes'%}"><div class="submenuitem">Modalidades</div></a>
+                            <a class="subm" href="{% url 'Competicoes'%}"><div class="submenuitem">Competições</div></a>
+                        </div>
+                    </li>
                     <li><a href="{% url 'Blog'%}">Blog</a></li>
                     <li><a href="{% url 'E-sports'%}">E-Sports</a></li>
                     <li><a href="{% url 'Contatos'%}">Contatos</a></li>

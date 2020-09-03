@@ -18,7 +18,7 @@ class Lojinha(ListView):
     template_name = 'Produtos.html'
     context_object_name = 'produtobase'
     paginate_by = 10
-    ordering = '-pub_date'
+    ordering = 'pub_date'
 
     def get_queryset(self):
         queryset = produtobase.objects.all()

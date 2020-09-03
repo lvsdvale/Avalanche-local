@@ -202,3 +202,48 @@ class media(models.Model):
     def __str__(self):
         return self.name
 
+class competicoes(models.Model):
+    status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'))
+    name = models.CharField(max_length=30, null=False, blank=False, verbose_name='Nome')
+    previa = models.TextField(null=False, blank=False, verbose_name='Prévia')
+    descricao = models.TextField(null=False, blank=False, verbose_name='Descrição')
+    image = StdImageField(upload_to=get_file_path, null=False, blank=False)
+    slug = AutoSlugField(populate_from='name')
+    pub_date = models.DateField(auto_now_add=True, verbose_name='Data de publicação')
+    Status = models.CharField(max_length=30, null=True, blank=True, choices=status, default='Ativo')
+    class Meta:
+        verbose_name = 'Competição'
+        verbose_name_plural = 'Competições'
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+class jogos(models.Model):
+    competicao = models.ForeignKey(competicoes,verbose_name="Competição",on_delete=models.CASCADE)
+    time1 = models.CharField(max_length=300,null=False,blank=False,verbose_name="Time da casa")
+    time2 = models.CharField(max_length=300,null=False,blank=False,verbose_name="Time visitante")
+    imgtime1= StdImageField(upload_to=get_file_path, null=True, blank=True,verbose_name="Logotipo time da casa")
+    imgtime2= StdImageField(upload_to=get_file_path, null=True, blank=True,verbose_name="logotipo time visitante")
+    placart1 = models.IntegerField(null=False,blank=False,verbose_name="Pontos do time da casa")
+    placart2 = models.IntegerField(null=False,blank=False,verbose_name="Pontos do time visitante")
+    horario = models.TimeField(auto_now_add=True,verbose_name="Horário do jogo")
+    local = models.CharField(max_length=300,blank=True,null=False,verbose_name="Local")
+    data = models.DateField(auto_now_add=True,verbose_name='Data do jogo')
+    def __str__(self):
+        return f'{self.time1} X {self.time2}'
+    class Meta:
+        verbose_name =  'Jogo'
+        verbose_name_plural = 'Jogos'
+
+class lance(models.Model):
+    jogo = models.ForeignKey(jogos, verbose_name="Jogo", on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=300,blank=False,null=False,verbose_name="Titulo da jogada")
+    descricao = models.CharField(max_length=300,null=False,blank=False,verbose_name="Descrição do Lance")
+    tempo = models.TimeField(auto_now_add=True,verbose_name="Tempo")
+
+    def __str__(self):
+        return self.titulo
+
+    class Meta:
+        verbose_name = 'Lance'
+        verbose_name_plural = 'Lance'

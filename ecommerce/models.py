@@ -15,6 +15,7 @@ class produtobase(models.Model):
     p_socio = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço para Sócio')
     destaque =  models.CharField(max_length=30, null=True, blank=True, choices=Destaque, default='Não')
     slug = AutoSlugField(populate_from='name')
+    pub_date = models.DateField(auto_now_add=True, verbose_name='Data de Criação')
     class Meta:
         verbose_name = 'Produto Base'
         verbose_name_plural = 'Produtos Base'
@@ -35,7 +36,6 @@ class produtos(models.Model):
                                related_name='Produtos',related_query_name='Produtos_Query',on_delete=models.CASCADE)
     name = models.CharField(max_length=255,null = False,blank = False,verbose_name='Nome')
     estoque = models.PositiveIntegerField(verbose_name='Quantidade em estoque')
-    pub_date = models.DateField(auto_now_add=True,verbose_name='Data de Criação')
     Status = models.CharField(max_length=30, null=True, blank=True, choices=status, default='Ativo')
     slug = AutoSlugField(populate_from='name')
 

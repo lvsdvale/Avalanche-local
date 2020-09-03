@@ -46,3 +46,11 @@ class Diretoria(admin.ModelAdmin):
 @admin.register(media)
 class media(admin.ModelAdmin):
     list_display = ['name','tag']
+@admin.register(competicoes)
+class Competicoes(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name', 'descricao']
+@admin.register(jogos)
+class Competicoes(admin.ModelAdmin):
+    list_display = ['time1','time2']
+    search_fields = ['time1','time2']

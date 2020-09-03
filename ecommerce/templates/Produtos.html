@@ -15,16 +15,24 @@
 	          <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
 	        </div>
 	      </form>
-<div class="products">
+<div class="clearproducts">
 {%for Produto in page_obj %}
-<a href="{%url 'ProdutosBase_view' Produto.slug %}">{{Produto.name}}</a>
-<p>{{Produto.descricao}}</p>
+<div class="products">
+    <p><strong><a href="{%url 'ProdutosBase_view' Produto.slug %}">{{Produto.name}}</a></strong></p>
 {% if Produto.thumb.url != blank%}
-      <img src = "{{Produto.thumb.url}}" height="250" width="250">
+      <a href="{%url 'ProdutosBase_view' Produto.slug %}"><img src = "{{Produto.thumb.url}}" height="250" width="250"></a>
     {%endif%}
-    <br>
-{%endfor%}
-{% include 'paginacao.html' %}
+    {%if user.get_socio %}
+
+   <span class="preco_socio">
+                <del>Preço: R${{Produto.preco}}</del>
+              </span><br>
+         <strong><span>Sócio: R${{Produto.p_socio}}</span></strong>
+    {%else%}
+    <strong><span class="preco">Preço: R${{Produto.preco}}</span></strong>
+    {%endif%}
 </div>
-{% bootstrap_javascript jquery='full'%}
+{%endfor%}
+</div>
+{% include 'paginacao.html' %}
 {%endblock%}

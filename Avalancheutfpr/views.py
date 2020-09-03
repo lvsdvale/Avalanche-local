@@ -179,6 +179,21 @@ class Galeria(TemplateView):
         context = super(Galeria,self).get_context_data(**kwargs)
         context['Midias'] = media.objects.all().order_by('tag')
         return context
+#Competiçoes e Jogos
+class Competicoes(ListView):
+    template_name = 'Competicoes.html'
+    context_object_name = 'competicoes'
+    paginate_by = 5
+    ordering = '-pub_date'
+    def get_queryset(self):
+        queryset = competicoes.objects.all()
+        q = self.request.GET.get('q', '')
+        if q:
+            queryset = queryset.filter(
+                models.Q(name__icontains=q) | models.Q(descricao__icontains=q) | models.Q(local__icontains=q)
+            )
+
+        return queryset
 #Erros
 def error404(request, ex):
     template = loader.get_template('404.html')

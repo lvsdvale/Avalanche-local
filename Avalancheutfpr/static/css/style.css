@@ -60,6 +60,10 @@ header {
     font-size: 18px;
     font-weight: 600;
 }
+.logo-texto a{
+text-decoration:None;
+color:white;
+}
 .menu-opener {
     display:none;
 }
@@ -522,7 +526,7 @@ CSS DE ÁREAS ESPECÍFICAS
 }
 .section-premium--item {
     display:flex;
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 .section-premium--item img {
     width:20px;
@@ -1640,6 +1644,14 @@ CSS DE ÁREAS ESPECÍFICAS
         padding-left:30px;
         padding-right:30px;
     }
+     .google-map{
+        display:block;
+        width:auto;
+    }
+    .google-map iframe{
+    width:100%;
+    height:100%;
+    }
     .section-map--area {
         width:auto;
     }
@@ -1830,6 +1842,7 @@ CSS DE ÁREAS ESPECÍFICAS
 
     .footer--area {
         flex-direction:column;
+        position:relative;
     }
     .footer--item {
         margin-bottom:20px;
@@ -1837,11 +1850,48 @@ CSS DE ÁREAS ESPECÍFICAS
     .footer-social {
         justify-content: center;
     }
-}
-.btn-primary{color:#fff;background-color:#050329;border-color:#005a5a}
-.btn-primary.disabled,.btn-primary:disabled{color:#fff;background-color:#050329;border-color:#005a5a}
-.btn-primary:hover{color:#fff;background-color:#050329;border-color:#005a5a}
+    .btn-primary{color:#fff;background-color:#050329;border-color:#005a5a}
+    .btn-primary.disabled,.btn-primary:disabled{color:#fff;background-color:#050329;border-color:#005a5a}
+    .btn-primary:hover{color:#fff;background-color:#050329;border-color:#005a5a}
 
-.google-map{
-margin-left:500px;
+    .google-map{
+        display:block;
+        margin-bottom:4%;
+        border-radius:2%;
+    }
+/* Ecommerce */
 }
+.clearproducts::after{
+content:'';
+display:block;
+clear:both;
+}
+.products {
+width:300px;
+height:200 px;
+margin:1%;
+padding:10px;
+float:left;
+}
+.products img{
+width:100%;
+padding-bottom:1%
+border-radius:1%;
+}
+.products a{
+text-decoration: none;
+color:#050329;
+font-size:16px;
+}
+.products p{
+font-family:'Montserrat', Arial, Helvetica, sans-serif;
+}
+.products span{
+color:#050329
+}
+.products del{
+color:red;
+}
+    .btn-primary{color:#fff;background-color:#050329;border-color:#005a5a}
+    .btn-primary.disabled,.btn-primary:disabled{color:#fff;background-color:#050329;border-color:#005a5a}
+    .btn-primary:hover{color:#fff;background-color:#050329;border-color:#005a5a}

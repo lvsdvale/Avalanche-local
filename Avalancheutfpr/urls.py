@@ -17,7 +17,8 @@ urlpatterns = [
                   path('Social/<slug:slug>', Campanhas_view, name='Campanhas_View'),
                   path('E_sports/', E_sports.as_view(), name='E-sports'),
                   path('E_sports/<slug:slug>', Games_view, name='Games_View'),
-                  path('Diretoria',Diretoria,name = 'Diretoria'),
-                  path('Galeria',Galeria.as_view(),name = 'Galeria'),
+                  path('Diretoria/',Diretoria,name = 'Diretoria'),
+                  path('Galeria/',Galeria.as_view(),name = 'Galeria'),
+                  path('Competicoes/',Competicoes.as_view(),name = 'Competicoes')
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
