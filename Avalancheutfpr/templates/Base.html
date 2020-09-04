@@ -14,6 +14,7 @@
 
 	</head>
 	<body>
+
 		<header>
             {%if user.is_authenticated%}
             <div class="adicional">
@@ -29,9 +30,12 @@
             <div class="logoimg"><a href="{% url 'Home'%}"><img src="{%static 'assets/logo.png'%}"></a></div>
         </div>
         <div class="logo-texto"><a href="{% url 'Home'%}">A.A.A.E.A UTFPR - Avalanche</a></div>
+
         <div class="menu">
-            <img class="menu-opener" src="{%static 'assets/menu.png'%}" />
-            <nav>
+            <!--img class="menu-opener" src="{%static 'assets/menu.png'%}" /-->
+            <input type="checkbox" id="Bt_menu" style="display:none;">
+            <label for = "Bt_menu">&#9776;</label>
+             <nav>
                 <ul>
                     <li ><a href="{% url 'Home' %}">Home</a></li>
                     <li><a href="{% url 'Produtos'%}">Produtos</a></li>
