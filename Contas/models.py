@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from localflavor.br.models import BRCPFField
+from phonenumber_field.modelfields import PhoneNumberField
 
 # classes de login
 class UserManager(BaseUserManager):
@@ -95,7 +96,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     CPF = BRCPFField(max_length=14,unique=True,blank=False,null=False)
     Curso = models.CharField(max_length=255, choices=Cursos, null=True)
     Registro_Academico = models.IntegerField(blank=True,unique=True,null=True,help_text="Caso não é aluno da utfpr,deixar em Branco")
-    Telefone = models.CharField(max_length=13,null = False)
+    Telefone = PhoneNumberField(null=False,blank=False,region='BR')
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'

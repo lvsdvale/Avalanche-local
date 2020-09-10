@@ -4,14 +4,15 @@
 
 <head>
     <meta charset="UTF-8"/>
-    {%block title%}ERRO 404{%endblock%}
+    {%block title%}ERRO 500{%endblock%}
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
 </head>
 {%block body%}
-<h1>Ops</h1>
-<p>houve alguma incompatibilidade ou configuração incorreta na aplicação</p>
-
+<div class="Erro">
+    <h1>Ops</h1>
+    <h2>houve alguma incompatibilidade ou configuração incorreta na aplicação</h2>
+</div>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

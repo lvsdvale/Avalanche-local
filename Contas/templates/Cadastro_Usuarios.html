@@ -14,9 +14,29 @@
   <form  method="post" class="Cadastro">
     {% csrf_token %}
       {%bootstrap_form form%}
-       {% buttons%}
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-    {% endbuttons %}
+      <label>
+          <input type="checkbox" id="chk" checked> Li e aceito os <a href="#">termos de uso</a>
+      </label>
+      {% buttons%}
+    <button type="submit" id = "btn_cadastro" class="btn btn-primary">Cadastrar</button>
+      {% endbuttons %}
   </form>
+<script>
+    (function(){
+    'use strict';
+
+    var $btn = document.getElementById('btn_cadastro');
+    var $chk = document.getElementById('chk');
+    toggleBtn();
+
+    $chk.addEventListener('change', function(){
+        toggleBtn();
+    });
+
+    function toggleBtn(){
+        $btn.disabled = !$chk.checked;
+    }
+})()
+</script>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'picpay',
     'analytical',
     'widget_tweaks',
-
+    'phonenumber_field',
 ]
 AUTH_USER_MODEL = 'Contas.user'
 
