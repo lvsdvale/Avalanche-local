@@ -175,8 +175,13 @@ class contatos(models.Model):
     def __str__(self):
         return self.name
 class diretoria(models.Model):
+    Cargos = (
+        (1,"Presidente"),
+        (2,"Vice Presidente"),
+        (3,"Diretor Geral"),
+    )
     name = models.CharField(max_length=255,null=False,blank=False,unique=True,verbose_name='Nome')
-    cargo = models.CharField(max_length=255,null=True,blank=True,verbose_name='Cargo')
+    cargo = models.IntegerField(choices=Cargos,null=False,blank=False,verbose_name='Cargo')
     foto = StdImageField(upload_to=get_file_path,null = False,blank = False)
     intagram = models.CharField(max_length=255,null=True,blank=True,verbose_name='Instagram')
     facebook =  models.CharField(max_length=255,null=True,blank=True,verbose_name='Facebook')
@@ -184,7 +189,7 @@ class diretoria(models.Model):
     class Meta:
         verbose_name = 'Diretor'
         verbose_name_plural = 'Diretores'
-        ordering = ['name']
+        ordering = ['cargo']
 
     def __str__(self):
         return self.name

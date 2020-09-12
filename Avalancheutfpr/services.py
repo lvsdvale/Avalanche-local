@@ -88,3 +88,35 @@ def Send_Reset_Mail(Email,Senha):
     mail.login(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
     mail.send_message(msg)
     mail.quit()
+
+def Send_compra_mail(usuario,pedido):
+    msg = EmailMessage()
+    subject = f'Pedido: #{pedido.pk}'
+    body = f'{usuario.Nome_completo},Seu pedido número {pedido.pk} no valor de {pedido.total():.2f} com pagamento via {pedido.pagamento} foi recebido! \n para mais informações entre em meus pedidos na sua conta'
+    to = f'{usuario.email}'
+    msg.set_content(body)
+    msg['Subject'] = subject
+    msg['From'] = settings.EMAIL_HOST_USER
+    msg['To'] = to
+    mail = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
+    mail.ehlo()
+    mail.starttls()
+    mail.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+    mail.send_message(msg)
+    mail.quit()
+
+def Send_compra_update_mail(usuario,pedido):
+    msg = EmailMessage()
+    subject = f'Pedido: #{pedido.pk}'
+    body = f'{usuario.Nome_completo},Seu pedido número {pedido.pk} no valor de {pedido.total():.2f} com pagamento via {pedido.pagamento} atualizou o status para {pedido.status}'
+    to = f'{usuario.email}'
+    msg.set_content(body)
+    msg['Subject'] = subject
+    msg['From'] = settings.EMAIL_HOST_USER
+    msg['To'] = to
+    mail = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
+    mail.ehlo()
+    mail.starttls()
+    mail.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+    mail.send_message(msg)
+    mail.quit()

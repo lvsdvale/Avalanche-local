@@ -13,8 +13,12 @@ class Home(TemplateView):
     template_name = 'index.html'
     def get_context_data(self, **kwargs):
         context = super(Home,self).get_context_data(**kwargs)
+        Diretoria = diretoria.objects.all().order_by('cargo')
         Produtos =  produtobase.objects.filter(destaque = 'Sim').order_by('-id')
         context['Produtos'] = Produtos[0]
+        context['Presidente'] = Diretoria[0]
+        context['Vice'] = Diretoria[1]
+        context['Geral'] = Diretoria[2]
         return context
 def Contatos(request):
     initial = None
@@ -165,7 +169,7 @@ def Games_view(request, slug):
 
 #Diretoria
 def Diretoria(request):
-    Diretoria= diretoria.objects.all().order_by('-cargo')
+    Diretoria= diretoria.objects.all().order_by('cargo')
     context = {
         "Diretoria": Diretoria,
 

@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 {% load static %}
 {%load bootstrap4 %}
 <html>
@@ -45,12 +46,7 @@
                             <a class="subm" href="{% url 'Eventos' %}"><div class="submenuitem">Integração</div></a>
                         </div>
                     </li>
-                    <li><a href="">Esportes<img src="{% static 'assets/seta-baixo.png'%}"></a>
-                        <div class="submenu">
-                            <a class="subm" href="{% url 'Esportes'%}"><div class="submenuitem">Modalidades</div></a>
-                            <a class="subm" href="{% url 'Competicoes'%}"><div class="submenuitem">Competições</div></a>
-                        </div>
-                    </li>
+                    <li><a href="{% url 'Esportes'%}">Esportes</a></li>
                     <li><a href="{% url 'Blog'%}">Blog</a></li>
                     <li><a href="{% url 'E-sports'%}">E-Sports</a></li>
                     <li><a href="{% url 'Contatos'%}">Contatos</a></li>

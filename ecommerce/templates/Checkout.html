@@ -13,11 +13,34 @@
 <div class="Col-md-12">
     <p>Pedido# {{Pedido.pk}}</p>
 </div>
+<dl class="dl-horizontal">
+    <dt>Total R$</dt>
+    <dd>{{ Pedido.total|floatformat:"2"}}</dd>
+    <dt>Situação</dt>
+    <dd>{{ Pedido.get_status_display }}</dd>
+    <dt>Data</dt>
+    <dd>{{ Pedido.criado|date:"d/m/Y" }}</dd>
+    <dt>Meio de Pagamento</dt>
+    <dd>{{ Pedido.get_pagamento_display }}</dd>
+</dl>
+<h3>Itens do Pedido</h3>
+{% for item in Pedido.Itens.all %}
+    <dl class="dl-horizontal">
+        <dt>Produto</dt>
+        <dd>{{ item.produto }}</dd>
+        <dt>Quantidade</dt>
+        <dd>{{ item.quantidade }}</dd>
+        <dt>Preço</dt>
+        <dd>R$ {{ item.preco|floatformat:"2" }}</dd>
+    </dl>
+{% endfor %}
+<div class = "checkout-buttons">
  {% buttons%}
         <a href="{%url 'PagSeguro' Pedido.pk %}"><button class="btn btn-primary">Pagar com Pagseguro</button></a>
 {% endbuttons %}
  {% buttons%}
-        <a href="{%url 'Picpay' Pedido.pk %}"><button class="btn btn-primary">Pagar com Picpay</button></a>
+        <a href="{%url 'Picpay' Pedido.pk %}"><button class="btn btn-success">Pagar com Picpay</button></a>
 {% endbuttons %}
+</div>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

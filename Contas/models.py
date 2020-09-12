@@ -97,6 +97,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     Curso = models.CharField(max_length=255, choices=Cursos, null=True)
     Registro_Academico = models.IntegerField(blank=True,unique=True,null=True,help_text="Caso não é aluno da utfpr,deixar em Branco")
     Telefone = PhoneNumberField(null=False,blank=False,region='BR')
+    termos = models.BooleanField(default=True, null=False,verbose_name="Termo de Aceite")
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'

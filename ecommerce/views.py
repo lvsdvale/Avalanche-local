@@ -13,6 +13,7 @@ from django.db import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 from pagseguro import PagSeguro
 from picpay import PicPay
+
 # Create your views here.
 class Lojinha(ListView):
     template_name = 'Produtos.html'

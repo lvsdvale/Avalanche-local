@@ -1,7 +1,6 @@
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
-
 <head>
     <meta charset="UTF-8"/>
     {%block title%}Diretores{%endblock%}
@@ -13,13 +12,14 @@
 {% bootstrap_messages %}
 <h1>Diretores</h1>
 {%for diretor in Diretoria%}
+<section class="Diretor-section">
     <p>{{diretor.name}}</p>
-    <p>{{diretor.cargo }}</p>
+    <p>{{diretor.cargo}}</p>
     {% if diretor.foto.url != blank%}
       <img src = "{{diretor.foto.url}}">
     {%endif%}
+</section>
 {%endfor%}
-
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 

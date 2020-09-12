@@ -10,10 +10,10 @@
         <div class="sliders" style="margin-left:0vw;">
             <div class="slide">
                 <div class="slidearea">
-                    <h1>Design adriano<br/></h1>
+                    <h1>Como é bom ser Sócio<br/></h1>
                     <h1><span>Avalanche</span></h1>
-                    <h2>alguma informação</h2>
-                    <a href="{%url 'Socio'%}" class="button">aperta aqui parça!</a>
+                    <h2>O que está esperando ?</h2>
+                    <a href="{%url 'Socio'%}" class="button">quero ser sócio!</a>
                 </div>
             </div><div class="slide">
                 <div class="slidearea">
@@ -61,52 +61,38 @@
                     <div class="sliders" style="margin-left:0;">
                         <div class="slide">
                             <div class="slidearea">
-                                <img class="section-team--avatar" src="{%static 'assets/eu1.jpg'%}" />
-                                <div class="section-team--name">Dri do interior</div>
-                                <div class="section-team--role">Vici-Presidente</div>
+                                <img class="section-team--avatar" src="{{Vice.foto.url}}" />
+                                <div class="section-team--name">{{Vice.name}}</div>
+                                <div class="section-team--role">Vice-Presidente</div>
                                 <div class="section-team--social">
-                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
-                                        <a href=""><img src="{%static 'assets/facebook.png'%}" /></a>
+                                        <a href="{{Vice.intagram}}"><img src="{%static 'assets/instagram.png'%}" /></a>
+                                        <a href="{{Vice.facebook}}"><img src="{%static 'assets/facebook.png'%}" /></a>
                                 </div>
                             </div>
                         </div><div class="slide">
                             <div class="slidearea">
-                                <img class="section-team--avatar" src="{% static 'assets/eu2.jpg'%}" />
-                                <div class="section-team--name">dri de 1900</div>
+                                <img class="section-team--avatar" src="{{Presidente.foto.url}}" />
+                                <div class="section-team--name">{{Presidente.name}}</div>
                                 <div class="section-team--role">Presidente</div>
                                 <div class="section-team--social">
-                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
-                                        <a href=""><img src="{%static 'assets/facebook.png'%}" /></a>
+                                        <a href="{{Presidente.intagram}}"><img src="{%static 'assets/instagram.png'%}" /></a>
+                                        <a href="{{Presidente.facebook}}"><img src="{%static 'assets/facebook.png'%}" /></a>
                                 </div>
                             </div>
                         </div><div class="slide">
                             <div class="slidearea">
-                                <img class="section-team--avatar" src="{%static 'assets/eu3.jpg'%}" />
-                                <div class="section-team--name">Apenas dri</div>
+                                <img class="section-team--avatar" src="{{Geral.foto.url}}" />
+                                <div class="section-team--name">{{Geral.name}}</div>
                                 <div class="section-team--role">Diretor Geral</div>
                                 <div class="section-team--social">
-                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
-                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
-                                </div>
-                            </div>
-                        </div><div class="slide">
-                            <div class="slidearea">
-                                <img class="section-team--avatar" src="{%static 'assets/eu4.jpg'%}" />
-                                <div class="section-team--name"></div>
-                                <div class="section-team--role"></div>
-                                <div class="section-team--social">
-                                        <a href=""><img src="{%static 'assets/instagram.png'%}" /></a>
-                                        <a href=""><img src="{%static 'assets/facebook.png'%}" /></a>
+                                        <a href="{{Geral.instagram}}"><img src="{%static 'assets/instagram.png'%}" /></a>
+                                        <a href="{{Geral.facebook}}"><img src="{%static 'assets/facebook.png'%}" /></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="sliders-pointers">
-                    <div class="pointer active"></div>
-                    <div class="pointer"></div>
-                    <div class="pointer"></div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -192,32 +178,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="sliders-pointers">
-                    <div class="pointer active"></div>
-                    <div class="pointer"></div>
-                    <div class="pointer"></div>
-                </div>
             </div>
         </div>
     </section>
 
     <section class="section-map">
         <div class="section-map--area">
+            <h1 style="color:#050329;"><strong>Onde Estamos ?</strong></h1>
             <div class="section-map--info">
                 <div class = "google-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.9322846631994!2d-49.27000273059359!3d-25.440527326864046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce465f9b0c855%3A0xda22d429219f2f12!2sUTFPR%20Campus%20Curitiba!5e0!3m2!1spt-BR!2sbr!4v1596433584206!5m2!1spt-BR!2sbr" width="400" height="385" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.9322846631994!2d-49.27000273059359!3d-25.440527326864046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce465f9b0c855%3A0xda22d429219f2f12!2sUTFPR%20Campus%20Curitiba!5e0!3m2!1spt-BR!2sbr!4v1596433584206!5m2!1spt-BR!2sbr" width="600" height="385" frameborder="0" style="border:0; padding-bottom:10px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
-                    <div class="section-map--info-item">
-                        <div class="section-map--info-item-img">
-                            <img src="{%static 'assets/carta.png' %}" />
-                        </div>
-                        Endereço completão que irá ter algum tamanho
-                    </div>
                     <div class="section-map--info-item">
                         <div class="section-map--info-item-img">
                             <img src="{% static 'assets/localizacao.png' %}" />
                         </div>
-                        Endereço completão que irá ter algum tamanho
+                        Av. Sete de Setembro, 3165 - Rebouças, Curitiba - PR, 80230-901
                     </div>
                     <div class="section-map--info-item">
                         <div class="section-map--info-item-img">
@@ -231,12 +207,6 @@
                         </div>
                         Endereço completão que irá ter algum tamanho
                     </div>
-                    <div class="section-map--info-item">
-                        <div class="section-map--info-item-img">
-                            <img src="{%static 'assets/web.png'%}" />
-                        </div>
-                        Endereço completão que irá ter algum tamanho
-                    </div>
             </div>
         </div>
     </section>
@@ -244,5 +214,6 @@
 
 </main>
 {% bootstrap_javascript jquery='full'%}
+
 {%endblock%}
 </html>

@@ -32,5 +32,15 @@
         <dd>R$ {{ item.preco|floatformat:"2" }}</dd>
     </dl>
 {% endfor %}
+{%if object.status == 0 %}
+<div class = "checkout-buttons">
+ {% buttons%}
+        <a href="{%url 'PagSeguro' pedidos.pk %}"><button class="btn btn-primary">Pagar com Pagseguro</button></a>
+{% endbuttons %}
+ {% buttons%}
+        <a href="{%url 'Picpay' pedidos.pk %}"><button class="btn btn-success">Pagar com Picpay</button></a>
+{% endbuttons %}
+</div>
+{%endif%}
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

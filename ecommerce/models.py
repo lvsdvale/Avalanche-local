@@ -5,6 +5,7 @@ from autoslug import AutoSlugField
 from django.conf import settings
 from pagseguro import PagSeguro
 from picpay import PicPay
+from Avalancheutfpr.services import Send_compra_mail,Send_compra_update_mail
 
 class produtobase(models.Model):
     Destaque = (('Sim', 'Sim'), ('Não', 'Não'),)
@@ -142,6 +143,7 @@ class pedidos(models.Model):
         elif status == '7':
             self.status = 3
         self.save()
+        Send_compra_update_mail(self.usuario, self)
     def complete(self):
         self.status = 2
         self.save()
@@ -169,13 +171,14 @@ class pedidos(models.Model):
 
                 }
             )
-
+        Send_compra_mail(self.usuario,self)
         return pg
 
     def picpay_update_status(self, status):
         if status == 'paid':
             self.status = 1
         self.save()
+        Send_compra_update_mail(self.usuario, self)
 
     def picpay(self):
         self.pagamento = 'PicPay'
@@ -183,6 +186,7 @@ class pedidos(models.Model):
         pc = PicPay(
             x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
         )
+        Send_compra_mail(self.usuario, self)
         return pc
 
 
