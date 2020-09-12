@@ -12,40 +12,43 @@
 
 {%block body%}
     {% bootstrap_messages %}
-<form class="" action="" method="post">
-    {%csrf_token%}
-    {{formset.management_form}}
-{%for form in formset%}
-<tr>
+<div class = "cart-area">
+    <div class="cart">
+        <form class="" action="" method="post">
+        {%csrf_token%}
+        {{formset.management_form}}
+        {%for form in formset%}
+        <tr class="cart-item">
+            <td>
+                {{form.instance.produto}}
+            </td>
+            <td>
+                {{form.instance.preco|floatformat:"2"}}
+            </td>
+            <td>
+                {{form.quantidade}}
+            </td>
+            <td>
+                    <button value="on" type="submit" name = "{{form.DELETE.html_name }}"class="btn btn-danger btn-sm">Remover</button>
+                    {{form.id}}
+            </td>
+        </tr>
+        {%endfor%}
+                </table>
+            {% buttons%}
+                <button type="submit" class="btn btn-primary">Atualizar Carrinho</button>
+            {% endbuttons %}
 
-    <td>
-        {{form.instance.produto}}
-    </td>
-    <td>
-        {{form.instance.preco|floatformat:"2"}}
-    </td>
-    <td>
-    {{form.quantidade}}
-    </td>
-    <td>
-        {% buttons%}
-        <button value="on" type="submit" name = "{{form.DELETE.html_name }}"class="btn btn-danger btn-sm">Remover</button>
-      {% endbuttons %}
-        {{form.id}}
-    </td>
+        </form>
 
-</tr>
-    {%endfor%}
-{% buttons%}
-        <button type="submit" class="btn btn-primary">Atualizar Carrinho</button>
-      {% endbuttons %}
-</form>
-    {% buttons%}
-        <a href="{% url 'Produtos' %}"><button class="btn btn-primary">Continuar comprando</button></a>
-    {% endbuttons %}
-{% buttons%}
-        <a href="{% url 'Checkout' %}"><button class="btn btn-primary">Finalizar Compra</button></a>
-{% endbuttons %}
+        </div>
+        <div class="cart-buttons">
+                {% buttons%}
+                    <a href="{% url 'Produtos' %}"><button class="btn btn-primary">Continuar comprando</button></a>
+                    <a href="{% url 'Checkout' %}"><button class="btn btn-primary">Finalizar Compra</button></a>
+                {% endbuttons %}
+        </div>
 
+</div>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

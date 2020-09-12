@@ -6,36 +6,47 @@
     {%block title%}{{produtobase.name}}{%endblock%}
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+
     {% bootstrap_css %}
 </head>
 
 {%block body%}
     {% bootstrap_messages %}
+<div class="Product">
     <h1>{{produtobase.name}}</h1>
-    {%if user.get_socio %}
-    <p>{{produtobase.p_socio}}</p>
-    {%else%}
-    <p>{{produtobase.preco}}</p>
-    {%endif%}
-    <p>{{produtobase.descricao}}</p>
-   {% if produtobase.thumb.url != blank%}
-    <img src = "{{produtobase.thumb.url}}" alt ="{{produtobase.name}}" height="300" width="300">
-   {%endif%}
+    <div class="product-info">
+            {% if produtobase.thumb.url != blank%}
+                <img src = "{{produtobase.thumb.url}}" alt ="{{produtobase.name}}" height="300" width="300">
+            {%endif%}
+        <div class="product-info-right">
+            <h2><strong>Descrição do produto:</strong></h2>
+            <p>{{produtobase.descricao}}</p>
+            {%if user.get_socio %}
+                <span class="preco_socio">
+                <del>Preço: R${{produtobase.preco}}</del>
+                </span>
+                <strong><span>Sócio: R${{produtobase.p_socio}}</span></strong>
+            {%else%}
+                <strong><span class="preco">Preço: R${{produtobase.preco}}</span></strong>
+            {%endif%}
+        <form method="post" class="adicionar">
+            {% csrf_token %}
+            <select name = 'Modelo'  style="width:80%; height:25%;">
+                <option value="0" selected>---------</option>
+                {% for produtos in produtobase.get_produto %}
+                    {%if produtos.estoque is not 0%}
+                        <option value="{{produtos.pk}}">{{produtos.name}}</option>
+                    {%endif%}
+                {%endfor%}
+            </select>
+                {% buttons%}
+                    <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
+                {%endbuttons%}
+        </form>
 
-<form method="post" class="adicionar">
-    {% csrf_token %}
-<select name = 'Modelo' >
-    <option value="0" selected>---------</option>
-{% for produtos in produtobase.get_produto %}
-    {%if produtos.estoque is not 0%}
- <option value="{{produtos.pk}}">{{produtos.name}}</option>
-    {%endif%}
-{%endfor%}
-</select>
-    {% buttons%}
-    <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
-    {%endbuttons%}
-</form>
+        </div>
+    </div>
+</div>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 

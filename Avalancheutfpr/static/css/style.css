@@ -105,7 +105,7 @@ display:none;
 }
 .submenu  {
     width: 120px;
-    background-color: #E9C53C;
+    background-color:#050329;
     position: absolute;
     display: none;
 }
@@ -120,16 +120,16 @@ display:none;
     padding-right:0px !important;
     height:30px !important;
     display:flex !important;
-    border-bottom:3px solid #E9C53C !important;
+    border-bottom:3px solid #050329 !important;
 }
 .submenuitem{
-    width: 120px;
-    height: 8px;
-    line-height: 8px;
+    width: 150px;
+    height: 15px;
+    line-height: 10px;
 }
 .subm:hover{
     border-bottom:3px solid #050329 !important;
-    background-color: #EFD33D !important;
+    background-color: #050329 !important;
 }
 nav li:hover .submenu{
     display: block;
@@ -423,7 +423,7 @@ CSS DE ÁREAS ESPECÍFICAS
     min-height:200px;
     display:inline-block;
     background-color:#050329;
-    margin-right:40px;
+    margin-right:20px;
 }
 .section-team .slidearea {
     display:flex;
@@ -1574,14 +1574,82 @@ color:#050329
 .products del{
 color:red;
 }
+.product{
+height:520px;
+}
+.product h1{
+color:#050329;
+margin:10px 10px 15px 250px;
+font-family:'Montserrat', Arial, Helvetica, sans-serif;
 
+}
+.product-info{
+display:flex;
+flex-direction:row;
+flex-wrap:wrap;
+}
+.product-info img {
+width:25%;
+height:50%;
+margin-bottom:1%;
+border-radius:5%;
+margin: 0px 85px 30px 250px;
+}
+.product-info span{
+color:#050329;
+font-family:'Montserrat', Arial, Helvetica, sans-serif;
+font-size:16px;
+}
+.product-info del{
+color:red;
+font-family:'Montserrat', Arial, Helvetica, sans-serif;
+}
+.product-info-right{
+display:flex;
+flex-direction:column;
 
+}
+.product-info-right p{
+font-family:'Montserrat', Arial, Helvetica, sans-serif;
+font-size:16px;
+color:#050329;
+}
+.product-info-right select{
+font-family:'Montserrat', Arial, Helvetica, sans-serif;
+font-size:16px;
+margin: 5% 5% 5% 0%;
+}
+.product-info-right h2{
+font-family:'Montserrat', Arial, Helvetica, sans-serif;
+font-size:35px;
+color:#050329;
+}
+.cart-area{
+min-height:520px;
+}
+.cart table{
+border:1px solid #050329;
+}
 
+.cart-buttons{
+display:flex;
+flex-direction:column;
+}
 
+/*ERROS*/
 
-
-
-
+.Erro_404{
+background-image:url('../assets/Perdido.jpg');
+background-size:cover;
+height:520px;
+margin:auto;
+}
+.Erro_404 h1{
+color:white;
+}
+.Erro_404 h2{
+color:white;
+}
 
 /*responsividade*/
 
@@ -1713,8 +1781,19 @@ color:red;
     padding-left:15%;
     padding-right:15%;
     }
-}
 
+    .product{
+    height:auto;
+    }
+    .product h1{
+    margin: 10px 10px 10px 60px;
+    }
+    .product-info img {
+    margin-bottom:1%;
+    border-radius:5%;
+    margin: 0px 60px 30px 60px;
+    }
+}
 
 @media (max-width:450px) {
     .logo {
@@ -1928,10 +2007,22 @@ color:red;
     padding-right:15%;
     }
 
+
+    .product{
+    height:auto;
+    }
+    .product h1{
+    margin: 10px 10px 10px 60px;
+    }
+    .product h1{
+    margin: 10px 10px 10px 60px;
+    }
+    .product-info img {
+    margin-bottom:1%;
+    border-radius:5%;
+    margin: 0px 60px 30px 60px;
+    }
 }
-
-
-
 /* Botoes */
     .btn-primary{color:#fff;background-color:#050329;border-color:#005a5a}
     .btn-primary.disabled,.btn-primary:disabled{color:#fff;background-color:#050329;border-color:#005a5a}
