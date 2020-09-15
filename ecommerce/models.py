@@ -94,6 +94,13 @@ class itemcarrinho(models.Model):
         unique_together = (('chave','produto'),)
     def __str__(self):
         return f'{self.produto} {self.quantidade}'
+    def total(self):
+        itens = itemcarrinho.objects.filter(chave = self.chave)
+        total = 0
+        for item in itens:
+            total += item.preco*item.quantidade
+        return total;
+
 
 class pedidosmanager(models.Manager):
     def adicionar(self,usuario,itenscarrinho):
@@ -166,7 +173,7 @@ class pedidos(models.Model):
                 {
                     'id': item.produto.pk,
                     'description': item.produto,
-                    'amount': '%.2f' % item.preco,
+                    'amount': '%.2f' % (float(item.preco) *1.05),
                     'quantity': item.quantidade,
 
                 }

@@ -92,7 +92,7 @@ def Send_Reset_Mail(Email,Senha):
 def Send_compra_mail(usuario,pedido):
     msg = EmailMessage()
     subject = f'Pedido: #{pedido.pk}'
-    body = f'{usuario.Nome_completo},Seu pedido número {pedido.pk} no valor de {pedido.total():.2f} com pagamento via {pedido.pagamento} foi recebido! \n para mais informações entre em meus pedidos na sua conta'
+    body = f'{usuario.Nome_completo},Seu pedido número {pedido.pk} no valor de {pedido.total()*1.05:.2f} com pagamento via {pedido.pagamento} foi recebido! \n para mais informações entre em meus pedidos na sua conta'
     to = f'{usuario.email}'
     msg.set_content(body)
     msg['Subject'] = subject
@@ -108,7 +108,7 @@ def Send_compra_mail(usuario,pedido):
 def Send_compra_update_mail(usuario,pedido):
     msg = EmailMessage()
     subject = f'Pedido: #{pedido.pk}'
-    body = f'{usuario.Nome_completo},Seu pedido número {pedido.pk} no valor de {pedido.total():.2f} com pagamento via {pedido.pagamento} atualizou o status para {pedido.status}'
+    body = f'{usuario.Nome_completo},Seu pedido número {pedido.pk} no valor de {(pedido.total()*1.05):.2f} com pagamento via {pedido.pagamento} atualizou o status para {pedido.status}'
     to = f'{usuario.email}'
     msg.set_content(body)
     msg['Subject'] = subject

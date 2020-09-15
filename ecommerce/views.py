@@ -18,7 +18,7 @@ from picpay import PicPay
 class Lojinha(ListView):
     template_name = 'Produtos.html'
     context_object_name = 'produtobase'
-    paginate_by = 10
+    paginate_by = 12
     ordering = 'pub_date'
 
     def get_queryset(self):
@@ -86,6 +86,9 @@ class Carrinho(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Carrinho,self).get_context_data(**kwargs)
+        itens = itemcarrinho.objects.filter(chave = self.request.session.session_key)
+        if itens.exists():
+            context['item'] = itens[0]
         context['formset'] = self.get_formset()
         return context
 
@@ -173,7 +176,7 @@ class PicpayView(LoginRequiredMixin,RedirectView):
             return_url=self.request.build_absolute_uri(
             reverse('Meus_Pedidos')
             ),
-            value=pedido.total(),
+            value=(pedido.total()*1.05),
             buyer={
                 "firstName": self.request.user.Nome_completo,
                 "lastName": self.request.user.Nome_completo,

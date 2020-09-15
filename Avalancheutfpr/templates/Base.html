@@ -8,6 +8,7 @@
 		<title>{% block title %}{% endblock %}</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         {% bootstrap_css %}
+        <meta name="description" content="A plataforma web da Associação Atlética Acadêmica de Engenharia e Arquitetura da UTFPR-CT, A Avalanche">
 		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
 		<link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
 
@@ -40,7 +41,7 @@
                 <ul>
                     <li ><a href="{% url 'Home' %}">Home</a></li>
                     <li><a href="{% url 'Produtos'%}">Produtos</a></li>
-                    <li><a href="">Eventos<img src="{% static 'assets/seta-baixo.png'%}"></a>
+                    <li><a href="#">Eventos<img src="{% static 'assets/seta-baixo.png'%}"></a>
                         <div class="submenu">
                             <a class="subm" href="{% url 'Social'%}"><div class="submenuitem">Ações sociais</div></a>
                             <a class="subm" href="{% url 'Eventos' %}"><div class="submenuitem">Integração</div></a>
