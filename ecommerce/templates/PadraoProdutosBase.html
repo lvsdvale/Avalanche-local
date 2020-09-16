@@ -30,7 +30,7 @@
                 <strong><span class="preco">Preço: R${{produtobase.preco}}</span></strong>
             {%endif%}
         <form method="post" class="adicionar">
-            {% csrf_token %}
+            {%csrf_token%}
             <select name = 'Modelo'  style="width:80%; height:25%;">
                 <option value="0" selected>---------</option>
                 {% for produtos in produtobase.get_produto %}

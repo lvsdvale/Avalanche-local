@@ -30,7 +30,7 @@ class Lojinha(ListView):
             )
 
         return queryset
-
+@csrf_exempt
 def Produtobase_view(request,slug):
     Produtobase = get_object_or_404(produtobase,slug=slug)
     if request.method == 'POST':
@@ -62,7 +62,6 @@ def criar_item_view(request,pk):
 
     return redirect('Carrinho')
 
-
 class Carrinho(TemplateView):
     template_name = 'Carrinho.html'
 
@@ -92,6 +91,7 @@ class Carrinho(TemplateView):
         context['formset'] = self.get_formset()
         return context
 
+    @csrf_exempt
     def post(self,request,*args,**kwargs):
         formset = self.get_formset()
         context = self.get_context_data(**kwargs)

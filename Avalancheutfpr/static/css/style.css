@@ -587,41 +587,44 @@ CSS DE ÁREAS ESPECÍFICAS
 .section-premium .pointer.active {
     background-color:#050329;
 }
-
-.section-map--area {
-    width:100vw;
-    max-width:1140px;
-    padding-left:30px;
+.section-map h2{
+margin: 2vh 2vw 1vh 4vw;
 }
-.section-map--area h1{
-    font-family:'Montserrat', Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size:50px;
-}
-.section-map--info {
-    width:50%;
-    padding:5px;
-    background-color:#FFF;
-    color:#000;
+.map{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:start;
 }
-.section-map--info-item {
-    color:#999;
-    margin-bottom:10px;
+.google-map{
+width:40vw;
+margin: 2vh 2vw 2vh 4vw;
 }
-.section-map--info-item-img {
-    width:30px;
-    height:30px;
-    padding:5px;
-    background-color:#999;
-    border-radius:15px;
-    margin-right:15px;
+.google-map iframe{
+width:100%;
+height:60vh;
 }
-.section-map--info-item-img img {
-    width:15px;
-    height:auto;
+.map-info{
+display:flex;
+flex-direction:column;
+margin-top:5vh;
+font-size:20px;
+
+}
+.map-info-item{
+display:flex;
+display-direction:column;
+margin-top:1vh;
+}
+.map-info-item-image{
+margin: 0.5vh 1vw 1vh 1vw;
+
+}
+
+.map-info-item-image img{
+width:3vx;
+height:3vh;
+border-radius:10px%;
 }
 
 /*  PÁGINA EVENTOS */
@@ -1600,6 +1603,7 @@ margin-bottom:5vh;
     text-transform:uppercase;
 }
 /* Ecommerce */
+/* Lojinha */
 .clearproducts{
     min-height:92vh;
 }
@@ -1634,6 +1638,7 @@ color:#050329
 .products del{
 color:red;
 }
+/* Produto pagina padrao */
 .product{
 min-height:85vh;
 }
@@ -1684,6 +1689,7 @@ font-family:'Montserrat', Arial, Helvetica, sans-serif;
 font-size:35px;
 color:#050329;
 }
+/* Carrinho  */
 .cart-area{
 min-height:80vh;
 display:flex;
@@ -1759,7 +1765,57 @@ height:200px;
 .cart-buttons button{
 margin:1%;
 }
+/* Pedidos/Checkout */
+.order{
+min-height:92vh;
+display:flex;
+flex-direction:column;
+}
+.order h2{
+    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    color:#050329;
+    padding-top:1vh;
+    margin: 2vh 1vw 1vw 1vw;
+    font-size:40px;
+}
+.dl-horizontal{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
 
+}
+.order-info-item{
+    padding: 1vh 1vw 1vh 1vw;
+    margin-right:1vw;
+    margin-left:1vw;
+}
+.order-section{
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    padding:2% 0% 5% 1% ;
+}
+
+.order-section-image{
+padding-right:5%;
+}
+.order-section-image img{
+border-radius:5%;
+width:250px;
+height:200px;
+}
+.order-section-info{
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+}
+.order-section-info p{
+    font-size:16px;
+    font-stretch: extra-expanded;
+    margin-bottom:2%;
+    letter-spacing:1px;
+    color:#050329;
+}
 /*ERROS*/
 
 .Erro_404{
@@ -1867,32 +1923,21 @@ color:white;
     .section-fact {
         min-width:50%;
     }
-
-
-    .section-map {
-        padding-left:30px;
-        padding-right:30px;
-    }
-     .google-map{
-        display:block;
-        width:auto;
+    .google-map{
+    width:90vw;
+    margin: 2vh 2vw 2vh 4vw;
     }
     .google-map iframe{
     width:100%;
-    height:100%;
+    height:60vh;
     }
-    .section-map--area {
-        width:auto;
+    .map-info{
+    display:flex;
+    flex-direction:column;
+    margin-top:1vh;
+    font-size:20px;
     }
-    .section-map--info {
-        width:auto;
-    }
-    .section-map--info-item {
-        margin-bottom:20px;
-    }
-    .section-map--info-item:last-child {
-        margin-bottom:0;
-    }
+
     /*Login rponnsivo 450 - 800*/
 
     #login .frase_login{
@@ -2015,6 +2060,13 @@ color:white;
     width:100%;
     padding:0 20% 0 20%;
     }
+    .dl-horizontal{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    }
+
 }
 
 
@@ -2062,6 +2114,7 @@ color:white;
      display:none;
      }
     .banner h1 {
+        text-align:center;
         font-size:30px;
     }
     .banner h2 {
@@ -2182,22 +2235,7 @@ color:white;
         flex-direction: column;
     }
 
-    .section-map {
-        padding:0;
-        padding-bottom:250px;
-    }
-    .section-map--area {
-        width:auto;
-    }
-    .section-map--info {
-        width:auto;
-    }
-    .section-map--info-item {
-        margin-bottom:20px;
-    }
-    .section-map--info-item:last-child {
-        margin-bottom:0;
-    }
+
 
     .footer--area {
         flex-direction:column;
@@ -2214,10 +2252,23 @@ color:white;
     .btn-primary:hover{color:#fff;background-color:#050329;border-color:#005a5a}
 
     .google-map{
-        display:block;
-        margin-bottom:4%;
-        border-radius:2%;
+    width:90vw;
+    margin: 2vh 2vw 2vh 4vw;
     }
+    .google-map iframe{
+    width:100%;
+    height:60vh;
+    }
+    .map-info{
+    display:flex;
+    flex-direction:column;
+    margin-top:1vh;
+    font-size:15px;
+    }
+    .map-info-item-image{
+    margin: 0 1vw 1vh 1vw;
+    }
+
 
     /*Login rponnsivo 450 */
 
@@ -2347,6 +2398,38 @@ color:white;
     .cart-buttons button{
     width:100%;
     padding:0 20% 0 20%;
+    }
+
+    .order-info-item{
+        padding: 1vh 1vw 1vh 1vw;
+        margin-right:7vw;
+        margin-left:1vw;
+    }
+    .order-section{
+        display:flex;
+        flex-direction:row;
+        width:100%;
+        padding:2% 0% 5% 1% ;
+    }
+
+    .order-section-image img{
+        border-radius:5%;
+        width:180px;
+        height:150px;
+    }
+    .order-section-info p{
+        font-size:16px;
+        font-stretch: extra-expanded;
+        margin-bottom:2%;
+        letter-spacing:1px;
+        color:#050329;
+    }
+    .order h2{
+    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    color:#050329;
+    padding-top:1vh;
+    margin: 0.5vh 1vw 1vw 1vw;
+    font-size:40px;
     }
 
 }

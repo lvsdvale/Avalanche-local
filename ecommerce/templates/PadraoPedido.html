@@ -10,37 +10,58 @@
 </head>
 {%block body%}
 {% bootstrap_messages%}
-<h2>Pedido #{{ pedidos.pk }}</h2>
-<dl class="dl-horizontal">
-    <dt>Total R$</dt>
-    <dd>{{ object.total|floatformat:"2"}}</dd>
-    <dt>Situação</dt>
-    <dd>{{ object.get_status_display }}</dd>
-    <dt>Data</dt>
-    <dd>{{ object.criado|date:"d/m/Y" }}</dd>
-    <dt>Meio de Pagamento</dt>
-    <dd>{{ object.get_pagamento_display }}</dd>
-</dl>
-<h3>Itens do Pedido</h3>
-{% for item in object.Itens.all %}
-    <dl class="dl-horizontal">
-        <dt>Produto</dt>
-        <dd>{{ item.produto }}</dd>
-        <dt>Quantidade</dt>
-        <dd>{{ item.quantidade }}</dd>
-        <dt>Preço</dt>
-        <dd>R$ {{ item.preco|floatformat:"2" }}</dd>
+<div class="order">
+    <h2>Pedido #{{ pedidos.pk }}</h2>
+        <dl class="dl-horizontal">
+            <div class = "order-info-item">
+                <dt>Total</dt>
+                <dd id="total"> R$ {{ object.total|floatformat:"2"}}</dd>
+             </div>
+
+            <div class = "order-info-item">
+                <dt>Taxa</dt>
+                <dd id="taxa"> R$ {{ object.total|floatformat:"2"}}</dd>
+            </div>
+
+            <div class = "order-info-item">
+                <dt>Situação</dt>
+                <dd>{{ object.get_status_display }}</dd>
+            </div>
+            <div class = "order-info-item">
+                <dt>Data</dt>
+                <dd>{{ object.criado|date:"d/m/Y" }}</dd>
+            </div>
+            <div class = "order-info-item">
+                <dt>Meio de Pagamento</dt>
+                <dd>{{ object.get_pagamento_display }}</dd>
+            </div>
     </dl>
-{% endfor %}
-{%if object.status == 0 %}
-<div class = "checkout-buttons">
- {% buttons%}
-        <a href="{%url 'PagSeguro' pedidos.pk %}"><button class="btn btn-primary">Pagar com Pagseguro</button></a>
-{% endbuttons %}
- {% buttons%}
-        <a href="{%url 'Picpay' pedidos.pk %}"><button class="btn btn-success">Pagar com Picpay</button></a>
-{% endbuttons %}
+    {% for item in object.Itens.all %}
+        <section class="order-section">
+                <div class="order-section-image">
+                    <img src="{{item.produto.modelo.thumb.url}}" width="150" height="150">
+                </div>
+                <div class="order-section-info">
+                    <p><strong>{{item.produto}}</strong></p>
+                    <p>Preço: R$ {{item.preco|floatformat:"2"}}</p>
+                    <p>Quantidade: {{item.quantidade}}</p>
+                </div>
+        </section>
+        {%endfor%}
+    {%if object.status == 0 %}
+        <div class = "checkout-buttons">
+            {% buttons%}
+                <a href="{%url 'PagSeguro' pedidos.pk %}"><button class="btn btn-primary">Pagar com Pagseguro</button></a>
+                <a href="{%url 'Picpay' pedidos.pk %}"><button class="btn btn-success">Pagar com Picpay</button></a>
+            {% endbuttons %}
+        </div>
+    {%endif%}
 </div>
-{%endif%}
+<script>
+    var $total = document.getElementById("total")
+    $total.innerHTML = 'R$ ' + (parseFloat({{object.total}})*1.05).toFixed(2);
+    var $taxa = document.getElementById("taxa")
+    $taxa.innerHTML = 'R$ ' + (parseFloat({{object.total}})*0.05).toFixed(2);
+</script>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

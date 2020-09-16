@@ -142,7 +142,7 @@ class pedidos(models.Model):
         return produtos.objects.filter(pk__in = Produtos_ids)
     def total(self):
         aggregate_queryset = self.Itens.aggregate(total = models.Sum(models.F('preco')*models.F('quantidade'),output_field =models.DecimalField()))
-        return aggregate_queryset['total']
+        return float(aggregate_queryset['total'])
 
     def pagseguro_update_status(self, status):
         if status == '3':
@@ -173,11 +173,12 @@ class pedidos(models.Model):
                 {
                     'id': item.produto.pk,
                     'description': item.produto,
-                    'amount': '%.2f' % (float(item.preco) *1.05),
+                    'amount': '%.2f' % item.preco,
                     'quantity': item.quantidade,
 
                 }
             )
+        pg.extra_amount = (self.total()*0.05)
         Send_compra_mail(self.usuario,self)
         return pg
 
