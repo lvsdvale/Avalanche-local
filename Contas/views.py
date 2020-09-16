@@ -9,6 +9,7 @@ from Avalancheutfpr.models import inscricao_modalidades,inscricao_campanhas_soci
 from Avalancheutfpr.services import Send_Sign_Mail,Send_Reset_Mail
 from random import choice
 # views de login
+@csrf_exempt
 def Cadastrar_usuarios(request):
     if request.method == 'POST':
         form = Cadastro(request.POST)
@@ -29,7 +30,7 @@ def Cadastrar_usuarios(request):
     }
     return render(request, 'Cadastro_Usuarios.html', context)
 
-
+@csrf_exempt
 def Login(request):
     if request.user.is_authenticated:
         return redirect('Home')

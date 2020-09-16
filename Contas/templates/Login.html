@@ -13,15 +13,23 @@
 </head>
 {% bootstrap_messages %}
 <body id="login">
-<section>
+
+<section class="login-section">
+    <div class="login-images"></div>
+    <a href="{% url 'Home'%}"><img class="login-logo" src="{%static 'assets/logo.png'%}" alt="Logo Avalanche"></a>
+    <br>
+    <img class="login-letreiro" src="{%static 'assets/LoginLetreiro.png'%}" alt="Avalanche">
+    </div>
     <div class="frase_login">
-        AVALANCHE LOGIN
+        LOGIN
     </div>
     <div class="form_login">
     	<form method="POST">
-            {% csrf_token %}
+            {%csrf_token%}
             {%bootstrap_form form%}
-            <input type="submit" value="Entrar"><br/><br/><br/>
+            {% buttons%}
+            <button type="submit" class="btn btn-warning">Entrar</button>
+            {% endbuttons %}
     	</form>
     </div>
 </section>

@@ -10,6 +10,11 @@ margin:0;
      font-family: Road_Rage;
      src: url('../assets/Road_Rage.otf');
 }
+@font-face {
+    font-family: "Acumin Variable Concept";
+    src: url("//db.onlinewebfonts.com/t/066ce24dae3730ed6c648b09efaea93a.eot");
+    src: url("//db.onlinewebfonts.com/t/066ce24dae3730ed6c648b09efaea93a.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/066ce24dae3730ed6c648b09efaea93a.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/066ce24dae3730ed6c648b09efaea93a.woff") format("woff"), url("//db.onlinewebfonts.com/t/066ce24dae3730ed6c648b09efaea93a.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/066ce24dae3730ed6c648b09efaea93a.svg#Acumin Variable Concept") format("svg");
+}
 body {
     font-family:'Montserrat', Arial, Helvetica, sans-serif;
     font-size:13px;
@@ -1505,56 +1510,94 @@ CSS DE ÁREAS ESPECÍFICAS
     margin-top: 50px;
     width:100%;
     min-height:92vh;
+}
 
-}
-#login a{
-    color: #050329;
-    font-size: 10px;
-    margin-left: 120px;
-}
 #login .frase_login{
-    margin-top:40px;
-    color: #E9C53C;
-    font-size: 35px;
+    color: #FFF;
+    font-size: 20px;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    letter-spacing:1px;
     width: 350px;
-    text-align: center;
-    padding: 5px;
-    margin:auto;
+    margin-bottom:0vh;
+    margin-left:46vw;
 }
+
+#login .login-logo{
+margin-bottom:3vh;
+margin-left:45vw;
+height:10vh;
+width:7vw;
+}
+#login .login-letreiro{
+margin-left:32.5vw;
+width:32vw;
+height:12vh;
+margin-bottom:5vh;
+}
+
 #login .form_login{
-    width: 450px;
-    height: 350px;
-    color: #050329;
+    width: 25vw;
+    height: 40vh;
     font-weight: 600;
     font-size: 18px;
     padding: 35px;
     padding-bottom: 0px;
-    margin: auto;
-    margin-top: 10px;
-    background-color: #E9C53C;
-    border-radius: 15px;
-}
-#login .email, #login .senha{
-    width: 370px;
-    height: 30px;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 4px;
-    border:1px solid #050329;
-}
-
-#login input[type=submit]{
-    width:300px;
-    height: 35px;
-    margin-top: 15px;
-    margin-left: 32px;
+    margin-top:0vh;
+    margin-left:35vw;
+    margin-right:40vw;
     background-color:#050329;
-    color:#E9C53C;
-    text-transform: uppercase;
-    font-size:12px;
-    font-weight:600;
-    padding:10px 30px;
-    border-radius:20px;
+    border-radius: 15px;
+    display:flex;
+    display-direction:row;
+
+}
+#login .form-group label{
+    color:#FFF;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    border: 1px solid #E9C53C;
+    border-radius:12px;
+    width:30vh;
+    margin: 0 3vw 1vh 3vw;
+    font-weight:bold;
+    letter-spacing:2px;
+    padding: 1% 1% 0 1%;
+    text-align: center;
+    font-size:23px;
+    text-transform:uppercase;
+}
+#login .form-group input{
+    background-color:#050329;
+    overflow:hidden;
+    border-bottom: 1px solid #E9C53C;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    text-align:center;
+}
+#login .form-control:focus{
+    color:#FFF;
+    box-shadow:none;
+}
+#login .input:-internal-autofill-selected{
+    background-color:#050329;
+    border-bottom: 1px solid #E9C53C;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+}
+#login .form-group button{
+    margin-left:6vw;
+    margin-right:6vw;
+    border-radius:12px;
+    width:10vw;
+    height:5vh;
+    font-size:20px;
+    letter-spacing:1px;
+    padding: 1%;
+    font-weight:bold;
+    color:#050329;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    text-transform:uppercase;
 }
 /* Ecommerce */
 .clearproducts{
@@ -1578,7 +1621,6 @@ padding-bottom:1%;
 border-radius:5%;
 }
 .products a{
-font-family:'Montserrat', Arial, Helvetica, sans-serif;
 text-decoration: none;
 color:#050329;
 font-size:16px;
@@ -1596,10 +1638,9 @@ color:red;
 min-height:85vh;
 }
 .product h1{
+font-family:'Road_Rage', Arial, Helvetica, sans-serif;
 color:#050329;
 margin:10px 10px 15px 250px;
-font-family:'Road_Rage', Arial, Helvetica, sans-serif;
-
 }
 .product-info{
 display:flex;
@@ -1852,6 +1893,81 @@ color:white;
     .section-map--info-item:last-child {
         margin-bottom:0;
     }
+    /*Login rponnsivo 450 - 800*/
+
+    #login .frase_login{
+    color: #FFF;
+    font-size: 20px;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    letter-spacing:1px;
+    width: 350px;
+    margin-bottom:0vh;
+    margin-left:31vw;
+}
+    #login .form_login{
+    width: 30vw;
+    height: 40vh;
+    font-weight:600;
+    font-size: 18px;
+    padding: 20px;
+    padding-bottom: 0px;
+    margin-top:0vh;
+    margin-left:10vw;
+    margin-right:10vw;
+    background-color:#050329;
+    border-radius: 15px;
+    display:flex;
+    display-direction:row;
+
+}
+#login .form-group label{
+    color:#FFF;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    border: 1px solid #E9C53C;
+    border-radius:12px;
+    width:30vh;
+    margin: 0 3vw 1vh 3vw;
+    font-weight:bold;
+    letter-spacing:2px;
+    padding: 1% 1% 0 1%;
+    text-align: center;
+    font-size:23px;
+    text-transform:uppercase;
+}
+#login .form-group input{
+    background-color:#050329;
+    overflow:hidden;
+    border-bottom: 1px solid #E9C53C;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+}
+#login .form-control:focus{
+    color:#FFF;
+    box-shadow:none;
+}
+#login .input:-internal-autofill-selected{
+    background-color:#050329;
+    border-bottom: 1px solid #E9C53C;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+}
+#login .form-group button{
+    margin-left:16vw;
+    margin-right:6vw;
+    border-radius:12px;
+    width:14vw;
+    height:5vh;
+    font-size:20px;
+    letter-spacing:1px;
+    padding: 1%;
+    font-weight:bold;
+    color:#050329;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    text-transform:uppercase;
+    }
+
     /*ecommerce responsivo 450 - 800 px*/
     .clearproducts {
      display:flex;
@@ -2102,6 +2218,81 @@ color:white;
         margin-bottom:4%;
         border-radius:2%;
     }
+
+    /*Login rponnsivo 450 */
+
+    #login .frase_login{
+    color: #FFF;
+    font-size: 20px;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    letter-spacing:1px;
+    width: 350px;
+    margin-bottom:0vh;
+    margin-left:27.5vw;
+    }
+
+    #login .form_login{
+    width: 10vw;
+    height: 40vh;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 20px;
+    padding-bottom: 0px;
+    margin-top:0vh;
+    margin-left:5vw;
+    margin-right:5vw;
+    background-color:#050329;
+    border-radius: 15px;
+    display:flex;
+    display-direction:row;
+}
+#login .form-group label{
+    color:#FFF;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    border: 1px solid #E9C53C;
+    border-radius:12px;
+    width:22vh;
+    margin: 0 3vw 1vh 3vw;
+    font-weight:bold;
+    letter-spacing:2px;
+    padding: 1% 1% 0 1%;
+    text-align: center;
+    font-size:20px;
+    text-transform:uppercase;
+    }
+#login .form-group input{
+    background-color:#050329;
+    overflow:hidden;
+    border-bottom: 1px solid #E9C53C;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    }
+#login .form-control:focus{
+    color:#FFF;
+    box-shadow:none;
+    }
+#login .input:-internal-autofill-selected{
+    background-color:#050329;
+    border-bottom: 1px solid #E9C53C;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    }
+#login .form-group button{
+    margin-left:14vw;
+    margin-right:6vw;
+    border-radius:12px;
+    width:25vw;
+    height:5vh;
+    font-size:20px;
+    letter-spacing:1px;
+    padding: 1%;
+    font-weight:bold;
+    color:#050329;
+    font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
+    text-transform:uppercase;
+    }
     /*ecommerce responsivo 450 px*/
     .clearproducts {
      display:flex;
@@ -2165,5 +2356,9 @@ color:white;
     .btn-primary:hover{color:#fff;background-color:#050329;border-color:#005a5a}
 
      .btn-info{color:#fff;background-color:#050329;border-color:#fff}
-    .btn-info.disabled,.btn-primary:disabled{color:#fff;background-color:#050329;border-color:#fff}
+    .btn-info.disabled,.btn-info:disabled{color:#fff;background-color:#050329;border-color:#fff}
     .btn-info:hover{color:#fff;background-color:#050329;border-color:#fff}
+
+    .btn-warning{color:#050329;}
+    .btn-warning.disabled,.btn-warning:disabled{color:#050329;}
+    .btn-warning:hover{color:#050329;}
