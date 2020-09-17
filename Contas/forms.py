@@ -1,6 +1,7 @@
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+
 class Cadastro(UserCreationForm):
     class Meta:
         model = user
@@ -8,5 +9,5 @@ class Cadastro(UserCreationForm):
 
 
 class Reset(forms.Form):
-    email = forms.EmailField(max_length=255,help_text='Digite seu email')
-    cpf = forms.CharField(max_length=255,help_text= 'Digite seu CPF')
+    Email = forms.EmailField(max_length=255,help_text='Digite seu email',label = "Email",label_suffix = "Email")
+    CPF = forms.CharField(max_length=255,help_text= 'Digite seu CPF',label = "CPF",label_suffix = "CPF")

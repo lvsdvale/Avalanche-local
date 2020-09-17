@@ -10,7 +10,8 @@
 </head>
 {%block body%}
 {% bootstrap_messages %}
-<h2>Resetar a senha</h2>
+<div class ="resetar" >
+<h2 style="font-family:'Road_Rage', Arial, Helvetica, sans-serif;padding-top:5px; margin-left:5px;">Resetar a senha</h2>
   <form  method="post">
       {% csrf_token %}
       {%bootstrap_form form%}
@@ -18,5 +19,6 @@
     <button type="submit" class="btn btn-primary">Enviar</button>
     {% endbuttons %}
   </form>
+</div>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

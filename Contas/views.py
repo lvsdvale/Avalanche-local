@@ -80,8 +80,8 @@ def Resetar(request):
     if request.method == 'POST':
         form = Reset(request.POST)
         if form.is_valid():
-            email = form.cleaned_data.get("email")
-            cpf = form.cleaned_data.get("cpf")
+            email = form.cleaned_data.get("Email")
+            cpf = form.cleaned_data.get("CPF")
             Usuario = user.objects.get(CPF = cpf,email= email)
             if Usuario == None:
                 messages.error(request,"Dados inválidos")

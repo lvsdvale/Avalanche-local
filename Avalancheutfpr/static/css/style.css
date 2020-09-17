@@ -1513,6 +1513,9 @@ border-radius:10px%;
     margin-top: 50px;
     width:100%;
     min-height:92vh;
+    display:flex;
+    flex-direction:row;
+
 }
 
 #login .frase_login{
@@ -1552,20 +1555,21 @@ margin-bottom:5vh;
     border-radius: 15px;
     display:flex;
     display-direction:row;
-
+    flex-wrap:wrap
 }
+
 #login .form-group label{
     color:#FFF;
     font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
     border: 1px solid #E9C53C;
     border-radius:12px;
     width:30vh;
-    margin: 0 3vw 1vh 3vw;
+    margin: 0 3vw 1vh 3.5vw;
     font-weight:bold;
     letter-spacing:2px;
     padding: 1% 1% 0 1%;
     text-align: center;
-    font-size:23px;
+    font-size:22px;
     text-transform:uppercase;
 }
 #login .form-group input{
@@ -1577,10 +1581,12 @@ margin-bottom:5vh;
     border-right:none;
     text-align:center;
 }
+
 #login .form-control:focus{
     color:#FFF;
     box-shadow:none;
 }
+
 #login .input:-internal-autofill-selected{
     background-color:#050329;
     border-bottom: 1px solid #E9C53C;
@@ -1601,6 +1607,18 @@ margin-bottom:5vh;
     color:#050329;
     font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
     text-transform:uppercase;
+    }
+
+#login .forgot{
+    margin-left:36.5%;
+}
+#login .forgot a{
+    text-decoration:none;
+    color:#FFF;
+    font-size:10px;
+    }
+.resetar{
+min-height:77.5vh;
 }
 /* Ecommerce */
 /* Lojinha */
@@ -1640,7 +1658,7 @@ color:red;
 }
 /* Produto pagina padrao */
 .product{
-min-height:85vh;
+min-height:76vh;
 }
 .product h1{
 font-family:'Road_Rage', Arial, Helvetica, sans-serif;
@@ -2012,6 +2030,14 @@ color:white;
     font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
     text-transform:uppercase;
     }
+    #login .forgot{
+        margin-left:75%;
+    }
+    #login .forgot a{
+        text-decoration:none;
+        color:#FFF;
+        font-size:10px;
+    }
 
     /*ecommerce responsivo 450 - 800 px*/
     .clearproducts {
@@ -2284,7 +2310,7 @@ color:white;
 
     #login .form_login{
     width: 10vw;
-    height: 40vh;
+    height: 30vh;
     font-weight: 600;
     font-size: 15px;
     padding: 20px;
@@ -2343,6 +2369,14 @@ color:white;
     color:#050329;
     font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
     text-transform:uppercase;
+    }
+    #login .forgot{
+        margin-left:25vw;
+    }
+    #login .forgot a{
+        text-decoration:none;
+        color:#FFF;
+        font-size:5px;
     }
     /*ecommerce responsivo 450 px*/
     .clearproducts {
