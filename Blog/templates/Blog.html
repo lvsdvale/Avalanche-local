@@ -2,7 +2,7 @@
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
-<html>
+<div>
 <head>
     <meta charset="UTF-8" />
     {%block title%}Blog do Urso{%endblock%}
@@ -13,6 +13,7 @@
     {% bootstrap_css %}
 </head>
 {%block body%}
+<div class="blog-area">
 <main>
 	{%for post in page_obj %}
 	{%if forloop.counter|divisibleby:"2" %}
@@ -50,6 +51,7 @@
 	{%endif%}
 	{%endfor%}
 </main>
+</div>
 {% include 'paginacao.html' %}
 {%endblock%}
 </html>

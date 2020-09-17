@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8"/>
         <meta name="keywords" content="Atlética,Avalanche,UTFPR,A.A.A.E.A UTFPR-CT,alavanche,Universidade Tecnológica Federal do Parana,Engenhariadas">
-        <meta name ="viewport" content="width = device-width,inicial-scale = 1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>{% block title %}{% endblock %}</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         {% bootstrap_css %}
@@ -21,10 +21,12 @@
             {%if user.is_authenticated%}
             <div class="adicional">
             <div class="usuario"><pre><a href="{%url 'Minha_Conta'%}">{{user.Nome_completo}}</a>     <a href="{%url 'Logout'%}">Logout</a> </pre></div>
+            <a href="{% url 'Carrinho'%}"><div class="cart-icon"><img src="{% static 'assets/Cart.png' %}"></div></a>
             </div>
             {%else%}
     <div class="adicional">
         <div class="usuario"><pre><a href="{%url 'Login'%}">Login</a>     <a href="{%url 'Cadastro'%}">Cadastre-se</a></pre></div>
+        <a href="{% url 'Carrinho'%}"><div class="cart-icon"><img src="{% static 'assets/Cart.png' %}"></div></a>
     </div>
             {%endif%}
     <div class="header">
@@ -36,16 +38,16 @@
         <div class="menu">
             <!--img class="menu-opener" src="{%static 'assets/menu.png'%}" /-->
             <input type="checkbox" id="Bt_menu" style="display:none;">
-            <label for = "Bt_menu">&#9776;</label>
-             <nav>
+            <label class="menu_label" for = "Bt_menu">&#9776;</label>
+             <nav class="menu_nav">
                 <ul>
                     <li ><a href="{% url 'Home' %}">Home</a></li>
                     <li><a href="{% url 'Produtos'%}">Produtos</a></li>
                     <li><a href="#">Eventos<img src="{% static 'assets/seta-baixo.png'%}"></a>
-                        <div class="submenu">
-                            <a class="subm" href="{% url 'Social'%}"><div class="submenuitem">Ações sociais</div></a>
-                            <a class="subm" href="{% url 'Eventos' %}"><div class="submenuitem">Integração</div></a>
-                        </div>
+                        <ul class="submenu">
+                            <li class="submenu-item"><a class="subm" href="{% url 'Social'%}">Ações sociais</a></li>
+                            <li class="submenu-item"><a class="subm" href="{% url 'Eventos' %}">Integração</a></li>
+                        </ul>
                     </li>
                     <li><a href="{% url 'Esportes'%}">Esportes</a></li>
                     <li><a href="{% url 'Blog'%}">Blog</a></li>
@@ -58,6 +60,7 @@
     </header>
 		{%block body%}
 		{%endblock%}
+        <script src="{%static 'js/menu.js'%}"></script>
         {% bootstrap_javascript jquery='full'%}
 		<footer>
     <div class="footer--area">

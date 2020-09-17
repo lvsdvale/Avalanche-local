@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
 </head>
 {%block body%}
-<main>
+<main class="eventos-area">
     {%for Evento in page_obj %}
 	{%if forloop.counter|divisibleby:"2" %}
 	<section class="default-eventos dark-eventos">

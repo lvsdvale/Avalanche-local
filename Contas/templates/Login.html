@@ -11,9 +11,11 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
 </head>
-{% bootstrap_messages %}
 <body id="login">
 <section class="login-section">
+    <div class="massage" style=" margin-left:35%; height:auto;">
+        {% bootstrap_messages%}
+    </div>
     <div class="login-images"></div>
     <a href="{% url 'Home'%}"><img class="login-logo" src="{%static 'assets/logo.png'%}" alt="Logo Avalanche"></a>
     <br>

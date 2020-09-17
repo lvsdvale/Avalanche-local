@@ -31,9 +31,8 @@ header {
     max-width:1140px;
     height:20px;
     margin:auto;
-    padding-top: 5px;
+    padding-top: 12px;
     display:flex;
-    justify-content: space-between;
 }
 .adicional .usuario a, .adicional .usuario pre{
     text-decoration: none;
@@ -47,11 +46,9 @@ header {
 .adicional img{
     width: 18px;
     height: 18px;
-    margin-left: 5px;
+    margin-left: 100%;
 }
-.adicional .pesquisar{
-    margin-right: 10px;
-}
+
 .header {
     max-width:1140px;
     height:100px;
@@ -89,65 +86,44 @@ display:none;
     flex:1;
     display:flex;
     justify-content: flex-end;
-}
-
-.menu ul,
+    }
 .menu li {
     list-style:none;
 }
 .menu ul {
     display:flex;
+    position:relative;
 }
 .menu li a {
+    display:flex;
     color:#FFF;
     text-transform: uppercase;
     font-weight: 600;
     text-decoration: none;
     padding-left:10px;
     padding-right:10px;
-    height:100px;
-    display:flex;
+    height:35px;
     align-items:center;
     border-bottom:5px solid #050329;
 }
-.menu li a:hover,
-.menu .active a {
+
+.menu ul ul {
+    position:absolute;
+    visibility:hidden;
+}
+.menu ul ul li {
+float:none;
+background-color:#050329;
+}
+
+.menu li a:hover, .menu .active a {
     border-bottom:5px solid #E9C53C;
     color:#E9C53C;
 }
-.submenu  {
-    width: 120px;
-    background-color:#050329;
-    position: absolute;
-    display: none;
-}
-.subm {
-    color:#FFF !important;
-    text-transform: uppercase !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-    padding-left:20px !important;
-    padding-bottom: 10px;
-    padding-top: 10px !important;
-    padding-right:0px !important;
-    height:40px !important;
-    display:flex !important;
-    border-bottom:3px solid #050329 !important;
-}
-.submenuitem{
-    width: 150px;
-    height: 15px;
-    line-height: 10px;
-}
-.subm:hover{
-    border-bottom:3px solid #050329 !important;
-    background-color: #050329 !important;
-}
-.subm:hover a{
-    color:#E9C53C
-}
+
 nav li:hover .submenu{
-    display: block;
+    visibility:visible;
+    display:block;
 }
 nav img {
     width: 13px;
@@ -628,7 +604,9 @@ border-radius:10px%;
 }
 
 /*  PÁGINA EVENTOS */
-
+.eventos-area{
+min-height:77.5vh;
+}
 .default-eventos {
     padding-top:50px;
     padding-bottom:50px;
@@ -826,6 +804,9 @@ border-radius:10px%;
 /* EVENTOS SOCIAIS*/
 
 /* EVENTOS FOTO ESQUERDA*/
+.social-area{
+min-height:77.5vh;
+}
 .section-eventos-sociais {
     display:flex;
 }
@@ -970,7 +951,9 @@ border-radius:10px%;
 
 
 /*  PÁGINA ESPORTES */
-
+.esportes-area{
+min-height:77.5vh;
+}
 .default-esportes {
     padding-top:50px;
     padding-bottom:50px;
@@ -1168,6 +1151,9 @@ border-radius:10px%;
 
 
 /*  PÁGINA E-SPORTS */
+.e-sports-area{
+min-height:77.5vh;
+}
 
 .default-e-sports {
     padding-top:50px;
@@ -1362,6 +1348,9 @@ border-radius:10px%;
 
 
 /*  Blogs */
+.blog-area{
+    min-height:77.5vh;
+}
 
 .default-blogs {
     padding-top:50px;
@@ -1594,9 +1583,9 @@ margin-bottom:5vh;
     border-right:none;
 }
 #login .form-group button{
-    margin-left:260%;
+    margin-left:250%;
     border-radius:12px;
-    width:40%;
+    width:60%;
     height:5vh;
     font-size:20px;
     letter-spacing:1px;
@@ -1609,11 +1598,13 @@ margin-bottom:5vh;
 
 #login .forgot{
     margin-left:145%;
+    width:100%;
 }
 #login .forgot a{
     text-decoration:none;
     color:#FFF;
     font-size:10px;
+    text-align:center;
     }
 .resetar{
     min-height:77.5vh;
@@ -1853,6 +1844,9 @@ color:white;
     .logo {
         margin-left:30px;
     }
+    .adicional .usuario{
+    margin-left: 100px;
+    }
     label[for="Bt_menu"]{
      display:block;
      padding:5px;
@@ -1863,17 +1857,13 @@ color:white;
      height:50px;
      margin-right:30px;
      }
-     #Bt_menu:checked ~ nav {
-     display:flex;
-     margin-top:10px;
-     }
 
       nav {
         display:none;
         position: absolute;
         background-color:#050329;;
         width:100vw;
-        height:210px;
+        height:auto;
         top: 100px;
         right: 0;
     }
@@ -1892,6 +1882,18 @@ color:white;
      display:none;
      }
 
+     .menu ul ul {
+        position:static;
+        display:none;
+        visibility:hidden;
+        transition: all .4s
+     }
+     nav li:hover .submenu{
+        display:block;
+        height:auto;
+        display:block;
+        visibility:visible;
+    }
 
     .section-aboutus {
         flex-direction:column;
@@ -2101,6 +2103,9 @@ color:white;
     .logo {
         margin-left:30px;
     }
+    .adicional .usuario{
+    margin-left: 70px;
+    }
      label[for="Bt_menu"]{
      display:block;
      padding:5px;
@@ -2111,17 +2116,26 @@ color:white;
      height:50px;
      margin-right:30px;
      }
-     #Bt_menu:checked ~ nav {
-     display:flex;
-     margin-top:10px;
+
+     .menu ul ul {
+        position:static;
+        display:none;
+        visibility:hidden;
+        transition: all .4s
      }
+     nav li:hover .submenu{
+        height:auto;
+        display:block;
+        visibility:visible;
+        width:100vw;
+        }
 
       nav {
         display:none;
         position: absolute;
         background-color:#050329;;
-        width:100vw;
-        height:210px;
+        width:auto;
+        height:auto;
         top: 100px;
         right: 0;
     }
