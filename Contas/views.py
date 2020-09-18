@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect,reverse
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import  AuthenticationForm
+from django.contrib.auth.forms import  AuthenticationForm,PasswordChangeForm
 from django.views.decorators.csrf import  csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .forms import *
@@ -52,6 +52,30 @@ def Login(request):
 
         return render(request, 'Login.html', context)
 
+@login_required(redirect_field_name='Login')
+@csrf_exempt
+def AlterarSenha(request):
+    if request.method == 'POST':
+        oldpassword = request.POST["old_password"]
+        password1 = request.POST["new_password1"]
+        password2 = request.POST["new_password2"]
+        if request.user.check_password(oldpassword) and password1==password2:
+            if oldpassword==password1:
+                messages.error(request,"A senha antiga é igual a nova")
+            else:
+                request.user.set_senha(password1)
+                messages.success(request, 'Senha alterada com sucesso')
+                user = authenticate(username=request.user, password=password1)
+                login(request,user)
+                return redirect("Minha_Conta")
+        else:
+            if request.user.check_password(oldpassword) is False:
+                messages.error(request, 'A senha antiga está incorreta')
+            if password1 != password2:
+                messages.error(request, 'A confirmação de senha falhou')
+    form = PasswordChangeForm(user=request.user)
+    context = {'form':form }
+    return render(request, 'AlterarSenha.html', context)
 
 
 @login_required(redirect_field_name='Home')
@@ -59,6 +83,7 @@ def Logout(request):
     logout(request)
     messages.success(request,"Logout realizado com Sucesso")
     return redirect('Home')
+
 @login_required
 def Minha_Conta(request):
     if request.user.is_authenticated:

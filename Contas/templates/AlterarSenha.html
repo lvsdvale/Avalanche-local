@@ -1,0 +1,24 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Resetar senha{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+{% bootstrap_messages %}
+<div class ="resetar" >
+<h2 style="font-family:'Road_Rage', Arial, Helvetica, sans-serif;padding-top:5px; margin-left:5px;">Alterar senha</h2>
+  <form  method="post">
+      {% csrf_token %}
+      {%bootstrap_form form%}
+      {% buttons%}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    {% endbuttons %}
+  </form>
+</div>
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

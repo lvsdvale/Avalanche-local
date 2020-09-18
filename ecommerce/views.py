@@ -146,7 +146,7 @@ class PagseguroView(LoginRequiredMixin,RedirectView):
         )
         response = pg.checkout()
         return response.payment_url
-@csrf_exempt
+
 def PagseguroNotification(request):
     notification_code = request.POST.get('notificationCode', None)
     if notification_code:

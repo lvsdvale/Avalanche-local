@@ -135,6 +135,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     def set_senha(self,senha):
         self.set_password(raw_password=senha)
         self.save()
+
     class Meta:
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'
