@@ -26,6 +26,7 @@ header {
     color:#FFF;
     position: sticky;
     top: 0;
+    border-bottom:1px solid #050331;
 }
 .adicional{
     max-width:1140px;
@@ -110,6 +111,9 @@ display:none;
 .menu ul ul {
     position:absolute;
     visibility:hidden;
+    border-left:1px solid #050331;
+    border-right:1px solid #050331;
+    border-button:1px solid #050331;
 }
 .menu ul ul li {
 float:none;
@@ -1491,7 +1495,7 @@ min-height:77.5vh;
 
 
 
-
+/*APLICATIVO CONTAS*/
 /* PÁGINA DE LOGIN*/
 
 #login{
@@ -1607,8 +1611,118 @@ margin-bottom:5vh;
     text-align:center;
     }
 .resetar{
-    min-height:77.5vh;
+    min-height:78vh;
     }
+    /* Minha conta*/
+.account-name{
+    padding-top:1%;
+    text-align:center;
+}
+.account-name h2{
+    color:#050329;
+    font-weight:bold;
+}
+.minha-conta{
+    min-height:78vh;
+    display:flex;
+    flex-direction:row;
+}
+.account-options{
+border-radius:1%;
+background-color:#050329;
+margin:1% 2% 1% 0.1%;
+width:60%;
+height:15em;
+display:flex;
+}
+.account-options ul{
+display:flex;
+flex-direction:column;
+width:100%;
+height:100%;
+}
+.account-options li{
+    list-style:none;
+}
+.account-options li a {
+    display:flex;
+    color:#FFF;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    padding-left:10px;
+    padding-right:10px;
+    height:62px;
+    width:100%;
+    align-items:center;
+    border-bottom:3px solid #050331;
+}
+.account-options li a:hover,.account-options .active a{
+    color:#E9C53C;
+}
+.account-info{
+    margin:1%;
+    height:auto;
+}
+.account-info h1{
+font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+color:#050329;
+}
+.account-social h2{
+color:#050329;
+}
+.account-events h2{
+color:#050329;
+}
+.account-section{
+display:flex;
+flex-direction:row;
+margin-bottom:2%;
+}
+.account-section-image{
+    width:30%;
+    height:120px;
+    margin-right:1%;
+}
+.account-section-image img{
+    width:100%;
+    height:100%;
+    border-radius:2%;
+}
+.account-section-info {
+    width:100%;
+}
+.account-section-info a{
+    text-decoration:none;
+    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    color:#050329;
+}
+.meus_dados{
+    min-height:77.5vh;
+    display:flex;
+    flex-direction:row;
+}
+.meus_pedidos{
+    min-height:77.5vh;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+.Pedidos{
+    display:flex;
+    flex-direction:column;
+    padding-left:5%;
+    padding-top:1%;
+    width:100%;
+    border-radius:1%;
+    margin:0 1% 2% 1%;
+    background-color:#DCDCDC;
+}
+.Pedidos a {
+  text-decoration:none;
+  font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+  color:#050329;
+}
 /* Ecommerce */
 /* Lojinha */
 .clearproducts{
@@ -1876,8 +1990,6 @@ color:white;
     padding-left:40vw;
     padding-right:40vw;
     height:30px;
-    border-bottom:1px solid #050331;
-
     }
 
      #bt_menu{
@@ -1888,7 +2000,7 @@ color:white;
         position:static;
         display:none;
         visibility:hidden;
-        transition: all .4s
+        transition: all 1s
      }
      nav li:hover .submenu{
         display:block;
@@ -2042,6 +2154,23 @@ color:white;
         color:#FFF;
         font-size:10px;
     }
+    .minha-conta{
+    flex-wrap:wrap;
+    }
+    .account-info{
+    margin:1% 1% 1% 1%;
+    }
+    .account-options{
+    width:100%;
+    margin-left:2%;
+    }
+    .account-options li a{
+    justify-content:center;
+    }
+    .meus_dados{
+    flex-wrap:wrap
+    }
+
     /*ecommerce responsivo 450 - 800 px*/
     .clearproducts {
      display:flex;
@@ -2396,6 +2525,25 @@ color:white;
         color:#FFF;
         font-size:7px;
    }
+   .minha-conta{
+    flex-wrap:wrap;
+    }
+    .account-info{
+    margin:1% 1% 1% 1%;
+    }
+    .account-options{
+    width:100%;
+    margin-left:1%;
+    }
+    .account-options li a{
+    justify-content:center;
+    }
+    .account-section-info p{
+    font-size:9px;
+    }
+    .meus_dados{
+    flex-wrap:wrap
+    }
     /*ecommerce responsivo 450 px*/
     .clearproducts {
      display:flex;

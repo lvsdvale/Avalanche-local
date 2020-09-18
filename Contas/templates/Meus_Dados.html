@@ -1,0 +1,71 @@
+{% extends 'Base.html' %}
+{% load static %}
+{%load bootstrap4 %}
+
+<head>
+{%block title%}Minha Conta{%endblock%}
+<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+  <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+  {% bootstrap_css %}
+</head>
+{%block body%}
+<div class="meus_dados">
+    <div class="account-options">
+          <ul>
+              <li><a href="{% url 'Minha_Conta' %}">Minha Conta</a></li>
+              <li><a href="{% url 'Meus_Pedidos'%}">Meus Pedidos</a></li>
+              <li><a href="{% url 'Meus_Dados' %}">Meus Dados</a></li>
+          </ul>
+    </div>
+    <div class="account-info">
+        <div class="dados-user">
+            <h2>{{user.Nome_completo}}</h2>
+            <p>Email: {{user.email}}</p>
+            <p>CPF: {{user.CPF}}</p>
+            <p>Sócio: {{user.get_socio}}</p>
+            <p>Curso: {{user.Curso}}</p>
+            <p>RA: {{user.Registro_Academico}}</p>
+            <p>Telefone: {{user.Telefone}}</p>
+        </div>
+      <h1>Minhas inscrições</h1>
+        {%for inscricao in Inscricao_esportes%}
+        <section class="account-section">
+            <div class="account-section-image">
+              <img src="{{inscricao.modalidade.image.url}}">
+            </div>
+            <div class="account-section-info">
+                <a href="{%url 'Modalidades_View' inscricao.modalidade.slug %}">{{inscricao.modalidade.name}}</a>
+                <p>{{inscricao.modalidade.previa}}</p>
+                <p>Data: {{inscricao.data|date:"d/m/Y"}}</p>
+            </div>
+        </section>
+        {%endfor%}
+      {%for inscricao in Inscricao_campanhas%}
+        <section class="account-section">
+            <div class="account-section-image">
+              <img src="{{inscricao.campanha.image.url}}">
+            </div>
+            <div class="account-section-info">
+                <a href="{%url 'Campanhas_View' inscricao.campanha.slug %}">{{inscricao.campanha.name}}</a>
+                <p>{{inscricao.campanha.previa}}</p>
+                <p>Data:{{inscricao.data|date:"d/m/Y"}}</p>
+            </div>
+        </section>
+        {%endfor%}
+      {%for inscricao in Inscricao_E_sports%}
+        <section class="account-section">
+            <div class="account-section-image">
+              <img src="{{inscricao.game.image.url}}">
+            </div>
+            <div class="account-section-info">
+                <a href="{%url 'Games_View' inscricao.game.slug %}">{{inscricao.game.name}}</a>
+                <p>{{inscricao.game.previa}}</p>
+                <p>Data:{{inscricao.data|date:"d/m/Y"}}</p>
+            </div>
+        </section>
+        {%endfor%}
+    </div>
+</div>
+
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}

@@ -87,19 +87,27 @@ def Logout(request):
 @login_required
 def Minha_Conta(request):
     if request.user.is_authenticated:
-        Inscricao_modalidades = inscricao_modalidades.objects.filter(usuario = request.user).order_by('modalidade')
-        Inscricao_campanhas_sociais = inscricao_campanhas_sociais.objects.filter(usuario = request.user).order_by('campanha')
-        Inscricao_E_sports = inscricao_E_sports.objects.filter(usuario = request.user).order_by('game')
         Eventos = eventos.objects.all().order_by('-pub_date')
         Campanhas = campanhas.objects.all().order_by('-pub_date')
         context = {}
         context['Eventos'] = Eventos
         context['Campanhas'] = Campanhas
+        return render(request,'Minha_Conta.html',context)
+    return redirect('Login')
+
+@login_required
+def Meus_Dados(request):
+    if request.user.is_authenticated:
+        Inscricao_modalidades = inscricao_modalidades.objects.filter(usuario = request.user).order_by('modalidade')
+        Inscricao_campanhas_sociais = inscricao_campanhas_sociais.objects.filter(usuario = request.user).order_by('campanha')
+        Inscricao_E_sports = inscricao_E_sports.objects.filter(usuario = request.user).order_by('game')
+        context = {}
         context['Inscricao_esportes'] = Inscricao_modalidades
         context['Inscricao_campanhas'] = Inscricao_campanhas_sociais
         context['Inscricao_E_sports'] = Inscricao_E_sports
-        return render(request,'Minha_Conta.html',context)
+        return render(request,'Meus_Dados.html',context)
     return redirect('Login')
+
 
 def Resetar(request):
     if request.method == 'POST':

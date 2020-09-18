@@ -1,80 +1,55 @@
 {% extends 'Base.html' %}
 {% load static %}
 {%load bootstrap4 %}
-
 <head>
-{%block title%}Minha Conta{%endblock%}
-<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
-  <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-  {% bootstrap_css %}
+    {%block title%}Minha Conta{%endblock%}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+    {% bootstrap_css %}
 </head>
 {%block body%}
-<h1>Dados do usuário</h1>
-<p>{{user.Nome_completo}}</p>
-<h1>Calendario Avalanche</h1>
-<h2>Proximos Eventos</h2>
-{%for evento in Eventos %}
-    <tr>
-        <td>
-          <a href="{% url 'Eventos_View' evento.slug%}">{{evento.name}}</a>
-        </td>
-        <td>
-            {{evento.data|date:"d/m/Y"}}
-        </td>
-    </tr><br>
-    {%endfor%}
-<h2>Proximas ações</h2>
-{%for campanha in Campanhas %}
-    <tr>
-        <td>
-          <a href="{%url 'Campanhas_View' campanha.slug%}">{{campanha.name}}</a>
-        </td>
-        <td>
-            {{campanha.data|date:"d/m/Y"}}
-        </td>
-    </tr><br>
-    {%endfor%}
-<h2>Meus esportes</h2>
-{%if Inscricao_esportes is None%}
-<p>Nenhuma inscricao em esportes</p>
-{%endif%}
-{%for inscricao in Inscricao_esportes %}
-    <tr>
-        <td>
-          <a href="{%url 'Modalidades_View' inscricao.modalidade.slug%}">{{inscricao.modalidade}}</a>
-        </td>
-        <td>
-            {{inscricao.data|date:"d/m/Y"}}
-        </td>
-    </tr><br>
-    {%endfor%}
-<h2>Minhas ações sociais</h2>
-{%for inscricao in Incricao_campanhas  %}
-{%if inscricao is None %}
-<p>Nenhuma inscricao em campanhas sociais</p>
-{%endif%}
-    <tr>
-        <td>
-          <a href="{%url 'Campanhas_View' inscricao.campanha.slug%}">{{inscricao.campanha}}</a>
-        </td>
-        <td>
-            {{inscricao.data|date:"d/m/Y"}}
-        </td>
-    </tr><br>
-    {%endfor%}
-<h2>Minhas Modalidade de E_sports</h2>
-{%if Inscricao_E_sports is None%}
-<p>Nenhuma inscrição em modalidades de E-Sports</p>
-{%endif%}
-{%for inscricao in Incricao_E_sports %}
-    <tr>
-        <td>
-          <a href="{% url 'Games_View' inscricao.game.slug %}">{{inscricao.game}}</a>
-        </td>
-        <td>
-            {{inscricao.data|date:"d/m/Y"}}
-        </td>
-    </tr><br>
-    {%endfor%}
+<div class="account-name">
+    <h2>{{user.Nome_completo}}</h2>
+</div>
+<div class="minha-conta">
+    <div class="account-options">
+        <ul>
+            <li><a href="{% url 'Minha_Conta' %}">Minha Conta</a></li>
+            <li><a href="{% url 'Meus_Pedidos'%}">Meus Pedidos</a></li>
+            <li><a href="{% url 'Meus_Dados' %}">Meus Dados</a></li>
+        </ul>
+    </div>
+    <div class="account-info">
+        <h1>Calendario Avalanche</h1>
+        <div class="account-events">
+            <h2>Proximos Eventos</h2>
+            {%for evento in Eventos %}
+                <section class="account-section">
+                    <div class="account-section-image">
+                       <img src="{{evento.image.url}}">
+                    </div>
+                    <div class="account-section-info">
+                        <a href="{%url 'Eventos_View' evento.slug %}">{{evento.name}}</a>
+                        <p>{{evento.previa}}</p>
+                    </div>
+                </section>
+            {%endfor%}
+        </div>
+        <div class="account-social">
+            <h2>Proximas ações</h2>
+            {%for campanha in Campanhas %}
+                <section class="account-section">
+                    <div class="account-section-image">
+                       <img src="{{campanha.image.url}}">
+                    </div>
+                    <div class="account-section-info">
+                        <a href="{%url 'Campanhas_View' campanha.slug %}">{{campanha.name}}</a>
+                        <p>{{campanha.previa}}</p>
+                    </div>
+                </section>
+            {%endfor%}
+        </div>
+    </div>
+</div>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

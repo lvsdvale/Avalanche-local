@@ -130,7 +130,11 @@ class user(AbstractBaseUser, PermissionsMixin):
 
     @property
     def get_socio(self):
-        return self.Socio
+        if self.Socio:
+            socio = "Sim"
+        else:
+            socio="Não"
+        return socio
 
     def set_senha(self,senha):
         self.set_password(raw_password=senha)

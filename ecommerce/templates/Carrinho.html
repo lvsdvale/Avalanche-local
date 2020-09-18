@@ -67,13 +67,19 @@
     var $subtotal = document.getElementById('subtotal');
     var $taxa = document.getElementById('taxa');
     var $total = document.getElementById('total');
+    var $cart = document.querySelector('.cart');
     if (isNaN({{item.total}})){
         $subtotal.innerHTML = "Subtotal: R$ 0.00"
-        $taxa.innerHTML = "Taxa de conveniencia: R$ 0.00"
+        $taxa.innerHTML = "Taxa de conveniência: R$ 0.00"
         $total.innerHTML = "Total: R$ 0.00"
+        $cart.innerHTML = '<p class = "empty-cart">Seu carrinho está Vazio...<p>';
+        var $emptycart = document.querySelector('.empty-cart');
+        $emptycart.style.fontSize = "20px";
+        $emptycart.style.padding = "3%";
+
     }
     else{
-        $taxa.innerHTML = "Taxa de conveniencia: R$ " + (parseFloat({{item.total}})*0.05).toFixed(2);
+        $taxa.innerHTML = "Taxa de conveniência: R$ " + (parseFloat({{item.total}})*0.05).toFixed(2);
         $total.innerHTML = "Total: R$ " + (parseFloat({{item.total}})*1.05).toFixed(2);
     }
 </script>

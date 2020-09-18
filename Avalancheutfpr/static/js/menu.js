@@ -15,6 +15,7 @@
             }
         else{
             $nav.style.display="none";
+            $nav.style.position="absolute";
             $label.innerHTML = "&#9776";
             $label.style.fontSize = "40px";
             }

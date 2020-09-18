@@ -10,48 +10,52 @@
 </head>
 {%block body%}
 {% bootstrap_messages%}
-<h2>Meus Pedidos</h2>
-{% if object_list is not None%}
-<table>
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Produtos
-            </th>
-            <th>
-                Situação
-            </th>
-            <th>
-                Data
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-    {%for Pedido in object_list%}
-    <tr>
-        <td>
-            <a href="{%url 'PedidoView' Pedido.pk %}">{{Pedido.pk}}</a>
-        </td>
-        <td>
-            {%for produto in Pedido.produto%}
-            {{produto.name}}{%if not forloop.last%},{%endif%}
-            {%endfor%}
-        </td>
-        <td>
-            {{Pedido.get_status_display}}
-        </td>
-        <td>
-            {{Pedido.criado|date:"d/m/Y"}}
-        </td>
-    </tr>
+<h2 style="color:#050329;">Meus Pedidos</h2>
+<div class="meus_pedidos">
+    <div class="account-options">
+          <ul>
+              <li><a href="{% url 'Minha_Conta' %}">Minha Conta</a></li>
+              <li><a href="{% url 'Meus_Pedidos'%}">Meus Pedidos</a></li>
+              <li><a href="{% url 'Meus_Dados' %}">Meus Dados</a></li>
+          </ul>
+    </div>
+    {%for pedido in object_list%}
+    <div class="Pedidos">
+        <div class="Pedidos-info">
+    <a href="{% url 'PedidoView' pedido.pk %}"><h2>Pedido #{{ pedido.pk }}</h2></a>
+    <p id = 'total'> Total: R$ {{ pedido.total|floatformat:"2"}}</p>
+    <script>
+    var $total = document.getElementById("total")
+    $total.innerHTML = 'Total: R$ ' + (parseFloat({{pedido.total}})*1.05).toFixed(2);
+    </script>
+             </div>
+   {% for item in pedido.Itens.all %}
+        <section class="order-section">
+                <div class="order-section-image">
+                    <img src="{{item.produto.modelo.thumb.url}}" width="150" height="150">
+                </div>
+                <div class="order-section-info">
+                    <p><strong>{{item.produto}}</strong></p>
+                    <p>Preço: R$ {{item.preco|floatformat:"2"}}</p>
+                    <p>Quantidade: {{item.quantidade}}</p>
+                </div>
+        </section>
+        {%endfor%}
+         </div>
     {%endfor%}
-    </tbody>
-</table>
-{%else%}
-<p>Você ainda não tem Pedidos</p>
-{%endif%}
+</div>
+<script>
+   (function(){
+   'use strict';
+   var $options = document.querySelector(".account-options");
+   var $option = document.querySelectorAll(".account-options li a");
+   $options.style.width ="100%";
+   $options.style.marginLeft ="1%";
+   $options.style.borderRadius ="1%";
+   for(var x=0;x<3;x++){
+    $option[x].style.justifyContent= "center";
+   }
+   })()
+</script>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}
