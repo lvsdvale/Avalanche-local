@@ -584,6 +584,56 @@ width:3vx;
 height:3vh;
 border-radius:10px%;
 }
+.directors{
+    min-height:77.5vh;
+}
+.directors h1{
+    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    color:#050329;
+    margin-left:1%;
+    padding-top:.5%;
+}
+.diretor-section{
+    display:flex;
+    flex-direction:row;
+    margin-bottom:2%;
+}
+.diretor-section-image{
+    width:20%;
+    height:20vh;
+    margin-left:1%;
+
+}
+.diretor-section-image img{
+    width:100%;
+    height:100%;
+    border-radius:5%;
+}
+.diretor-section-info{
+    display:flex;
+    flex-direction:column;
+    margin-left:5%;
+}
+.diretor-section-info h2{
+    font-size:30px;
+    letter-spacing:3px;
+}
+.diretor-section-info p{
+    font-size:22px;
+    padding-top:1%;
+    padding-bottom:1%;
+}
+
+.diretor-section-social{
+    display:flex;
+    flex-direction:row;
+
+}
+.diretor-section-social img{
+    width:1.7vw;
+    height:2.5vh;
+    margin-left:12px;
+}
 
 /*  PÁGINA EVENTOS */
 .eventos-area{
@@ -2082,6 +2132,12 @@ color:white;
     margin-top:1vh;
     font-size:20px;
     }
+    .diretor-section-image{
+    width:30%;
+    height:20vh;
+    }
+
+
 
     /*Login rponnsivo 450 - 800*/
 
@@ -2474,7 +2530,10 @@ color:white;
     .map-info-item-image{
     margin: 0 1vw 1vh 1vw;
     }
-
+    .diretor-section-image{
+    width:40%;
+    height:20vh;
+    }
 
     /*Login rponnsivo 450 */
 
