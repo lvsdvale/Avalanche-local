@@ -15,11 +15,20 @@
             }
         else{
             $nav.style.display="none";
-            $nav.style.position="absolute";
             $label.innerHTML = "&#9776";
             $label.style.fontSize = "40px";
             }
     });
+    window.addEventListener("resize",function(){
+        if(window.innerWidth>800){
+            $nav.style.display="block";
+        }
+        else{
+            $nav.style.display="none";
+
+        }
+    }
+    )
     if(window.innerWidth<800){
         $submenuactiver.addEventListener("click",function(){
                 if(_clicked){

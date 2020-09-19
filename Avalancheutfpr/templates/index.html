@@ -7,30 +7,15 @@
 <main>
     {% bootstrap_messages %}
     <section class="banner">
-        <div class="sliders" style="margin-left:0vw;">
             <div class="slide">
-                <div class="slidearea">
-                    <h1>Como é bom ser Sócio<br/></h1>
-                    <h1><span>Avalanche</span></h1>
-                    <h2>O que está esperando ?</h2>
-                    <a href="{%url 'Socio'%}" class="button">quero ser sócio!</a>
-                </div>
+                    <a href="{%url 'Socio'%}"><img src="{%static 'assets/Banner1.jpg'%}"></a>
             </div><div class="slide">
-                <div class="slidearea">
-                    <h1>Design is about<br/><span>doido</span></h1>
-                    <h2>Call Us: +00 0 1234 5678</h2>
-                    <a href="" class="button">Get in touch!</a>
-                </div>
+                <a href="{%url 'Produtos'%}"><img src="{%static 'assets/Banner2.jpg'%}"></a>
             </div><div class="slide">
-                <div class="slidearea">
-                    <h1>Design is about<br/><span>Algo</span></h1>
-                    <h2>Call Us: +00 0 1234 5678</h2>
-                    <a href="" class="button">Get in touch!</a>
-                </div>
+                <a href="{%url 'Social'%}"><img src="{%static 'assets/Banner3.jpg'%}"></a>
             </div>
-        </div>
         <div class="sliders-pointers">
-            <div class="pointer active"></div>
+            <div class="pointer"></div>
             <div class="pointer"></div>
             <div class="pointer"></div>
         </div>
@@ -54,7 +39,7 @@
     </section>
     <section class="default dark bg-team">
         <div class="section-team-area">
-            <a style="text-decoration:none; color:#FFF;" href="{%url 'Diretoria'%}"><div class="section-title">Nossa equipe</div></a>
+            <a style="text-decoration:none; font-family:'Road_Rage',Arial,Helvetica,sans-serif;letter-spacing:3px;" href="{%url 'Diretoria'%}"><div class="section-title" style="color:#FFFAFA;">Nossa equipe</div></a>
             <div class="section-desc">Ursos avalanche</div>
             <div class="section-body">
                 <div class="section-team">
@@ -127,29 +112,32 @@
         </div>
     </section>
     <section class="default light premium">
-        <div class="section-title">Produto</div>
-        <div class="section-desc">Produto em destaque</div>
+        <div class="section-title">Produtos</div>
+        <div class="section-desc">Produtos em destaque</div>
         <div class="section-body">
             <div class="section-premium">
                 <div class="sliders" style="margin-left:0;">
+                    <a class="prev" onclick="plusSlides(-1)"><p >&#10094;</p></a>
+                    <a class="next" onclick="plusSlides(1)"><p>&#10095;</p></a>
+                    {%for Produto in Produtos%}
                     <div class="slide">
                         <div class="slidearea">
                             <div class="section-premium--left">
-                                <a href="{%url 'ProdutosBase_view' Produtos.slug %}"><img src="{{Produtos.thumb.url}}" /></a>
+                                <a href="{%url 'ProdutosBase_view' Produto.slug %}"><img src="{{Produto.thumb.url}}" /></a>
                             </div>
                             <div class="section-premium--right">
                                     <div class="section-premium--item">
                                         <img src="{% static 'assets/check.png'%}" />
                                         <div>
                                             <h4>Nome do produto</h4>
-                                            {{Produtos.name}}<br/>
+                                            {{Produto.name}}<br/>
                                         </div>
                                     </div>
                                     <div class="section-premium--item">
                                         <img src="{%static 'assets/check.png'%}" />
                                         <div>
                                             <h4>Mais informações</h4>
-                                           {{Produtos.descricao}}
+                                           {{Produto.descricao}}
                                         </div>
                                     </div>
                                     <div class="section-premium--item">
@@ -157,25 +145,19 @@
                                         {%if user.get_socio %}
                                         <div>
                                             <h4>Preço</h4>
-                                            {{Produtos.p_socio}}
+                                            {{Produto.p_socio}}
                                         </div>
                                         {%else%}
                                         <div>
                                             <h4>Preço</h4>
-                                            {{Produtos.preco}}
+                                            {{Produto.preco}}
                                         </div>
                                         {%endif%}
                                     </div>
                             </div>
                         </div>
-                    </div><div class="slide">
-                        <div class="slidearea">
-                            ...
-                        </div>
-                    </div><div class="slide">
-                        <div class="slidearea">
-                            ...
-                        </div>
+                    </div>
+                    {%endfor%}
                     </div>
                 </div>
             </div>
@@ -214,6 +196,7 @@
 
 </main>
 {% bootstrap_javascript jquery='full'%}
-
+<script src="{%static 'js/banner.js'%}"></script>
+<script src="{%static 'js/destaques.js'%}"></script>
 {%endblock%}
 </html>

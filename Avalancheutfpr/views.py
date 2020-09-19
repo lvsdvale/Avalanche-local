@@ -15,7 +15,7 @@ class Home(TemplateView):
         context = super(Home,self).get_context_data(**kwargs)
         Diretoria = diretoria.objects.all().order_by('cargo')
         Produtos =  produtobase.objects.filter(destaque = 'Sim').order_by('-id')
-        context['Produtos'] = Produtos[0]
+        context['Produtos'] = Produtos
         context['Presidente'] = Diretoria[0]
         context['Vice'] = Diretoria[1]
         context['Geral'] = Diretoria[2]
