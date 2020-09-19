@@ -24,6 +24,8 @@ urlpatterns = [
     path('',include('Contas.urls')),
     path('',include('ecommerce.urls')),
     path('',include('Engenhariadas.urls')),
+    path('',include('Administrativo.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.AdminSite.site_header = "A.A.A.E.A UTFPR-CT"
