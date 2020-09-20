@@ -19,6 +19,7 @@
               <li><a href="{% url 'Meus_Dados' %}">Meus Dados</a></li>
           </ul>
     </div>
+    <div class="meus-pedidos-info">
     {%for pedido in object_list%}
     <div class="Pedidos">
         <div class="Pedidos-info">
@@ -43,19 +44,10 @@
         {%endfor%}
          </div>
     {%endfor%}
+   </div>
 </div>
 <script>
-   (function(){
-   'use strict';
-   var $options = document.querySelector(".account-options");
-   var $option = document.querySelectorAll(".account-options li a");
-   $options.style.width ="100%";
-   $options.style.marginLeft ="1%";
-   $options.style.borderRadius ="1%";
-   for(var x=0;x<3;x++){
-    $option[x].style.justifyContent= "center";
-   }
-   })()
+
 </script>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

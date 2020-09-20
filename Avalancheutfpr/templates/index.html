@@ -82,7 +82,6 @@
         </div>
     </section>
 
-
     <section class="default dark">
         <div class="section-title">Esportes</div>
         <div class="section-desc">Destaques esportes avalanche</div>
@@ -130,14 +129,14 @@
                                         <img src="{% static 'assets/check.png'%}" />
                                         <div>
                                             <h4>Nome do produto</h4>
-                                            {{Produto.name}}<br/>
+                                            <p>{{Produto.name}}</p>
                                         </div>
                                     </div>
                                     <div class="section-premium--item">
                                         <img src="{%static 'assets/check.png'%}" />
                                         <div>
                                             <h4>Mais informações</h4>
-                                           {{Produto.descricao}}
+                                            <p>{{Produto.descricao}}</p>
                                         </div>
                                     </div>
                                     <div class="section-premium--item">
@@ -145,12 +144,12 @@
                                         {%if user.get_socio %}
                                         <div>
                                             <h4>Preço</h4>
-                                            {{Produto.p_socio}}
+                                            <p>{{Produto.p_socio}}</p>
                                         </div>
                                         {%else%}
                                         <div>
                                             <h4>Preço</h4>
-                                            {{Produto.preco}}
+                                            <p>{{Produto.preco}}</p>
                                         </div>
                                         {%endif%}
                                     </div>

@@ -51,9 +51,9 @@ header {
 }
 
 .header {
-    max-width:1140px;
+    width:100%;
     height:100px;
-    margin:auto;
+    padding: 0 8%; 0 8%;
     display:flex;
     align-items:center;
 }
@@ -101,23 +101,26 @@ display:none;
     text-transform: uppercase;
     font-weight: 600;
     text-decoration: none;
+    width:auto;
     padding-left:10px;
     padding-right:10px;
-    height:35px;
-    align-items:center;
+    height:30px;
     border-bottom:5px solid #050329;
 }
-
 .menu ul ul {
     position:absolute;
     visibility:hidden;
     border-left:1px solid #050331;
     border-right:1px solid #050331;
     border-button:1px solid #050331;
+    padding-top:2%;
 }
 .menu ul ul li {
 float:none;
 background-color:#050329;
+}
+.submenu_active img{
+    margin-top:2.5%;
 }
 
 .menu li a:hover, .menu .active a {
@@ -187,6 +190,7 @@ border-radius:1%;
 width:100%;
 height:100%;
 }
+
 .banner .slidearea {
     display:flex;
     flex-direction:column;
@@ -236,6 +240,7 @@ height:100%;
     text-align:center;
     text-transform: uppercase;
     font-weight: 600;
+    color:#050329;
 }
 .default .section-title {
     font-size:20px;
@@ -268,6 +273,7 @@ height:100%;
 }
 .default.dark {
     background-color:#050329;
+    border-top:1px solid #E9C53C;
 }
 .default.dark .section-desc{
     color:#E9C53C ;
@@ -308,6 +314,7 @@ CSS DE ÁREAS ESPECÍFICAS
 }
 .section-aboutus--left {
     flex:1;
+    padding-left:1%;
 }
 .section-aboutus--left p {
     font-size:14px;
@@ -333,8 +340,6 @@ CSS DE ÁREAS ESPECÍFICAS
     margin-top:30px;
     border-radius:20px;
 }
-
-
 
 
 .section-services {
@@ -370,13 +375,11 @@ CSS DE ÁREAS ESPECÍFICAS
     background-color:#050329;
     padding-top:50px;
     padding-bottom:50px;
+
 }
 .section-team {
-    overflow:hidden;
     max-width:880px;
     margin:auto;
-
-
 }
 .section-team .sliders {
     width:1000vw;
@@ -385,12 +388,12 @@ CSS DE ÁREAS ESPECÍFICAS
 }
 .section-team .slide {
     width:280px;
-    height:100%;
+    height:80%;
     min-height:200px;
     display:inline-block;
     background-color:#050329;
     margin-right:20px;
-
+    overflow:hidden;
 }
 .section-team .slidearea {
     display:flex;
@@ -509,6 +512,7 @@ CSS DE ÁREAS ESPECÍFICAS
     display:flex;
     margin-bottom:10px;
 }
+
 .section-premium--item img {
     width:40px;
     height:40px;
@@ -520,9 +524,13 @@ CSS DE ÁREAS ESPECÍFICAS
     line-height:20px;
 }
 .section-premium--item div h4 {
-    color:#000;
-    font-size:17px;
-    font-weight:600;
+    color:#050329;
+    font-size:35px;
+    font-weight:600 bold;
+}
+.section-premium--item div p {
+    color:#050331;
+    font-size:16px;
 }
 
 .section-premium .sliders-pointers {
@@ -586,18 +594,32 @@ border-radius:10px%;
 }
 .directors{
     min-height:77.5vh;
+    background-color:#050329
 }
 .directors h1{
     font-family:'Road_Rage', Arial, Helvetica, sans-serif;
-    color:#050329;
+    color:FFFAFA;
     margin-left:1%;
     padding-top:.5%;
 }
 .diretor-section{
     display:flex;
     flex-direction:row;
-    margin-bottom:2%;
+    padding-bottom:1.6%;
+    border:1px solid #E9C53C;
+    padding-top:2%;
+    margin-top:1%;
+    margin-right:1%;
+    border-radius:10px;
+    overflow:hidden;
 }
+.diretor-section:hover{
+     box-shadow:
+                1px 1px #E9C53C,
+                2px 2px #E9C53C,
+                3px 3px #E9C53C;
+}
+
 .diretor-section-image{
     width:20%;
     height:20vh;
@@ -608,6 +630,7 @@ border-radius:10px%;
     width:100%;
     height:100%;
     border-radius:5%;
+    border-left:1px solid #E9C53C;
 }
 .diretor-section-info{
     display:flex;
@@ -617,22 +640,27 @@ border-radius:10px%;
 .diretor-section-info h2{
     font-size:30px;
     letter-spacing:3px;
+    color:#FFFAFA;
 }
 .diretor-section-info p{
     font-size:22px;
     padding-top:1%;
     padding-bottom:1%;
+    color:#FFFAFA;
 }
 
 .diretor-section-social{
     display:flex;
     flex-direction:row;
 
+
 }
 .diretor-section-social img{
     width:1.7vw;
     height:2.5vh;
     margin-left:12px;
+    background-color:#FFFAFA;
+    border-radius:100%;
 }
 
 /*  PÁGINA EVENTOS */
@@ -645,12 +673,13 @@ min-height:77.5vh;
     border-bottom: 3px solid #fff;
 }
 .default-eventos .section-title-eventos{
-    text-align:center;
+    text-align:center;;
     text-transform: uppercase;
-    font-weight: 600;
+    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    letter-spacing:4px;
 }
 .default-eventos .section-title-eventos {
-    font-size:25px;
+    font-size:30px;
     margin-top:10px;
     margin-bottom:40px;
 }
@@ -659,7 +688,7 @@ min-height:77.5vh;
     margin:auto;
 }
 .default-eventos.light-eventos {
-    background-color:#E9C53C;
+    Background-color:#FFFAFA;
 }
 .default-eventos.light-eventos .section-title-eventos,
 .default-eventos.light-eventos .section-body-eventos{
@@ -693,11 +722,14 @@ min-height:77.5vh;
 .section-eventos--right---esquerda {
     width:300px;
     text-align:left;
+     margin-right:2%;
+     margin-left:2%;
 }
 .section-eventos--right---esquerda img {
     width:100%;
     height:100%;
     box-shadow:0px 5px 10px #555;
+
 }
 .section-button-dark{
     display:inline-block;
@@ -728,6 +760,8 @@ min-height:77.5vh;
 .section-eventos--right {
     width:350px;
     text-align:center;
+    margin-right:2%;
+     margin-left:2%;
 }
 .section-eventos--right img {
     width:250px;
@@ -763,19 +797,19 @@ min-height:77.5vh;
 .section-evento-right {
     width:520px;
     text-align:left;
+    padding-left:5%;
 }
 .section-evento-right img {
     width:480px;
     box-shadow:0px 5px 10px #333;
 }
 .bg-evento {
-    background-image:url('../assets/bg.jpg');
+    background-image:url('../assets/Background.png');
     background-size:cover;
     background-position:center;
     padding:0;
 }
 .section-evento-area {
-    background-color:rgba(0, 0, 0, 0.8);
     padding-top:50px;
     padding-bottom:50px;
 }
@@ -888,6 +922,7 @@ min-height:77.5vh;
 .section-eventos-sociais--right {
     width:350px;
     text-align:center;
+    margin:2%;
 }
 .section-eventos-sociais--right img {
     width:250px;
@@ -917,13 +952,12 @@ min-height:77.5vh;
     box-shadow:0px 5px 10px #333;
 }
 .bg-evento-social {
-    background-image:url('../assets/bg.jpg');
+    background-image:url('../assets/Background.png');
     background-size:cover;
     background-position:center;
     padding:0;
 }
 .section-evento-social-area {
-    background-color:rgba(0, 0, 0, 0.8);
     padding-top:50px;
     padding-bottom:50px;
 }
@@ -994,19 +1028,23 @@ min-height:77.5vh;
 .default-esportes .section-title-esportes{
     text-align:center;
     text-transform: uppercase;
-    font-weight: 600;
+   font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+
 }
 .default-esportes .section-title-esportes {
-    font-size:25px;
+    font-size:30px;
     margin-top:10px;
     margin-bottom:40px;
+    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    letter-spacing:4px;
+}
 }
 .default-esportes .section-body-esportes {
     max-width:1140px;
     margin:auto;
 }
 .default-esportes.light-esportes {
-    background-color:#E9C53C;
+    background-color:#FFFAFA;
 }
 .default-esportes.light-esportes .section-title-esportes,
 .default-esportes.light-esportes .section-body-esportes{
@@ -1036,10 +1074,14 @@ min-height:77.5vh;
     max-width: 790px;
     font-size:14px;
     line-height:20px;
+
 }
 .section-esportes--right---esquerda {
     width:300px;
     text-align:left;
+    margin-right:2%;
+    margin-left:2%;
+
 }
 .section-esportes--right---esquerda img {
     width:250px;
@@ -1066,6 +1108,7 @@ min-height:77.5vh;
 
 .section-esportes--left {
     flex:1;
+    margin-left:2%;
 }
 .section-esportes--left p {
     font-size:14px;
@@ -1074,6 +1117,7 @@ min-height:77.5vh;
 .section-esportes--right {
     width:350px;
     text-align:center;
+    margin-right:2%;
 }
 .section-esportes--right img {
     width:250px;
@@ -1116,13 +1160,12 @@ min-height:77.5vh;
 
 
 .bg-esporte {
-    background-image:url('../assets/bg.jpg');
+    background-image:url('../assets/Background.png');
     background-size:cover;
     background-position:center;
     padding:0;
 }
 .section-esporte-area {
-    background-color:rgba(0, 0, 0, 0.8);
     padding-top:50px;
     padding-bottom:50px;
 }
@@ -1195,7 +1238,7 @@ min-height:77.5vh;
 .default-e-sports .section-title-e-sports{
     text-align:center;
     text-transform: uppercase;
-    font-weight: 600;
+   font-family:'Road_Rage', Arial, Helvetica, sans-serif;
 }
 .default-e-sports .section-title-e-sports {
     font-size:25px;
@@ -1207,7 +1250,7 @@ min-height:77.5vh;
     margin:auto;
 }
 .default-e-sports.light-e-sports {
-    background-color:#E9C53C;
+    background-color:#FFFAFA;
 }
 .default-e-sports.light-e-sports .section-title-e-sports,
 .default-e-sports.light-e-sports .section-body-e-sports{
@@ -1230,7 +1273,7 @@ min-height:77.5vh;
     display:flex;
 }
 
-.section-e-sports--left---e-squerda {
+.section-e-sports--left---esquerda {
     flex:1;
 }
 .section-e-sports--left---esquerda p{
@@ -1314,13 +1357,13 @@ min-height:77.5vh;
 }
 
 .bg-e-sport {
-    background-image:url('../assets/bg.jpg');
+    background-image:url('../assets/Background.png');
     background-size:cover;
     background-position:center;
     padding:0;
 }
 .section-e-sport-area {
-    background-color:rgba(0, 0, 0, 0.8);
+
     padding-top:50px;
     padding-bottom:50px;
 }
@@ -1392,7 +1435,8 @@ min-height:77.5vh;
 .default-blogs .section-title-blogs{
     text-align:center;
     text-transform: uppercase;
-    font-weight: 600;
+    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    letter-spacing:4px;
 }
 .default-blogs .section-title-blogs {
     font-size:25px;
@@ -1404,7 +1448,7 @@ min-height:77.5vh;
     margin:auto;
 }
 .default-blogs.light-blogs {
-    background-color:#E9C53C;
+    background-color:#FFFAFA;
 }
 .default-blogs.light-blogs .section-title-blogs,
 .default-blogs.light-blogs .section-body-blogs{
@@ -1472,6 +1516,7 @@ min-height:77.5vh;
 .section-blogs--right {
     width:350px;
     text-align:left;
+    padding-left:5%;
 }
 .section-blogs--right img {
     width:250px;
@@ -1561,21 +1606,31 @@ width:32vw;
 height:12vh;
 margin-bottom:5vh;
 }
-
+#login .forgot{
+margin-top:2%;
+margin-left:61.5%;
+width:10vw;
+height:0.1vh;
+margin-bottom:5vh;
+}
+#login .forgot a{
+    text-decoration:none;
+    color:#FFF;
+    font-size:10px;
+    text-align:center;
+    }
 #login .form_login{
-    width: 50%;
+    width: 100%;
     height: 40vh;
     font-weight: 600;
     font-size: 18px;
     padding: 35px;
     padding-bottom: 0px;
-    background-color:#050329;
     border-radius: 15px;
     display:flex;
     display-direction:row;
     flex-wrap:wrap
 }
-
 #login .form-group label{
     color:#FFF;
     font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
@@ -1628,16 +1683,6 @@ margin-bottom:5vh;
     text-transform:uppercase;
     }
 
-#login .forgot{
-    margin-left:145%;
-    width:100%;
-}
-#login .forgot a{
-    text-decoration:none;
-    color:#FFF;
-    font-size:10px;
-    text-align:center;
-    }
 .resetar{
     min-height:78vh;
     }
@@ -1738,7 +1783,9 @@ padding-bottom:2%;
     min-height:77.5vh;
     display:flex;
     flex-direction:row;
-    flex-wrap:wrap;
+}
+.meus-pedidos-info{
+width:60%;
 }
 .Pedidos{
     display:flex;
@@ -1833,9 +1880,11 @@ font-size:16px;
 color:#050329;
 }
 .product-info-right select{
-font-family:'Montserrat', Arial, Helvetica, sans-serif;
 font-size:16px;
 margin: 5% 5% 5% 0%;
+border-radius:2%;
+color:#050329;
+background-color:DCDCDC;
 }
 .product-info-right h2{
 font-family:'Montserrat', Arial, Helvetica, sans-serif;
@@ -1886,7 +1935,7 @@ height:200px;
     width:20%;
     margin: 5% 5% 5% 0;
     border-radius:5%;
-    background:light-grey;
+    background-color:light-grey;
 }
 .cart-update{
     display:none;
@@ -1987,6 +2036,7 @@ color:white;
 /*responsividade*/
 
 @media (min-width:450px) and (max-width:800px) {
+
     .logo {
         margin-left:30px;
     }
@@ -2008,7 +2058,7 @@ color:white;
         display:none;
         position: absolute;
         background-color:#050329;;
-        width:100vw;
+        width:100%;
         height:auto;
         top: 100px;
         right: 0;
@@ -2016,12 +2066,14 @@ color:white;
     .menu ul {
     display:flex;
     flex-direction:column;
+    width:100%;
     }
     .menu li a {
     display:block;
     padding-left:40vw;
     padding-right:40vw;
-    height:30px;
+    height:40px;
+    width:100%;
     }
 
      #bt_menu{
@@ -2038,6 +2090,9 @@ color:white;
         display:block;
         height:auto;
         visibility:visible;
+    }
+    .submenu_active img{
+    margin:0 0 1% 0;
     }
 
     .section-aboutus {
@@ -2068,7 +2123,9 @@ color:white;
         max-width:580px;
     }
 
-    .
+    .section-team .slide{
+    margin-right:40px;
+    }
 
     .section-price {
         flex-wrap:wrap;
@@ -2103,14 +2160,17 @@ color:white;
     }
     .section-premium--right {
         height:20%;
-        padding-top:10%;
-        padding-left:10%;
-        padding-right:10%;
+        padding-top:5%;
+        padding-left:5%;
+        padding-right:5%;
     }
     .section-premium--left img {
         width:70%;
-        height:auto;
+        height:100%;
     }
+
+
+
 
     .section-facts {
         flex-wrap:wrap;
@@ -2118,6 +2178,9 @@ color:white;
     .section-fact {
         min-width:50%;
     }
+
+
+
     .google-map{
     width:90vw;
     margin: 2vh 2vw 2vh 4vw;
@@ -2152,7 +2215,7 @@ color:white;
     }
     #login .form_login{
         width: 50%;
-        height: 40vh;
+        height: 28vh;
         font-weight: 600;
         font-size: 18px;
         padding: 35px;
@@ -2170,7 +2233,7 @@ color:white;
         border: 1px solid #E9C53C;
         border-radius:12px;
         width:100%;
-        margin-left:230%;
+        margin-left:60%;
         font-weight:bold;
         letter-spacing:2px;
         padding: 1% 1% 0 1%;
@@ -2182,7 +2245,7 @@ color:white;
         background-color:#050329;
         overflow:hidden;
         border-bottom: 1px solid #E9C53C;
-        margin-left:210%;
+        margin-left:40%;
         border-top:none;
         border-left:none;
         border-right:none;
@@ -2203,13 +2266,13 @@ color:white;
         border-right:none;
     }
     #login .form-group button{
-        margin-left:260%;
+        margin-left:90%;
         border-radius:12px;
         width:40%;
         height:5vh;
         font-size:20px;
         letter-spacing:1px;
-        padding: 1%;
+        padding: 1% 1% 0 1% ;
         font-weight:bold;
         color:#050329;
         font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
@@ -2217,7 +2280,8 @@ color:white;
     }
 
     #login .forgot{
-        margin-left:145%;
+    margin-left:38%;
+    width:20%;
     }
     #login .forgot a{
         text-decoration:none;
@@ -2229,16 +2293,27 @@ color:white;
     }
     .account-info{
     margin:1% 1% 1% 1%;
+    width:100%;
     }
     .account-options{
     width:100%;
     margin-left:2%;
+    margin-bottom:0;
     }
     .account-options li a{
     justify-content:center;
     }
+
     .meus_dados{
     flex-wrap:wrap
+    }
+    .meus_pedidos{
+    flex-wrap:wrap
+    }
+     .meus-pedidos-info{
+        width:95%;
+        margin-left:1%;
+        margin-top:1%;
     }
 
     /*ecommerce responsivo 450 - 800 px*/
@@ -2295,13 +2370,238 @@ color:white;
     justify-content:space-between;
     }
 
+    /*eventos*/
+   .dark-eventos .section-eventos{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-eventos .section-eventos{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-eventos--right img {
+    box-shadow:0px 5px 10px #333;
+    width:100%;
+    height:100%;
+    }
+    .section-eventos--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+
+     .section-eventos--left---esquerda{
+     width:50%;
+     margin-left:5%;
+    }
+     .section-eventos--left---esquerda .section-button-dark{
+     margin: 0 0 0 0%;
+    }
+    .section-eventos-sociais--left{
+     margin-left:5%;
+    }
+    .section-eventos--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-eventos--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
+    /*Eventos Sociais*/
+    .dark-eventos .section-eventos-sociais{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-eventos .section-eventos-sociais{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-eventos-sociais--right img {
+    box-shadow:0px 5px 10px #333;
+    width:100%;
+    height:100%;
+    }
+    .section-eventos-sociais--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+
+     .section-eventos-sociais--left---esquerda{
+     width:50%;
+     margin-left:5%;
+    }
+     .section-eventos-sociais--left---esquerda .section-button-dark{
+     margin: 0 0 0 0%;
+    }
+    .section-eventos-sociais--left{
+     margin-left:5%;
+    }
+    .section-eventos-sociais--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-eventos-sociais--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
+        /*Esportes*/
+    .dark-esportes .section-esportes{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-esportes .section-esportes{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-esportes--right img {
+    box-shadow:0px 5px 10px #333;
+    width:100%;
+    height:100%;
+    }
+    .section-esportes--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+
+     .section-esportes--left---esquerda{
+     width:50%;
+     margin-left:5%;
+    }
+     .section-esportes--left---esquerda .section-button-dark{
+     margin: 0 0 0 0%;
+    }
+    .section-esportes--left{
+     margin-left:5%;
+    }
+    .section-esportes--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-esportes--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
+
+        /*E-sports*/
+   .dark-e-sports .section-e-sports{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-e-sports .section-e-sports{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-e-sports--right img {
+    box-shadow:0px 5px 10px #333;
+    width:100%;
+    }
+    .section-e-sports--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+
+     .section-e-sports--left---esquerda{
+     width:50%;
+     margin-left:5%;
+    }
+     .section-e-sports--left---esquerda .section-button-dark{
+     margin: 0 0 0 0%;
+    }
+    .section-e-sports--left{
+     margin-left:5%;
+    }
+    .section-e-sports--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-e-sports--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
+
+    /*Blog*/
+   .dark-blogs .section-blogs{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-blogs .section-blogs{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-blogs--right img {
+    box-shadow:0px 5px 10px #333;
+    width:100%;
+    height:100%;
+    }
+    .section-blogs--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+
+     .section-blogs--left---esquerda{
+     width:50%;
+     margin-left:5%;
+    }
+     .section-blogs--left---esquerda .section-button-dark{
+     margin: 0 0 0 0%;
+    }
+    .section-blogs--left{
+     margin-left:5%;
+    }
+    .section-blogs--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-blogs--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
 }
 
 
 
 @media (max-width:450px) {
+    .header {
+    width:100%;
+    height:100px;
+    padding: 0 0 0 0;
+    display:flex;
+    align-items:center;
+    }
+
     .logo {
-        margin-left:30px;
+        margin-left:20px;
+        padding-right:1%;
     }
     .adicional .usuario{
     margin-left: 70px;
@@ -2334,20 +2634,27 @@ color:white;
         display:none;
         position: absolute;
         background-color:#050329;;
-        width:auto;
+        width:100%;
         height:auto;
-        top: 100px;
+        top:100px;
         right: 0;
+        padding-top:2%;
     }
     .menu ul {
     display:flex;
     flex-direction:column;
+    width:100%;
     }
     .menu li a {
     display:block;
-    padding-left:40vw;
-    padding-right:40vw;
+    padding-left:20vh;
     height:30px;
+    width:100%;
+    }
+
+    .submenu_active img{
+    margin:0 0 1.5% 0;
+
     }
 
      #bt_menu{
@@ -2371,7 +2678,7 @@ color:white;
     }
     .section-aboutus--left {
         margin-left:30px;
-        margin-right:30px;
+        margin-right:1%;
         margin-bottom:30px;
     }
 
@@ -2457,8 +2764,21 @@ color:white;
         padding-right:10%;
     }
     .section-premium--left img {
-        width:70%;
-        height:auto;
+        margin-left:5%;
+        width:75%;
+        height:100%;
+    }
+    .section-premium--item div h4 {
+        margin:0;
+        padding:0;
+    }
+     .section-premium--item div h4 {
+        color:#050329;
+        font-size:15px;
+    }
+    .section-premium--item div p {
+        color:#050331;
+        font-size:11px;
     }
 
     .section-facts {
@@ -2613,7 +2933,9 @@ color:white;
    }
 
    #login .forgot{
-        margin-left:30%;
+        margin-left:25%;
+        width:20%;
+        padding-top:2%;
    }
    #login .forgot a{
         text-decoration:none;
@@ -2625,6 +2947,10 @@ color:white;
     }
     .account-info{
     margin:1% 1% 1% 1%;
+    width:100%;
+    }
+    .account-info h1{
+    font-height:25px;
     }
     .account-options{
     width:100%;
@@ -2639,6 +2965,15 @@ color:white;
     .meus_dados{
     flex-wrap:wrap
     }
+    .meus_pedidos{
+    flex-wrap:wrap
+    }
+    .meus-pedidos-info{
+        width:95%;
+        margin-left:1%;
+        margin-top:1%;
+    }
+
     /*ecommerce responsivo 450 px*/
     .clearproducts {
      display:flex;
@@ -2726,7 +3061,230 @@ color:white;
     margin: 0.5vh 1vw 1vw 1vw;
     font-size:40px;
     }
+     /*eventos*/
+  .dark-eventos .section-eventos{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-eventos .section-eventos{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-eventos--right img {
+    box-shadow:0px 5px 10px #333;
+    }
+    .section-eventos--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-eventos--right img{
+    width:100%;
+    height:100%;
+    }
+     .section-eventos--left---esquerda{
+     width:30%;
+     margin-left:5%;
+    }
+    .section-eventos--left{
+     margin-left:5%;
+    }
+     .section-eventos--left---esquerda .section-button-dark{
+     margin: 0 0 0 5%;
+    }
+    .section-eventos--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-eventos--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
 
+         /*Social*/
+   .dark-eventos .section-eventos-sociais{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-eventos .section-eventos-sociais{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-eventos-sociais--right img {
+    box-shadow:0px 5px 10px #333;
+    }
+    .section-eventos-sociais--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-eventos-sociais--right img{
+    width:100%;
+    height:100%;
+    }
+     .section-eventos-sociais--left---esquerda{
+     width:30%;
+     margin-left:5%;
+    }
+    .section-eventos-sociais--left{
+     margin-left:5%;
+    }
+     .section-eventos-sociais--left---esquerda .section-button-dark{
+     margin: 0 0 0 5%;
+    }
+    .section-eventos-sociais--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-eventos-sociais--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
+         /*Esportes*/
+   .dark-esportes .section-esportes{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-esportes .section-esportes{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-esportes--right img {
+    box-shadow:0px 5px 10px #333;
+    }
+    .section-esportes--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-esportes--right img{
+    width:100%;
+    height:100%;
+    }
+     .section-esportes--left---esquerda{
+     width:30%;
+     margin-left:5%;
+    }
+    .section-esportes--left{
+     margin-left:5%;
+    }
+     .section-esportes--left---esquerda .section-button-dark{
+     margin: 0 0 0 5%;
+    }
+    .section-esportes--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-esportes--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
+
+          /*E-sports*/
+   .dark-e-sports .section-e-sports{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   height:auto;
+   }
+   .light-e-sports .section-e-sports{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   height:auto;
+   }
+    .section-e-sports--right img {
+    box-shadow:0px 5px 10px #333;
+    }
+    .section-e-sports--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-e-sports--right img{
+    width:100%;
+    height:100%;
+    }
+     .section-e-sports--left---esquerda{
+     width:50%;
+     margin-left:5%;
+    }
+    .section-e-sports--left{
+     margin-left:5%;
+    }
+     .section-e-sports--left---esquerda .section-button-dark{
+     margin: 0 0 0 5%;
+    }
+    .section-e-sports--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-e-sports--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
+    /*Blog*/
+    .dark-blogs .section-blogs{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap;
+   }
+   .light-blogs .section-blogs{
+   width:90%;
+   flex-direction:row;
+   flex-wrap:wrap-reverse;
+   }
+    .section-blogs--right img {
+    box-shadow:0px 5px 10px #333;
+    }
+    .section-blogs--right {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-blogs--right img{
+    width:100%;
+    height:100%;
+    }
+     .section-blogs--left---esquerda{
+     width:30%;
+     margin-left:5%;
+    }
+    .section-blogs--left{
+     margin-left:5%;
+    }
+     .section-blogs--left---esquerda .section-button-dark{
+     margin: 0 0 0 5%;
+    }
+    .section-blogs--right---esquerda {
+    width:100%;
+    height:30vh;
+    padding-left:5%;
+    margin-bottom:5%;
+    }
+    .section-blogs--right---esquerda img {
+    width:100%;
+    height:100%;
+    }
 }
 /* Botoes */
     .btn-primary{color:#fff;background-color:#050329;border-color:#005a5a}
