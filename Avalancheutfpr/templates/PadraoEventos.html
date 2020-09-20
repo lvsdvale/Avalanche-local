@@ -11,7 +11,7 @@
 </head>
 {%block body%}
 <main>
-    <section class="default-eventos light-eventos">
+    <section class="default-eventos light-eventos" style="min-height:85vh;">
         <div class="section-title-eventos">{{Eventos.name}}</div>
         <div class="section-body-eventos">
             <div class="section-evento">
@@ -28,13 +28,13 @@
             </div>
         </div>
     </section>
-     <section class="default dark bg-evento" style="min-height:30vh;">
+     <section class="default dark bg-evento" style="min-height:30vh; display:none;">
         <div class="section-evento-area">
-            <div class="section-title" style="display:none;">Galeria {{Eventos.name}}</div>
+            <div class="section-title">Galeria {{Eventos.name}}</div>
             <div class="section-desc"></div>
                     <div class="sliders">
-                        <a class="previous"  style="color:#FFFAFA; display:none;" onclick="plusSlides(-1)"><p >&#10094;</p></a>
-                        <a class="nextslide" style="color:#FFFAFA; display:none;" onclick="plusSlides(1)"><p>&#10095;</p></a>
+                        <a class="previous"  style="color:#FFFAFA;" onclick="plusSlides(-1)"><p >&#10094;</p></a>
+                        <a class="nextslide" style="color:#FFFAFA;" onclick="plusSlides(1)"><p>&#10095;</p></a>
                         {% for midia in Midias%}
                         <div class="slide">
                             <div class="slidearea">

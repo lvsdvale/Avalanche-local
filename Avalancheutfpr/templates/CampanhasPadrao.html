@@ -12,7 +12,7 @@
 {%block body%}
 {% bootstrap_messages %}
 <main>
-    <section class="default-eventos light-eventos">
+    <section class="default-eventos light-eventos" style="min-height:85vh">
         <div class="section-title-eventos">{{Campanhas.name}}</div>
         <div class="section-body-eventos">
             <div class="section-evento-social">
@@ -35,40 +35,24 @@
             </div>
         </div>
     </section>
-    <section class="default dark bg-evento-social">
-        <div class="section-evento-social-area">
-            <div class="section-title">Fotos da Ação</div>
-            <div class="section-desc">sub-titulo</div>
-            <div class="section-body">
-                <div class="section-evento-social">
-                    <div class="sliders" style="margin-left:0;">
+     <section class="default dark bg-evento" style="min-height:30vh; display:none;">
+        <div class="section-evento-area">
+            <div class="section-title">Galeria {{Campanhas.name}}</div>
+            <div class="section-desc"></div>
+                    <div class="sliders">
+                        <a class="previous"  style="color:#FFFAFA;" onclick="plusSlides(-1)"><p >&#10094;</p></a>
+                        <a class="nextslide" style="color:#FFFAFA;" onclick="plusSlides(1)"><p>&#10095;</p></a>
+                        {% for midia in Midias%}
                         <div class="slide">
                             <div class="slidearea">
-                                <img class="section-evento-social--avatar" src="{%static 'assets/foto8.jpg'%}" />
-                            </div>
-                        </div><div class="slide">
-                            <div class="slidearea">
-                                <img class="section-evento-social--avatar" src="{%static 'assets/foto7.jpg'%}" />
-                            </div>
-                        </div><div class="slide">
-                            <div class="slidearea">
-                                <img class="section-evento-social--avatar" src="{%static 'assets/foto5.jpg'%}" />
-                            </div>
-                        </div><div class="slide">
-                            <div class="slidearea">
-                                <img class="section-evento-social--avatar" src="{%static 'assets/foto8.jpg'%}" />
+                                <img class="section-esporte--avatar" src="{{midia.foto.url}}" />
                             </div>
                         </div>
+                        {%endfor%}
                     </div>
-                </div>
-                <div class="sliders-pointers">
-                    <div class="pointer active"></div>
-                    <div class="pointer"></div>
-                    <div class="pointer"></div>
-                </div>
-            </div>
         </div>
     </section>
 </main>
+<script src="{%static 'js/galeria.js'%}"></script>
 {%endblock%}
 </html>

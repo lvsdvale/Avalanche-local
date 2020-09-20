@@ -935,6 +935,7 @@ min-height:77.5vh;
 .section-evento-social-right {
     width:520px;
     text-align:left;
+    margin-left:5%;
 }
 .section-evento-social-right img {
     width:480px;
@@ -1141,6 +1142,7 @@ min-height:77.5vh;
 .section-esporte-right {
     width:520px;
     text-align:left;
+    margin-left:5%;
 }
 .section-esporte-right img {
     width:480px;
@@ -1339,6 +1341,7 @@ min-height:77.5vh;
 .section-e-sport-right {
     width:520px;
     text-align:left;
+    margin-left:5%;
 }
 .section-e-sport-right img {
     width:480px;
@@ -1539,6 +1542,8 @@ min-height:77.5vh;
 .section-blog-right {
     width:520px;
     text-align:center;
+    margin-left:5%;
+    width:30%;
 }
 .section-blog-right img {
     width:480px;
@@ -2589,6 +2594,7 @@ color:white;
     .section-evento-left{
     width:85%;
     margin: 0% 5% 0 5%;
+    font-size:20px;
     }
     .section-evento-area .sliders{
     min-height:50vh;
@@ -2603,6 +2609,54 @@ color:white;
     .previous{
     margin-top:30%;
     }
+
+     /*Padrão Eventos Sociais*/
+    .section-evento-social{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap-reverse;
+    }
+    .section-evento-social-right{
+    width:100%;
+    margin: 0 0 3% 15%;
+    }
+    .section-evento-social-left{
+    width:85%;
+    margin: 0% 5% 0 5%;
+    font-size:20px;
+    }
+    /*Esporte*/
+    .section-esporte{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap-reverse;
+    }
+    .section-esporte-right{
+    width:100%;
+    margin: 0 0 3% 15%;
+    }
+    .section-esporte-left{
+    width:85%;
+    margin: 0% 5% 0 5%;
+    font-size:20px;
+    }
+
+     /*Esporte*/
+    .section-e-sports{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap-reverse;
+    }
+    .section-e-sport-right{
+    width:100%;
+    margin: 0 0 3% 15%;
+    }
+    .section-e-sport-left{
+    width:85%;
+    margin: 0% 5% 0 5%;
+    font-size:20px;
+    }
+
 }
 
 
@@ -3320,6 +3374,7 @@ color:white;
     .section-evento-left{
     width:85%;
     margin: 0% 5% 0 5%;
+    font-size:19px;
     }
     .section-evento-area .sliders{
     min-height:50vh;
@@ -3336,6 +3391,65 @@ color:white;
     margin-top:30%;
     }
 
+    /*Padrão Eventos Sociais*/
+    .section-evento-social{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap-reverse;
+    }
+    .section-evento-social-right{
+    width:100%;
+    margin: 0 0 3% 3%;
+    }
+    .section-evento-social-right img{
+    width:85%;
+    margin: 0 0 3% 3%;
+    }
+    .section-evento-social-left{
+    width:85%;
+    margin: 0% 5% 0 5%;
+    font-size:19px;
+    }
+
+     /*Padrão Esportes*/
+    .section-esporte{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap-reverse;
+    }
+    .section-esporte-right{
+    width:100%;
+    margin: 0 0 3% 3%;
+    }
+    .section-esporte-right img{
+    width:85%;
+    margin: 0 0 3% 3%;
+    }
+    .section-esporte-left{
+    width:85%;
+    margin: 0% 5% 0 5%;
+    font-size:19px;
+    }
+
+    /*Padrão E-sports*/
+    .section-e-sports{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap-reverse;
+    }
+    .section-e-sport-right{
+    width:100%;
+    margin: 0 0 3% 3%;
+    }
+    .section-e-sport-right img{
+    width:85%;
+    margin: 0 0 3% 3%;
+    }
+    .section-e-sport-left{
+    width:85%;
+    margin: 0% 5% 0 5%;
+    font-size:19px;
+    }
 
 }
 /* Botoes */

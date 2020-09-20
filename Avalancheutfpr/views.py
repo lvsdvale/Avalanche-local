@@ -69,7 +69,7 @@ class Eventos(ListView):
 
 def Eventos_view(request, slug):
     eve = get_object_or_404(eventos, slug = slug)
-    Midias = media.objects.filter(tag=eve.name).order_by('?')
+    Midias = media.objects.filter(tag=eve.name).order_by('-pub_date')
     context = {
         "Eventos": eve,
         "Midias":Midias,
@@ -95,7 +95,7 @@ def Modalidades_view(request, slug):
             messages.success(request,"Inscrito na modalidade com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Modalidade")
-    Midias = media.objects.filter(tag=Modalidades.name).order_by('?')
+    Midias = media.objects.filter(tag=Modalidades.name).order_by('-pub_date')
     context = {
         "Modalidades": Modalidades,
         "Midias":Midias
@@ -130,7 +130,7 @@ def Campanhas_view(request, slug):
             messages.success(request, "Inscrito na ação com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Campanha")
-    Midias = media.objects.filter(tag=Campanhas.name).order_by('?')
+    Midias = media.objects.filter(tag=Campanhas.name).order_by('-pub_date')
     context = {
         "Campanhas": Campanhas,
         "Midias":Midias,
@@ -160,7 +160,7 @@ def Games_view(request, slug):
             messages.success(request, "Inscrito na modalidade de E-sports com sucesso")
         else:
             messages.info(request,"Você já está inscrito nessa Modalidade")
-    Midias = media.objects.filter(tag=Games.name).order_by('?')
+    Midias = media.objects.filter(tag=Games.name).order_by('-pub_date')
     context = {
         "Games": Games,
         "Midias":Midias
