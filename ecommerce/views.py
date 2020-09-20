@@ -30,7 +30,7 @@ class Lojinha(ListView):
             )
 
         return queryset
-@csrf_exempt
+
 def Produtobase_view(request,slug):
     Produtobase = get_object_or_404(produtobase,slug=slug)
     if request.method == 'POST':
@@ -91,7 +91,6 @@ class Carrinho(TemplateView):
         context['formset'] = self.get_formset()
         return context
 
-    @csrf_exempt
     def post(self,request,*args,**kwargs):
         formset = self.get_formset()
         context = self.get_context_data(**kwargs)
@@ -186,7 +185,7 @@ class PicpayView(LoginRequiredMixin,RedirectView):
             },
         )
         return payment['paymentUrl']
-@csrf_exempt
+
 def PicpayNotification(request,pk):
     pc = PicPay(
         x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN

@@ -84,7 +84,7 @@ class Esportes(TemplateView):
         context = super(Esportes,self).get_context_data(**kwargs)
         context['Modalidades'] = modalidades.objects.all().order_by('name')
         return context
-@csrf_exempt
+
 def Modalidades_view(request, slug):
     Modalidades = get_object_or_404(modalidades, slug=slug)
     if request.method == 'POST':
