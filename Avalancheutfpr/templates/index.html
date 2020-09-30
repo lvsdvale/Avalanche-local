@@ -197,5 +197,15 @@
 {% bootstrap_javascript jquery='full'%}
 <script src="{%static 'js/banner.js'%}"></script>
 <script src="{%static 'js/destaques.js'%}"></script>
+<script>
+    var $team = document.querySelectorAll(".Section-team .slidearea");
+    if(window.innerWidth<800 && window.innerWidth>450){
+    $team[2].style.display = "none";
+    }
+    if(window.innerWidth<=450){
+    $team[2].style.display = "none";
+    $team[1].style.display = "none";
+    }
+</script>
 {%endblock%}
 </html>

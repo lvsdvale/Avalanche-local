@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'Avalanche.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -110,15 +110,15 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'avproduction',
+        'NAME': 'avdb',
         'USER':'Diretoria',
         'PASSWORD':'Gestao2020',
-        'HOST':'avalanche-production.cw50ga3zpj1d.sa-east-1.rds.amazonaws.com',
+        'HOST':'avalanche.cw50ga3zpj1d.sa-east-1.rds.amazonaws.com',
         'PORT':'5432',
 
     }
 }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

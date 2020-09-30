@@ -170,7 +170,7 @@ nav img {
 }
 
 .banner .slide {
-    margin-left:10%;
+    margin-left:18%;
     padding-top:2%;
     width:80%;
     height:90%;
@@ -182,12 +182,12 @@ nav img {
 }
 @keyframes fade {
   from {margin-left:100%;}
-  to {margin-left:10%;}
+  to {margin-left:18%;}
 }
 .banner .slide img{
 border:2px solid #E9C53C;
 border-radius:1%;
-width:100%;
+width:80%;
 height:100%;
 }
 
@@ -256,8 +256,9 @@ height:100%;
 
 }
 .default.light {
-    background-color:#E9C53C;
+    background-color:#FFFAFA;
 }
+
 .default.light .section-title,
 .default.light .section-body {
     color:#050329;
@@ -297,10 +298,9 @@ footer {
     max-width:1140px;
     height: 30px;
     line-height: 30px;
-    margin:auto;
     color:#FFF;
     font-size:13px;
-    padding:0 10px 10px 10px;
+    padding:0 10px 0 10px;
 }
 
 
@@ -331,7 +331,7 @@ CSS DE ÁREAS ESPECÍFICAS
 .section-button{
     display:inline-block;
     background-color:#050329;
-    color:#E9C53C;
+    color:#FFFAFA;
     text-transform: uppercase;
     font-size:12px;
     font-weight:600;
@@ -382,7 +382,7 @@ CSS DE ÁREAS ESPECÍFICAS
     margin:auto;
 }
 .section-team .sliders {
-    width:1000vw;
+    width:100vw;
     height:80%;
 
 }
@@ -446,7 +446,7 @@ CSS DE ÁREAS ESPECÍFICAS
 }
 
 .premium {
-    background-color:#E9C53C !important;
+    background-color:#FFFAFA !important;
     border-top:1px solid #CCC;
 }
 .premium .section-body {
@@ -490,7 +490,7 @@ CSS DE ÁREAS ESPECÍFICAS
     justify-content: center;
     align-items:center;
     max-width:1140px;
-    border-bottom:1px solid #CCC;
+    border-bottom:1px solid #050329;
     margin:auto;
     padding-bottom:20px;
 }
@@ -2138,7 +2138,8 @@ color:white;
        height:75%;
     }
     .default .light .premium{
-    height:50vh;
+    min-height:50vh;
+
     }
     .section-premium .slide{
        padding:0;
@@ -2733,7 +2734,7 @@ color:white;
      }
 
      .banner{
-     height:70vh;
+     height:55vh;
      }
     .banner h1 {
         text-align:center;
@@ -2814,7 +2815,7 @@ color:white;
        height:60%;
     }
     .default .light .premium{
-    height:50vh;
+    min-height:50vh;
     }
     .section-premium .slide{
        padding:0;
@@ -2889,14 +2890,11 @@ color:white;
     }
 
 
-
     .footer--area {
         flex-direction:column;
         position:relative;
     }
-    .footer--item {
-        margin-bottom:20px;
-    }
+
     .footer-social {
         justify-content: center;
     }

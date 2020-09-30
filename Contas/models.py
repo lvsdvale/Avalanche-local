@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # classes de login
 class UserManager(BaseUserManager):
-    def Create_User(self, email, Nome_completo, CPF, Curso, Registro_Academico,Telefone,password=None, active=True, staff=False,
+    def Create_User(self, email, Nome_completo, CPF, Curso,Data,Genero,Registro_Academico,Telefone,password=None, active=True, staff=False,
                     Socio=False):
         if not email:
             raise ValueError('Usuário deve ter um email')
@@ -20,6 +20,8 @@ class UserManager(BaseUserManager):
         user_obj.Nome_completo = Nome_completo
         user_obj.CPF = CPF
         user_obj.Curso = Curso
+        user_obj.Data = Data,
+        user_obj.Genero = Genero,
         user_obj.Registro_Academico = Registro_Academico
         user_obj.Telefone = Telefone
         user_obj.is_staff = staff
@@ -44,12 +46,14 @@ class UserManager(BaseUserManager):
         user_obj.save
         return user_obj
 
-    def create_superuser(self, email, Nome_completo, CPF, Curso, Registro_Academico,Telefone, password=None):
+    def create_superuser(self, email, Nome_completo, CPF, Curso,Data,Genero,Registro_Academico,Telefone, password=None):
         user_obj = self.Create_User(
             email=email,
             Nome_completo=Nome_completo,
             CPF=CPF,
             Curso=Curso,
+            Data=Data,
+            Genero=Genero,
             Registro_Academico=Registro_Academico,
             Telefone=Telefone,
             password=password,
@@ -88,12 +92,21 @@ class user(AbstractBaseUser, PermissionsMixin):
     ('Tecnologia em Radiologia', 'Tecnologia em Radiologia'),
     ('Tecnologia em Sistemas de Telecomunicação', 'Tecnologia em sistemas de Telecomunicação')
     )
+    sexo =(
+        ("Masculino","Masculino"),
+        ("Feminino", "Feminino"),
+        ("Não-Binario", "Não-Binario")
+    )
+
+
     Nome_completo = models.CharField(max_length=255, null=True,unique=True,help_text="Digite o seu nome COMPLETO")
     email = models.EmailField(max_length=255, unique=True, null=True)
     is_active = models.BooleanField(default=True, null=True)
     is_staff = models.BooleanField(default=False, null=True,verbose_name='Diretor')
     Socio = models.BooleanField(default=False, null=True)
     CPF = BRCPFField(max_length=14,unique=True,blank=False,null=False)
+    Data = models.DateField(auto_now_add=False,blank=True,null=True,verbose_name="Data de nascimento")
+    Genero = models.CharField(max_length=255, choices=sexo, null=True,verbose_name="Sexo")
     Curso = models.CharField(max_length=255, choices=Cursos, null=True)
     Registro_Academico = models.IntegerField(blank=True,unique=True,null=True,help_text="Caso não é aluno da utfpr,deixar em Branco")
     Telefone = PhoneNumberField(null=False,blank=False,region='BR')
@@ -101,7 +114,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['Nome_completo', 'CPF', 'Curso','Telefone']
+    REQUIRED_FIELDS = ['Nome_completo','Registro_Academico', 'CPF','Genero', 'Curso','Telefone']
 
     def __str__(self):
         return self.Nome_completo
