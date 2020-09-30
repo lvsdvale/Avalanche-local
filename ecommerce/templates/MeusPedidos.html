@@ -24,12 +24,9 @@
     <div class="Pedidos">
         <div class="Pedidos-info">
     <a href="{% url 'PedidoView' pedido.pk %}"><h2>Pedido #{{ pedido.pk }}</h2></a>
-    <p id = 'total'> Total: R$ {{ pedido.total|floatformat:"2"}}</p>
-    <script>
-    var $total = document.getElementById("total")
-    $total.innerHTML = 'Total: R$ ' + (parseFloat({{pedido.total}})*1.05).toFixed(2);
-    </script>
+            <p id = 'total'> Total: R$ {{ pedido.total|floatformat:"2"}}</p>
              </div>
+
    {% for item in pedido.Itens.all %}
         <section class="order-section">
                 <div class="order-section-image">
@@ -47,7 +44,13 @@
    </div>
 </div>
 <script>
-
+        var $total = document.querySelectorAll("#total")
+        var cont = 0
+        {%for pedido in object_list%}
+        $total[cont].innerHTML = 'Total: R$ ' + (parseFloat({{pedido.total}})*1.05).toFixed(2);
+        console.log($total[cont])
+        cont++;
+        {%endfor%}
 </script>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

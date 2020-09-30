@@ -17,7 +17,6 @@
                 <dt>Total</dt>
                 <dd id="total"> R$ {{ object.total|floatformat:"2"}}</dd>
              </div>
-
             <div class = "order-info-item">
                 <dt>Taxa</dt>
                 <dd id="taxa"> R$ {{ object.total|floatformat:"2"}}</dd>
@@ -59,9 +58,9 @@
 </div>
 <script>
     var $total = document.getElementById("total")
-    $total.innerHTML = 'R$ ' + (parseFloat({{object.total}})*1.05).toFixed(2);
+    $total.innerHTML = 'R$ ' + (parseFloat({{pedidos.total}})*1.05).toFixed(2);
     var $taxa = document.getElementById("taxa")
-    $taxa.innerHTML = 'R$ ' + (parseFloat({{object.total}})*0.05).toFixed(2);
+    $taxa.innerHTML = 'R$ ' + (parseFloat({{pedidos.total}})*0.05).toFixed(2);
 </script>
 {% bootstrap_javascript jquery='full'%}
 {%endblock%}

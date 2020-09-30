@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render,get_object_or_404,redirect
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from django.views.generic.detail import DetailView
@@ -132,6 +133,15 @@ class PedidoView(LoginRequiredMixin,DetailView):
     query_pk_and_slug = 'pk'
     login_url = 'Login'
     def get_queryset(self):
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        pedido = pedidos.objects.get(pk=pk)
+        if pedido.status == 0:
+            if pedido.pagamento == "PicPay":
+                pc = PicPay(
+                    x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
+                )
+                status = pc.status(reference_id=pk)
+                pedido.picpay_update_status(status['status'])
         return pedidos.objects.filter(usuario = self.request.user)
 
 class PagseguroView(LoginRequiredMixin,RedirectView):
@@ -181,7 +191,7 @@ class PicpayView(LoginRequiredMixin,RedirectView):
                 "lastName": self.request.user.Nome_completo,
                 "document": self.request.user.CPF,
                 "email": self.request.user.email,
-                "phone": self.request.user.Telefone,
+                "phone": str(self.request.user.Telefone),
             },
         )
         return payment['paymentUrl']
@@ -191,6 +201,6 @@ def PicpayNotification(request,pk):
         x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
     )
     pedido= pedidos.objects.get(pk=pk)
-    status = pc.status(reference_id=pk)
+    status = pc.notification(reference_id=pk)
     pedido.picpay_update_status(status['status'])
     return HttpResponse(200)

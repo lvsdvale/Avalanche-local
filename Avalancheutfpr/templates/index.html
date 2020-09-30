@@ -88,22 +88,22 @@
         <div class="section-body">
             <div class="section-services">
                 <div class="section-service">
-                    <img src="{%static 'assets/nadador.png'%}" />
+                    <img src="{%static 'assets/Natação.png'%}" />
                     <h4>Natação</h4>
                     <p>Frase enaltecedora</p>
                 </div>
                 <div class="section-service">
-                    <img src="{% static 'assets/judo.png'%}" />
+                    <img src="{% static 'assets/Judô.png'%}" />
                     <h4>Judô</h4>
                     <p> mais uma Frase enaltecedora</p>
                 </div>
                 <div class="section-service">
-                    <img src="{% static 'assets/raquete.png'%}" />
+                    <img src="{% static 'assets/Tênis_de_Mesa.png'%}" />
                     <h4>Tênis de mesa</h4>
                     <p> vish outra Frase enaltecedora</p>
                 </div>
                 <div class="section-service">
-                    <img src="{% static 'assets/handebol.png'%}" />
+                    <img src="{% static 'assets/Handebol.png'%}" />
                     <h4>Handebol</h4>
                     <p>só mais uma Frase enaltecedora</p>
                 </div>
@@ -144,12 +144,12 @@
                                         {%if user.get_socio %}
                                         <div>
                                             <h4>Preço</h4>
-                                            <p>{{Produto.p_socio}}</p>
+                                            <p>R$ {{Produto.p_socio}}</p>
                                         </div>
                                         {%else%}
                                         <div>
                                             <h4>Preço</h4>
-                                            <p>{{Produto.preco}}</p>
+                                            <p>R$ {{Produto.preco}}</p>
                                         </div>
                                         {%endif%}
                                     </div>
@@ -176,6 +176,24 @@
                         </div>
                     <p>Av. Sete de Setembro, 3165 - Rebouças, Curitiba - PR, 80230-901</p>
                     </div>
+                    <div class="map-info-item">
+                        <div class="map-info-item-image">
+                            <img src="{% static 'assets/whatsapp.png' %}" />
+                        </div>
+                    <p>(41) 9 8759-8657</p>
+                    </div>
+                    <div class="map-info-item">
+                        <div class="map-info-item-image">
+                            <img src="{% static 'assets/facebook.png' %}" />
+                        </div>
+                    <p>www.facebook.com/avalancheutfpr</p>
+                    </div>
+                    <div class="map-info-item">
+                        <div class="map-info-item-image">
+                            <img src="{% static 'assets/insta.png' %}" />
+                        </div>
+                    <p>@avalancheutfpr</p>
+                    </div>
                      <div class="map-info-item">
                         <div class="map-info-item-image">
                             <img src="{% static 'assets/gmail.png' %}" />
@@ -197,15 +215,6 @@
 {% bootstrap_javascript jquery='full'%}
 <script src="{%static 'js/banner.js'%}"></script>
 <script src="{%static 'js/destaques.js'%}"></script>
-<script>
-    var $team = document.querySelectorAll(".Section-team .slidearea");
-    if(window.innerWidth<800 && window.innerWidth>450){
-    $team[2].style.display = "none";
-    }
-    if(window.innerWidth<=450){
-    $team[2].style.display = "none";
-    $team[1].style.display = "none";
-    }
-</script>
+<script src="{%static 'js/time.js'%}"></script>
 {%endblock%}
 </html>

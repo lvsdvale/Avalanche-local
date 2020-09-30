@@ -62,8 +62,8 @@ PAGSEGURO_TOKEN = '67BF2CD5D38B4A2C8C20972F56FCD400'
 PAGSEGURO_EMAIL = 'diretoria.atletica@atleticautfpr.com.br'
 PAGSEGURO_SANDBOX = True
 
-X_PICPAY_TOKEN = 'd19657c1-0641-4f4a-b196-7959166e03ae'
-X_SELLER_TOKEN = 'daf17bd0-2ac1-4a57-8e8b-e5250dbc2bc5'
+X_PICPAY_TOKEN = 'e7846a0a-5c36-4798-b9e4-2474f759aa14'
+X_SELLER_TOKEN = '062ea1a1-5e5f-4d6c-8543-c722017ebf6a'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

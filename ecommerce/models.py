@@ -7,13 +7,23 @@ from pagseguro import PagSeguro
 from picpay import PicPay
 from Avalancheutfpr.services import Send_compra_mail,Send_compra_update_mail
 
+class catalogo(models.Model):
+    name = models.CharField(max_length=255,null = False,blank = False,verbose_name='Nome')
+    class Meta:
+        verbose_name = 'Catalogo'
+        verbose_name_plural = 'Catalogo'
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
 class produtobase(models.Model):
     Destaque = (('Sim', 'Sim'), ('Não', 'Não'),)
     name = models.CharField(max_length=255,null = False,blank = False,verbose_name='Nome')
     descricao = models.TextField(null = False,blank = False,verbose_name='Descrição')
+    Catalogo = models.ForeignKey(catalogo,related_name='catalogo',null=False,blank=False,verbose_name='Catalogo',on_delete=models.CASCADE)
     thumb = StdImageField(upload_to=get_file_path, null=False, blank=False, verbose_name='thumbnail')
-    preco = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço')
     p_socio = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço para Sócio')
+    preco = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Preço')
     destaque =  models.CharField(max_length=30, null=True, blank=True, choices=Destaque, default='Não')
     slug = AutoSlugField(populate_from='name')
     pub_date = models.DateField(auto_now_add=True, verbose_name='Data de Criação')
