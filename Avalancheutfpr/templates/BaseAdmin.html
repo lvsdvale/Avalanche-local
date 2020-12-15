@@ -39,7 +39,7 @@
         <div class="logo">
             <div class="logoimg"><a href="{% url 'Home'%}"><img src="{%static 'assets/logo.png'%}"></a></div>
         </div>
-        <div class="logo-texto"><a href="{% url 'Home'%}">A.A.A.E.A UTFPR - Avalanche</a></div>
+        <div class="logo-texto"><a href="{% url 'Home'%}">Painel Administrativo</a></div>
 
         <div class="menu">
             <!--img class="menu-opener" src="{%static 'assets/menu.png'%}" /-->
@@ -47,26 +47,13 @@
             <label class="menu_label" for = "Bt_menu">&#9776;</label>
              <nav class="menu_nav">
                 <ul>
-                    <li ><a href="{% url 'Home' %}">Home</a></li>
-                    <li><a href="{% url 'Produtos'%}">Produtos</a></li>
-                    <li><a class="submenu_active">Eventos<img src="{% static 'assets/seta-baixo.png'%}"></a>
-                        <ul class="submenu">
-                            <li class="submenu-item"><a class="subm" href="{% url 'Social'%}">Ações sociais</a></li>
-                            <li class="submenu-item"><a class="subm" href="{% url 'Eventos' %}">Integração</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{% url 'Esportes'%}">Esportes</a></li>
-                    <li><a href="{% url 'Blog'%}">Blog</a></li>
-
-                    <li><a class="submenu_active" href="#">Entidades<img src="{% static 'assets/seta-baixo.png'%}"></a>
-                        <ul class="submenu">
-                            <li class="submenu-item"><a href="{% url 'E-sports'%}">ESports</a>
-                            <li class="submenu-item"><a class="subm" href="#">Bateria</a></li>
-                            <li class="submenu-item"><a class="subm" href="#">Cheers</a></li>
-                            <li class="submenu-item"><a class="subm" href="#">BBBA</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{% url 'Contatos'%}">Contatos</a></li>
+                    <li ><a href="{%url 'Dashboard'%}">Dashboard</a></li>
+                    <li><a>Administrativo</a></li>
+                    <li><a>Esportes</a></li>
+                    <li><a>Eventos</a></li>
+                    <li><a>Social</a></li>
+                    <li><a>Relações institucionais</a></li>
+                    <li><a>Blog</a></li>
                 </ul>
             </nav>
         </div>

@@ -67,29 +67,47 @@ class produtos(models.Model):
             self.status = 'Encerrado'
 
 class gerenciadoritemcarrinho(models.Manager):
-    def adicionar(self,chave,produto):
+    def adicionar(self,chave,produto,usuario,Pedidos):
+        bloqueio = False
+        unico = True
         if self.filter(chave = chave,produto = produto).exists():
             criado = False
             item = self.get(chave = chave,produto = produto)
-            item.quantidade = item.quantidade + 1
-            item.save()
+            if usuario.is_anonymous is False:
+                if usuario.Socio is True:
+                    unico = True
+                else:
+                    item.quantidade = item.quantidade + 1
+                    item.save()
+            else:
+                item.quantidade = item.quantidade + 1
+                item.save()
         else:
             criado = True
-            item = itemcarrinho.objects.create(chave = chave,produto=produto,preco = produto.modelo.preco)
-        return item,criado
-    def adicionar_socio(self,chave,produto):
-        if self.filter(chave = chave,produto =produto).exists():
-            criado = False
-            item = self.get(chave = chave,produto = produto)
-            item.quantidade = item.quantidade + 1
-            item.save()
-        else:
-            criado = True
-            item = itemcarrinho.objects.create(chave = chave,produto=produto,preco = produto.modelo.p_socio)
-        return item,criado
+            if usuario.is_anonymous is False:
+                if usuario.Socio is True:
+                    for Pedido in Pedidos:
+                        for produtos in Pedido.Itens.all():
+                            if produtos == produto:
+                                bloqueio = True
+                    if bloqueio is True:
+                        item = itemcarrinho.objects.create(chave=chave, produto=produto, preco=produto.modelo.preco)
+                        item.preco = produto.modelo.preco
+                        item.save()
+                    else:
+                        item = itemcarrinho.objects.create(chave=chave, produto=produto, preco=produto.modelo.p_socio)
+                        item.preco = produto.modelo.p_socio
+                        item.save()
+                else:
+                    item = itemcarrinho.objects.create(chave=chave, produto=produto, preco=produto.modelo.preco)
+                    item.preco = produto.modelo.preco
+                    item.save()
+            else:
+                item = itemcarrinho.objects.create(chave=chave, produto=produto, preco=produto.modelo.preco)
+                item.preco = produto.modelo.preco
+                item.save()
+        return item,criado,unico,bloqueio
 
-    def get_produto_p_socio(self):
-        return self.produto.modelo.get_p_socio()
 
 class itemcarrinho(models.Model):
     chave = models.CharField(max_length=255,verbose_name='Chave do carrinho',db_index=True)
@@ -109,7 +127,7 @@ class itemcarrinho(models.Model):
         total = 0
         for item in itens:
             total += item.preco*item.quantidade
-        return total;
+        return total
 
 
 class pedidosmanager(models.Manager):

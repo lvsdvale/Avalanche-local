@@ -8,6 +8,7 @@ from django.contrib import messages
 from Avalancheutfpr.models import inscricao_modalidades,inscricao_campanhas_sociais,inscricao_E_sports,eventos,campanhas
 from Avalancheutfpr.services import Send_Sign_Mail,Send_Reset_Mail
 from random import choice
+from datetime import datetime
 # views de login
 
 def Cadastrar_usuarios(request):
@@ -22,6 +23,7 @@ def Cadastrar_usuarios(request):
             messages.success(request,"Cadastro Realizado com Sucesso")
             User = authenticate(username=username, password=raw_password)
             Send_Sign_Mail(Email=email,Nome=Nome)
+            login(request, User)
             return redirect('Home')
     else:
         form = Cadastro()
@@ -86,8 +88,9 @@ def Logout(request):
 @login_required
 def Minha_Conta(request):
     if request.user.is_authenticated:
-        Eventos = eventos.objects.all().order_by('-pub_date')
-        Campanhas = campanhas.objects.all().order_by('-pub_date')
+        hoje = datetime.now()
+        Eventos = eventos.objects.filter(data__gt=hoje)
+        Campanhas = campanhas.objects.filter(data__gt=hoje)
         context = {}
         context['Eventos'] = Eventos
         context['Campanhas'] = Campanhas

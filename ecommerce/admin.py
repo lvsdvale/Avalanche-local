@@ -15,6 +15,10 @@ class ModelosAdmin(ad.ImportExportModelAdmin):
 @admin.register(produtos)
 class ProdutosAdmin(ad.ImportExportModelAdmin):
     search_fields = ['name','Status']
+
+@admin.register(itemcarrinho)
+class CarrinhoAdmin(ad.ImportExportModelAdmin):
+    list_display = ['chave',]
 @admin.register(pedidos)
 class PedidosAdmin(ad.ImportExportModelAdmin):
     list_display = ['usuario','status','pagamento','criado']

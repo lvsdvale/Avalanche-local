@@ -2029,6 +2029,9 @@ color:white;
 color:white;
 }
 
+/* Painel Administrativo */
+
+
 /*responsividade*/
 
 @media (min-width:450px) and (max-width:800px) {
@@ -2736,7 +2739,7 @@ color:white;
      }
 
      .banner{
-     height:55vh;
+     height:6  5vh;
      }
     .banner h1 {
         text-align:center;

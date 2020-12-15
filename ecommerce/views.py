@@ -1,8 +1,5 @@
 from django.http import HttpResponse
 from django.shortcuts import render,get_object_or_404,redirect
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
-from django.core.paginator import Paginator
 from django.views.generic.detail import DetailView
 from django.views.generic import RedirectView,TemplateView,ListView
 from .forms import itemcarrinhoformset
@@ -50,17 +47,17 @@ def criar_item_view(request,pk):
     if request.session.session_key is None:
         request.session.save()
     if request.user.is_anonymous:
-        item, criado = itemcarrinho.objects.adicionar(request.session.session_key, produto)
+        item,criado,unico,bloqueio = itemcarrinho.objects.adicionar(request.session.session_key, produto,request.user,None)
     else:
-        if not request.user.get_socio:
-            item, criado = itemcarrinho.objects.adicionar(request.session.session_key, produto)
-        else:
-            item, criado = itemcarrinho.objects.adicionar_socio(request.session.session_key, produto)
+        Pedidos = pedidos.objects.filter(usuario=request.user)
+        item, criado, unico, bloqueio = itemcarrinho.objects.adicionar(request.session.session_key, produto,request.user,Pedidos)
     if criado:
         messages.success(request, 'Produto adicionado ao carrinho')
     else:
-        messages.success(request, 'Quantidade produto atualizado carrinho')
-
+        if unico:
+            messages.error(request, 'Apenas Disponível 1 produto por sócio')
+        else:
+            messages.success(request, 'Quantidade produto atualizado carrinho')
     return redirect('Carrinho')
 
 class Carrinho(TemplateView):
@@ -112,7 +109,7 @@ class Checkout(LoginRequiredMixin,TemplateView):
             for item in itens:
                 Produtos = produtos.objects.filter(name = item.produto)
                 for Produto in Produtos:
-                    Produtos.update(estoque = Produto.estoque-item.quantidade)
+                    Produto.update(estoque = Produto.estoque-item.quantidade)
             itens.delete()
 
         else:

@@ -1,0 +1,78 @@
+{% extends 'BaseAdmin.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Painel Administrativo{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+    {% bootstrap_css %}
+</head>
+{%block body%}
+<div class="dashboard-main">
+    <div class="dashboard-infos">
+        <h2>Minha Atlética</h2>
+        <div class="Caixa-geral-dashboard">
+            <p>Caixa</p>
+            <span id="total"></span>
+        </div>
+        <div class="Socios-dashboard">
+            <p>Socios</p>
+            <span>{{Socios.count}}</span>
+        </div>
+        <div class="Atletas-dashboard">
+            <p>Inscrições nas Modalidades</p>
+            <span>{{Atletas.count}}</span>
+        </div>
+    </div>
+    <div class="account-events" id="Eventos">
+        <h2>Proximos Eventos</h2>
+            {%for evento in Eventos %}
+                <section class="account-section">
+                    <div class="account-section-image">
+                       <img src="{{evento.image.url}}">
+                    </div>
+                    <div class="account-section-info">
+                        <a href="{%url 'Eventos_View' evento.slug %}">{{evento.name}}</a>
+                        <p>{{evento.previa}}</p>
+                    </div>
+
+                </section>
+            {%endfor%}
+    </div>
+    <div class="account-social dashboard" id="Social">
+        <h2>Proximas ações</h2>
+            {%for campanha in Campanhas %}
+                <section class="account-section">
+                    <div class="account-section-image">
+                       <img src="{{campanha.image.url}}">
+                    </div>
+                    <div class="account-section-info">
+                        <a href="{%url 'Campanhas_View' campanha.slug %}">{{campanha.name}}</a>
+                        <p>{{campanha.previa}}</p>
+                    </div>
+                </section>
+            {%endfor%}
+    </div>
+</div>
+<script>
+    var $total = document.getElementById("total");
+    var somatotal = 0;
+    {%for Pedido in Pedidos%}
+        somatotal = somatotal + {{Pedido.total}}
+    {%endfor%}
+    somatotal = somatotal*1.05
+    $total.innerHTML ="R$: " + somatotal.toFixed(2);
+</script>
+<script>
+    var $eventos = document.getElementById("Eventos");
+    var $campanhas = document.getElementById("Social");
+    if({{Eventos.count}} == 0){
+        $eventos.innerHTML = "<h2>Não existem eventos próximos<H2>"
+    }
+    if({{Campanhas.count}} == 0){
+        $campanhas.innerHTML = "<h2>Não existem Campanhas próximas<H2>"
+    }
+
+</script>
+{%endblock%}

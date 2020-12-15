@@ -22,8 +22,7 @@
 {% if Produto.thumb.url != blank%}
       <a href="{%url 'ProdutosBase_view' Produto.slug %}"><img src = "{{Produto.thumb.url}}" height="250" width="250"></a>
     {%endif%}
-    {%if user.get_socio %}
-
+    {%if user.Socio %}
    <span>
                 <del>Preço: R${{Produto.preco}}</del>
               </span><br>

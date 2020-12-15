@@ -6,6 +6,8 @@ class categoria(models.Model):
         verbose_name = 'Categoria de Documentos'
         verbose_name_plural = 'Categorias de Documentos'
         ordering = ['name']
+    def __str__(self):
+        return self.name
 
 class documento(models.Model):
     name = models.CharField(max_length=250, null=False, blank=False, verbose_name="Nome")
@@ -17,14 +19,16 @@ class documento(models.Model):
         verbose_name = 'Documento'
         verbose_name_plural = 'Documentos'
         ordering = ['name']
-
+    def __str__(self):
+        return self.name
 class custo(models.Model):
     name = models.CharField(max_length=250,null=False,blank=False,verbose_name="Nome")
     class Meta:
         verbose_name = 'Centro de custo'
         verbose_name_plural = 'Centros de custo'
         ordering = ['name']
-
+    def __str__(self):
+        return self.name
 class contaspagar(models.Model):
     name = models.CharField(max_length=250, null=False, blank=False, verbose_name="Título")
     data = models.DateField(auto_now_add=True,verbose_name="Data de Vencimento")
@@ -40,7 +44,8 @@ class contaspagar(models.Model):
         verbose_name = 'Conta a pagar'
         verbose_name_plural = 'Contas a pagar'
         ordering = ['name']
-
+    def __str__(self):
+        return self.name
 class contasreceber(models.Model):
     name = models.CharField(max_length=250, null=False, blank=False, verbose_name="Título")
     data = models.DateField(auto_now_add=True,verbose_name="Data do recebimento")
@@ -54,3 +59,5 @@ class contasreceber(models.Model):
         verbose_name = 'Conta a receber'
         verbose_name_plural = 'Contas a receber'
         ordering = ['name']
+    def __str__(self):
+        return self.name
