@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db import models
 from .services import *
 from ecommerce.models import produtobase
+
 # Views das paginas referentes a atletica.
 class Home(TemplateView):
     template_name = 'index.html'

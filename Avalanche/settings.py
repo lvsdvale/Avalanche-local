@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+from oscar.defaults import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -53,8 +53,43 @@ INSTALLED_APPS = [
     'pagseguro',
     'picpay',
     'analytical',
-    'widget_tweaks',
     'phonenumber_field',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+    'oscar.config.Shop',
+    'oscar.apps.analytics.apps.AnalyticsConfig',
+    'oscar.apps.checkout.apps.CheckoutConfig',
+    'oscar.apps.address.apps.AddressConfig',
+    'oscar.apps.shipping.apps.ShippingConfig',
+    'oscar.apps.catalogue.apps.CatalogueConfig',
+    'oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig',
+    'oscar.apps.communication.apps.CommunicationConfig',
+    'oscar.apps.partner.apps.PartnerConfig',
+    'oscar.apps.basket.apps.BasketConfig',
+    'oscar.apps.payment.apps.PaymentConfig',
+    'oscar.apps.offer.apps.OfferConfig',
+    'oscar.apps.order.apps.OrderConfig',
+    'oscar.apps.customer.apps.CustomerConfig',
+    'oscar.apps.search.apps.SearchConfig',
+    'oscar.apps.voucher.apps.VoucherConfig',
+    'oscar.apps.wishlists.apps.WishlistsConfig',
+    'oscar.apps.dashboard.apps.DashboardConfig',
+    'oscar.apps.dashboard.reports.apps.ReportsDashboardConfig',
+    'oscar.apps.dashboard.users.apps.UsersDashboardConfig',
+    'oscar.apps.dashboard.orders.apps.OrdersDashboardConfig',
+    'oscar.apps.dashboard.catalogue.apps.CatalogueDashboardConfig',
+    'oscar.apps.dashboard.offers.apps.OffersDashboardConfig',
+    'oscar.apps.dashboard.partners.apps.PartnersDashboardConfig',
+    'oscar.apps.dashboard.pages.apps.PagesDashboardConfig',
+    'oscar.apps.dashboard.ranges.apps.RangesDashboardConfig',
+    'oscar.apps.dashboard.reviews.apps.ReviewsDashboardConfig',
+    'oscar.apps.dashboard.vouchers.apps.VouchersDashboardConfig',
+    'oscar.apps.dashboard.communications.apps.CommunicationsDashboardConfig',
+    'oscar.apps.dashboard.shipping.apps.ShippingDashboardConfig',
+    'widget_tweaks',
+    'haystack',
+    'treebeard',
+    'django_tables2',
 ]
 AUTH_USER_MODEL = 'Contas.user'
 
@@ -73,7 +108,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'ecommerce.middleware.itemcarrinhomiddleware'
+    'ecommerce.middleware.itemcarrinhomiddleware',
+    'oscar.apps.basket.middleware.BasketMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'Avalanche.urls'
@@ -89,11 +126,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'oscar.apps.search.context_processors.search_form',
+                'oscar.apps.checkout.context_processors.checkout',
+                'oscar.apps.communication.notifications.context_processors.notifications',
+                'oscar.core.context_processors.metadata',
             ],
         },
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+     'oscar.apps.customer.auth_backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
 WSGI_APPLICATION = 'Avalanche.wsgi.application'
 
 

@@ -18,6 +18,8 @@
     {% for modalidade in Modalidades %}
     {%if forloop.counter|divisibleby:"2" %}
 	<section class="default-esportes dark-esportes">
+		<div class="container-sm">
+
 		<div class="section-title-esportes">{{modalidade.name}}</div>
 		<div class="section-body-esportes">
 	    	<div class="section-esportes">
@@ -31,9 +33,12 @@
 	            </div>
 	        </div>
 	   	</div>
+		</div>
 	</section>
     {%else%}
 	<section class="default-esportes light-esportes">
+	<div class="container-sm">
+
 		<div class="section-title-esportes">{{modalidade.name}}</div>
 		<div class="section-body-esportes">
 	    	<div class="section-esportes">
@@ -48,6 +53,8 @@
 
 	        </div>
 	   	</div>
+
+	</div>
 	</section>
     {%endif%}
     {%endfor%}

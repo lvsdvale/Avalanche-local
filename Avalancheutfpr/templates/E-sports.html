@@ -18,6 +18,7 @@
     {% for Game in Games %}
     {%if forloop.counter|divisibleby:"2" %}
 	<section class="default-e-sports dark-e-sports">
+		<div class="container-sm">
 		<div class="section-title-e-sports">{{Game.name}}</div>
 		<div class="section-body-e-sports">
 	    	<div class="section-e-sports">
@@ -31,6 +32,7 @@
 	            </div>
 	        </div>
 	   	</div>
+	</div>
 	</section>
     {%else%}
 	<section class="default-e-sports light-e-sports">

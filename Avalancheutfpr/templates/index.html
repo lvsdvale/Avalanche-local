@@ -21,63 +21,19 @@
         </div>
     </section>
 
-    <section class="default light">
+    <section class="default light - container-sm" >
         <div class="section-title">Sobre nós</div>
         <div class="section-desc">Conheça a avalanche</div>
         <div class="section-body">
             <div class="section-aboutus">
                 <div class="section-aboutus--left">
-                    <p>A.A.A.E.A - Associação Atlética Acadêmica de Engenharia e Arquitetura da Universidade Tecnológica do Paraná, Campus Curitiba ou simplesmente Avalanche. Somos um começo, um refúgio e ao mesmo tempo uma libertação, mesmo que às duras penas, para uma mudança na forma como a jornada de um curso de Engenharia ou Arquitetura é enfrentada.</p>
+                    <p>Fundada em 28 de Agosto de 2009, A.A.A.E.A - Associação Atlética Acadêmica de Engenharia e Arquitetura da Universidade Tecnológica do Paraná, Campus Curitiba ou simplesmente Avalanche. Somos um começo, um refúgio e ao mesmo tempo uma libertação, mesmo que às duras penas, para uma mudança na forma como a jornada de um curso de Engenharia ou Arquitetura é enfrentada.</p>
                     <br/>
                     <a href="{% url 'SobreNos' %}" class="section-button">Continue lendo</a>
                 </div>
                 <div class="section-aboutus--right">
                     <img src="{%static 'assets/Sobrenos.jpg' %}" />
                 </div>
-            </div>
-        </div>
-    </section>
-    <section class="default dark bg-team">
-        <div class="section-team-area">
-            <a style="text-decoration:none; font-family:'Road_Rage',Arial,Helvetica,sans-serif;letter-spacing:3px;" href="{%url 'Diretoria'%}"><div class="section-title" style="color:#FFFAFA;">Nossa equipe</div></a>
-            <div class="section-desc">Ursos avalanche</div>
-            <div class="section-body">
-                <div class="section-team">
-                    <div class="sliders" style="margin-left:0;">
-                        <div class="slide">
-                            <div class="slidearea">
-                                <img class="section-team--avatar" src="{{Presidente.foto.url}}" />
-                                <div class="section-team--name">{{Presidente.name}}</div>
-                                <div class="section-team--role">Presidente</div>
-                                <div class="section-team--social">
-                                        <a href="{{Presidente.intagram}}"><img src="{%static 'assets/instagram.png'%}" /></a>
-                                        <a href="{{Presidente.facebook}}"><img src="{%static 'assets/facebook.png'%}" /></a>
-                                </div>
-                            </div>
-                        </div><div class="slide">
-                            <div class="slidearea">
-                                <img class="section-team--avatar" src="{{Vice.foto.url}}" />
-                                <div class="section-team--name">{{Vice.name}}</div>
-                                <div class="section-team--role">Vice-Presidente</div>
-                                <div class="section-team--social">
-                                        <a href="{{Vice.intagram}}"><img src="{%static 'assets/instagram.png'%}" /></a>
-                                        <a href="{{Vice.facebook}}"><img src="{%static 'assets/facebook.png'%}" /></a>
-                                </div>
-                            </div>
-                        </div><div class="slide">
-                            <div class="slidearea">
-                                <img class="section-team--avatar" src="{{Geral.foto.url}}" />
-                                <div class="section-team--name">{{Geral.name}}</div>
-                                <div class="section-team--role">Diretor Geral</div>
-                                <div class="section-team--social">
-                                        <a href="{{Geral.instagram}}"><img src="{%static 'assets/instagram.png'%}" /></a>
-                                        <a href="{{Geral.facebook}}"><img src="{%static 'assets/facebook.png'%}" /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -110,66 +66,14 @@
             </div>
         </div>
     </section>
-    <section class="default light premium">
-        <div class="section-title">Produtos</div>
-        <div class="section-desc">Produtos em destaque</div>
-        <div class="section-body">
-            <div class="section-premium">
-                <div class="sliders" style="margin-left:0;">
-                    <a class="prev" onclick="plusSlides(-1)"><p >&#10094;</p></a>
-                    <a class="next" onclick="plusSlides(1)"><p>&#10095;</p></a>
-                    {%for Produto in Produtos%}
-                    <div class="slide">
-                        <div class="slidearea">
-                            <div class="section-premium--left">
-                                <a href="{%url 'ProdutosBase_view' Produto.slug %}"><img src="{{Produto.thumb.url}}" /></a>
-                            </div>
-                            <div class="section-premium--right">
-                                    <div class="section-premium--item">
-                                        <img src="{% static 'assets/check.png'%}" />
-                                        <div>
-                                            <h4>Nome do produto</h4>
-                                            <p>{{Produto.name}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="section-premium--item">
-                                        <img src="{%static 'assets/check.png'%}" />
-                                        <div>
-                                            <h4>Mais informações</h4>
-                                            <p>{{Produto.descricao}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="section-premium--item">
-                                        <img src="{%static 'assets/check.png'%}" />
-                                        {%if user.socio %}
-                                        <div>
-                                            <h4>Preço</h4>
-                                            <p>R$ {{Produto.p_socio}}</p>
-                                        </div>
-                                        {%else%}
-                                        <div>
-                                            <h4>Preço</h4>
-                                            <p>R$ {{Produto.preco}}</p>
-                                        </div>
-                                        {%endif%}
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    {%endfor%}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="section-map">
+    <section class="section-map  - container-sm">
             <h2 style="color:#050329;font-family:'Road_Rage', Arial, Helvetica, sans-serif;">Onde Estamos ?</h2>
         <div class="map">
                 <div class = "google-map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.9322846631994!2d-49.27000273059359!3d-25.440527326864046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce465f9b0c855%3A0xda22d429219f2f12!2sUTFPR%20Campus%20Curitiba!5e0!3m2!1spt-BR!2sbr!4v1596433584206!5m2!1spt-BR!2sbr"  frameborder="0" style="border:0; padding-bottom:10px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
-                <div class="map-info">
+                <div class="map-info" style="font-size:12px;">
                     <div class="map-info-item">
                         <div class="map-info-item-image">
                             <img src="{% static 'assets/localizacao.png' %}" />

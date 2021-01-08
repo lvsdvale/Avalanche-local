@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 from import_export import admin as ad
+
 @admin.register(eventos)
 class EventosAdmin(admin.ModelAdmin):
     list_display = ['name','Status','data']

@@ -1,5 +1,7 @@
 {% load static %}
+{% load i18n %}
 {%load bootstrap4 %}
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8"/>
@@ -8,9 +10,22 @@
 		<title>{% block title %}{% endblock %}</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         {% bootstrap_css %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <meta name="description" content="A plataforma web da Associação Atlética Acadêmica de Engenharia e Arquitetura da UTFPR-CT, A Avalanche">
 		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
 		<link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+        {# Block where global CSS will go. #}
+        {% block styles %}{% endblock %}
+
+        {# Additional CSS - specific to certain pages #}
+        {% block extrastyles %}{% endblock %}
+
+        {% block extrahead %}{% endblock %}
+
+        {% block tracking %}
+            {# Default to using Google analytics #}
+            {% include "oscar/partials/google_analytics.html" %}
+        {% endblock %}
         <!--
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168856703-1"></script>
     <script>
@@ -22,17 +37,15 @@
         -->
 	</head>
 	<body>
-
 		<header>
             {%if user.is_authenticated%}
             <div class="adicional">
             <div class="usuario"><pre><a href="{%url 'Minha_Conta'%}">{{user.Nome_completo}}</a>     <a href="{%url 'Logout'%}">Logout</a> </pre></div>
-            <a href="{% url 'Carrinho'%}"><div class="cart-icon"><img src="{% static 'assets/Cart.png' %}"></div></a>
             </div>
             {%else%}
     <div class="adicional">
         <div class="usuario"><pre><a href="{%url 'Login'%}">Login</a>     <a href="{%url 'Cadastro'%}">Cadastre-se</a></pre></div>
-        <a href="{% url 'Carrinho'%}"><div class="cart-icon"><img src="{% static 'assets/Cart.png' %}"></div></a>
+
     </div>
             {%endif%}
     <div class="header">
@@ -47,7 +60,7 @@
             <label class="menu_label" for = "Bt_menu">&#9776;</label>
              <nav class="menu_nav">
                 <ul>
-                    <li ><a href="{% url 'Home' %}">Home</a></li>
+
                     <li><a href="{% url 'Produtos'%}">Produtos</a></li>
                     <li><a class="submenu_active">Eventos<img src="{% static 'assets/seta-baixo.png'%}"></a>
                         <ul class="submenu">
@@ -71,17 +84,34 @@
             </nav>
         </div>
     </div>
+    {%block Header%}{%endblock%}
     </header>
+
 		{%block body%}
 		{%endblock%}
+        {# Scripts loaded from a CDN. #}
+        {% block cdn_scripts %}
+            <!-- jQuery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="{% static "oscar/js/jquery/jquery.min.js" %}"><\/script>')</script>
+        {% endblock %}
+
+        {# Local scripts #}
+        {% block scripts %}
+        {% endblock %}
+
+        {# Additional JS scripts #}
+        {% block extrascripts %}{% endblock %}
+
+        {# Block for body onload functions #}
+        <script>
+            $(function() {
+                {% block onbodyload %}{% endblock %}
+            });
+        </script>
+
         <script src="{%static 'js/menu.js'%}"></script>
         {% bootstrap_javascript jquery='full'%}
-		<footer>
-    <div class="footer--area">
-        <div class="footer--item">
-                Copyright © 2020  Avalanche Adriano Oliveira - Lucas Vinicius Todos os direitos reservados.
-        </div>
-    </div>
-</footer>
+
 	</body>
 </html>

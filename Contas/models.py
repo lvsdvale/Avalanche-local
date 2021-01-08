@@ -111,7 +111,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     Registro_Academico = models.IntegerField(blank=True,unique=True,null=True,help_text="Caso não é aluno da utfpr,deixar em Branco")
     Telefone = PhoneNumberField(null=False,blank=False,region='BR')
     termos = models.BooleanField(default=True, null=False,verbose_name="Termo de Aceite")
-    timestamp = models.DateTimeField(auto_now_add=True, null=True)
+    date_joined = models.DateTimeField(auto_now_add=True, null=True,verbose_name="Data de inscrição")
     objects = UserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['Nome_completo','Registro_Academico', 'CPF','Genero', 'Curso','Telefone']

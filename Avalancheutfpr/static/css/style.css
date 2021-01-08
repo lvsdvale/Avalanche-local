@@ -6,10 +6,7 @@
 .alert{
 margin:0;
 }
-@font-face {
-     font-family: Road_Rage;
-     src: url('../assets/Road_Rage.otf');
-}
+
 @font-face {
     font-family: "Acumin Variable Concept";
     src: url("//db.onlinewebfonts.com/t/066ce24dae3730ed6c648b09efaea93a.eot");
@@ -264,8 +261,8 @@ height:100%;
     color:#050329;
 }
 .default.light .section-title{
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
-    letter-spacing:6px;
+    font-family: 'Helvetica',Arial,sans-serif;
+    letter-spacing:1px;
     font-size:30px;
 }
 
@@ -284,8 +281,8 @@ height:100%;
     color:#FFF;
 }
 .default.dark .section-title {
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
-    letter-spacing:3px;
+    font-family: 'Helvetica',Arial,sans-serif;
+    letter-spacing:1px;
 
 }
 
@@ -568,19 +565,22 @@ margin: 2vh 2vw 2vh 4vw;
 }
 .google-map iframe{
 width:100%;
-height:60vh;
+height:40vh;
 }
 .map-info{
 display:flex;
 flex-direction:column;
 margin-top:5vh;
-font-size:20px;
+font-size:10px;
 
 }
 .map-info-item{
 display:flex;
 display-direction:column;
 margin-top:1vh;
+}
+.map-info-item p{
+    font-size:5px;
 }
 .map-info-item-image{
 margin: 0.5vh 1vw 1vh 1vw;
@@ -597,7 +597,7 @@ border-radius:10px%;
     background-color:#050329
 }
 .directors h1{
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica',Arial,sans-serif;
     color:FFFAFA;
     margin-left:1%;
     padding-top:.5%;
@@ -639,7 +639,7 @@ border-radius:10px%;
 }
 .diretor-section-info h2{
     font-size:30px;
-    letter-spacing:3px;
+    letter-spacing:1px;
     color:#FFFAFA;
 }
 .diretor-section-info p{
@@ -676,8 +676,8 @@ min-height:77.5vh;
 .default-eventos .section-title-eventos{
     text-align:center;;
     text-transform: uppercase;
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
-    letter-spacing:4px;
+    font-family: 'Helvetica',Arial,sans-serif;
+    letter-spacing:1px;
 }
 .default-eventos .section-title-eventos {
     font-size:30px;
@@ -740,10 +740,9 @@ min-height:77.5vh;
     font-size:12px;
     font-weight:600;
     text-decoration: none;
-    padding:10px 30px;
+    padding:5px 30px;
     margin-top:30px;
     border-radius:20px;
-    margin-left: 640px;
 }
 
 /* EVENTOS FOTO DIREITA*/
@@ -771,7 +770,7 @@ min-height:77.5vh;
 .section-button-light{
     display:inline-block;
     background-color:#050329;
-    color:#E9C53C;
+    color:white;
     text-transform: uppercase;
     font-size:12px;
     font-weight:600;
@@ -895,8 +894,7 @@ min-height:77.5vh;
     padding:10px 30px;
     margin-top:30px;
     border-radius:20px;
-    margin-left: 640px;
-}
+    }
 
 /* EVENTOS FOTO DIREITA*/
 .section-eventos-sociais {
@@ -1020,15 +1018,15 @@ min-height:77.5vh;
 .default-esportes .section-title-esportes{
     text-align:center;
     text-transform: uppercase;
-   font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+   font-family: 'Helvetica',Arial,sans-serif;
 
 }
 .default-esportes .section-title-esportes {
     font-size:30px;
     margin-top:10px;
     margin-bottom:40px;
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
-    letter-spacing:4px;
+    font-family: 'Helvetica',Arial,sans-serif;
+    letter-spacing:1px;
 }
 }
 .default-esportes .section-body-esportes {
@@ -1090,7 +1088,7 @@ min-height:77.5vh;
     padding:10px 30px;
     margin-top:30px;
     border-radius:20px;
-    margin-left: 640px;
+
 }
 
 /* Esportes FOTO DIREITA*/
@@ -1231,7 +1229,7 @@ min-height:77.5vh;
 .default-e-sports .section-title-e-sports{
     text-align:center;
     text-transform: uppercase;
-   font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+   font-family: 'Helvetica',Arial,sans-serif;
 }
 .default-e-sports .section-title-e-sports {
     font-size:25px;
@@ -1429,8 +1427,8 @@ min-height:77.5vh;
 .default-blogs .section-title-blogs{
     text-align:center;
     text-transform: uppercase;
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
-    letter-spacing:4px;
+    font-family: 'Helvetica',Arial,sans-serif;
+    letter-spacing:1px;
 }
 .default-blogs .section-title-blogs {
     font-size:25px;
@@ -1735,7 +1733,7 @@ height:100%;
     height:auto;
 }
 .account-info h1{
-font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+font-family: 'Helvetica',Arial,sans-serif;
 color:#050329;
 }
 .account-social h2{
@@ -1764,7 +1762,7 @@ margin-bottom:2%;
 }
 .account-section-info a{
     text-decoration:none;
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica',Arial,sans-serif;
     color:#050329;
 }
 .meus_dados{
@@ -1795,7 +1793,7 @@ width:60%;
 }
 .Pedidos a {
   text-decoration:none;
-  font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+  font-family: 'Helvetica',Arial,sans-serif;
   color:#050329;
 }
 /* Ecommerce */
@@ -1839,7 +1837,7 @@ color:red;
 min-height:76vh;
 }
 .product h1{
-font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+font-family: 'Helvetica',Arial,sans-serif;
 color:#050329;
 margin:10px 10px 15px 250px;
 }
@@ -1894,7 +1892,7 @@ display:flex;
 flex-direction:row;
 }
 .cart-title{
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    font-family: "Helvetica",Helvetica,Arial,sans-serif;
 	padding: 15px 15px 8px 15px;
 	color:#050329;
 }
@@ -1946,7 +1944,7 @@ height:200px;
     padding:1%;
 }
 .cart-summary h2 {
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica',Arial,sans-serif;
     font-size:40px;
     Padding:1%;
     color:#050329;
@@ -1970,7 +1968,7 @@ display:flex;
 flex-direction:column;
 }
 .order h2{
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica',Arial,sans-serif;
     color:#050329;
     padding-top:1vh;
     margin: 2vh 1vw 1vw 1vw;
@@ -2481,7 +2479,7 @@ color:white;
 
      .section-esportes--left---esquerda{
      width:50%;
-     margin-left:5%;
+     margin-left:%;
     }
      .section-esportes--left---esquerda .section-button-dark{
      margin: 0 0 0 0%;
@@ -3139,7 +3137,7 @@ color:white;
         color:#050329;
     }
     .order h2{
-    font-family:'Road_Rage', Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica',Arial,sans-serif;
     color:#050329;
     padding-top:1vh;
     margin: 0.5vh 1vw 1vw 1vw;
