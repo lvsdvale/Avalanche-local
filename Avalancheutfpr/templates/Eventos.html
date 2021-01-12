@@ -14,6 +14,7 @@
     {%for Evento in page_obj %}
 	{%if forloop.counter|divisibleby:"2" %}
 	<section class="default-eventos dark-eventos">
+		<div class="container-sm">
 		<div class="section-title-eventos">{{Evento.name}}</div>
 		<div class="section-body-eventos">
 	    	<div class="section-eventos">
@@ -27,9 +28,11 @@
 	            </div>
 	        </div>
 	   	</div>
+		</div>
 	</section>
     {%else%}
 	<section class="default-eventos light-eventos">
+		<div class="container-sm">
 		<div class="section-title-eventos">{{Evento.name}}</div>
 		<div class="section-body-eventos">
 	    	<div class="section-eventos">
@@ -44,6 +47,7 @@
 
 	        </div>
 	   	</div>
+		</div>
 	</section>
     {%endif%}
     {%endfor%}
