@@ -50,7 +50,7 @@ class modalidades(models.Model):
 
 class inscricaomodalidadesManager(models.Manager):
     def inscrever(self,usuario,modalidade):
-        inscricao = self.create(usuario = usuario,name = usuario.Nome_completo,email=usuario.email,
+        inscricao = self.create(usuario = usuario,name = usuario.name,email=usuario.email,
                                 curso = usuario.Curso,Ra = usuario.Registro_Academico,
                                 telefone = usuario.Telefone,modalidade=modalidade)
         inscricao.save()
@@ -97,7 +97,7 @@ class campanhas(models.Model):
 
 class inscricaocampanhasManager(models.Manager):
     def inscrever(self,usuario,Campanha):
-        inscricao = self.create(usuario = usuario,name = usuario.Nome_completo,email=usuario.email,
+        inscricao = self.create(usuario = usuario,name = usuario.name,email=usuario.email,
                                 curso = usuario.Curso,Ra = usuario.Registro_Academico,
                                 telefone = usuario.Telefone,campanha=Campanha)
         inscricao.save()
@@ -141,7 +141,7 @@ class games(models.Model):
 
 class inscricaoEsportsManager(models.Manager):
     def inscrever(self,usuario,game):
-        inscricao = self.create(usuario = usuario,name = usuario.Nome_completo,email=usuario.email,
+        inscricao = self.create(usuario = usuario,name = usuario.name,email=usuario.email,
                                 curso = usuario.Curso,Ra = usuario.Registro_Academico,
                                 telefone = usuario.Telefone,game=game)
         inscricao.save()
@@ -186,7 +186,8 @@ class diretoria(models.Model):
     foto = StdImageField(upload_to=get_file_path,null = False,blank = False)
     intagram = models.CharField(max_length=255,null=True,blank=True,verbose_name='Instagram')
     facebook =  models.CharField(max_length=255,null=True,blank=True,verbose_name='Facebook')
-
+    def retorna_cargo(self):
+        return self.cargo
     class Meta:
         verbose_name = 'Diretor'
         verbose_name_plural = 'Diretores'

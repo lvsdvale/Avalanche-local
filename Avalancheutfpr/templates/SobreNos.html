@@ -5,45 +5,17 @@
 <html>
     {%block title %}Sobre Nós{%endblock%}
 {%block body%}
-<main>
-    <section class="default light">
+<main class="container-sm">
+    <section class="default light about-us">
         <div class="section-title">Sobre Nós</div>
         <div class="section-body">
             <div class="section-sobre">
                 <p>
                   A.A.A.E.A - Associação Atlética Acadêmica de 
                 Engenharia e Arquitetura da Universidade Tecnológica do 
-                Paraná, Campus Curitiba ou simplesmente Avalanche. Somos
-                um começo, um refúgio e ao mesmo tempo uma libertação, 
-                mesmo que às duras penas, para uma mudança na forma como 
+                Paraná, Campus Curitiba ou simplesmente Avalanche. Somos uma mudança na forma como
                 a jornada de um curso de Engenharia ou Arquitetura é 
                 enfrentada.<br/><br/>
-
-                Todo Cefetiano, se assim podemos ainda designar nossos 
-                guerreiros, sabe que aqueles blocos, entre escadas e rampas, 
-                criam uma atmosfera mais fria que as lâmpadas que iluminam os 
-                setores. Acaba que tudo não passa de um emaranhado de passos 
-                para conquistar um diploma, necessário para enfrentar o temido
-                mercado de trabalho daqui a cinco anos. Ou seis. Ou quantos 
-                forem necessários.<br/><br/>
-
-                Então por que existir uma Atlética nesse lugar, onde a maioria
-                dos estudantes pensa mais no seu futuro do que no presente?
-                Pois bem, no passado pessoas acreditaram na ideia insana de 
-                que no meio de cursos gélidos, racionais e exatos, pudesse 
-                haver salvação. Acreditaram que ao final da faculdade, poderia
-                existir mais que apenas notas vazias em um boletim, lembranças
-                de noites viradas em claro e trabalhos jogados em uma gaveta.<br/><br/>
-
-                Hoje, graças a esses doidos revolucionários, cada vez mais 
-                novos Cefetianos acreditam e vivem essa ideia. Aí entra vocês:
-                ATLETAS E TORCIDA, que saem de suas casas e dos seus estudos, 
-                que dedicam tempo aos treinos e ensaios. Pessoas que estouram 
-                bolhas nas mãos da exaustiva repetição da caixa ou surdo. 
-                Guerreiros que perdem a voz após gritar com PAIXÃO empurrando
-                seus times à frente. E ATLETAS que engolem a dor no joelho, 
-                ignoram a falta de ar, respiram fundo e correm, pois a TORCIDA
-                está cantando e ainda tem mais 5 minutos do jogo.<br/><br/>
 
                 Jogando, torcendo, ganhando, festando, bebendo, comendo, 
                 competindo, correndo, lutando, doando, e acima de tudo, 
@@ -57,16 +29,28 @@
                 conquista maior: o respeito coletivo. Estamos, juntos, 
                 representando mais que apenas a nós mesmos, representamos um
                 ideal, representamos A NOSSA UNIVERSIDADE.<br/><br/>
+                </p></div></div>
+    </section>
+    <section class="directors">
+        <h1><b>Diretoria</b></h1>
+    <div class="diretores">
+    {%for diretor in Diretoria%}
+        <div class="diretor">
+            <h2>{{diretor.name}}</h2>
+            <div class="diretor-info">
+            {% if diretor.foto.url != blank%}
+                <img src="{{diretor.foto.url}}">
+            {%endif%}
+            <p>{{diretor.get_cargo_display}}</p>
+            <div class="diretor-social">
+                <a href="{{diretor.instagram}}"><img src="{%static 'assets/insta.svg'%}" /></a>
+                <a href="{{diretor.facebook}}"><img src="{%static 'assets/facebook.svg'%}" /></a>
+            </div>
+            </div>
 
-                E, para o futuro, lembranças de uma arquibancada pulando em 
-                harmonia, de vibrações intensas e de sorrisos de satisfação. 
-                ORGULHO. E se a memória não for suficiente, roxos e 
-                cicatrizes, além da falta de voz uma semana após os jogos. 
-                Você viveu.<br/><br/>
-
-                Não importa onde, quando e como for, estaremos fazendo 
-                acontecer! Muito obrigado a todos que vestem a nossa camisa 
-                com SUOR, ORGULHO e PAIXÃO, sempre.</p>
+        </div>
+        {%endfor%}
+    </div>
     </section>
 </main>
 {%endblock%}

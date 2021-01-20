@@ -20,7 +20,7 @@ body {
 header {
     height:120px;
     background-color:#050329 ;
-    color:#FFF;
+    color:#F2F2F2;
     position: sticky;
     top: 0;
     border-bottom:1px solid #050331;
@@ -36,7 +36,7 @@ header {
     text-decoration: none;
     font-weight: 600;
     font-family:'Montserrat', Arial, Helvetica, sans-serif;
-    color: #FFF;
+    color: #F2F2F2;
 }
 .adicional .usuario{
     margin-left: 100px;
@@ -94,7 +94,7 @@ display:none;
 }
 .menu li a {
     display:flex;
-    color:#FFF;
+    color:#F2F2F2;
     text-transform: uppercase;
     font-weight: 600;
     text-decoration: none;
@@ -194,7 +194,7 @@ height:100%;
     height:100%;
     justify-content: center;
     align-items:center;
-    color:#FFF;
+    color:#F2F2F2;
 }
 .banner h1 {
     text-transform: uppercase;
@@ -274,15 +274,18 @@ height:100%;
     border-top:1px solid #E9C53C;
 }
 .default.dark .section-desc{
-    color:#E9C53C ;
+    color:#F2C335 ;
 }
 .default.dark .section-title,
 .default.dark .section-body {
-    color:#FFF;
+    color:#F2F2F2;
 }
-.default.dark .section-title {
+.default.dark .section-title a {
     font-family: 'Helvetica',Arial,sans-serif;
     letter-spacing:1px;
+    font-size:30px;
+    text-decoration:None;
+    color:#F2F2F2;
 
 }
 
@@ -295,7 +298,7 @@ footer {
     max-width:1140px;
     height: 30px;
     line-height: 30px;
-    color:#FFF;
+    color:#F2F2F2;
     font-size:13px;
     padding:0 10px 0 10px;
 }
@@ -323,7 +326,9 @@ CSS DE ÁREAS ESPECÍFICAS
 }
 .section-aboutus--right img {
     width:480px;
+    height:250px;
     box-shadow:0px 5px 10px #333;
+
 }
 .section-button{
     display:inline-block;
@@ -399,7 +404,7 @@ CSS DE ÁREAS ESPECÍFICAS
     height:100%;
     justify-content: center;
     align-items:center;
-    color:#FFF;
+    color:#F2F2F2;
     padding:10px 30px 10px 30px;
 }
 .section-team-area .sliders-pointers {
@@ -580,7 +585,7 @@ display-direction:column;
 margin-top:1vh;
 }
 .map-info-item p{
-    font-size:5px;
+    font-size:12px;
 }
 .map-info-item-image{
 margin: 0.5vh 1vw 1vh 1vw;
@@ -592,78 +597,51 @@ width:3vx;
 height:3vh;
 border-radius:10px%;
 }
-.directors{
-    min-height:77.5vh;
-    background-color:#050329
-}
 .directors h1{
     font-family: 'Helvetica',Arial,sans-serif;
-    color:FFFAFA;
-    margin-left:1%;
-    padding-top:.5%;
+    color:#050329;
+    font-size:40px;
+    text-align:center;
 }
-.diretor-section{
-    display:flex;
-    flex-direction:row;
-    padding-bottom:1.6%;
-    border:1px solid #FFFAFA;
-    padding-top:2%;
-    margin-top:1%;
-    margin-right:1%;
-    border-radius:10px;
-    overflow:hidden;
-}
-.diretor-section:hover{
-     box-shadow:
-                1px 1px #FFFAFA,
-                2px 2px #FFFAFA,
-                3px 3px #FFFAFA;
-}
-
-.diretor-section-image{
-    width:20%;
-    height:20vh;
-    margin-left:1%;
+.diretores {
+display:flex;
+flex-direction:row;
+flex-wrap:wrap;
 
 }
-.diretor-section-image img{
-    width:100%;
-    height:100%;
-    border-radius:5%;
-    border-left:1px solid #FFFAFA;
+.diretor{
+   width:26%;
+   height:25em;
+   margin: 3% 3% 3% 3%;
+   border-radius:4%;
+   box-shadow:0px 5px 10px #333;
+   padding-top:1%;
 }
-.diretor-section-info{
+.diretor h2{
+    font-size:25px;
+    text-align:center;
+    margin-bottom:3%;
+}
+.diretor-info img{
+    width:60%;
+    height:40%;
+    border-radius:50%;
+}
+.diretor-info{
     display:flex;
     flex-direction:column;
-    margin-left:5%;
+    align-items:center;
 }
-.diretor-section-info h2{
-    font-size:30px;
-    letter-spacing:1px;
-    color:#FFFAFA;
+.diretor-info p{
+    font-size:15px;
+    margin-top:3%;
 }
-.diretor-section-info p{
-    font-size:22px;
-    padding-top:1%;
-    padding-bottom:1%;
-    color:#FFFAFA;
+.diretor-social img{
+    width:2em;
+    height:3.5em;
+    margin:0 .6em 0 .6em;
+    border-radius:0;
 }
-
-.diretor-section-social{
-    display:flex;
-    flex-direction:row;
-
-
-}
-.diretor-section-social img{
-    width: 23px;
-    height:auto;
-    margin-left:12px;
-    Background-color:#FFFAFA;
-    border: 1px solid #FFFAFA;
-    border-radius:100%;
-}
-
 /*  PÁGINA EVENTOS */
 .eventos-area{
 min-height:77.5vh;
@@ -671,7 +649,7 @@ min-height:77.5vh;
 .default-eventos {
     padding-top:50px;
     padding-bottom:50px;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid #F2F2F2;
 }
 .default-eventos .section-title-eventos{
     text-align:center;;
@@ -699,7 +677,7 @@ min-height:77.5vh;
     background-color:#050329;
 }
 .default-eventos.dark-eventos .section-desc-eventos{
-    color:#E9C53C ;
+    color:#F2C335;
 }
 .default-eventos.dark-eventos .section-title-eventos,
 .default-eventos.dark-eventos .section-body-eventos {
@@ -847,7 +825,7 @@ min-height:77.5vh;
 .section-evento-area .slidearea {
     display:flex;
     height:100%;
-    color:#FFF;
+    color:#F2F2F2;
     margin-left:5%;
 }
 
@@ -976,7 +954,7 @@ min-height:77.5vh;
     height:100%;
     justify-content: top;
     align-items:center;
-    color:#FFF;
+    color:#F2F2F2;
     padding:5px;
 }
 .section-evento-social-area .sliders-pointers {
@@ -1013,7 +991,7 @@ min-height:77.5vh;
 .default-esportes {
     padding-top:50px;
     padding-bottom:50px;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid #F2F2F2;
 }
 .default-esportes .section-title-esportes{
     text-align:center;
@@ -1044,7 +1022,7 @@ min-height:77.5vh;
     background-color:#050329;
 }
 .default-esportes.dark-esportes .section-desc-esportes{
-    color:#E9C53C ;
+    color:#F2C335;
 }
 .default-esportes.dark-esportes .section-title-esportes,
 .default-esportes.dark-esportes .section-body-esportes {
@@ -1185,7 +1163,7 @@ min-height:77.5vh;
     height:100%;
     justify-content: center;
     align-items:center;
-    color:#FFF;
+    color:#F2F2F2;
     padding:5px;
 }
 
@@ -1224,7 +1202,7 @@ min-height:77.5vh;
 .default-e-sports {
     padding-top:50px;
     padding-bottom:50px;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid #F2F2F2;
 }
 .default-e-sports .section-title-e-sports{
     text-align:center;
@@ -1251,7 +1229,7 @@ min-height:77.5vh;
     background-color:#050329;
 }
 .default-e-sports.dark-e-sports .section-desc-e-sports{
-    color:#E9C53C ;
+    color:#F2C335;
 }
 .default-e-sports.dark-e-sports .section-title-e-sports,
 .default-e-sports.dark-e-sports .section-body-e-sports {
@@ -1384,7 +1362,7 @@ min-height:77.5vh;
     height:100%;
     justify-content: center;
     align-items:center;
-    color:#FFF;
+    color:#F2F2F2;
     padding:5px;
 }
 
@@ -1422,7 +1400,7 @@ min-height:77.5vh;
 .default-blogs {
     padding-top:50px;
     padding-bottom:50px;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid #F2F2F2;
 }
 .default-blogs .section-title-blogs{
     text-align:center;
@@ -1450,7 +1428,7 @@ min-height:77.5vh;
     background-color:#050329;
 }
 .default-blogs.dark-blogs .section-desc-blogs{
-    color:#E9C53C ;
+    color:#F2C335;
 }
 .default-blogs.dark-blogs .section-title-blogs,
 .default-blogs.dark-blogs .section-body-blogs {
@@ -1579,7 +1557,7 @@ min-height:77.5vh;
 }
 
 #login .frase_login{
-    color: #FFF;
+    color: #F2F2F2;
     font-size: 20px;
     font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
     letter-spacing:1px;
@@ -1609,7 +1587,7 @@ margin-bottom:5vh;
 }
 #login .forgot a{
     text-decoration:none;
-    color:#FFF;
+    color:#F2F2F2;
     font-size:10px;
     text-align:center;
     }
@@ -1626,7 +1604,7 @@ margin-bottom:5vh;
     flex-wrap:wrap
 }
 #login .form-group label{
-    color:#FFF;
+    color:#F2F2F2;
     font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
     border: 1px solid #E9C53C;
     border-radius:12px;
@@ -1652,7 +1630,7 @@ margin-bottom:5vh;
 }
 
 #login .form-control:focus{
-    color:#FFF;
+    color:#F2F2F2;
     box-shadow:none;
 }
 
@@ -1713,7 +1691,7 @@ height:100%;
 }
 .account-options li a {
     display:flex;
-    color:#FFF;
+    color:#F2F2F2;
     text-transform: uppercase;
     font-weight: 600;
     text-decoration: none;
@@ -2027,6 +2005,8 @@ color:white;
 color:white;
 }
 
+
+
 /* Painel Administrativo */
 
 
@@ -2044,7 +2024,7 @@ color:white;
      display:block;
      padding:5px;
      background-color:#050329;
-     color:#fff;
+     color:#F2F2F2;
      font-size:40px;
      width:50px;
      height:50px;
@@ -2193,17 +2173,14 @@ color:white;
     margin-top:1vh;
     font-size:20px;
     }
-    .diretor-section-image{
-    width:30%;
-    height:20vh;
-    }
+
 
 
 
     /*Login rponnsivo 450 - 800*/
 
     #login .frase_login{
-        color: #FFF;
+        color: #F2F2F2;
         font-size: 20px;
         font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
         letter-spacing:1px;
@@ -2226,7 +2203,7 @@ color:white;
     }
 
     #login .form-group label{
-        color:#FFF;
+        color:#F2F2F2;
         font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
         border: 1px solid #E9C53C;
         border-radius:12px;
@@ -2252,7 +2229,7 @@ color:white;
     }
 
     #login .form-control:focus{
-        color:#FFF;
+        color:#F2F2F2;
         box-shadow:none;
     }
 
@@ -2283,7 +2260,7 @@ color:white;
     }
     #login .forgot a{
         text-decoration:none;
-        color:#FFF;
+        color:#F2F2F2;
         font-size:10px;
     }
     .minha-conta{
@@ -2661,6 +2638,9 @@ color:white;
     font-size:20px;
     }
 
+   .diretor{
+    width:40%;
+}
 }
 
 
@@ -2685,7 +2665,7 @@ color:white;
      display:block;
      padding:5px;
      background-color:#050329;
-     color:#fff;
+     color:#F2F2F2;
      font-size:40px;
      width:50px;
      height:50px;
@@ -2911,9 +2891,9 @@ color:white;
     .footer-social {
         justify-content: center;
     }
-    .btn-primary{color:#fff;background-color:#050329;border-color:#005a5a}
-    .btn-primary.disabled,.btn-primary:disabled{color:#fff;background-color:#050329;border-color:#005a5a}
-    .btn-primary:hover{color:#fff;background-color:#050329;border-color:#005a5a}
+    .btn-primary{color:#F2F2F2;background-color:#050329;border-color:#005a5a}
+    .btn-primary.disabled,.btn-primary:disabled{color:#F2F2F2;background-color:#050329;border-color:#005a5a}
+    .btn-primary:hover{color:#F2F2F2;background-color:#050329;border-color:#005a5a}
 
     .google-map{
     width:90vw;
@@ -2932,15 +2912,12 @@ color:white;
     .map-info-item-image{
     margin: 0 1vw 1vh 1vw;
     }
-    .diretor-section-image{
-    width:40%;
-    height:20vh;
-    }
+
 
     /*Login rponnsivo 450 */
 
     #login .frase_login{
-    color: #FFF;
+    color: #F2F2F2;
     font-size: 20px;
     font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
     letter-spacing:1px;
@@ -2963,7 +2940,7 @@ color:white;
    }
 
    #login .form-group label{
-        color:#FFF;
+        color:#F2F2F2;
         font-family:'Acumin Variable Concept', Arial, Helvetica, sans-serif;
         border: 1px solid #E9C53C;
         border-radius:12px;
@@ -2989,7 +2966,7 @@ color:white;
    }
 
    #login .form-control:focus{
-        color:#FFF;
+        color:#F2F2F2;
         box-shadow:none;
    }
 
@@ -3021,7 +2998,7 @@ color:white;
    }
    #login .forgot a{
         text-decoration:none;
-        color:#FFF;
+        color:#F2F2F2;
         font-size:7px;
    }
    .minha-conta{
@@ -3461,17 +3438,23 @@ color:white;
     margin: 0% 5% 0 5%;
     font-size:19px;
     }
+    .diretor{
+        width:80%;
+        margin: 8% 10% 3% 10%;
+        height:28em;
 
+    }
 }
 /* Botoes */
-    .btn-primary{color:#fff;background-color:#050329;border-color:#005a5a}
-    .btn-primary.disabled,.btn-primary:disabled{color:#fff;background-color:#050329;border-color:#005a5a}
-    .btn-primary:hover{color:#fff;background-color:#050329;border-color:#005a5a}
+    .btn-primary{color:#F2F2F2;background-color:#050329;border-color:#005a5a}
+    .btn-primary.disabled,.btn-primary:disabled{color:#F2F2F2;background-color:#050329;border-color:#005a5a}
+    .btn-primary:hover{color:#F2F2F2;background-color:#050329;border-color:#005a5a}
 
-     .btn-info{color:#fff;background-color:#050329;border-color:#fff}
-    .btn-info.disabled,.btn-info:disabled{color:#fff;background-color:#050329;border-color:#fff}
-    .btn-info:hover{color:#fff;background-color:#050329;border-color:#fff}
+     .btn-info{color:#F2F2F2;background-color:#050329;border-color:#F2F2F2}
+    .btn-info.disabled,.btn-info:disabled{color:#F2F2F2;background-color:#050329;border-color:#F2F2F2}
+    .btn-info:hover{color:#F2F2F2;background-color:#050329;border-color:#F2F2F2}
 
     .btn-warning{color:#050329;}
     .btn-warning.disabled,.btn-warning:disabled{color:#050329;}
     .btn-warning:hover{color:#050329;}
+

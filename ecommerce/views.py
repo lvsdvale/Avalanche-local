@@ -191,6 +191,7 @@ class PicpayView(LoginRequiredMixin,RedirectView):
                 "phone": str(self.request.user.Telefone),
             },
         )
+
         return payment['paymentUrl']
 
 def PicpayNotification(request,pk):

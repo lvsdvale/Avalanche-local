@@ -15,19 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.apps import apps
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Avalancheutfpr.urls')),
     path('',include('Blog.urls')),
     path('',include('Contas.urls')),
-    path('',include('ecommerce.urls')),
+    path('',include('E_commerce.urls')),
     path('',include('Engenhariadas.urls')),
-    path('painel',include('Administrativo.urls')),
-    path('', include(apps.get_app_config('oscar').urls[0])),
 
+    path('painel',include('Administrativo.urls')),
+    url(r'^', include(apps.get_app_config('E_commerce').urls[0])),
+    path('i18n/', include('django.conf.urls.i18n')),
+    #path('', include(apps.get_app_config('oscar').urls[0])),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.AdminSite.site_header = "A.A.A.E.A UTFPR-CT"

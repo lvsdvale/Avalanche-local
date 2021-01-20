@@ -18,7 +18,7 @@ def Cadastrar_usuarios(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            Nome = form.cleaned_data.get('Nome_completo')
+            Nome = form.cleaned_data.get('first_name ')
             email = form.cleaned_data.get('email')
             messages.success(request,"Cadastro Realizado com Sucesso")
             User = authenticate(username=username, password=raw_password)

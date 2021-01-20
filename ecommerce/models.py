@@ -6,6 +6,11 @@ from django.conf import settings
 from pagseguro import PagSeguro
 from picpay import PicPay
 from Avalancheutfpr.services import Send_compra_mail,Send_compra_update_mail
+from oscar.apps.offer import models as OfferModel
+
+
+
+
 
 class catalogo(models.Model):
     name = models.CharField(max_length=255,null = False,blank = False,verbose_name='Nome')

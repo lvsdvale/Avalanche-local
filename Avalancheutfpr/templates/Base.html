@@ -40,7 +40,7 @@
 		<header>
             {%if user.is_authenticated%}
             <div class="adicional">
-            <div class="usuario"><pre><a href="{%url 'Minha_Conta'%}">{{user.Nome_completo}}</a>     <a href="{%url 'Logout'%}">Logout</a> </pre></div>
+            <div class="usuario"><pre><a href="{%url 'Minha_Conta'%}">{{user.name}}</a>     <a href="{%url 'Logout'%}">Logout</a> </pre></div>
             </div>
             {%else%}
     <div class="adicional">
@@ -61,7 +61,7 @@
              <nav class="menu_nav">
                 <ul>
 
-                    <li><a href="{% url 'Produtos'%}">Produtos</a></li>
+                    <li><a href="#">Produtos</a></li>
                     <li><a class="submenu_active">Eventos<img src="{% static 'assets/seta-baixo.png'%}"></a>
                         <ul class="submenu">
                             <li class="submenu-item"><a class="subm" href="{% url 'Social'%}">Ações sociais</a></li>
@@ -89,6 +89,7 @@
 
 		{%block body%}
 		{%endblock%}
+        <footer></footer>
         {# Scripts loaded from a CDN. #}
         {% block cdn_scripts %}
             <!-- jQuery -->

@@ -10,7 +10,7 @@
             <div class="slide">
                     <a href="{%url 'Socio'%}"><img src="{%static 'assets/Banner1.jpg'%}"></a>
             </div><div class="slide">
-                <a href="{%url 'Produtos'%}"><img src="{%static 'assets/Banner2.jpg'%}"></a>
+                <a href="#"><img src="{%static 'assets/Banner2.jpg'%}"></a>
             </div><div class="slide">
                 <a href="#"><img src="{%static 'assets/Banner3.jpg'%}"></a>
             </div>
@@ -31,37 +31,37 @@
                     <br/>
                     <a href="{% url 'SobreNos' %}" class="section-button">Continue lendo</a>
                 </div>
-                <div class="section-aboutus--right">
-                    <img src="{%static 'assets/Sobrenos.jpg' %}" />
+                <div class="section-aboutus--right" style="max-height:450px;">
+                    <img  src="{%static 'assets/Sobrenos.jpeg' %}" />
                 </div>
             </div>
         </div>
     </section>
 
     <section class="default dark">
-        <div class="section-title">Esportes</div>
+        <div class="section-title"><a href="{% url 'Esportes'%}">Esportes</a></div>
         <div class="section-desc">Destaques esportes avalanche</div>
         <div class="section-body">
             <div class="section-services">
                 <div class="section-service">
                     <img src="{%static 'assets/Natação.png'%}" />
                     <h4>Natação</h4>
-                    <p>Frase enaltecedora</p>
+
                 </div>
                 <div class="section-service">
                     <img src="{% static 'assets/Judô.png'%}" />
                     <h4>Judô</h4>
-                    <p> mais uma Frase enaltecedora</p>
+
                 </div>
                 <div class="section-service">
                     <img src="{% static 'assets/Tênis_de_Mesa.png'%}" />
                     <h4>Tênis de mesa</h4>
-                    <p> vish outra Frase enaltecedora</p>
+
                 </div>
                 <div class="section-service">
                     <img src="{% static 'assets/Handebol.png'%}" />
                     <h4>Handebol</h4>
-                    <p>só mais uma Frase enaltecedora</p>
+
                 </div>
             </div>
         </div>
@@ -82,19 +82,19 @@
                     </div>
                     <div class="map-info-item">
                         <div class="map-info-item-image">
-                            <img src="{% static 'assets/whatsapp.png' %}" />
+                            <img src="{% static 'assets/whatsapp.svg' %}" />
                         </div>
                     <p>(41) 9 8759-8657</p>
                     </div>
                     <div class="map-info-item">
                         <div class="map-info-item-image">
-                            <img src="{% static 'assets/facebook.png' %}" />
+                            <img src="{% static 'assets/facebook.svg' %}" />
                         </div>
                     <p>www.facebook.com/avalancheutfpr</p>
                     </div>
                     <div class="map-info-item">
                         <div class="map-info-item-image">
-                            <img src="{% static 'assets/insta.png' %}" />
+                            <img src="{% static 'assets/insta.svg' %}" />
                         </div>
                     <p>@avalancheutfpr</p>
                     </div>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="map-info-item">
                         <div class="map-info-item-image">
-                            <img src="{% static 'assets/twitch.png' %}" />
+                            <img src="{% static 'assets/twitch.svg' %}" />
                         </div>
                     <p>https://www.twitch.tv/avalancheutfpr</p>
                     </div>

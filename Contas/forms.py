@@ -5,7 +5,7 @@ from django import forms
 class Cadastro(UserCreationForm):
     class Meta:
         model = user
-        fields = ('email', 'Nome_completo', 'CPF','Genero','Data','Curso','Registro_Academico','Telefone', 'password1', 'password2', )
+        fields = ('email', 'name', 'CPF','Genero','Data','Curso','Registro_Academico','Telefone', 'password1', 'password2', )
 
 
 class Reset(forms.Form):

@@ -14,7 +14,7 @@ import os
 from oscar.defaults import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+SITE_ID = 1
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'pagseguro',
     'picpay',
     'analytical',
+    'E_commerce',
     'phonenumber_field',
     'django.contrib.sites',
     'django.contrib.flatpages',
@@ -66,8 +67,8 @@ INSTALLED_APPS = [
     'oscar.apps.communication.apps.CommunicationConfig',
     'oscar.apps.partner.apps.PartnerConfig',
     'oscar.apps.basket.apps.BasketConfig',
-    'oscar.apps.payment.apps.PaymentConfig',
-    'oscar.apps.offer.apps.OfferConfig',
+    'E_commerce.payment.apps.PaymentConfig',
+    'E_commerce.offer.apps.OfferConfig',
     'oscar.apps.order.apps.OrderConfig',
     'oscar.apps.customer.apps.CustomerConfig',
     'oscar.apps.search.apps.SearchConfig',
@@ -89,7 +90,9 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'haystack',
     'treebeard',
+    'sorl.thumbnail',
     'django_tables2',
+    'storages',
 ]
 AUTH_USER_MODEL = 'Contas.user'
 
@@ -208,9 +211,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+USE_S3 = True
+if USE_S3:
+    AWS_ACCESS_KEY_ID = 'AKIAWKXLDEMZ3QW2N4DG'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = "midia-avalanche"
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    AWS_QUERYSTRING_AUTH = False
+    PUBLIC_MEDIA_LOCATION = 'media'
+    AWS_S3_REGION_NAME = os.getenv(".s3-sa-east-1")
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_ROOT = '/home/host/app/static_root/media'
+else:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #LOGIN_REDIRECT_URL = '/'
 #LOGOUT_REDIRECT_URL = '/'
 #Email
@@ -231,4 +249,13 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
+
+OSCAR_INITIAL_ORDER_STATUS = 'Pending'
+OSCAR_INITIAL_LINE_STATUS = 'Pending'
+OSCAR_ORDER_STATUS_PIPELINE = {
+    'Pending': ('Being processed', 'Cancelled',),
+    'Being processed': ('Processed', 'Cancelled',),
+    'Cancelled': (),
+}
+
 #SECURE_SSL_REDIRECT = True

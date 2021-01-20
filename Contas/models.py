@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # classes de login
 class UserManager(BaseUserManager):
-    def Create_User(self, email, Nome_completo, CPF, Curso,Data,Genero,Registro_Academico,Telefone,password=None, active=True, staff=False,
+    def Create_User(self, email, name, CPF, Curso,Data,Genero,Registro_Academico,Telefone,password=None, active=True, staff=False,
                     Socio=False):
         if not email:
             raise ValueError('Usuário deve ter um email')
@@ -17,7 +17,7 @@ class UserManager(BaseUserManager):
 
         )
 
-        user_obj.Nome_completo = Nome_completo
+        user_obj.name = name
         user_obj.CPF = CPF
         user_obj.Curso = Curso
         user_obj.Data = Data,
@@ -31,10 +31,10 @@ class UserManager(BaseUserManager):
         user_obj.save(using=self._db)
         return user_obj
 
-    def create_staffuser(self, email, Nome_completo, CPF, Curso, Registro_Academico,Telefone, password=None):
+    def create_staffuser(self, email, name, CPF, Curso, Registro_Academico,Telefone, password=None):
         user_obj = self.Create_User(
             email,
-            Nome_completo=Nome_completo,
+            name = name,
             CPF=CPF,
             Curso=Curso,
             Registro_Academico=Registro_Academico,
@@ -46,10 +46,10 @@ class UserManager(BaseUserManager):
         user_obj.save
         return user_obj
 
-    def create_superuser(self, email, Nome_completo, CPF, Curso,Data,Genero,Registro_Academico,Telefone, password=None):
+    def create_superuser(self, email, name, CPF, Curso,Data,Genero,Registro_Academico,Telefone, password=None):
         user_obj = self.Create_User(
             email=email,
-            Nome_completo=Nome_completo,
+            name=name,
             CPF=CPF,
             Curso=Curso,
             Data=Data,
@@ -99,28 +99,28 @@ class user(AbstractBaseUser, PermissionsMixin):
     )
 
 
-    Nome_completo = models.CharField(max_length=255, null=True,unique=True,help_text="Digite o seu nome COMPLETO")
+    name = models.CharField(max_length=255, null=True,unique=True,help_text="Digite o seu nome COMPLETO",verbose_name="Nome")
     email = models.EmailField(max_length=255, unique=True, null=True)
     is_active = models.BooleanField(default=True, null=True)
     is_staff = models.BooleanField(default=False, null=True,verbose_name='Diretor')
-    Socio = models.BooleanField(default=False, null=True)
+    Socio = models.BooleanField(default=False, null=True,choices=((True,"Sim"),(False,"Não")))
     CPF = BRCPFField(max_length=14,unique=True,blank=False,null=False)
     Data = models.DateField(auto_now_add=False,blank=True,null=True,verbose_name="Data de nascimento")
     Genero = models.CharField(max_length=255, choices=sexo, null=True,verbose_name="Sexo")
     Curso = models.CharField(max_length=255, choices=Cursos, null=True)
     Registro_Academico = models.IntegerField(blank=True,unique=True,null=True,help_text="Caso não é aluno da utfpr,deixar em Branco")
     Telefone = PhoneNumberField(null=False,blank=False,region='BR')
-    termos = models.BooleanField(default=True, null=False,verbose_name="Termo de Aceite")
+    termos = models.BooleanField(default=True, null=False,verbose_name="Termo de Aceite",choices=((True,"Aceito"),(False,"Recusado")))
     date_joined = models.DateTimeField(auto_now_add=True, null=True,verbose_name="Data de inscrição")
     objects = UserManager()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['Nome_completo','Registro_Academico', 'CPF','Genero', 'Curso','Telefone']
+    REQUIRED_FIELDS = ['name','Registro_Academico', 'CPF','Genero', 'Curso','Telefone']
 
     def __str__(self):
-        return self.Nome_completo
+        return self.name
 
     def get_nome_completo(self):
-        return self.Nome_completo
+        return self.name
 
     def get_email(self):
         return self.email
@@ -151,4 +151,4 @@ class user(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'
-        ordering = ['Nome_completo']
+        ordering = ['name']

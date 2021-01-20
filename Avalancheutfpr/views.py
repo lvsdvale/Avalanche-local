@@ -8,7 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db import models
 from .services import *
 from ecommerce.models import produtobase
-
+from oscar.core.loading import get_model
+Country = get_model('address', 'Country')
 # Views das paginas referentes a atletica.
 class Home(TemplateView):
     template_name = 'index.html'
@@ -23,6 +24,7 @@ class Home(TemplateView):
         return context
 def Contatos(request):
     initial = None
+
     if request.user.is_authenticated:
         initial = {
             'name':request.user.get_nome_completo(),
@@ -50,6 +52,11 @@ def Contatos(request):
 
 class SobreNos(TemplateView):
     template_name = 'SobreNos.html'
+    def get_context_data(self, **kwargs):
+        context = super(SobreNos, self).get_context_data(**kwargs)
+        context["Diretoria"] = diretoria.objects.all().order_by('cargo')
+        return context
+
 
 # Views Referentes a página de Eventos
 class Eventos(ListView):
