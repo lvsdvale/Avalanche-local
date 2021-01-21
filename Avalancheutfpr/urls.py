@@ -12,12 +12,14 @@ urlpatterns = [
                   path('Esportes/<slug:slug>', Modalidades_view, name='Modalidades_View'),
                   path('Contatos/', Contatos, name='Contatos'),
                   path('SobreNos/', SobreNos.as_view(), name= 'SobreNos'),
+                  path('Bateria/', Bateria.as_view(), name= 'Bateria'),
+                  path('Cheers/', Cheers.as_view(), name= 'Cheers'),
+                  path('Torcida/', BBBA.as_view(), name= 'BBBA'),
                   path('Socio/', Socio.as_view(), name='Socio'),
                   path('Social/', Social.as_view(), name='Social'),
                   path('Social/<slug:slug>', Campanhas_view, name='Campanhas_View'),
                   path('E_sports/', E_sports.as_view(), name='E-sports'),
                   path('E_sports/<slug:slug>', Games_view, name='Games_View'),
-                  path('Diretoria/',Diretoria,name = 'Diretoria'),
                   path('Galeria/',Galeria.as_view(),name = 'Galeria'),
                   path('Competicoes/',Competicoes.as_view(),name = 'Competicoes')
 

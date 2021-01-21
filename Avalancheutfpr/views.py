@@ -206,6 +206,15 @@ class Competicoes(ListView):
             )
 
         return queryset
+class Bateria(TemplateView):
+    template_name = 'Bateria.html'
+
+class Cheers(TemplateView):
+    template_name = 'Cheers.html'
+
+
+class BBBA(TemplateView):
+    template_name = 'BBBA.html'
 #Erros
 def error404(request, ex):
     template = loader.get_template('404.html')
