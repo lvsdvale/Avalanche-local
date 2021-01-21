@@ -9,8 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>{% block title %}{% endblock %}</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
-        {% bootstrap_css %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <meta name="description" content="A plataforma web da Associação Atlética Acadêmica de Engenharia e Arquitetura da UTFPR-CT, A Avalanche">
 		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
 		<link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
@@ -26,64 +25,51 @@
             {# Default to using Google analytics #}
             {% include "oscar/partials/google_analytics.html" %}
         {% endblock %}
-        <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168856703-1"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-168856703-1');
-    </script>
-        -->
+
 	</head>
 	<body>
 		<header>
-            {%if user.is_authenticated%}
-            <div class="adicional">
-            <div class="usuario"><pre><a href="{%url 'Minha_Conta'%}">{{user.name}}</a>     <a href="{%url 'Logout'%}">Logout</a> </pre></div>
-            </div>
-            {%else%}
-    <div class="adicional">
-        <div class="usuario"><pre><a href="{%url 'Login'%}">Login</a>     <a href="{%url 'Cadastro'%}">Cadastre-se</a></pre></div>
-
-    </div>
-            {%endif%}
-    <div class="header">
-        <div class="logo">
-            <div class="logoimg"><a href="{% url 'Home'%}"><img src="{%static 'assets/logo.png'%}"></a></div>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="{%url 'Home'%}">
+    <img src="{%static 'assets/Logo.svg'%}" width="80" height="80" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Produtos<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="Eventos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Eventos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="Eventos">
+          <a class="dropdown-item" href="{% url 'Eventos' %}">Integração</a>
+          <a class="dropdown-item" href="{% url 'Social'%}">Sociais</a>
         </div>
-        <div class="logo-texto"><a href="{% url 'Home'%}">A.A.A.E.A UTFPR - Avalanche</a></div>
-
-        <div class="menu">
-            <!--img class="menu-opener" src="{%static 'assets/menu.png'%}" /-->
-            <input type="checkbox" id="Bt_menu" style="display:none;">
-            <label class="menu_label" for = "Bt_menu">&#9776;</label>
-             <nav class="menu_nav">
-                <ul>
-
-                    <li><a href="#">Produtos</a></li>
-                    <li><a class="submenu_active">Eventos<img src="{% static 'assets/seta-baixo.png'%}"></a>
-                        <ul class="submenu">
-                            <li class="submenu-item"><a class="subm" href="{% url 'Social'%}">Ações sociais</a></li>
-                            <li class="submenu-item"><a class="subm" href="{% url 'Eventos' %}">Integração</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{% url 'Esportes'%}">Esportes</a></li>
-                    <li><a href="{% url 'Blog'%}">Blog</a></li>
-
-                    <li><a class="submenu_active" href="#">Entidades<img src="{% static 'assets/seta-baixo.png'%}"></a>
-                        <ul class="submenu">
-                            <li class="submenu-item"><a href="{% url 'E-sports'%}">ESports</a>
-                            <li class="submenu-item"><a class="subm" href="#">Bateria</a></li>
-                            <li class="submenu-item"><a class="subm" href="#">Cheers</a></li>
-                            <li class="submenu-item"><a class="subm" href="#">BBBA</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{% url 'Contatos'%}">Contatos</a></li>
-                </ul>
-            </nav>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'Esportes'%}">Esportes</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="Entidades" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Entidades
+        </a>
+        <div class="dropdown-menu" aria-labelledby="Entidades">
+            <a class="dropdown-item" href="{%url 'E-sports'%}">E-Sports</a>
+            <a class="dropdown-item" href="#">Bateria</a>
+            <a class="dropdown-item" href="#">Cheers</a>
+            <a class="dropdown-item" href="#">BBBA</a>
         </div>
-    </div>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{%url 'Contatos'%}">Contatos</a>
+      </li>
+    </ul>
+  </div>
+</nav>
     {%block Header%}{%endblock%}
     </header>
 
@@ -109,29 +95,12 @@
                 </div>
             </section>
         </footer>
-        {# Scripts loaded from a CDN. #}
-        {% block cdn_scripts %}
-            <!-- jQuery -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script>window.jQuery || document.write('<script src="{% static "oscar/js/jquery/jquery.min.js" %}"><\/script>')</script>
-        {% endblock %}
 
-        {# Local scripts #}
-        {% block scripts %}
-        {% endblock %}
-
-        {# Additional JS scripts #}
-        {% block extrascripts %}{% endblock %}
-
-        {# Block for body onload functions #}
-        <script>
-            $(function() {
-                {% block onbodyload %}{% endblock %}
-            });
-        </script>
-
-        <script src="{%static 'js/menu.js'%}"></script>
         {% bootstrap_javascript jquery='full'%}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
 	</body>
 </html>

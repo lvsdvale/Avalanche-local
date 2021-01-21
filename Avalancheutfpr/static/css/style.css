@@ -25,6 +25,23 @@ header {
     top: 0;
     border-bottom:1px solid #050331;
 }
+nav{
+    background-color:#050329;
+    box-shadow: 2px 1px 5px #050320;
+}
+
+navbar-toggler-icon{
+url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-dark .navbar-nav .nav-link {
+text-decoration:none;
+    color:#F2F2F2;
+    font-size:18px;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+    color:#E9C53C;
+}
 .adicional{
     max-width:1140px;
     height:20px;
@@ -125,15 +142,6 @@ background-color:#050329;
     color:#E9C53C;
 }
 
-nav li:hover .submenu{
-    visibility:visible;
-    display:block;
-}
-nav img {
-    width: 13px;
-    height: 13px;
-    padding-left: 5px;
-}
 .button {
     display:inline-block;
     background-color:#E9C53C;
@@ -295,6 +303,7 @@ height:100%;
     background-color:#050329;
     margin-top:5em;
     padding:1em 2em .5em 2em;
+    position:relative;
 }
 .footer-entidades{
     display:flex;
@@ -640,11 +649,12 @@ border-radius:10px%;
 display:flex;
 flex-direction:row;
 flex-wrap:wrap;
+min-height:30em;
 
 }
 .diretor{
    width:26%;
-   height:25em;
+   height:28em;
    margin: 3% 3% 3% 3%;
    border-radius:4%;
    box-shadow:0px 5px 10px #333;
@@ -2064,15 +2074,7 @@ color:white;
      margin-right:30px;
      }
 
-      nav {
-        display:none;
-        position: absolute;
-        background-color:#050329;;
-        width:100%;
-        height:auto;
-        top: 100px;
-        right: 0;
-    }
+
     .menu ul {
     display:flex;
     flex-direction:column;
@@ -2096,11 +2098,7 @@ color:white;
         visibility:hidden;
         transition: all 1s
      }
-     nav li:hover .submenu{
-        display:block;
-        height:auto;
-        visibility:visible;
-    }
+
     .submenu_active img{
     margin:0 0 1% 0;
     }
@@ -2711,23 +2709,9 @@ color:white;
         visibility:hidden;
         transition: all .4s
      }
-     nav li:hover .submenu{
-        height:auto;
-        display:block;
-        visibility:visible;
-        width:100vw;
-        }
 
-      nav {
-        display:none;
-        position: absolute;
-        background-color:#050329;;
-        width:100%;
-        height:auto;
-        top:100px;
-        right: 0;
-        padding-top:2%;
-    }
+
+
     .menu ul {
     display:flex;
     flex-direction:column;

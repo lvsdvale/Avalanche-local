@@ -3,14 +3,11 @@
 {%load bootstrap4 %}
 <html>
 <head>
-    <meta charset="UTF-8" />
-    {%block title%}Esportes Avalanche {%endblock%}
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8"/>
+    {%block title%}Esportes{%endblock%}
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
     {% bootstrap_css %}
-
 </head>
 {%block body%}
 {% bootstrap_messages %}
@@ -59,5 +56,6 @@
     {%endif%}
     {%endfor%}
 </main>
+ {% bootstrap_javascript jquery='full'%}
 {%endblock%}
 </html>
