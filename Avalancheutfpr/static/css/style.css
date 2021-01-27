@@ -17,6 +17,7 @@ body {
     font-size:13px;
     overflow-x:hidden;
 }
+
 header {
     height:120px;
     background-color:#050329 ;
@@ -395,18 +396,28 @@ CSS DE ÁREAS ESPECÍFICAS
     padding:15px;
 }
 .section-service img{
-    width: 65px;
-    height:75px;
+    width: 12em;
+    height:12em;
 }
 .section-service h4 {
     margin-top:20px;
     text-transform: uppercase;
     font-size:18px;
+
 }
-.section-service p {
-    margin-top:10px;
-    font-size:13px;
-    color:#999;
+.link-branco{
+    text-decoration:none !important;
+    color:#F2F2F2
+}
+.link-branco:hover{
+    color:#E9C53C !important;
+}
+.link-azul{
+    text-decoration:none !important;
+    color:#050329
+}
+.link-azul:hover{
+    color:#E9C53C !important;
 }
 
 

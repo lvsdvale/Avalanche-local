@@ -15,12 +15,7 @@ class Home(TemplateView):
     template_name = 'index.html'
     def get_context_data(self, **kwargs):
         context = super(Home,self).get_context_data(**kwargs)
-        Diretoria = diretoria.objects.all().order_by('cargo')
-        Produtos =  produtobase.objects.filter(destaque = 'Sim').order_by('-id')
-        context['Produtos'] = Produtos
-        context['Presidente'] = Diretoria[0]
-        context['Vice'] = Diretoria[1]
-        context['Geral'] = Diretoria[2]
+        context["Modalidades"] = modalidades.objects.all().order_by("?")
         return context
 def Contatos(request):
     initial = None

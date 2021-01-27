@@ -5,7 +5,7 @@ from django.conf import settings
 
 def get_file_path(_instance,filename):
     ext = filename.split(',')[-1]
-    filename = f'{ext}'
+    filename = f'{uuid.uuid4()}.{ext}'
     return filename
 
 def Send_Esportes_Mail(usuario,modalidade):

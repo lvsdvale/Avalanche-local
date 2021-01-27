@@ -1,6 +1,6 @@
 {% load static %}
 {% load i18n %}
-{%load bootstrap4 %}
+{%load bootstrap4%}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,22 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>{% block title %}{% endblock %}</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
         <meta name="description" content="A plataforma web da Associação Atlética Acadêmica de Engenharia e Arquitetura da UTFPR-CT, A Avalanche">
 		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
 		<link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-        {# Block where global CSS will go. #}
-        {% block styles %}{% endblock %}
-
-        {# Additional CSS - specific to certain pages #}
-        {% block extrastyles %}{% endblock %}
-
-        {% block extrahead %}{% endblock %}
-
-        {% block tracking %}
-            {# Default to using Google analytics #}
-            {% include "oscar/partials/google_analytics.html" %}
-        {% endblock %}
 
 	</head>
 	<body>
@@ -39,7 +28,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="{{ homepage_url }}">Produtos<span class="sr-only">(current)</span></a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="{{ homepage_url }}">Produtos<span class="sr-only">(current)</span></a>
       </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="" id="Eventos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,7 +40,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{%url 'Esportes'%}">Esportes</a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" data-toggle="collapse" data-target=".navbar-collapse.show" href="{%url 'Esportes'%}">Esportes</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="Entidades" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,33 +54,10 @@
         </div>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="{%url 'Contatos'%}">Contatos</a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="{%url 'Contatos'%}">Contatos</a>
       </li>
     </ul>
-      {%if user.is_authenticated%}
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">{{user.name}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'Logout'%}">Sair</a>
-            </li>
-        </ul>
-    </div>
-      {%else%}
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'Login'%}">Entrar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'Cadastro'%}">Cadastre-se</a>
-            </li>
-        </ul>
-    </div>
-      {%endif%}
-  </div>
+
 </nav>
     {%block Header%}{%endblock%}
     </header>
@@ -118,11 +84,6 @@
                 </div>
             </section>
         </footer>
-
-        {% bootstrap_javascript jquery='full'%}
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 	</body>

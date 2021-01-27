@@ -43,31 +43,18 @@
         <div class="section-desc">Destaques esportes avalanche</div>
         <div class="section-body">
             <div class="section-services">
+                {%for esporte in Modalidades|slice:":4"%}
                 <div class="section-service">
-                    <img src="{%static 'assets/Natação.png'%}" />
-                    <h4>Natação</h4>
-
+                    <img class="index-img-esportes" src="{{esporte.logo.url}}" />
+                    <a  class="link-branco" href="{%url 'Modalidades_View' esporte.slug%}"><h4>{{esporte.name}}</h4></a>
                 </div>
-                <div class="section-service">
-                    <img src="{% static 'assets/Judô.png'%}" />
-                    <h4>Judô</h4>
+                {%endfor%}
 
-                </div>
-                <div class="section-service">
-                    <img src="{% static 'assets/Tênis_de_Mesa.png'%}" />
-                    <h4>Tênis de mesa</h4>
-
-                </div>
-                <div class="section-service">
-                    <img src="{% static 'assets/Handebol.png'%}" />
-                    <h4>Handebol</h4>
-
-                </div>
             </div>
         </div>
     </section>
 
-    <section class="section-map  - container-sm">
+    <section class="section-map  - container">
             <h2 style="color:#050329;font-family:'Road_Rage', Arial, Helvetica, sans-serif;">Onde Estamos ?</h2>
         <div class="map">
                 <div class = "google-map">
@@ -116,9 +103,7 @@
 
 
 </main>
-{% bootstrap_javascript jquery='full'%}
+
 <script src="{%static 'js/banner.js'%}"></script>
-<script src="{%static 'js/destaques.js'%}"></script>
-<script src="{%static 'js/time.js'%}"></script>
 {%endblock%}
 </html>
