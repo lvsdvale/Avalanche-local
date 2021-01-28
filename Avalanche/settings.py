@@ -253,6 +253,7 @@ X_FRAME_OPTIONS = 'DENY'
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'
 OSCAR_ORDER_STATUS_PIPELINE = {
+    'paid':(),
     'Pending': ('Being processed', 'Cancelled',),
     'Being processed': ('Processed', 'Cancelled',),
     'Cancelled': (),

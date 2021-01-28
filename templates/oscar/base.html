@@ -11,13 +11,14 @@
         <meta name="viewport" content="{% block viewport %}width=device-width{% endblock %}" />
         <meta name="robots" content="NOARCHIVE,NOCACHE" />
 
-
         {% block favicon %}
            <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
         {% endblock %}
 
         {# Block where global CSS will go. #}
-        {% block styles %}{% endblock %}
+        {% block styles %}
+            <link href="{% static 'css/style.css' %}" rel="stylesheet"/>>
+        {% endblock %}
 
         {# Additional CSS - specific to certain pages #}
         {% block extrastyles %}{% endblock %}

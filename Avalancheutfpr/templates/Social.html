@@ -3,12 +3,9 @@
 {%load static%}
 {%load bootstrap4 %}
 <html>
-<head>
-    <meta charset="UTF-8" />
+
     {%block title%} Social Avalanche {%endblock%}
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
-</head>
+
 {%block body%}
 {% bootstrap_messages %}
 <main class="social-area">
@@ -50,6 +47,6 @@
     {%endfor%}
     {% include 'paginacao.html' %}
 </main>
- {% bootstrap_javascript jquery='full'%}
+
 {%endblock%}
 </html>

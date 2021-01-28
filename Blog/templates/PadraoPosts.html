@@ -3,15 +3,9 @@
 {%load static%}
 {%load bootstrap4 %}
 <html>
-<head>
-    <meta charset="UTF-8" />
+
     {%block title%}{{posts.name}}{%endblock%}
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
-    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
-</head>
+
 {%block body%}
 <main>
     <section class="default-eventos light-eventos" style="min-height:85vh;">
@@ -50,6 +44,5 @@
     </section>
 </main>
 <script src="{%static 'js/galeria.js'%}"></script>
-{% bootstrap_javascript jquery='full'%}
 {%endblock%}
 </html>

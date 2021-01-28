@@ -1,24 +1,25 @@
+<!DOCTYPE html>
 {% extends 'Base.html' %}
-{%load static%}
+{% load static %}
 {%load bootstrap4 %}
-<head>
-    <meta charset="UTF-8"/>
-    {%block title%}Resetar senha{%endblock%}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
-</head>
+<html>
+
+{%block title%}Login{%endblock%}
 {%block body%}
 {% bootstrap_messages %}
-<div class ="resetar" >
-<h2 style="font-family:'Road_Rage', Arial, Helvetica; sans-serif;padding-top:5px; margin-left:5px; color:#050329;">Resetar a senha</h2>
-  <form  method="post">
-      {% csrf_token %}
-      {%bootstrap_form form%}
-      {% buttons%}
-    <button type="submit" class="btn btn-primary">Enviar</button>
-    {% endbuttons %}
-  </form>
-</div>
-{% bootstrap_javascript jquery='full'%}
+<section class="login-section container">
+    <div class="login-logo">
+        <img src="{%static 'assets/Logo.svg'%}" width="100" height="100" alt="">
+    </div>
+        <div class="login-info">
+                <form  method="POST" class="form_contato">
+                {% csrf_token %}
+                {%bootstrap_form form%}
+                        {% buttons%}
+                                <button type="submit" class="btn btn-primary">Resetar senha</button>
+                        {% endbuttons %}
+                </form>
+        </div>
+
+</section>
 {%endblock%}

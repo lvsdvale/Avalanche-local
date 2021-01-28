@@ -2,16 +2,9 @@
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
-<html>
-<head>
-    <meta charset="UTF-8" />
+
     {%block title%} E-sports Avalanche {%endblock%}
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
-</head>
+
 {%block body%}
 {% bootstrap_messages %}
 <main class="E-sports-area">
@@ -56,6 +49,6 @@
     {%endif%}
     {%endfor%}
 </main>
- {% bootstrap_javascript jquery='full'%}
+
 {%endblock%}
 </html>

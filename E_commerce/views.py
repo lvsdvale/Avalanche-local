@@ -7,19 +7,19 @@ from django.shortcuts import render,get_object_or_404,redirect
 from django.urls import reverse
 @csrf_exempt
 def picpay_payment(request,pk):
-    basket_model = get_model('basket', 'Basket')
-    Basket = get_object_or_404(basket_model.objects.filter(pk=pk))
+    order_model = get_model('order', 'Order')
+    order = get_object_or_404(order_model.objects.filter(pk=pk))
     pc = PicPay(
         x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
     )
     payment = pc.payment(
-        reference_id=Basket.pk+107,
+        reference_id=order.pk+200,
         callback_url= 'http://localhost:8000/',
         return_url=request.build_absolute_uri(
             reverse('checkout:preview')
             )
         ,
-        value=float(request.basket.total_incl_tax)*1.1,
+        value=float(request.order.total_incl_tax)*1.1,
         buyer={
             "firstName":request.user.name,
             "lastName": request.user.name,

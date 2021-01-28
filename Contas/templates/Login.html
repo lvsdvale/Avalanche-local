@@ -1,41 +1,31 @@
 <!DOCTYPE html>
+{% extends 'Base.html' %}
 {% load static %}
 {%load bootstrap4 %}
 <html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
-    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
-</head>
-<body id="login">
-<section class="login-section">
-    <div class="massage" style=" margin-left:35%; height:auto;">
-        {% bootstrap_messages%}
+
+{%block title%}Login{%endblock%}
+{%block body%}
+{% bootstrap_messages %}
+<section class="login-section container">
+    <div class="login-logo">
+        <img src="{%static 'assets/Logo.svg'%}" width="100" height="100" alt="">
     </div>
-    <div class="login-images"></div>
-    <a href="{% url 'Home'%}"><img class="login-logo" src="{%static 'assets/logo.png'%}" alt="Logo Avalanche"></a>
-    <br>
-    <img class="login-letreiro" src="{%static 'assets/LoginLetreiro.png'%}" alt="Avalanche">
-    </div>
-    <div class="frase_login">
-        LOGIN
-    </div>
-    <div class="form_login">
-    	<form method="POST">
-            {%csrf_token%}
-            {%bootstrap_form form%}
-            {% buttons%}
-            <button type="submit" class="btn btn-warning">Entrar</button>
-            {% endbuttons %}
-    	</form>
-    </div>
-     <div class="forgot">
-            <a  href = "{% url 'Resetar_Senha'%}"><p>Esqueceu sua senha?</p></a>
-    </div>
+        <div class="login-info">
+                <div class="contatos-image"></div>
+                <div class="contatos-title">
+                </div>
+                <form  method="POST" class="form_contato">
+                {% csrf_token %}
+                {%bootstrap_form form%}
+                        {% buttons%}
+                                <button type="submit" class="btn btn-primary">Logar</button>
+                        {% endbuttons %}
+                </form>
+                <div class="forgot">
+                <a  href = "{% url 'Resetar_Senha'%}"><p>Esqueceu sua senha?</p></a>
+                </div>
+        </div>
+
 </section>
-</body>
-</html>
+{%endblock%}

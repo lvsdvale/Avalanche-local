@@ -14,5 +14,5 @@
         }
         $slide[_index-1].style.display = "block";
         $pointer[_index-1].className += " active";
-        setTimeout(showSlide, 3000);
+        setTimeout(showSlide, 7000);
     }

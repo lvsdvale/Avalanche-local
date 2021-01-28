@@ -206,7 +206,10 @@ class Bateria(TemplateView):
 
 class Cheers(TemplateView):
     template_name = 'Cheers.html'
-
+    def get_context_data(self, **kwargs):
+        context = super(Cheers,self).get_context_data(**kwargs)
+        context['Diretoria'] = cheers.objects.all().order_by('cargo')
+        return context
 
 class BBBA(TemplateView):
     template_name = 'BBBA.html'

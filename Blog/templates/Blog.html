@@ -2,16 +2,9 @@
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
-<div>
-<head>
-    <meta charset="UTF-8" />
+<html>
     {%block title%}Blog do Urso{%endblock%}
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
-    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
-</head>
+
 {%block body%}
 <div class="blog-area">
 <main>

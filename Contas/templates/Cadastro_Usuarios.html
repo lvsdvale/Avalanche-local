@@ -1,26 +1,26 @@
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
-<head>
-    <meta charset="UTF-8"/>
-    {%block title%}Cadastro{%endblock%}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
-    {% bootstrap_css %}
-</head>
+{%block title%}Cadastro{%endblock%}
 {%block body%}
-<h2 style="font-family:'Road_Rage', Arial, Helvetica, sans-serif;padding-top:5px; margin-left:5px;">Cadastro de usuarios</h2>
 {% bootstrap_messages %}
+<section class="login-section container">
+  <div class="login-logo">
+        <img src="{%static 'assets/Logo.svg'%}" width="100" height="100" alt="">
+    </div>
+  <div class="login-info">
+<h2 style="font-family:'Road_Rage', Arial, Helvetica, sans-serif;padding-top:5px; margin-left:5px;">Cadastro de usuarios</h2>
   <form  method="post" class="Cadastro">
     {% csrf_token %}
       {%bootstrap_form form%}
       <label>
-          <input type="checkbox" id="chk" checked> Li e aceito os <a href="#">termos de uso</a>
+          <input type="checkbox" id="chk" checked> Li e aceito os <a href="https://midia-avalanche.s3-sa-east-1.amazonaws.com/Termos+de+uso+Avalanche.docx">termos de uso</a> e a <a href="https://midia-avalanche.s3-sa-east-1.amazonaws.com/Pol%C3%ADtica+Privacidade.docx">Política de Privacidade</a>
       </label>
       {% buttons%}
     <button type="submit" id = "btn_cadastro" class="btn btn-primary">Cadastrar</button>
       {% endbuttons %}
   </form>
+  </div>
+</section>
 <script src="{%static 'js/termos.js'%}"></script>
-{% bootstrap_javascript jquery='full'%}
 {%endblock%}
