@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'oscar.config.Shop',
     'oscar.apps.analytics.apps.AnalyticsConfig',
-    'oscar.apps.checkout.apps.CheckoutConfig',
+    'E_commerce.checkout.apps.CheckoutConfig',
     'oscar.apps.address.apps.AddressConfig',
     'oscar.apps.shipping.apps.ShippingConfig',
     'oscar.apps.catalogue.apps.CatalogueConfig',
@@ -252,6 +252,7 @@ X_FRAME_OPTIONS = 'DENY'
 
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'
+
 OSCAR_ORDER_STATUS_PIPELINE = {
     'paid':(),
     'Pending': ('Being processed', 'Cancelled',),
@@ -259,4 +260,7 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Cancelled': (),
 }
 
-#SECURE_SSL_REDIRECT = True
+OSCAR_PAYMENT_METHODS = (
+    ('Pagseguro',('Pagseguro')),
+    ('Picpay',('Picpay')),
+)
