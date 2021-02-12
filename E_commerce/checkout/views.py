@@ -64,9 +64,8 @@ class PaymentMethodView(OscarPaymentMethodView,FormView):
     def form_valid(self, form):
         # Store payment method in the CheckoutSessionMixin.checkout_session (a CheckoutSessionData object)
         self.checkout_session.pay_by(form.cleaned_data['payment_method'])
+        print(self.checkout_session.pay_by)
         return super().form_valid(form)
 
 
-    
-        # Redirect to the correct payments page as per the method (different methods may have different views &/or additional views)
         
