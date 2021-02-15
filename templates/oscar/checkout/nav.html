@@ -35,7 +35,7 @@
 
             <li class="step3 {% if step == 3 %}active{% else %}{% if step == 4 %}previous{% else %}{% if step > 3 %}visited{% else %}disabled{% endif %}{% endif %}{% endif %} ">
                 {% if step == 4 %}
-                    <a href="{% url 'checkout:payment-details' %}">
+                    <a href="{% url 'checkout:payment-method' %}">
                         <span class="visible-inline-sm icon-chevron-right"></span>
                         <span>
                             {% trans "3. Payment" %}

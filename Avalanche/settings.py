@@ -69,8 +69,8 @@ INSTALLED_APPS = [
     'oscar.apps.basket.apps.BasketConfig',
     'E_commerce.payment.apps.PaymentConfig',
     'E_commerce.offer.apps.OfferConfig',
-    'oscar.apps.order.apps.OrderConfig',
-    'oscar.apps.customer.apps.CustomerConfig',
+    'E_commerce.order.apps.OrderConfig',
+    'E_commerce.customer.apps.CustomerConfig',
     'oscar.apps.search.apps.SearchConfig',
     'oscar.apps.voucher.apps.VoucherConfig',
     'oscar.apps.wishlists.apps.WishlistsConfig',
@@ -140,7 +140,7 @@ TEMPLATES = [
 
 AUTHENTICATION_BACKENDS = (
      'oscar.apps.customer.auth_backends.EmailBackend',
-    'django.contrib.auth.backends.ModelBackend',
+     'django.contrib.auth.backends.ModelBackend',
 )
 
 HAYSTACK_CONNECTIONS = {
@@ -165,10 +165,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'avdb',
-        'USER':'Diretoria',
-        'PASSWORD':'Gestao2020',
-        'HOST':'avalanche.cw50ga3zpj1d.sa-east-1.rds.amazonaws.com',
-        'PORT':'5432',
+        'USER': 'Diretoria',
+        'PASSWORD': 'Gestao2020',
+        'HOST': 'avalanche.cw50ga3zpj1d.sa-east-1.rds.amazonaws.com',
+        'PORT': '5432',
 
     }
 }
@@ -231,14 +231,17 @@ else:
     MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #LOGIN_REDIRECT_URL = '/'
 #LOGOUT_REDIRECT_URL = '/'
-#Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TSL = True
 EMAIL_HOST_USER = 'no-reply@atleticautfpr.com.br'
 EMAIL_HOST_PASSWORD ='28agosto'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SMTP_ENABLED = True
 
+OSCAR_SEND_REGISTRATION_EMAIL = False
+OSCAR_FROM_EMAIL = EMAIL_HOST_USER
 
 #segurança
 SECURE_HSTS_SECONDS = True
@@ -250,17 +253,16 @@ CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
 
-OSCAR_INITIAL_ORDER_STATUS = 'Pending'
-OSCAR_INITIAL_LINE_STATUS = 'Pending'
+OSCAR_INITIAL_ORDER_STATUS = 'processando'
+OSCAR_INITIAL_LINE_STATUS = 'processando'
 
 OSCAR_ORDER_STATUS_PIPELINE = {
-    'paid':(),
-    'Pending': ('Being processed', 'Cancelled',),
-    'Being processed': ('Processed', 'Cancelled',),
-    'Cancelled': (),
+    'entregue':(),
+    'pago':('entregue','Cancelado'),
+    'processando': ('pago', 'Cancelado',),
+    'Cancelado': (),
 }
 
 OSCAR_PAYMENT_METHODS = (
-    ('Pagseguro',('Pagseguro')),
     ('Picpay',('Picpay')),
 )

@@ -1,0 +1,110 @@
+header {
+    height:120px;
+    background-color:#050329 ;
+    color:#F2F2F2;
+    position: sticky;
+    top: 0;
+    border-bottom:1px solid #050331;
+}
+nav{
+    background-color:#050329;
+    box-shadow: 2px 1px 5px #050320;
+}
+
+
+
+.navbar-dark .navbar-nav .nav-link {
+text-decoration:none;
+    color:#F2F2F2;
+    font-size:18px;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+    color:#E9C53C;
+}
+
+.footer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-color:#050329;
+    margin-top:5em;
+    padding:1em 2em .5em 2em;
+    position:relative;
+}
+.footer-entidades{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+.footer-bateria  a img{
+  width:8em;
+  height:10em;
+  margin:0 2em 0 2em;
+}
+
+.footer-Bears  a img{
+  width:9em;
+  height:8em;
+  margin:0 2em 0 2em;
+}
+.footer-E-sports  a img{
+  width:8em;
+  height:8em;
+  margin:0 2em 0 2em;
+}
+
+.footer-copyright{
+    display:flex;
+    flex-direction:column;
+}
+.footer-empresa{
+    padding:1em;
+}
+.footer-empresa p {
+    color:#F2F2F2;
+}
+.footer-dev p{
+    padding-left:8em;
+}
+
+.footer-dev p{
+    color:#F2F2F2;
+}
+
+@media (min-width:450px) and (max-width:800px) {
+}
+@media (max-width:450px) {
+ .footer-bateria  a img{
+  width:5em;
+  height:7em;
+  margin:0 1em 0 1em;
+}
+
+.footer-Bears  a img{
+  width:6em;
+  height:5em;
+  margin:0 1em 0 1em;
+}
+.footer-E-sports  a img{
+  width:5em;
+  height:5em;
+  margin:0 1em 0 1em;
+}
+
+.footer-copyright{
+    display:flex;
+    flex-direction:column;
+}
+.footer-empresa{
+    padding:1em;
+}
+.footer-empresa p {
+    color:#F2F2F2;
+    font-size:10px;
+}
+.footer-dev p{
+    padding-left:8em;
+    color:#F2F2F2;
+    font-size:10px;
+}
+}

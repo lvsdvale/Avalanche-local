@@ -3,22 +3,19 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-gb" }}" class="{% block html_class %}no-js{% endblock %}">
     <head>
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}{{ shop_name }} - {{ shop_tagline }}{% endblock %}</title>
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <meta name="created" content="{% now "jS M Y h:i" %}" />
         <meta name="description" content="{% block description %}{% endblock %}" />
         <meta name="viewport" content="{% block viewport %}width=device-width{% endblock %}" />
         <meta name="robots" content="NOARCHIVE,NOCACHE" />
-
         {% block favicon %}
            <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
         {% endblock %}
 
         {# Block where global CSS will go. #}
-        {% block styles %}
-            <link href="{% static 'css/style.css' %}" rel="stylesheet"/>>
-        {% endblock %}
+        {% block styles %}{% endblock %}
 
         {# Additional CSS - specific to certain pages #}
         {% block extrastyles %}{% endblock %}

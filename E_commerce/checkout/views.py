@@ -2,9 +2,15 @@ from E_commerce.payment.forms import PaymentMethodForm
 from django.views.generic import FormView
 from oscar.apps.checkout import exceptions
 from oscar.core.loading import get_model, get_class
+from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.translation import ugettext as _
 from django.urls import reverse, reverse_lazy
 from Avalanche import settings
+from picpay import PicPay
+from django.views.generic import RedirectView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import datetime
+from django.shortcuts import render,get_object_or_404,redirect
 
 class CheckCountryPreCondition(object):
     """DRY class for check country in session pre_condition"""
@@ -67,5 +73,46 @@ class PaymentMethodView(OscarPaymentMethodView,FormView):
         print(self.checkout_session.pay_by)
         return super().form_valid(form)
 
+     
 
-        
+class PicpayView(LoginRequiredMixin, RedirectView):
+    login_url = 'Login'
+    
+    
+    def get_redirect_url(self, *args, **kwargs):
+        pedidos = get_model('order', 'Order')
+        pedidos_pk = self.kwargs.get('pk')
+        pedido = get_object_or_404(pedidos.objects.filter(pk = pedidos_pk))
+        pc = PicPay(
+            x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
+        )
+        payment = pc.payment(
+            reference_id=int(f'{datetime.now().year}{pedido.pk-4}'),
+            callback_url=self.request.build_absolute_uri(reverse('Picpay_Notification',args=[pedidos_pk])),
+            return_url=self.request.build_absolute_uri(
+            reverse( 'customer:order',args = [int(f'{datetime.now().year}{pedido.pk-4}')])
+            ),
+            value=(float(pedido.total_incl_tax)*1.05),
+            buyer={
+                "firstName": self.request.user.name,
+                "lastName": self.request.user.name,
+                "document": self.request.user.CPF,
+                "email": self.request.user.email,
+                "phone": str(self.request.user.Telefone),
+            },
+        )
+        return payment['paymentUrl']
+def PicpayNotification(request,pk):
+    if request.method == 'POST':
+        pedidos = get_model('order', 'Order')
+        pc = PicPay(
+            x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
+        )
+        pedido = pedidos.objects.get(pk=pk)
+        status = pc.notification(reference_id=int(f'{datetime.now().year}{pedido.pk - 4}'))
+        print(status['status'])
+        if status['status'] == 'paid':
+            pedido.set_status(new_status='pago')
+        return HttpResponse(200)
+    else:
+        return HttpResponse(404)
