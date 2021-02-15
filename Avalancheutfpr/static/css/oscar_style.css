@@ -1,16 +1,8 @@
-header {
-    height:120px;
-    background-color:#050329 ;
-    color:#F2F2F2;
-    position: sticky;
-    top: 0;
-    border-bottom:1px solid #050331;
-}
-nav{
+.menu{
     background-color:#050329;
     box-shadow: 2px 1px 5px #050320;
-}
 
+}
 
 
 .navbar-dark .navbar-nav .nav-link {

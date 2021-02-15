@@ -184,7 +184,7 @@ class diretoria(models.Model):
     name = models.CharField(max_length=255,null=False,blank=False,unique=True,verbose_name='Nome')
     cargo = models.IntegerField(choices=Cargos,null=False,blank=False,verbose_name='Cargo')
     foto = StdImageField(upload_to=get_file_path,null = False,blank = False)
-    intagram = models.CharField(max_length=255,null=True,blank=True,verbose_name='Instagram')
+    instagram = models.CharField(max_length=255,null=True,blank=True,verbose_name='Instagram')
     facebook =  models.CharField(max_length=255,null=True,blank=True,verbose_name='Facebook')
     def retorna_cargo(self):
         return self.cargo

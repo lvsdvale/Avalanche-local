@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{%load bootstrap4%}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-gb" }}" class="{% block html_class %}no-js{% endblock %}">
     <head>
@@ -10,6 +11,9 @@
         <meta name="description" content="{% block description %}{% endblock %}" />
         <meta name="viewport" content="{% block viewport %}width=device-width{% endblock %}" />
         <meta name="robots" content="NOARCHIVE,NOCACHE" />
+        <link href="{% static 'css/oscar_style.css' %}" rel="stylesheet"/>
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
         {% block favicon %}
            <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
         {% endblock %}
@@ -28,7 +32,7 @@
         {% endblock %}
     </head>
 
-    <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
+    <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}" style="background-color:#F2F2F2 !important;">
         {# Main content goes in this 'layout' block #}
         {% block layout %}{% endblock %}
 

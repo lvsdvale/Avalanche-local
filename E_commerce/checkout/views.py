@@ -95,7 +95,7 @@ class PicpayView(LoginRequiredMixin, RedirectView):
             value=(float(pedido.total_incl_tax)*1.05),
             buyer={
                 "firstName": self.request.user.name,
-                "lastName": self.request.user.name,
+                "lastName": '',
                 "document": self.request.user.CPF,
                 "email": self.request.user.email,
                 "phone": str(self.request.user.Telefone),

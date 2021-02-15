@@ -32,7 +32,6 @@ nav{
 }
 
 
-
 .navbar-dark .navbar-nav .nav-link {
 text-decoration:none;
     color:#F2F2F2;
@@ -181,8 +180,8 @@ background-color:#050329;
     overflow:hidden;
 }
 @keyframes fade {
-  from {margin:100em;}
-  to {margin:0;}
+  from {margin-left:100em;}
+  to {margin-left:0;}
 }
 .banner .slide img{
 width:100%;
@@ -214,6 +213,7 @@ animation-duration: .6s;
     background-color:#E9C53C;
 }
 .default {
+    padding: 50px 0 50px 0;
 
 }
 .default .section-title,
