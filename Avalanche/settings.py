@@ -23,7 +23,7 @@ SITE_ID = 1
 SECRET_KEY = 'n*c#&uhj&-dwlx+_zbb+^cy5gxvqu7rx9g=i4m^*9sz8#x7tgu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -268,3 +268,4 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 OSCAR_PAYMENT_METHODS = (
     ('Picpay',('Picpay')),
 )
+OSCAR_SEND_REGISTRATION_EMAIL = False

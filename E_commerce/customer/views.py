@@ -328,10 +328,11 @@ class ProfileUpdateView(PageTitleMixin, generic.FormView):
         # class has been specified by the AUTH_PROFILE_MODULE setting.
         new_email = form.cleaned_data.get('email')
         if new_email and old_user and new_email != old_user.email:
+            pass
             # Email address has changed - send a confirmation email to the old
             # address including a password reset link in case this is a
             # suspicious change.
-            self.send_email_changed_email(old_user, new_email)
+            #self.send_email_changed_email(old_user, new_email)
 
         messages.success(self.request, _("Profile updated"))
         return redirect(self.get_success_url())
@@ -383,7 +384,7 @@ class ChangePasswordView(PageTitleMixin, generic.FormView):
         update_session_auth_hash(self.request, self.request.user)
         messages.success(self.request, _("Password updated"))
 
-        self.send_password_changed_email()
+        #self.send_password_changed_email()
 
         return redirect(self.get_success_url())
 
