@@ -11,9 +11,10 @@
         <meta name="description" content="{% block description %}{% endblock %}" />
         <meta name="viewport" content="{% block viewport %}width=device-width{% endblock %}" />
         <meta name="robots" content="NOARCHIVE,NOCACHE" />
+        <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         <link href="{% static 'css/oscar_style.css' %}" rel="stylesheet"/>
-        {% bootstrap_css %}
-        {% bootstrap_javascript jquery='full' %}
+
         {% block favicon %}
            <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
         {% endblock %}

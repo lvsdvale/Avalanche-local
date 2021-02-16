@@ -1,53 +1,52 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+{%load static%}
+<header class="cabeça">
+  <nav class="menu navbar navbar-default">
+  <div>
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <div class=" navbar-header">
+      <button type="button" class="menu-bot navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="{%url 'Home'%}">
+      <img alt = 'brand' src="{%static 'assets/Logo.svg'%}" width="80" height="80" alt="">
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+    <div class="menu-trans collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="menu-itens nav navbar-nav">
+        <li><a class="menu-link" href="{{ homepage_url }}">Produtos</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#"  class="dropdown-toggle menu-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a class="dp-link"  href="{%url 'Eventos'%}">Integração</a></li>
+            <li><a class="dp-link"  href="{%url 'Social'%}">Sociais</a></li>
           </ul>
         </li>
+        <li><a class="menu-link" href="{%url 'Esportes' %}">Esportes</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle menu-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entidades<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="border:1em !important;">
+            <li><a class="dp-link" href="{%url 'E-sports'%}">E-Sports</a></li>
+            <li><a class="dp-link"  href="">Bateria</a></li>
+            <li><a class="dp-link"  href="{%url 'Cheers'%}">Cheers</a></li>
+          </ul>
+        </li>
+       <li><a class="menu-link" href="{%url 'Contatos'%}">Contatos</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+      <ul class="menu-itens-right nav navbar-nav navbar-right">
+        {%if user.is_authenticated%}
+        <li><a class="menu-link" href="{%url 'customer:summary'%}"><span class="fas fa-user"></span>{{user.name}}</a></li>
+        <li><a class="menu-link" href="{%url 'Logout'%}"><span class="fas fa-sign-in-alt"></span>Sair</a></li>
+        {%else%}
+        <li><a class="menu-link" href="{%url 'Cadastro'%}"><span class="fas fa-user"></span>Cadastre-se</a></li>
+        <li><a class="menu-link" href="{%url 'Login'%}"><span class="fas fa-sign-in-alt"></span>Login</a></li>
+        {%endif%}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+</header>
