@@ -2564,10 +2564,12 @@ color:white;
         font-size:17px;
     }
 
-
+    .banner .slide {
+    margin-left:10%;
+    }
     @keyframes fade {
     from {margin-left:100%;}
-    to {margin-left:0%;}
+    to {margin-left:10%;}
     }
     .banner .slide img{
     width:100%;
