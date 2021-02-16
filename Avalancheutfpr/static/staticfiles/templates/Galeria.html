@@ -1,0 +1,22 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<head>
+    <meta charset="UTF-8"/>
+    {%block title%}Midias {{Eventos.name}}{%endblock%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+    {% bootstrap_css %}
+</head>
+
+{%block body%}
+ <h1>Galeria avalanche</h1>
+{% for Midia in Midias %}
+<p>{{Midia.name}}</p>
+{% if Midia.foto.url != blank%}
+    <img src = "{{Midia.foto.url}}">
+{%endif%}
+{%endfor%}
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+

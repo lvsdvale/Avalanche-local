@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<html>
+<head>
+    <meta charset="UTF-8" />
+    {%block title%}Competições{%endblock%}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
+</head>
+{%block body%}
+{% bootstrap_messages %}
+<main>
+    {%for competicoes in page_obj %}
+    {%if forloop.counter|divisibleby:"2" %}
+	<section class="default-eventos dark-eventos">
+		<div class="section-title-eventos">{{competicoes.name}}</div>
+		<div class="section-body-eventos">
+	    	<div class="section-eventos-sociais">
+	    		<div class="section-eventos-sociais--right---esquerda">
+	            	<img src="{{competicoes.image.url}}" />
+	        	</div>
+	    		<div class="section-eventos-sociais--left---esquerda">
+	                <p>{{competicoes.previa}}</p>
+	                <br/>
+	                <a href="" class="section-button-dark">Ver Competição</a>
+	            </div>
+	        </div>
+	   	</div>
+	</section>
+    {%else%}
+	<section class="default-eventos light-eventos">
+		<div class="section-title-eventos">{{competicoes.name}}</div>
+		<div class="section-body-eventos">
+	    	<div class="section-eventos-sociais">
+	    		<div class="section-eventos-sociais--left">
+	                <p>{{competicoes.previa}}</p>
+	                <br/>
+	                <a href="" class="section-button-light">Ver Competicao</a>
+	            </div>
+	        	<div class="section-eventos-sociais--right">
+	            	<img src="{{competicoes.image.url}}" />
+	        	</div>
+
+	        </div>
+	   	</div>
+	</section>
+    {%endif%}
+    {%endfor%}
+    {% include 'paginacao.html' %}
+</main>
+{%endblock%}
+</html>

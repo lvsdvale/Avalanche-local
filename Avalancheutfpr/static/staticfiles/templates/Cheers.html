@@ -1,0 +1,50 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+{%block title%}Bears{%endblock%}
+{%block body%}
+{% bootstrap_messages %}
+<main class="container">
+    <section class="default light about-us">
+        <div class="section-title">Sobre Nós</div>
+        <div class="section-body">
+            <div class="section-sobre">
+                <p>
+                  O Bears Cheerleading Curitiba foi fundado no dia 01 de junho de 2014, a princípio com o nome de Bearleaders, com o objetivo de animar a torcida e incentivar os outros atletas da Atlética nas competições. Com o passar do tempo o foco da equipe mudou e passamos a praticar o cheerleading competitivo, no qual apresentamos rotinas com elevações, lançamentos, saltos e acrobacias. Representando a Universidade e a Atlética, participamos de diversas competições como o Desafio de Cheerleading do Engenharíadas Paranaense, o Campeonato Paranaense de Cheerleading, e agora queremos competir também a nível nacional.
+                  <br/><br/>
+
+                A missão atual do Bears consiste em formar atletas, representar a Atlética nas competições da modalidade e difundir o esporte a nível universitário. Para entrar na equipe não é necessário nenhum conhecimento prévio sobre o esporte, apenas ter disposição para aprender, e estudantes de todos os cursos podem participar. Todo início de semestre temos nossos treinos abertos com o intuito de ensinar possíveis novos integrantes da equipe.
+                  <br/><br/>
+                  Sigam-nos nas redes sociais, comprem nossos produtos e acompanhem nossas competições!
+                   <br/><br/>
+
+                5 6 7 8 #GOBEARS!
+                  <br/><br/>
+                </p></div></div>
+    </section>
+    <section class="directors">
+        <h1><b>Diretoria</b></h1>
+    <div class="diretores">
+    {%for diretor in Diretoria%}
+        <div class="diretor">
+            <h2>{{diretor.name}}</h2>
+            <div class="diretor-info">
+            {% if diretor.foto.url != blank%}
+                <img src="{{diretor.foto.url}}">
+            {%endif%}
+            <p>{{diretor.get_cargo_display}}</p>
+            <div class="diretor-social">
+                <a href="{{diretor.instagram}}"><img src="{%static 'assets/insta.svg'%}" /></a>
+                <a href="{{diretor.facebook}}"><img src="{%static 'assets/facebook.svg'%}" /></a>
+            </div>
+            </div>
+
+        </div>
+        {%endfor%}
+    </div>
+    </section>
+</main>
+
+{% bootstrap_javascript jquery='full'%}
+{%endblock%}
+
