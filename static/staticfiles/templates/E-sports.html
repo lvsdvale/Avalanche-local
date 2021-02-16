@@ -1,0 +1,54 @@
+
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+
+    {%block title%} E-sports Avalanche {%endblock%}
+
+{%block body%}
+{% bootstrap_messages %}
+<main class="E-sports-area">
+    {% for Game in Games %}
+    {%if forloop.counter|divisibleby:"2" %}
+	<section class="default-e-sports dark-e-sports">
+		<div class="container-sm">
+		<div class="section-title-e-sports">{{Game.name}}</div>
+		<div class="section-body-e-sports">
+	    	<div class="section-e-sports">
+	    		<div class="section-e-sports--right---esquerda">
+	            	<img src="{{Game.image.url}}" />
+	        	</div>
+	    		<div class="section-e-sports--left---esquerda">
+	                <p>{{Game.previa}}</p>
+	                <br/>
+	                <a href="{% url 'Games_View' Game.slug %}" class="section-button-dark">Ver e-sport</a>
+	            </div>
+	        </div>
+	   	</div>
+	</div>
+	</section>
+    {%else%}
+	<section class="default-e-sports light-e-sports">
+		<div class="container-sm">
+		<div class="section-title-e-sports">{{Game.name}}</div>
+		<div class="section-body-e-sports">
+	    	<div class="section-e-sports">
+	    		<div class="section-e-sports--left">
+	                <p>{{Game.previa}}</p>
+	                <br/>
+	                <a href="{% url 'Games_View' Game.slug %}" class="section-button-light">Ver e-sport</a>
+	            </div>
+	        	<div class="section-e-sports--right">
+	            	<img src="{{Game.image.url}}"  />
+	        	</div>
+
+	        </div>
+	   	</div>
+		</div>
+	</section>
+    {%endif%}
+    {%endfor%}
+</main>
+
+{%endblock%}
+</html>

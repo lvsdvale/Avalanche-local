@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<html>
+
+{%block body%}
+{% bootstrap_messages %}
+<main>
+    <section class="default-eventos light-eventos" style="min-height:85vh">
+        <div class="section-title-eventos">{{Campanhas.name}}</div>
+        <div class="section-body-eventos">
+            <div class="section-evento-social">
+                <div class="section-evento-social-left">
+                    <p>
+                    {{Campanhas.descricao}}
+                    </p>
+                    {%if user.is_authenticated and Campanhas.Status == 'Ativo' %}
+                        <form  method="post" class="inscricao_campanhas">
+                            {% csrf_token %}
+                            {% buttons%}
+                            <button type="submit" class="btn btn-primary">inscrever-me</button>
+                            {% endbuttons %}
+                        </form>
+                    {%endif%}
+                </div>
+                <div class="section-evento-social-right">
+                    <img src="{{Campanhas.image.url}}" />
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="default dark bg-evento" style="min-height:30vh; display:none;">
+        <div class="section-evento-area">
+            <div class="section-title">Galeria {{Campanhas.name}}</div>
+            <div class="section-desc"></div>
+                    <div class="sliders">
+                        <a class="previous"  style="color:#FFFAFA;" onclick="plusSlides(-1)"><p >&#10094;</p></a>
+                        <a class="nextslide" style="color:#FFFAFA;" onclick="plusSlides(1)"><p>&#10095;</p></a>
+                        {% for midia in Midias%}
+                        <div class="slide">
+                            <div class="slidearea">
+                                <img class="section-esporte--avatar" src="{{midia.foto.url}}" />
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+        </div>
+    </section>
+</main>
+<script src="{%static 'js/galeria.js'%}"></script>
+{%endblock%}
+</html>

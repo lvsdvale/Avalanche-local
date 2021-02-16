@@ -213,8 +213,7 @@ OSCAR_DEFAULT_CURRENCY = 'BRL'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Avalancheutfpr/'),
-                    ]
+
 USE_S3 = True
 if USE_S3:
     AWS_ACCESS_KEY_ID = 'AKIAWKXLDEMZ3QW2N4DG'

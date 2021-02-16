@@ -1,0 +1,74 @@
+{% load static %}
+{%load bootstrap4 %}
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+        <meta name="keywords" content="Atlética,Avalanche,UTFPR,A.A.A.E.A UTFPR-CT,alavanche,Universidade Tecnológica Federal do Parana,Engenhariadas">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>{% block title %}{% endblock %}</title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
+        {% bootstrap_css %}
+        <meta name="description" content="A plataforma web da Associação Atlética Acadêmica de Engenharia e Arquitetura da UTFPR-CT, A Avalanche">
+		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+		<link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+        <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168856703-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-168856703-1');
+    </script>
+        -->
+	</head>
+	<body>
+
+		<header>
+            {%if user.is_authenticated%}
+            <div class="adicional">
+            <div class="usuario"><pre><a href="{%url 'Minha_Conta'%}">{{user.Nome_completo}}</a>     <a href="{%url 'Logout'%}">Logout</a> </pre></div>
+            <a href="{% url 'Carrinho'%}"><div class="cart-icon"><img src="{% static 'assets/Cart.png' %}"></div></a>
+            </div>
+            {%else%}
+    <div class="adicional">
+        <div class="usuario"><pre><a href="{%url 'Login'%}">Login</a>     <a href="{%url 'Cadastro'%}">Cadastre-se</a></pre></div>
+        <a href="{% url 'Carrinho'%}"><div class="cart-icon"><img src="{% static 'assets/Cart.png' %}"></div></a>
+    </div>
+            {%endif%}
+    <div class="header">
+        <div class="logo">
+            <div class="logoimg"><a href="{% url 'Home'%}"><img src="{%static 'assets/logo.png'%}"></a></div>
+        </div>
+        <div class="logo-texto"><a href="{% url 'Home'%}">Painel Administrativo</a></div>
+
+        <div class="menu">
+            <!--img class="menu-opener" src="{%static 'assets/menu.png'%}" /-->
+            <input type="checkbox" id="Bt_menu" style="display:none;">
+            <label class="menu_label" for = "Bt_menu">&#9776;</label>
+             <nav class="menu_nav">
+                <ul>
+                    <li ><a href="{%url 'Dashboard'%}">Dashboard</a></li>
+                    <li><a>Administrativo</a></li>
+                    <li><a>Esportes</a></li>
+                    <li><a>Eventos</a></li>
+                    <li><a>Social</a></li>
+                    <li><a>Relações institucionais</a></li>
+                    <li><a>Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </header>
+		{%block body%}
+		{%endblock%}
+        <script src="{%static 'js/menu.js'%}"></script>
+        {% bootstrap_javascript jquery='full'%}
+		<footer>
+    <div class="footer--area">
+        <div class="footer--item">
+                Copyright © 2020  Avalanche Adriano Oliveira - Lucas Vinicius Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+	</body>
+</html>
