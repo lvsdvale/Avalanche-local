@@ -87,10 +87,10 @@ class PicpayView(LoginRequiredMixin, RedirectView):
             x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
         )
         payment = pc.payment(
-            reference_id=int(f'{datetime.now().year}{pedido.pk-4}'),
+            reference_id=int(pedido.number),
             callback_url=self.request.build_absolute_uri(reverse('Picpay_Notification',args=[pedidos_pk])),
             return_url=self.request.build_absolute_uri(
-            reverse( 'customer:order',args = [int(f'{datetime.now().year}{pedido.pk-4}')])
+            reverse( 'customer:order',args = [int(pedido.number)])
             ),
             value=(float(pedido.total_incl_tax)*1.05),
             buyer={
@@ -109,10 +109,10 @@ def PicpayNotification(request,pk):
             x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
         )
         pedido = pedidos.objects.get(pk=pk)
-        status = pc.notification(reference_id=int(f'{datetime.now().year}{pedido.pk - 4}'))
+        status = pc.notification(reference_id=int(pedido.number))
         print(status['status'])
-        if status['status'] == 'paid':
-            pedido.set_status(new_status='pago')
+        if status['status'] == 'paid' and pedido.status == 'processando':
+                pedido.set_status(new_status='pago')
         return HttpResponse(200)
     else:
         return HttpResponse(404)

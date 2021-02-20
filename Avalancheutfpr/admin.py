@@ -43,6 +43,14 @@ class ContatosAdmin(admin.ModelAdmin):
 class Diretoria(admin.ModelAdmin):
     list_display = ['name','cargo']
 
+@admin.register(bateria)
+class BateriaAdmin(admin.ModelAdmin):
+    list_display = ['name','cargo']
+
+@admin.register(cheers)
+class CheersAdmin(admin.ModelAdmin):
+    list_display = ['name','cargo']
+
 
 @admin.register(media)
 class media(admin.ModelAdmin):

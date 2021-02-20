@@ -207,7 +207,7 @@ class cheers(models.Model):
     name = models.CharField(max_length=255,null=False,blank=False,unique=True,verbose_name='Nome')
     cargo = models.IntegerField(choices=Cargos,null=False,blank=False,verbose_name='Cargo')
     foto = StdImageField(upload_to=get_file_path,null = False,blank = False)
-    intagram = models.CharField(max_length=255,null=True,blank=True,verbose_name='Instagram')
+    instagram = models.CharField(max_length=255,null=True,blank=True,verbose_name='Instagram')
     facebook =  models.CharField(max_length=255,null=True,blank=True,verbose_name='Facebook')
     def retorna_cargo(self):
         return self.cargo
@@ -215,6 +215,32 @@ class cheers(models.Model):
         verbose_name = 'Direção Cheers'
         verbose_name_plural = 'Direção Cheers'
         ordering = ['cargo']
+
+
+class bateria(models.Model):
+    Cargos = (
+        (1, "Presidente"),
+        (2, "Vice Presidente"),
+        (3, "Mestre"),
+        (4, "Marketing"),
+        (5, "Financeiro"),
+        (6, "Produtos"),
+        (7, "Materiais"),
+    )
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True, verbose_name='Nome')
+    cargo = models.IntegerField(choices=Cargos, null=False, blank=False, verbose_name='Cargo')
+    foto = StdImageField(upload_to=get_file_path, null=False, blank=False)
+    instagram = models.CharField(max_length=255, null=True, blank=True, verbose_name='Instagram')
+    facebook = models.CharField(max_length=255, null=True, blank=True, verbose_name='Facebook')
+
+    def retorna_cargo(self):
+        return self.cargo
+
+    class Meta:
+        verbose_name = 'Direção Bateria'
+        verbose_name_plural = 'Direção Bateria'
+        ordering = ['cargo']
+
 class media(models.Model):
     name = models.CharField(max_length=255,null=False,blank=False,verbose_name='Nome')
     tag = models.CharField(max_length=255,null=False,blank=False)

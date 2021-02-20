@@ -203,6 +203,10 @@ class Competicoes(ListView):
         return queryset
 class Bateria(TemplateView):
     template_name = 'Bateria.html'
+    def get_context_data(self, **kwargs):
+        context = super(Bateria,self).get_context_data(**kwargs)
+        context['Diretoria'] = bateria.objects.all().order_by('cargo')
+        return context
 
 class Cheers(TemplateView):
     template_name = 'Cheers.html'
