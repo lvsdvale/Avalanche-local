@@ -29,7 +29,9 @@
             <h2>{{diretor.name}}</h2>
             <div class="diretor-info">
             {% if diretor.foto.url != blank%}
-                <img src="{{diretor.foto.url}}">
+                <div class="diretor-image">
+                    <img src="{{diretor.foto.url}}">
+                </div>
             {%endif%}
             <p>{{diretor.get_cargo_display}}</p>
             <div class="diretor-social">
