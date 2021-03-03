@@ -23,4 +23,5 @@
         $pointer[_index].className += " active";
         clearTimeout(timer);
         timer = setTimeout(() => set_slide(_index+1), 5000);
+
     }

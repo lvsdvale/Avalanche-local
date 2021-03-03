@@ -2,6 +2,13 @@
 {% load i18n %}
 
 {% block product_review %}
+<style>
+  #add_review_form {
+    #id_title, #id_body {
+        max-width: 500px !important;
+    }
+}
+</style>
     <div id="addreview" class="review_add">
         <form id="add_review_form" method="post" action="#addreview">
             <fieldset>

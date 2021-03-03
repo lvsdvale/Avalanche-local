@@ -1,5 +1,6 @@
-
-
+#add_review_form #id_title, #add_review_form #id_body {
+    max-width:500px !important;
+}
 .navbar-default{
     border-color:transparent !important;
 }

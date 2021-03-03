@@ -17,7 +17,7 @@
 
         <a class="btn btn-default navbar-btn btn-cart navbar-right visible-xs-inline-block" href="{% url 'basket:summary' %}">
             <i class="icon-shopping-cart"></i>
-            {% trans "Cart" %}
+            Carrinho
             {% if not request.basket.is_empty %}
                 {% if request.basket.is_tax_known %}
                     {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}

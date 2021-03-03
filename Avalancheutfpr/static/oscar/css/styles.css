@@ -8435,7 +8435,7 @@ a:hover .thumbnail {
 }
 #add_review_form #id_title,
 #add_review_form #id_body {
-  width: 500px;
+  max-width: 500px;
 }
 .review {
   margin-bottom: 20px;

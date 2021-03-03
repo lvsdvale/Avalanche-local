@@ -163,7 +163,7 @@
 {% else %}
     {% block emptybasket %}
         <p>
-            {% trans "Your basket is empty." %}
+            Seu carrinho está vazio
             <a href="{{ homepage_url }}">{% trans "Continue shopping" %}</a>
         </p>
     {% endblock %}
@@ -216,7 +216,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <a href="#" data-id="{{ forloop.counter0 }}" class="btn pull-right btn-block" data-behaviours="move">{% trans "Move to basket" %}</a>
+                                <a href="#" data-id="{{ forloop.counter0 }}" class="btn pull-right btn-block" data-behaviours="move">Mover para o carrinho</a>
                             </div>
                         </div>
                     </div>
