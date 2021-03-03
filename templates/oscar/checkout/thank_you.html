@@ -117,6 +117,11 @@
                 <div class="col-sm-4 col-sm-offset-4">
                     <p><a href="{%url 'Picpay' order.id%}" class="btn btn-primary btn-block btn-lg">Finalizar Pagamento</a></p>
                 </div>
+                {% if request.user_agent.is_mobile %}
+                <div class="col-sm-4 col-sm-offset-4">
+                    <p><a href="{%url 'customer:order' order.number%}" class="btn btn-primary btn-block btn-lg">Finalizar Pagamento</a></p>
+                </div>
+                {% endif %}
             </div>
         </div>
     {% endblock order_actions %}

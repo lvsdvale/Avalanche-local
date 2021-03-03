@@ -93,6 +93,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_tables2',
     'storages',
+    'django_user_agents',
 ]
 AUTH_USER_MODEL = 'Contas.user'
 
