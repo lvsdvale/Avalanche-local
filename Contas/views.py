@@ -21,9 +21,9 @@ def Cadastrar_usuarios(request):
             Nome = form.cleaned_data.get('first_name ')
             email = form.cleaned_data.get('email')
             messages.success(request,"Cadastro Realizado com Sucesso")
-            User = authenticate(username=username, password=raw_password)
+            User = authenticate(username=username, password=raw_password, backend = 'django.contrib.auth.backends.ModelBackend')
             Send_Sign_Mail(Email=email,Nome=Nome)
-            login(request, User)
+            login(request, User, backend = 'django.contrib.auth.backends.ModelBackend')
             return redirect('Home')
     else:
         form = Cadastro()
