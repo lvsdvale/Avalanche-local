@@ -140,7 +140,6 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-     'oscar.apps.customer.auth_backends.EmailBackend',
      'django.contrib.auth.backends.ModelBackend',
 )
 

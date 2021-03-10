@@ -1,12 +1,11 @@
-from django.shortcuts import render, redirect,reverse
+from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import  AuthenticationForm,PasswordChangeForm
-from django.views.decorators.csrf import  csrf_exempt
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.contrib import messages
-from Avalancheutfpr.models import inscricao_modalidades,inscricao_campanhas_sociais,inscricao_E_sports,eventos,campanhas
-from Avalancheutfpr.services import Send_Sign_Mail,Send_Reset_Mail
+from Avalancheutfpr.models import inscricao_modalidades, inscricao_campanhas_sociais, inscricao_E_sports, eventos, campanhas
+from Avalancheutfpr.services import Send_Sign_Mail, Send_Reset_Mail
 from random import choice
 from datetime import datetime
 # views de login
@@ -16,14 +15,13 @@ def Cadastrar_usuarios(request):
         form = Cadastro(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             Nome = form.cleaned_data.get('first_name ')
             email = form.cleaned_data.get('email')
-            messages.success(request,"Cadastro Realizado com Sucesso")
-            User = authenticate(username=username, password=raw_password, backend = 'django.contrib.auth.backends.ModelBackend')
+            messages.success(request, "Cadastro Realizado com Sucesso")
+            User = authenticate(username=email, password=raw_password)
             Send_Sign_Mail(Email=email,Nome=Nome)
-            login(request, User, backend = 'django.contrib.auth.backends.ModelBackend')
+            login(request, User)
             return redirect('Home')
     else:
         form = Cadastro()
@@ -40,19 +38,18 @@ def Login(request):
         if request.method == 'POST':
             username = request.POST["username"]
             password = request.POST["password"]
-            user = authenticate(username=username, password=password, backend = 'django.contrib.auth.backends.ModelBackend')
+            user = authenticate(username=username, password=password)
             if user is not None:
-                login(request, user, backend = 'django.contrib.auth.backends.ModelBackend')
-                messages.success(request,'Login realizado com Sucesso')
-                return redirect('Home')
+                login(request, user)
+                messages.success(request, 'Login realizado com Sucesso')
+
             else:
                 messages.error(request, "as credenciais estão incorretas")
 
         form_login = AuthenticationForm()
-        context = {'form': form_login
-               }
-
+        context = {'form': form_login}
         return render(request, 'Login.html', context)
+
 
 @login_required(redirect_field_name='Login')
 def AlterarSenha(request):
@@ -60,13 +57,13 @@ def AlterarSenha(request):
         oldpassword = request.POST["old_password"]
         password1 = request.POST["new_password1"]
         password2 = request.POST["new_password2"]
-        if request.user.check_password(oldpassword) and password1==password2:
-            if oldpassword==password1:
+        if request.user.check_password(oldpassword) and password1 == password2:
+            if oldpassword == password1:
                 messages.error(request,"A senha antiga é igual a nova")
             else:
                 request.user.set_senha(password1)
                 messages.success(request, 'Senha alterada com sucesso')
-                user = authenticate(username=request.user, password=password1, backend = 'django.contrib.auth.backends.ModelBackend')
+                user = authenticate(username=request.user, password=password1)
                 login(request,user)
                 return redirect("Minha_Conta")
         else:
