@@ -8,19 +8,19 @@
 
             <tr>
                 <th>{% trans 'Email address' %}</th>
-                <td>{{ user.email }}</td>
+                <td style="@media(max-width:375px){font-size:11px!important;}">{{ user.email }}</td>
             </tr>
             {% block profile_fields %}
                 {% for field in profile_fields %}
                     <tr>
                         <th>{{ field.name }}</th>
-                        <td>{{ field.value|default:"-" }}</td>
+                        <td style="@media(max-width:375px){font-size:11px!important;}">{{ field.value|default:"-" }}</td>
                     </tr>
                 {% endfor %}
             {% endblock %}
             <tr>
                 <th>{% trans 'Date registered' %}</th>
-                <td>{{ user.date_joined }}</td>
+                <td style="@media(max-width:375px){font-size:11px !important;}">{{ user.date_joined }}</td>
             </tr>
         </tbody>
     </table>

@@ -105,6 +105,9 @@ border-color:transparent !important;
 }
 }
 @media (max-width:500px) {
+.perfil_fonte{
+    font-size:12px !important;
+}
  .footer-bateria  a img{
   width:5em;
   height:7em;
