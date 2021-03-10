@@ -99,12 +99,12 @@ border-color:transparent !important;
     color:#F2F2F2;
 }
 
-@media (min-width:450px) and (max-width:800px) {
+@media (min-width:501px) and (max-width:800px) {
 .menu-itens-right{
     padding-top:.1em !important;
 }
 }
-@media (max-width:450px) {
+@media (max-width:500px) {
  .footer-bateria  a img{
   width:5em;
   height:7em;

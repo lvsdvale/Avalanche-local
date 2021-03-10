@@ -94,7 +94,7 @@ def Send_Sign_Mail(Email,Nome):
         server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
         msg = EmailMessage()
         subject=f'Cadastro Concluido'
-        body=f'Olaaaar {Nome}, seja bem vindo à plataforma oficial da AVALANCHE, \nAqui você vai poder se inscrever nas modalidades, adquirir produtos avalanche,  acompanhar informações sobre os eventos, acessar conteúdos exclusivos e muito mais!\nP.S. Fique ligado no nosso instagram para receber as atualizações do site\nCarinhosamente,\nPaul Lar'
+        body=f'Olaaaar {usuario.name}, seja bem vindo à plataforma oficial da AVALANCHE, \nAqui você vai poder se inscrever nas modalidades, adquirir produtos avalanche,  acompanhar informações sobre os eventos, acessar conteúdos exclusivos e muito mais!\nP.S. Fique ligado no nosso instagram para receber as atualizações do site\nCarinhosamente,\nPaul Lar'
         to = f'{Email}'
         msg.set_content(body)
         msg['Subject'] = subject

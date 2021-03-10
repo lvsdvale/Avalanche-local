@@ -5,14 +5,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-        <meta name="keywords" content="Atlética,Avalanche,UTFPR,A.A.A.E.A UTFPR-CT,alavanche,Universidade Tecnológica Federal do Parana,Engenhariadas">
+        <meta name="keywords" content="Atlética,Avalanche,UTFPR,A.A.A.E.A UTFPR-CT,alavanche,Universidade Tecnológica Federal do Parana,Engenhariadas,Bateria Universitária, Atletica Universitária">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>{% block title %}{% endblock %}</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet" />
         {% bootstrap_css %}
         {% bootstrap_javascript jquery='full' %}
         <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
-        <meta name="description" content="A plataforma web da Associação Atlética Acadêmica de Engenharia e Arquitetura da UTFPR-CT, A Avalanche">
+        {%block description%}{%endblock%}
 		<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
 		<link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
 
@@ -56,9 +56,11 @@
         <li class="nav-item">
         <a class="nav-link"  href="{%url 'Blog'%}">Blog</a>
       </li>
+        {%if request.is_mobile%}
         <li class="nav-item">
         <a class="nav-link"  href="{%url 'Contatos'%}">Contatos</a>
       </li>
+        {%endif%}
     </ul>
       {%if user.is_authenticated%}
       <ul class="nav navbar-nav ml-auto">
@@ -89,20 +91,23 @@
         <footer>
             <section class="footer">
                 <div class="footer-entidades">
-                    <div class="footer-bateria">
-                        <a href="https://www.instagram.com/bateria.avalanche/?hl=pt-br"><img src="{%static 'assets/Logo - Bateria Avalanche.png'%}"></a>
+                    <div class="footer-E-sports">
+                        <a href="https://www.instagram.com/bateria.avalanche/?hl=pt-br"><img src="{%static 'assets/Bateria.png'%}"></a>
                     </div>
                     <div class="footer-E-sports">
-                        <a href="https://www.instagram.com/avalancheesports/?hl=pt-br"><img src="{%static 'assets/E-Sports-Logo.png'%}"></a>
+                        <a href="https://www.instagram.com/avalancheesports/?hl=pt-br"><img src="{%static 'assets/Esports.png'%}"></a>
                     </div>
-                    <div class="footer-Bears">
-                        <a href="https://www.instagram.com/bears_cheerleading/?hl=pt-br"><img src="{%static 'assets/Bears -Logo.png'%}"></a>
+                    <div class="footer-E-sports">
+                        <a href="https://www.instagram.com/bears_cheerleading/?hl=pt-br"><img src="{%static 'assets/Cheers.png'%}"></a>
+                    </div>
+                    <div class="footer-E-sports">
+                        <a href="https://www.instagram.com/bears_cheerleading/?hl=pt-br"><img src="{%static 'assets/BBBA.png'%}"></a>
                     </div>
 
                 </div>
                 <div class="footer-copyright">
-                    <div class="footer-empresa"><p>A.A.A.E.A UTFPR-CT | CNPJ 13.223.065/0001-29</p></div>
-                    <div class="footer-dev"><p>by Diretoria de TI</p></div>
+                    <div class="footer-empresa"><p>A.A.A.E.A UTFPR-CT | CNPJ 13.233.065/0001-29</p></div>
+                    <div class="footer-dev"><p>Diretoria de TI</p></div>
                 </div>
             </section>
         </footer>

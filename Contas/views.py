@@ -40,9 +40,9 @@ def Login(request):
         if request.method == 'POST':
             username = request.POST["username"]
             password = request.POST["password"]
-            user = authenticate(username=username, password=password)
+            user = authenticate(username=username, password=password, backend = 'django.contrib.auth.backends.ModelBackend')
             if user is not None:
-                login(request, user)
+                login(request, user, backend = 'django.contrib.auth.backends.ModelBackend')
                 messages.success(request,'Login realizado com Sucesso')
                 return redirect('Home')
             else:
@@ -66,7 +66,7 @@ def AlterarSenha(request):
             else:
                 request.user.set_senha(password1)
                 messages.success(request, 'Senha alterada com sucesso')
-                user = authenticate(username=request.user, password=password1)
+                user = authenticate(username=request.user, password=password1, backend = 'django.contrib.auth.backends.ModelBackend')
                 login(request,user)
                 return redirect("Minha_Conta")
         else:
@@ -115,12 +115,11 @@ def Resetar(request):
     if request.method == 'POST':
         form = Reset(request.POST)
         if form.is_valid():
-            email = form.cleaned_data.get("Email")
-            cpf = form.cleaned_data.get("CPF")
-            Usuario = user.objects.get(CPF = cpf,email= email)
-            if Usuario == None:
-                messages.error(request,"Dados inválidos")
-            else:
+            try:
+                email = form.cleaned_data.get("Email")
+                cpf = form.cleaned_data.get("CPF")
+                Usuario = user.objects.get(CPF = cpf,email= email)
+
                 caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
                 Nova_senha = ''
                 for i in range(8):
@@ -128,6 +127,8 @@ def Resetar(request):
                 Usuario.set_senha(Nova_senha)
                 Send_Reset_Mail(email,Nova_senha)
                 messages.success(request,"Sua nova senha foi enviada para seu email")
+            except:
+                messages.error(request, "Usuário não cadastrado no banco de dados")
     else:
         form = Reset()
     context = {
