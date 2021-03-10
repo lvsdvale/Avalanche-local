@@ -504,12 +504,15 @@ class OrderDetailView(PageTitleMixin, PostActionMixin, generic.DetailView):
     def get_object(self, queryset=None):
         pedido = get_object_or_404(self.model, user=self.request.user,
                                  number=self.kwargs['order_number'])
-        pc = PicPay(
-            x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
-        )
-        status = pc.status(reference_id=pedido.number)
-        if status['status'] == 'paid':
-            pedido.set_status('pago')
+        try:
+            pc = PicPay(
+                x_picpay_token=settings.X_PICPAY_TOKEN, x_seller_token=settings.X_SELLER_TOKEN
+            )
+            status = pc.status(reference_id=pedido.number)
+            if status['status'] == 'paid':
+                pedido.set_status('pago')
+        except:
+            pass
         return pedido
 
 
