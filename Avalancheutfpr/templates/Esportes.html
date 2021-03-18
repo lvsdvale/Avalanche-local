@@ -8,6 +8,28 @@
 {%block body%}
 {% bootstrap_messages %}
 <main class="esportes-area">
+	{%if request.is_mobile%}
+	<div class = "eventos-mobile">
+	{%for modalidade in Modalidades%}
+        <div class="card">
+            <h2>{{modalidade.name}}</h2>
+            <div class="card-info">
+            {% if modalidade.image.url != blank%}
+                <div class="card-image">
+                <img src="{{modalidade.image.url}}">
+                </div>
+            {%endif%}
+				<div class = "botao-ver">
+				{% buttons%}
+					<a href="{%url 'Modalidades_View' modalidade.slug %}" class="btn btn-primary">Ver esporte</a>
+				{% endbuttons %}
+					</div>
+			</div>
+			</div>
+
+	{%endfor%}
+		</div>
+	{%else%}
     {% for modalidade in Modalidades %}
     {%if forloop.counter|divisibleby:"2" %}
 	<section class="default-esportes dark-esportes">
@@ -51,6 +73,7 @@
 	</section>
     {%endif%}
     {%endfor%}
+	{%endif%}
 </main>
 {%endblock%}
 </html>

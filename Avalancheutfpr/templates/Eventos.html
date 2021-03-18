@@ -7,7 +7,29 @@
     {%block title%}Eventos Avalanche{%endblock%}
 {%block description%}<meta name="description" content="Eventos Avalanche">{%endblock%}
 {%block body%}
-<main class="eventos-area">
+	<main class="eventos-area">
+	{%if request.is_mobile%}
+	<div class = "eventos-mobile">
+	{%for Evento in page_obj %}
+        <div class="card">
+            <h2>{{Evento.name}}</h2>
+            <div class="card-info">
+            {% if Evento.image.url != blank%}
+                <div class="card-image">
+                <img src="{{Evento.image.url}}">
+                </div>
+            {%endif%}
+				<div class = "botao-ver">
+				{% buttons%}
+					<a href="{% url 'Eventos_View' Evento.slug %}"><button class="btn btn-primary">Ver evento</button></a>
+				{% endbuttons %}
+					</div>
+			</div>
+			</div>
+
+	{%endfor%}
+		</div>
+	{%else%}
     {%for Evento in page_obj %}
 	{%if forloop.counter|divisibleby:"2" %}
 	<section class="default-eventos dark-eventos">
@@ -48,8 +70,8 @@
 	</section>
     {%endif%}
     {%endfor%}
-    {% include 'paginacao.html' %}
-</main>
-
+	{%endif%}
+		{% include 'paginacao.html' %}
+		</main>
 {%endblock%}
 </html>

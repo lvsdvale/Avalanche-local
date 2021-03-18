@@ -1,13 +1,34 @@
-
 {% extends 'Base.html' %}
 {%load static%}
 {%load bootstrap4 %}
 
-    {%block title%} E-sports Avalanche {%endblock%}
+{%block title%} E-sports Avalanche {%endblock%}
 {%block description%}<meta name="description" content="E-sports Avalanche">{%endblock%}
 {%block body%}
 {% bootstrap_messages %}
 <main class="E-sports-area">
+	{%if request.is_mobile%}
+	<div class = "eventos-mobile">
+	{%for Game in Games%}
+        <div class="card">
+            <h2>{{Game.name}}</h2>
+            <div class="card-info">
+            {% if Game.image.url != blank%}
+                <div class="card-image">
+                <img src="{{Game.image.url}}">
+                </div>
+            {%endif%}
+				<div class = "botao-ver">
+				{% buttons%}
+					<a href="{% url 'Games_View' Game.slug %}" class="btn btn-primary">Ver esporte</a>
+				{% endbuttons %}
+					</div>
+			</div>
+			</div>
+
+	{%endfor%}
+		</div>
+	{%else%}
     {% for Game in Games %}
     {%if forloop.counter|divisibleby:"2" %}
 	<section class="default-e-sports dark-e-sports">
@@ -48,6 +69,7 @@
 	</section>
     {%endif%}
     {%endfor%}
+	{%endif%}
 </main>
 
 {%endblock%}

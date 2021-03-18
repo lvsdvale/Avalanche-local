@@ -9,6 +9,28 @@
 {%block body%}
 {% bootstrap_messages %}
 <main class="social-area">
+	{%if request.is_mobile%}
+	<div class = "eventos-mobile">
+	{%for campanhas in page_obj %}
+        <div class="card">
+            <h2>{{campanhas.name}}</h2>
+            <div class="card-info">
+            {% if campanhas.image.url != blank%}
+                <div class="card-image">
+                <img src="{{campanhas.image.url}}">
+                </div>
+            {%endif%}
+				<div class = "botao-ver">
+				{% buttons%}
+					<a href="{%url 'Campanhas_View' campanhas.slug%}"><button class="btn btn-primary">Ver evento</button></a>
+				{% endbuttons %}
+					</div>
+			</div>
+			</div>
+
+	{%endfor%}
+		</div>
+	{%else%}
     {%for campanhas in page_obj %}
     {%if forloop.counter|divisibleby:"2" %}
 	<section class="default-eventos dark-eventos">
@@ -45,6 +67,7 @@
 	</section>
     {%endif%}
     {%endfor%}
+	{%endif%}
     {% include 'paginacao.html' %}
 </main>
 

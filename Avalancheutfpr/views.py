@@ -4,10 +4,8 @@ from django.template import loader
 from .forms import *
 from django.views.generic import TemplateView,ListView
 from django.contrib import messages
-from django.views.decorators.csrf import csrf_exempt
 from django.db import models
 from .services import *
-from ecommerce.models import produtobase
 from oscar.core.loading import get_model
 Country = get_model('address', 'Country')
 # Views das paginas referentes a atletica.
@@ -17,6 +15,7 @@ class Home(TemplateView):
         context = super(Home,self).get_context_data(**kwargs)
         context["Modalidades"] = modalidades.objects.all().order_by("?")
         return context
+
 def Contatos(request):
     initial = None
 
