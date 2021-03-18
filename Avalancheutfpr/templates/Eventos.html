@@ -20,15 +20,13 @@
                 </div>
             {%endif%}
 				<div class = "botao-ver">
-				{% buttons%}
-					<a href="{% url 'Eventos_View' Evento.slug %}"><button class="btn btn-primary">Ver evento</button></a>
-				{% endbuttons %}
-					</div>
+					<a href="{% url 'Eventos_View' Evento.slug %}" class="btn btn-primary">Ver evento</a>
+				</div>
 			</div>
-			</div>
+		</div>
 
 	{%endfor%}
-		</div>
+	</div>
 	{%else%}
     {%for Evento in page_obj %}
 	{%if forloop.counter|divisibleby:"2" %}
