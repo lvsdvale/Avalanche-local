@@ -19,6 +19,7 @@ body {
 }
 
 header {
+    z-index:1;
     height:120px;
     background-color:#050329 ;
     color:#F2F2F2;
@@ -2513,7 +2514,6 @@ min-height:30em;
 
 }
 .card{
-    z-index: -1;
    width:40%;
     height:22em;
    margin: 3% 3% 3% 3%;
@@ -3267,7 +3267,7 @@ min-height:30em;
 
 }
     .card{
-    z-index: -1;
+
    width:80%;
    margin: 8% 10% 3% 10%;
    height:25em;

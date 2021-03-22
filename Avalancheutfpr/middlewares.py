@@ -1,6 +1,7 @@
-import re
 from .mdetect import UAgentInfo
 from django.utils.deprecation import MiddlewareMixin
+from Avalanche import settings
+
 class MobileDetectionMiddleware(MiddlewareMixin):
     """
     Useful middleware to detect if the user is
@@ -22,3 +23,4 @@ class MobileDetectionMiddleware(MiddlewareMixin):
         request.is_mobile = is_mobile
         request.is_tablet = is_tablet
         request.is_phone = is_phone
+        request.is_production = not settings.DEBUG
