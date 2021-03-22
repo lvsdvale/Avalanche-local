@@ -2522,9 +2522,11 @@ min-height:30em;
    padding-top:1%;
 }
 .card h2{
+    font-family: 'Helvetica',Arial,sans-serif;
     font-size:25px;
     text-align:center;
     margin-bottom:3%;
+    color:#050329;
 }
 .card-image{
     display:flex;
@@ -3276,9 +3278,11 @@ min-height:30em;
    padding-top:1%;
 }
 .card h2{
+    font-family: 'Helvetica',Arial,sans-serif;
     font-size:25px;
     text-align:center;
     margin-bottom:3%;
+    color:#050329;
 }
 .card-image{
     display:flex;
