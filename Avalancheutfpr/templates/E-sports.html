@@ -38,7 +38,7 @@
 	            	<img src="{{Game.image.url}}" />
 	        	</div>
 	    		<div class="section-e-sports--left---esquerda">
-	                <p>{{Game.previa}}</p>
+	                <p>{{Game.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{% url 'Games_View' Game.slug %}" class="section-button-dark">Ver e-sport</a>
 	            </div>
@@ -53,7 +53,7 @@
 		<div class="section-body-e-sports">
 	    	<div class="section-e-sports">
 	    		<div class="section-e-sports--left">
-	                <p>{{Game.previa}}</p>
+	                <p>{{Game.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{% url 'Games_View' Game.slug %}" class="section-button-light">Ver e-sport</a>
 	            </div>

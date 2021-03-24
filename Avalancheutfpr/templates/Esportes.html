@@ -40,7 +40,7 @@
 	            	<img src="{{modalidade.image.url}}" />
 	        	</div>
 	    		<div class="section-esportes--left---esquerda">
-	                <p> {{modalidade.previa}}</p>
+	                <p> {{modalidade.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{%url 'Modalidades_View' modalidade.slug %}" class="section-button-dark">Ver esporte</a>
 	            </div>
@@ -56,7 +56,7 @@
 		<div class="section-body-esportes">
 	    	<div class="section-esportes">
 	    		<div class="section-esportes--left">
-	                <p>{{modalidade.previa}}</p>
+	                <p>{{modalidade.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{%url 'Modalidades_View' modalidade.slug %}" class="section-button-light">Ver esporte</a>
 	            </div>

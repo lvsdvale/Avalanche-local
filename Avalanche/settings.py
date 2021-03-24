@@ -94,6 +94,9 @@ INSTALLED_APPS = [
     'django_tables2',
     'storages',
     'django_user_agents',
+    'django_filters',
+    'rest_framework',
+    'Api',
 ]
 AUTH_USER_MODEL = 'Contas.user'
 
@@ -270,3 +273,12 @@ OSCAR_PAYMENT_METHODS = (
     ('Picpay',('Picpay')),
 )
 OSCAR_SEND_REGISTRATION_EMAIL = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+}

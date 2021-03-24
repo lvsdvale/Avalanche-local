@@ -28,8 +28,9 @@ urlpatterns = [
     path('',include('Blog.urls')),
     path('',include('Contas.urls')),
     path('',include('E_commerce.urls')),
+    path('API/',include('Api.urls')),
     path('',include('Engenhariadas.urls')),
-
+    path('api-auth/',include('rest_framework.urls')),
     path('painel',include('Administrativo.urls')),
     url(r'^', include(apps.get_app_config('E_commerce').urls[0])),
     path('i18n/', include('django.conf.urls.i18n')),

@@ -14,12 +14,12 @@
         <div class="section-body-e-sports">
             <div class="section-e-sports">
                 <div class="section-e-sport-left">
-                    <p>{{Games.descricao}}</p>
+                    <p>{{Games.descricao|linebreaks}}</p>
                     {%if user.is_authenticated and Games.Status == 'Ativo' %}
                         <form  method="post" class="inscricao_games">
                             {% csrf_token %}
                             {% buttons%}
-                            <button type="submit" class="btn btn-primary">inscrever-me</button>
+                            <button type="submit" class="btn btn-primary">Inscrever-me</button>
                             {% endbuttons %}
                         </form>
                     {%endif%}

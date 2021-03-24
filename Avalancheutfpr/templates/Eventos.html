@@ -39,7 +39,7 @@
 	            	<img src="{{Evento.image.url}}" />
 	        	</div>
 	    		<div class="section-eventos--left---esquerda">
-	                <p> {{Evento.previa}}</p>
+	                <p> {{Evento.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{% url 'Eventos_View' Evento.slug %}" class="section-button-dark">Ver evento</a>
 	            </div>
@@ -54,7 +54,7 @@
 		<div class="section-body-eventos">
 	    	<div class="section-eventos">
 	    		<div class="section-eventos--left">
-	                <p>{{Evento.previa}}</p>
+	                <p>{{Evento.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{% url 'Eventos_View' Evento.slug %}" class="section-button-light">Ver evento</a>
 	            </div>

@@ -15,13 +15,13 @@
             <div class="section-esporte">
                 <div class="section-esporte-left">
                     <p>
-                    {{Modalidades.descricao}}
+                    {{Modalidades.descricao|linebreaks}}
                     </p>
                     {%if user.is_authenticated and Modalidades.Status == 'Ativo' %}
                         <form  method="post" class="inscricao_esportes">
                             {% csrf_token %}
                             {% buttons%}
-                            <button type="submit" class="btn btn-primary">inscrever-me</button>
+                            <button type="submit" class="btn btn-primary">Inscrever-me</button>
                             {% endbuttons %}
                         </form>
                     {%endif%}

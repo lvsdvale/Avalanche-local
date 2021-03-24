@@ -39,7 +39,7 @@
 	            	<img src="{{campanhas.image.url}}" />
 	        	</div>
 	    		<div class="section-eventos-sociais--left---esquerda">
-	                <p>{{campanhas.previa}}</p>
+	                <p>{{campanhas.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{%url 'Campanhas_View' campanhas.slug%}" class="section-button-dark">Ver Ação Social</a>
 	            </div>
@@ -52,7 +52,7 @@
 		<div class="section-body-eventos">
 	    	<div class="section-eventos-sociais">
 	    		<div class="section-eventos-sociais--left">
-	                <p>{{campanhas.previa}}</p>
+	                <p>{{campanhas.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{%url 'Campanhas_View' campanhas.slug%}" class="section-button-light">Ver Ação Social</a>
 	            </div>

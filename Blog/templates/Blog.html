@@ -18,7 +18,7 @@
 	            	<img src = "{{post.image.url}}"/>
 	        	</div>
 	    		<div class="section-blogs--left---esquerda">
-	                <p>{{post.previa}}</p>
+	                <p>{{post.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{% url 'Post_view' post.slug %}" class="section-button-dark">Ver post</a>
 	            </div>
@@ -31,7 +31,7 @@
 		<div class="section-body-blogs">
 	    	<div class="section-blogs">
 	    		<div class="section-blogs--left">
-	                <p>{{post.previa}}</p>
+	                <p>{{post.previa|linebreaks}}</p>
 	                <br/>
 	                <a href="{% url 'Post_view' post.slug %}" class="section-button-light">Ver post</a>
 	            </div>
