@@ -87,6 +87,16 @@ class Esportes(TemplateView):
         context['Modalidades'] = modalidades.objects.all().order_by('name')
         return context
 
+
+    def get_queryset(self):
+        queryset = modalidades.objects.all()
+        q = self.request.GET.get('q', '')
+        if q:
+            queryset = queryset.filter(
+                models.Q(name__icontains=q) | models.Q(descricao__icontains=q)
+            )
+        return queryset
+
 def Modalidades_view(request, slug):
     Modalidades = get_object_or_404(modalidades, slug=slug)
     if request.method == 'POST':
@@ -212,6 +222,14 @@ class Cheers(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(Cheers,self).get_context_data(**kwargs)
         context['Diretoria'] = cheers.objects.all().order_by('cargo')
+        return context
+
+
+class EsportsHistoria(TemplateView):
+    template_name = 'EsportsHistoria.html'
+    def get_context_data(self, **kwargs):
+        context = super(EsportsHistoria,self).get_context_data(**kwargs)
+        context['Diretoria'] = esports.objects.all().order_by('cargo')
         return context
 
 class BBBA(TemplateView):

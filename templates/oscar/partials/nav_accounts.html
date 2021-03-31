@@ -26,12 +26,18 @@
             <li><a class="dp-link"  href="{%url 'Social'%}">Sociais</a></li>
           </ul>
         </li>
-        <li><a class="menu-link" href="{%url 'Esportes' %}">Esportes</a></li>
+        <li class="dropdown">
+          <a href="#"  class="dropdown-toggle menu-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modalidades<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="dp-link"  href="{%url 'Esportes'%}">Esportes</a></li>
+            <li><a class="dp-link"  href="{%url 'Esports'%}">Esports</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle menu-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entidades<span class="caret"></span></a>
           <ul class="dropdown-menu" style="border:1em !important;">
-            <li><a class="dp-link" href="{%url 'E-sports'%}">E-Sports</a></li>
-            <li><a class="dp-link"  href="">Bateria</a></li>
+            <li><a class="dp-link" href="{%url 'Esports'%}">E-Sports</a></li>
+            <li><a class="dp-link"  href="{%url 'Bateria'%}">Bateria</a></li>
             <li><a class="dp-link"  href="{%url 'Cheers'%}">Cheers</a></li>
           </ul>
         </li>

@@ -87,7 +87,7 @@ class user(AbstractBaseUser, PermissionsMixin):
     ('Licenciatura em Matemática', 'Licenciatura em Matemática'),
     ('Licenciatura em Química', 'Licenciatura em Química'),
     ('Sistemas da Informação', 'Sistemas da Informação'),
-    ('Tecnologia em Controle e Automação', 'Tecnologia em Controle e Automação'),
+    ('Tecnologia em Automação Industrial', 'Tecnologia em Automação Industrial'),
     ('Tecnologia em Design Gráfico', 'Tecnologia em Design Gráfico'),
     ('Tecnologia em Radiologia', 'Tecnologia em Radiologia'),
     ('Tecnologia em Sistemas de Telecomunicação', 'Tecnologia em sistemas de Telecomunicação')

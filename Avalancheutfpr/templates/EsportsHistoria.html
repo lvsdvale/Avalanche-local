@@ -1,0 +1,70 @@
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+{%block title%}Esports Avalanche{%endblock%}
+{%block description%}<meta name="description" content="Esports Avalanche">{%endblock%}
+{%block body%}
+{% bootstrap_messages %}
+<main class="container">
+    <section class="default light about-us">
+        <div class="section-title">Sobre Nós</div>
+        <div class="section-body">
+            <div class="section-sobre">
+                <p>
+                 Somos uma organização estudantil da UTFPR (Universidade Tecnológica Federal do Paraná Campus Curitiba).
+                  <br/><br/>
+
+                Atualmente participamos do cenário competitivo de Clash Royale, Counter-Strike, FIFA21, League of Legends, Legends of Runeterra, Teamfight Tactics, Valorant e Rainbow Six Siege.
+                  <br/><br/>
+                  Nossos objetivos
+                    <br/>
+                   > Dirigir, com exclusividade, a prática desportiva da modalidade de jogos eletrônicos no âmbito da UTFPR-CT, cooperando para o desenvolvimento do espírito esportivo universitário;
+                   Infelizmente com a pandemia suspendemos nossos ensaios e shows por tempo indeterminado. Esperamos mudar esse texto o mais breve possível. Então fiquem ligados em nossas redes sociais!
+                  <br/>
+                    > Difundir e incentivar no meio universitário a prática de jogos eletrônicos, podendo estender suas práticas a atividades de lazer;
+                    <br/>
+                  > Promover e dirigir competições municipais e estaduais no setor, bem como preparar as representações universitárias para os eventos esportivos nacionais e regionais;
+                    <br/>
+                    > Promover e dirigir os jogos entre seus afiliados, cuja organização e assuntos a eles referentes serão objetos de regulamentação especial;
+                    <br/>
+                    > Cooperar com as demais entidades representativas dos estudantes, desde que em consonância com as finalidades neste estatuto instituídas, em especial com as demais Associações Atléticas do Brasil;
+                    <br/><br/>
+
+
+                    Nosso símbolo é o Urso, representando toda a Garra que essa equipe possui.
+                    <br/><br/>
+                    Vem fazer parte da maior do sul do mundo!
+                    <br/><br/>
+                    #GoAVL #AvalancheInvade #UrsoDoMeuCoração
+                    <br/><br/>
+
+                </p></div></div>
+    </section>
+    {%if Diretoria%}
+    <section class="directors">
+        <h1><b>Diretoria</b></h1>
+    <div class="diretores">
+    {%for diretor in Diretoria%}
+        <div class="diretor">
+            <h2>{{diretor.name}}</h2>
+            <div class="diretor-info">
+            {% if diretor.foto.url != blank%}
+                <div class="diretor-image">
+                    <img src="{{diretor.foto.url}}">
+                </div>
+            {%endif%}
+            <p>{{diretor.get_cargo_display}}</p>
+            <div class="diretor-social">
+                <a href="{{diretor.instagram}}"><img src="{%static 'assets/insta.svg'%}" /></a>
+                <a href="{{diretor.twitter}}"><img src="{%static 'assets/twitter.svg'%}" /></a>
+            </div>
+            </div>
+
+        </div>
+        {%endfor%}
+    </div>
+    </section>
+    {%endif%}
+</main>
+{%endblock%}
+

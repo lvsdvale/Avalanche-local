@@ -19,6 +19,7 @@ urlpatterns = [
                   path('Social/', Social.as_view(), name='Social'),
                   path('Social/<slug:slug>', Campanhas_view, name='Campanhas_View'),
                   path('E_sports/', E_sports.as_view(), name='E-sports'),
+                  path('Esports/',EsportsHistoria.as_view(), name='Esports'),
                   path('E_sports/<slug:slug>', Games_view, name='Games_View'),
                  # path('Galeria/',Galeria.as_view(),name = 'Galeria'),
                  # path('Competicoes/',Competicoes.as_view(),name = 'Competicoes')

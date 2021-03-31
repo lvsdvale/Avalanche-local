@@ -8,13 +8,13 @@ from django.conf import settings
 
 class eventos(models.Model):
     status = (('Ativo', 'Ativo'), ('Encerrado', 'Encerrado'),)
-    name = models.CharField(max_length=30,null=False,blank=False,verbose_name='Nome')
-    previa = models.TextField(null=False,blank=False,verbose_name='Prévia')
-    descricao = models.TextField(null=False,blank=False,verbose_name='Descrição')
+    name = models.CharField(max_length=30, null=False, blank=False, verbose_name='Nome')
+    previa = models.TextField(null=False, blank=False, verbose_name='Prévia')
+    descricao = models.TextField(null=False, blank=False, verbose_name='Descrição')
     image = StdImageField(upload_to=get_file_path, null=False, blank=False)
     slug = AutoSlugField(populate_from = 'name')
-    data = models.DateField(auto_now_add=False,blank=True,null=True)
-    pub_date = models.DateField(auto_now_add=True,verbose_name='Data de Publicação')
+    data = models.DateField(auto_now_add=False, blank=True, null=True)
+    pub_date = models.DateField(auto_now_add=True, verbose_name='Data de Publicação')
     Status = models.CharField(max_length=30, null=True, blank=True, choices=status, default='Ativo')
 
 
@@ -268,6 +268,55 @@ class bateria(models.Model):
     class Meta:
         verbose_name = 'Direção Bateria'
         verbose_name_plural = 'Direção Bateria'
+        ordering = ['cargo']
+
+class esports(models.Model):
+    Cargos = (
+        (1, "Presidente"),
+        (2, "Diretor de Comunicação"),
+        (3, "Diretor de Comunicação"),
+        (4, "Diretor de Esports"),
+        (5, "Diretora de Esports"),
+        (6,"Manager de Esports"),
+        (7, "Diretora Financeira"),
+        (8, "Diretor Financeiro"),
+        (9,"Secretário"),
+        (10, "Secretária"),
+        (11,"Diretor de Patrocínios"),
+        (12, "Diretora de Patrocínios"),
+        (13,"Manager de Produtos"),
+        (14, "Diretor de Saúde"),
+        (15, "Diretora de Saúde"),
+        (16, "Coordenador de Psicologia"),
+        (17, "Coordenadora de Psicologia"),
+        (18, "Psicólogo"),
+        (19, "Psicóloga"),
+        (20, "Diretor de Torneios"),
+        (21, "Diretora de Torneios"),
+        (22, "Manager Torneios"),
+        (23, "Social Media"),
+        (24, "Redator"),
+        (25, "Redatora"),
+        (26, "Editora de Vídeo"),
+        (27, "Editor de Vídeo"),
+        (28, "Motion Designer"),
+        (29, "Designer"),
+        (30,"Ilustrador"),
+        (31,"Ilustradora"),
+
+    )
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True, verbose_name='Nome')
+    cargo = models.IntegerField(choices=Cargos, null=False, blank=False, verbose_name='Cargo')
+    foto = StdImageField(upload_to=get_file_path, null=False, blank=False)
+    instagram = models.CharField(max_length=255, null=True, blank=True, verbose_name='Instagram')
+    twitter = models.CharField(max_length=255, null=True, blank=True, verbose_name='twitter')
+
+    def retorna_cargo(self):
+        return self.cargo
+
+    class Meta:
+        verbose_name = 'Direção Esports'
+        verbose_name_plural = 'Direção Esports'
         ordering = ['cargo']
 
 class media(models.Model):

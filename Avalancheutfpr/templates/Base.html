@@ -51,15 +51,21 @@
           <a class="dropdown-item" href="{% url 'Social'%}">Sociais</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{%url 'Esportes'%}">Esportes</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="Modalidades" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Modalidades
+        </a>
+        <div class="dropdown-menu" aria-labelledby="Modalidades">
+          <a class="dropdown-item" href="{% url 'Esportes' %}">Esportes</a>
+          <a class="dropdown-item" href="{% url 'E-sports'%}">Esports</a>
+        </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="Entidades" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Entidades
         </a>
         <div class="dropdown-menu" aria-labelledby="Entidades">
-            <a class="dropdown-item" href="{%url 'E-sports'%}">E-Sports</a>
+            <a class="dropdown-item" href="{%url 'Esports'%}">Esports</a>
             <a class="dropdown-item" href="{%url 'Bateria'%}">Bateria</a>
             <a class="dropdown-item" href="{%url 'Cheers'%}">Cheers</a>
         </div>
