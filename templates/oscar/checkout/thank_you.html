@@ -22,9 +22,14 @@
 {% block content %}
     <p class="lead">
         {% blocktrans with number=order.number %}
-        Your order has been placed and a confirmation email has been sent - your order number is
+         Seu Pedido foi comfirmado com o número
         <strong>{{ number }}</strong>.
         {% endblocktrans %}
+        <br/>
+        Agora so falta o pagamento, basta clicar em finalizar pagamento e você será redirecionado para o Picpay.
+        <br/>
+        Seu pedido deve ser retirado Av. Sete de Setembro,3165 - Subsolo bloco N,Rebouças, Curitiba - PR, 80230-901.No período de quarentena entre em contato com a gente por email ou mídias sociais.
+
         {% trans "Please make a note of this reference or print this page and quote it in any communication with us regarding your order." %}
     </p>
 

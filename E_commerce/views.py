@@ -19,7 +19,7 @@ def picpay_payment(request,pk):
             reverse('checkout:preview')
             )
         ,
-        value=float(request.order.total_incl_tax)*1.1,
+        value=float(request.order.total_incl_tax),
         buyer={
             "firstName":request.user.name,
             "lastName": request.user.name,
