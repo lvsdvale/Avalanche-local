@@ -34,8 +34,12 @@ urlpatterns = [
     path('painel',include('Administrativo.urls')),
     url(r'^', include(apps.get_app_config('E_commerce').urls[0])),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('summernote/', include('django_summernote.urls')),
     #path('', include(apps.get_app_config('oscar').urls[0])),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.AdminSite.site_header = "A.A.A.E.A UTFPR-CT"
 admin.AdminSite.site_title = "Gestão"

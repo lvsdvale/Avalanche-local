@@ -15,7 +15,7 @@
             <div class="section-evento-social">
                 <div class="section-evento-social-left">
                     <p>
-                    {{Campanhas.descricao|linebreaks}}
+                    {{Campanhas.descricao|safe|linebreaks}}
                     </p>
                     {%if user.is_authenticated and Campanhas.Status == 'Ativo' %}
                         <form  method="post" class="inscricao_campanhas">
@@ -25,9 +25,6 @@
                             {% endbuttons %}
                         </form>
                     {%endif%}
-                </div>
-                <div class="section-evento-social-right">
-                    <img src="{{Campanhas.image.url}}" />
                 </div>
             </div>
         </div>

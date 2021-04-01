@@ -15,7 +15,7 @@
             <div class="section-esporte">
                 <div class="section-esporte-left">
                     <p>
-                    {{Modalidades.descricao|linebreaks}}
+                    {{Modalidades.descricao|safe|linebreaks}}
                     </p>
                     {%if user.is_authenticated and Modalidades.Status == 'Ativo' %}
                         <form  method="post" class="inscricao_esportes">
@@ -26,11 +26,6 @@
                         </form>
                     {%endif%}
                 </div>
-                {% if Modalidades.image.url != blank%}
-                <div class="section-esporte-right">
-                    <img src="{{Modalidades.image.url}}" />
-                </div>
-                {% endif %}
             </div>
         </div>
     </section>

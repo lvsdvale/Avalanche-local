@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,12 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Administrativo',
-    'Avalancheutfpr',
-    'Blog',
-    'Contas',
-    'ecommerce',
-    'Engenhariadas',
     'bootstrap4',
     'stdimage',
     'import_export',
@@ -53,24 +48,47 @@ INSTALLED_APPS = [
     'pagseguro',
     'picpay',
     'analytical',
-    'E_commerce',
     'phonenumber_field',
     'django.contrib.sites',
     'django.contrib.flatpages',
+
+    'widget_tweaks',
+    'haystack',
+    'treebeard',
+    'sorl.thumbnail',
+    'django_tables2',
+    'storages',
+    'django_user_agents',
+    'django_filters',
+    'rest_framework',
+    'django_summernote',
+    #aplicativos criados
+    'Administrativo',
+    'Avalancheutfpr',
+    'Blog',
+    'Contas',
+    'ecommerce',
+    'Engenhariadas',
+    'Api',
+    'E_commerce',
+
+    #Forks django - Oscar
+    'E_commerce.checkout.apps.CheckoutConfig',
+    'E_commerce.partner.apps.PartnerConfig',
+    'E_commerce.payment.apps.PaymentConfig',
+    'E_commerce.offer.apps.OfferConfig',
+    'E_commerce.order.apps.OrderConfig',
+    'E_commerce.customer.apps.CustomerConfig',
+
+    #django Oscar
     'oscar.config.Shop',
     'oscar.apps.analytics.apps.AnalyticsConfig',
-    'E_commerce.checkout.apps.CheckoutConfig',
     'oscar.apps.address.apps.AddressConfig',
     'oscar.apps.shipping.apps.ShippingConfig',
     'oscar.apps.catalogue.apps.CatalogueConfig',
     'oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig',
     'oscar.apps.communication.apps.CommunicationConfig',
-    'E_commerce.partner.apps.PartnerConfig',
     'oscar.apps.basket.apps.BasketConfig',
-    'E_commerce.payment.apps.PaymentConfig',
-    'E_commerce.offer.apps.OfferConfig',
-    'E_commerce.order.apps.OrderConfig',
-    'E_commerce.customer.apps.CustomerConfig',
     'oscar.apps.search.apps.SearchConfig',
     'oscar.apps.voucher.apps.VoucherConfig',
     'oscar.apps.wishlists.apps.WishlistsConfig',
@@ -87,16 +105,6 @@ INSTALLED_APPS = [
     'oscar.apps.dashboard.vouchers.apps.VouchersDashboardConfig',
     'oscar.apps.dashboard.communications.apps.CommunicationsDashboardConfig',
     'oscar.apps.dashboard.shipping.apps.ShippingDashboardConfig',
-    'widget_tweaks',
-    'haystack',
-    'treebeard',
-    'sorl.thumbnail',
-    'django_tables2',
-    'storages',
-    'django_user_agents',
-    'django_filters',
-    'rest_framework',
-    'Api',
 ]
 AUTH_USER_MODEL = 'Contas.user'
 
@@ -231,6 +239,7 @@ if USE_S3:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     MEDIA_ROOT = '/home/host/app/static_root/media'
+
 else:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR,'media')
@@ -257,7 +266,7 @@ SECURE_BROWSER_XSS_FILTER = True
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = True
-X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 OSCAR_INITIAL_ORDER_STATUS = 'processando'
 OSCAR_INITIAL_LINE_STATUS = 'processando'
@@ -272,7 +281,7 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 OSCAR_PAYMENT_METHODS = (
     ('Picpay',('Picpay')),
 )
-OSCAR_SEND_REGISTRATION_EMAIL = False
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':(

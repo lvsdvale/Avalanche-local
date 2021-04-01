@@ -54,7 +54,7 @@
 		<div class="section-body-eventos">
 	    	<div class="section-eventos">
 	    		<div class="section-eventos--left">
-	                <p>{{Evento.previa|linebreaks}}</p>
+	                <p>{{Evento.previa|safe|linebreaks}}</p>
 	                <br/>
 	                <a href="{% url 'Eventos_View' Evento.slug %}" class="section-button-light">Ver evento</a>
 	            </div>

@@ -1,26 +1,30 @@
 from django.contrib import admin
 from .models import *
 from import_export import admin as ad
-
+from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(eventos)
-class EventosAdmin(admin.ModelAdmin):
+class EventosAdmin(SummernoteModelAdmin):
+    summernote_fields = ('descricao',)
     list_display = ['name', 'Status', 'data']
     search_fields = ['name', 'Status', 'data']
 
 
 @admin.register(modalidades)
-class ModalidadesAdmin(admin.ModelAdmin):
+class ModalidadesAdmin(SummernoteModelAdmin):
+    summernote_fields = ('descricao',)
     list_display = ['name', 'Status']
 
 
 @admin.register(games)
-class GamesAdmin(admin.ModelAdmin):
+class GamesAdmin(SummernoteModelAdmin):
+    summernote_fields = ('descricao',)
     list_display = ['name', 'Status']
 
 
 @admin.register(campanhas)
-class CampanhasAdmin(admin.ModelAdmin):
+class CampanhasAdmin(SummernoteModelAdmin):
+    summernote_fields = ('descricao',)
     list_display = ['name', 'Status', 'data']
     search_fields = ['name', 'local', 'data']
 

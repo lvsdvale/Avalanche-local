@@ -8993,6 +8993,7 @@ input[type="number"][id*="quantity"] {
 .table-bordered > tfoot > tr > td {
   border: 1px solid #ddd;
   font-size: 12px;
+  max-width:8em
 
 }
 .table > thead > tr > th,

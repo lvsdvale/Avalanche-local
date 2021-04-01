@@ -14,14 +14,9 @@
             <div class="section-evento">
                 <div class="section-evento-left">
                     <p>
-                    {{posts.conteudo|linebreaks}}
+                    {{posts.conteudo|safe|linebreaks}}
                     </p>
                 </div>
-                {%if posts.image.url != blank%}
-                <div class="section-evento-right">
-                    <img src="{{posts.image.url}}" />
-                </div>
-                {%endif%}
             </div>
         </div>
     </section>
