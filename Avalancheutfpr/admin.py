@@ -31,21 +31,33 @@ class CampanhasAdmin(SummernoteModelAdmin):
 
 @admin.register(inscricao_modalidades)
 class Incricao_Esportes_Admin(ad.ImportExportModelAdmin):
-    list_display = ['name', 'data']
+    list_display = ['name', 'get_modalidade', 'data']
     search_fields = ['name', 'email', 'curso', 'Ra', 'modalidade', 'data']
+    def get_modalidade(self, obj):
+        return obj.modalidade
+
+    get_modalidade.short_description = 'Modalidade'
+    get_modalidade.admin_order_field = 'Modalidade'
 
 
 @admin.register(inscricao_campanhas_sociais)
 class Incricao_Campanhas_Admin(ad.ImportExportModelAdmin):
-    list_display = ['name', 'data']
+    list_display = ['name', 'get_campanha', 'data']
     search_fields = ['name', 'email', 'curso', 'Ra', 'campanha', 'data']
+    def get_campanha(self, obj):
+        return obj.campanha
+    get_campanha.short_description = 'Campanha'
+    get_campanha.admin_order_field = 'Campanha'
+
 
 @admin.register(inscricao_E_sports)
 class Incricao_Games_Admin(ad.ImportExportModelAdmin):
-    list_display = ['name', 'data']
+    list_display = ['name', 'get_game','data']
     search_fields = ['name', 'email', 'curso', 'Ra', 'game', 'data']
-
-
+    def get_game(self, obj):
+        return obj.game
+    get_game.short_discription = 'Modalidade Esports'
+    get_game.admin_order_field = 'Modalidade Esports'
 @admin.register(contatos)
 class ContatosAdmin(admin.ModelAdmin):
     list_display = ['email', 'assunto']
