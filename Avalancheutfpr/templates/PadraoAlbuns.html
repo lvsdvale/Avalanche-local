@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+{%load static%}
+{%load bootstrap4 %}
+<html>
+{%block title%}fotos {{album.titulo}}{%endblock%}
+{%block description%}<meta name="description" content="fotos">{%endblock%}
+{%block body%}
+<main>
+    <div class = "padraoalbum">
+        <div class = "padraoalbum_titulo">
+            <h1>Fotos {{album.titulo}}</h1>
+        </div>
+        <div class="padraoalbum_conteudo">
+            {%for foto in fotos%}
+                <div class="foto_padrao">
+                    <img src="{{foto.foto.url}}"/>
+                </div>
+            {%endfor%}
+        </div>
+        </div>
+</main>
+<script src="{%static 'js/ModalGaleria.js'%}"></script>
+{%endblock%}
+</html>

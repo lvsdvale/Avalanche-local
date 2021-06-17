@@ -119,8 +119,9 @@ def Modalidades_view(request, slug):
 class Social(ListView):
     template_name = 'Social.html'
     context_object_name = 'campanhas'
-    paginate_by = 5
     ordering = '-pub_date'
+
+
     def get_queryset(self):
         queryset = campanhas.objects.all()
         q = self.request.GET.get('q', '')
@@ -193,14 +194,25 @@ class Galeria(TemplateView):
     template_name = 'Galeria.html'
     def get_context_data(self, **kwargs):
         context = super(Galeria,self).get_context_data(**kwargs)
-        context['Midias'] = media.objects.all().order_by('tag')
+        context['Albuns'] = album.objects.all().order_by('data')
         return context
+
+def GaleriaView(request, slug):
+    albuns = get_object_or_404(album, slug=slug)
+    pics = fotos.objects.filter(album=albuns)
+    context = {
+        'album':albuns,
+        'fotos':pics
+    }
+    return render(request,'PadraoAlbuns.html',context=context)
 #Competiçoes e Jogos
 class Competicoes(ListView):
     template_name = 'Competicoes.html'
     context_object_name = 'competicoes'
-    paginate_by = 5
     ordering = '-pub_date'
+    def paginate(self):
+        if not self.resquest.is_mobile:
+            paginate_by = 5
     def get_queryset(self):
         queryset = competicoes.objects.all()
         q = self.request.GET.get('q', '')

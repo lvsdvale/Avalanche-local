@@ -6,7 +6,6 @@ from django.views.generic import TemplateView,ListView
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.db import models
-from ecommerce.models import *
 from Avalancheutfpr.models import *
 from Engenhariadas.models import *
 from Blog.models import *

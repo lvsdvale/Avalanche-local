@@ -377,3 +377,28 @@ class lance(models.Model):
     class Meta:
         verbose_name = 'Lance'
         verbose_name_plural = 'Lance'
+
+
+class album(models.Model):
+    titulo = models.CharField(max_length=250,verbose_name = "Titulo")
+    slug = AutoSlugField(populate_from='titulo')
+    capa = models.FileField(blank=True, verbose_name = "Capa")
+    data = models.DateField(auto_now_add=True, verbose_name='Data')
+    def __str__(self):
+        return self.titulo
+
+
+    class Meta:
+        verbose_name = 'Album'
+        verbose_name_plural = 'Albuns'
+
+
+class fotos(models.Model):
+    album = models.ForeignKey(album, default=None,related_name="album", on_delete=models.CASCADE)
+    foto = models.ImageField(upload_to=get_file_path, verbose_name= 'Foto')
+    def __str__(self):
+        return f'{self.album.titulo} - foto{self.id}'
+
+    class Meta:
+        verbose_name = 'Foto'
+        verbose_name_plural = 'Fotos'

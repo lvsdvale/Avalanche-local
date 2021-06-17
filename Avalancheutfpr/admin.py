@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 from import_export import admin as ad
 from django_summernote.admin import SummernoteModelAdmin
-
+from .forms import *
 @admin.register(eventos)
 class EventosAdmin(SummernoteModelAdmin):
     summernote_fields = ('descricao',)
@@ -83,11 +83,6 @@ class CheersAdmin(admin.ModelAdmin):
 class EsportsAdmin(admin.ModelAdmin):
     list_display = ['name', 'cargo']
 
-@admin.register(media)
-class media(admin.ModelAdmin):
-    list_display = ['name', 'tag']
-
-
 @admin.register(competicoes)
 class Competicoes(admin.ModelAdmin):
     list_display = ['name']
@@ -98,3 +93,21 @@ class Competicoes(admin.ModelAdmin):
 class Jogos(admin.ModelAdmin):
     list_display = ['time1', 'time2']
     search_fields = ['time1', 'time2']
+
+
+class AlbumImageAdmin(admin.TabularInline):
+    model = fotos
+
+
+@admin.register(album)
+class AlbumAdmin(admin.ModelAdmin):
+    form = AlbumAdminForm
+
+    def save_related(self, request, form, formsets, change):
+        super().save_related(request, form, formsets, change)
+        form.save_photos(form.instance)
+
+
+@admin.register(fotos)
+class FotosAdmin(admin.ModelAdmin):
+    pass
