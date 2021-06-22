@@ -1805,6 +1805,7 @@ color:white;
 .album_titulo h2{
     font-family: 'Helvetica',Arial,sans-serif;
     color:#050329;
+    font-size: 20px;
 }
 /* Padrão album */
 .padraoalbum{
@@ -1835,6 +1836,7 @@ color:white;
 
 .foto_padrao{
  width:32%;
+ margin-bottom: 1%;
 }
 .foto_padrao img{
  width:100%;
@@ -3216,6 +3218,13 @@ min-height:30em;
 .foto_padrao{
  width:90%;
  margin-bottom:3%;
+}
+.album_titulo h2{
+    font-size: 12px;
+}
+.padraoalbum_conteudo{
+    padding:0;
+    justify-content:center;
 }
 }
 /* Botoes */

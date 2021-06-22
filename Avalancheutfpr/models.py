@@ -394,7 +394,7 @@ class album(models.Model):
 
 
 class fotos(models.Model):
-    album = models.ForeignKey(album, default=None,related_name="album", on_delete=models.CASCADE)
+    album = models.ForeignKey(album, default=None,related_name="album",on_delete=models.CASCADE)
     foto = models.ImageField(upload_to=get_file_path, verbose_name= 'Foto')
     def __str__(self):
         return f'{self.album.titulo} - foto{self.id}'

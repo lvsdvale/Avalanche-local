@@ -57,7 +57,7 @@ class Eventos(ListView):
     template_name = 'Eventos.html'
     context_object_name = 'eventos'
     paginate_by = 5
-    ordering = '-pub_date'
+    ordering = '-data'
     def get_queryset(self):
         queryset = eventos.objects.all()
         q = self.request.GET.get('q', '')
@@ -194,7 +194,7 @@ class Galeria(TemplateView):
     template_name = 'Galeria.html'
     def get_context_data(self, **kwargs):
         context = super(Galeria,self).get_context_data(**kwargs)
-        context['Albuns'] = album.objects.all().order_by('data')
+        context['Albuns'] = album.objects.all().order_by('-data')
         return context
 
 def GaleriaView(request, slug):
